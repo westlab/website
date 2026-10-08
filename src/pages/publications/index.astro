@@ -58,42 +58,44 @@ const activeId = blocks[blocks.length - 1].id;
   <section class="content">
     <div class="main">
       <Breadcrumb lang={lang} />
-      <nav class="block-nav" aria-label={t(lang, 'publications.blockNav')}>
-        {blocks.map((b) => (
-          <a
-            class="block-link t-ui-bold"
-            href={`#${b.id}`}
-            data-block={b.id}
-            aria-current={b.id === activeId ? 'true' : undefined}
-          >
-            {b.label}
-          </a>
-        ))}
-      </nav>
-
-      <div class="blocks">
-      {blocks.map((b) => (
-        <div class="block" id={b.id} data-block-panel={b.id}>
-          {b.years.map(({ year, categories }) => (
-            <section class="year">
-              <h2 class="year-title t-h1">{year}{suffix}</h2>
-              <hr class="divider" />
-              <div class="categories">
-                {categories.map(({ category, entries }) => (
-                  <div class="category">
-                    <h3 class="category-title t-h3">{category}</h3>
-                    <ol class="entries">
-                      {entries.map((entry, i) => (
-                        <PublicationEntry index={i + 1} citation={entry.data.citation} />
-                      ))}
-                    </ol>
-                  </div>
-                ))}
-              </div>
-            </section>
+      <div class="body">
+        <nav class="block-nav" aria-label={t(lang, 'publications.blockNav')}>
+          {blocks.map((b) => (
+            <a
+              class="block-link t-ui-bold"
+              href={`#${b.id}`}
+              data-block={b.id}
+              aria-current={b.id === activeId ? 'true' : undefined}
+            >
+              {b.label}
+            </a>
           ))}
+        </nav>
+
+        <div class="blocks">
+        {blocks.map((b) => (
+          <div class="block" id={b.id} data-block-panel={b.id}>
+            {b.years.map(({ year, categories }) => (
+              <section class="year">
+                <h2 class="year-title t-h1">{year}{suffix}</h2>
+                <hr class="divider" />
+                <div class="categories">
+                  {categories.map(({ category, entries }) => (
+                    <div class="category">
+                      <h3 class="category-title t-h3">{category}</h3>
+                      <ol class="entries">
+                        {entries.map((entry, i) => (
+                          <PublicationEntry index={i + 1} citation={entry.data.citation} />
+                        ))}
+                      </ol>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        ))}
         </div>
-      ))}
       </div>
     </div>
   </section>
@@ -152,6 +154,10 @@ const activeId = blocks[blocks.length - 1].id;
   .main {
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 56px;
@@ -258,7 +264,7 @@ const activeId = blocks[blocks.length - 1].id;
       padding-bottom: 32px;
     }
 
-    .main,
+    .body,
     .blocks,
     .block {
       gap: 40px;

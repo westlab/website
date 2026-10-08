@@ -18,22 +18,24 @@ const categories = await getCollection('links');
     <SideBand />
     <div class="main">
       <Breadcrumb lang={lang} />
-      {categories.map((category) => (
-        <div class="category">
-          <h2 class="t-h1">{category.data.category_ja}</h2>
-          <ul class="t-body">
-            {category.data.items.map((item) => (
-              <li>
-                {item.url ? (
-                  <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
-                ) : (
-                  <span class="plain">{item.label}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <div class="body">
+        {categories.map((category) => (
+          <div class="category">
+            <h2 class="t-h1">{category.data.category_ja}</h2>
+            <ul class="t-body">
+              {category.data.items.map((item) => (
+                <li>
+                  {item.url ? (
+                    <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
+                  ) : (
+                    <span class="plain">{item.label}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -48,11 +50,15 @@ const categories = await getCollection('links');
 
   .main {
     position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 56px;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 
   .category {

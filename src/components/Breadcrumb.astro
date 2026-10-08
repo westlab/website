@@ -1,5 +1,6 @@
 ---
 // Figma: Breadcrumb（ベースコンポーネント）。トップと検索結果以外の全ページで、本文カラムの先頭に置く。
+// 本文のセクション列（各ページの .body）の外に置き、本文の先頭まで24px空ける（Figma: Main の gap 24）。
 // 階層はヘッダーのナビ構成（src/lib/nav.ts）から現在の URL で引く。最後の項目が現在のページ。
 // BreadcrumbList の構造化データも出力する。全ページ共通の文言なので検索インデックスからは外す。
 import { t, type Lang } from '../i18n/ui';
@@ -47,6 +48,10 @@ const jsonLd = JSON.stringify({
 <script type="application/ld+json" is:inline set:html={jsonLd} />
 
 <style>
+  .breadcrumb {
+    margin-bottom: 24px;
+  }
+
   ol {
     display: flex;
     flex-wrap: wrap;

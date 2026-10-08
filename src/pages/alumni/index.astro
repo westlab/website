@@ -17,28 +17,34 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
   <section class="content">
     <SideBand />
     <Breadcrumb lang={lang} />
-    {cohorts.map((entry) => (
-      <div class="cohort">
-        <h2 class="t-h1">{entry.data.cohort}期</h2>
-        <hr class="divider" />
-        <ul class="names">
-          {entry.data.names.map((person) => (
-            <li class="name t-emphasis">{person.name_ja}</li>
-          ))}
-        </ul>
-      </div>
-    ))}
+    <div class="body">
+      {cohorts.map((entry) => (
+        <div class="cohort">
+          <h2 class="t-h1">{entry.data.cohort}期</h2>
+          <hr class="divider" />
+          <ul class="names">
+            {entry.data.names.map((person) => (
+              <li class="name t-emphasis">{person.name_ja}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   </section>
 </BaseLayout>
 
 <style>
   .content {
     position: relative;
+    padding: 64px var(--gutter) 96px;
+    background: #fff;
+  }
+
+  /* パンくずの下の本文。期ごとの間隔はここで持つ（Figma: Content > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 48px;
-    padding: 64px var(--gutter) 96px;
-    background: #fff;
   }
 
   .cohort {
@@ -76,9 +82,12 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
 
   @media (max-width: 767px) {
     .content {
-      gap: 32px;
       padding-top: 32px;
       padding-bottom: 32px;
+    }
+
+    .body {
+      gap: 32px;
     }
 
     .cohort {

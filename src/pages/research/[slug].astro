@@ -32,23 +32,25 @@ const href = (slug: string) => `/research/${slug}/`;
     <SideBand />
     <div class="main">
       <Breadcrumb lang={lang} current={{ label: topic.data.title, href: href(topic.slug) }} />
-      <article class="article">
-        <Content />
-      </article>
-      <nav class="pager" aria-label={t(lang, 'research.pager.label')}>
-        {prev && (
-          <a class="pager-link prev" href={href(prev.slug)} rel="prev">
-            <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
-            <span class="title t-h3">{prev.data.title}</span>
-          </a>
-        )}
-        {next && (
-          <a class="pager-link next" href={href(next.slug)} rel="next">
-            <span class="label t-ui-small-bold">{t(lang, 'research.pager.next')}<span aria-hidden="true"> →</span></span>
-            <span class="title t-h3">{next.data.title}</span>
-          </a>
-        )}
-      </nav>
+      <div class="body">
+        <article class="article">
+          <Content />
+        </article>
+        <nav class="pager" aria-label={t(lang, 'research.pager.label')}>
+          {prev && (
+            <a class="pager-link prev" href={href(prev.slug)} rel="prev">
+              <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
+              <span class="title t-h3">{prev.data.title}</span>
+            </a>
+          )}
+          {next && (
+            <a class="pager-link next" href={href(next.slug)} rel="next">
+              <span class="label t-ui-small-bold">{t(lang, 'research.pager.next')}<span aria-hidden="true"> →</span></span>
+              <span class="title t-h3">{next.data.title}</span>
+            </a>
+          )}
+        </nav>
+      </div>
     </div>
   </div>
 </BaseLayout>
@@ -61,11 +63,15 @@ const href = (slug: string) => `/research/${slug}/`;
 
   .main {
     position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
   }
 
   .article :global(h1) {
@@ -110,7 +116,7 @@ const href = (slug: string) => `/research/${slug}/`;
     color: var(--color-text-muted);
   }
 
-  /* 本文末尾の要素の下余白は .main の gap に任せる */
+  /* 本文末尾の要素の下余白は .body の gap に任せる */
   .article > :global(:last-child) {
     margin-bottom: 0;
   }

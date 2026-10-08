@@ -33,32 +33,38 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
   <section class="content">
     <SideBand />
     <Breadcrumb lang={lang} />
-    {groups.map((group) => (
-      <div class="group">
-        <h2 class="t-h1">{group.data.grade}</h2>
-        <hr class="divider" />
-        <div class="rows">
-          {splitByYear(group.data.names).map((row) => (
-            <ul class="names">
-              {row.map((member) => (
-                <li class="name t-emphasis">{member.name_ja}</li>
-              ))}
-            </ul>
-          ))}
+    <div class="body">
+      {groups.map((group) => (
+        <div class="group">
+          <h2 class="t-h1">{group.data.grade}</h2>
+          <hr class="divider" />
+          <div class="rows">
+            {splitByYear(group.data.names).map((row) => (
+              <ul class="names">
+                {row.map((member) => (
+                  <li class="name t-emphasis">{member.name_ja}</li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </section>
 </BaseLayout>
 
 <style>
   .content {
     position: relative;
+    padding: 64px var(--gutter) 96px;
+    background: #fff;
+  }
+
+  /* パンくずの下の本文。グループ間の間隔はここで持つ（Figma: Content > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 56px;
-    padding: 64px var(--gutter) 96px;
-    background: #fff;
   }
 
   .group {
