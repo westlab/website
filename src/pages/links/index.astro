@@ -8,7 +8,7 @@ const lang = 'ja' as const;
 
 const pages = await getCollection('pages');
 const page = pages.find((p) => p.id === 'links')!;
-const categories = await getCollection('links');
+const categories = (await getCollection('links')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout title={page.data.title_ja} lang={lang}>

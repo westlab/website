@@ -129,6 +129,7 @@ const links = defineCollection({
     id: z.string(),
     category_ja: z.string(),
     category_en: z.string(),
+    order: z.number(),
     items: z.array(
       z.object({
         label: z.string(),
