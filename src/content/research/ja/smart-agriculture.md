@@ -1,6 +1,6 @@
 ---
 title: スマート農業
-order: 5
+order: 6
 icon: smart-agriculture
 summary: 農研機構などと連携し、施設園芸農業のゼロエミッション化に向けた情報通信インフラを構築しています。
 hero: /images/research/smart-agriculture/hero.jpg

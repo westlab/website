@@ -1,6 +1,6 @@
 ---
 title: Smart Community and Smart City Information Infrastructure
-order: 6
+order: 5
 icon: smart-community
 summary: We build information infrastructure that activates information flow and supports daily life in local communities.
 hero: /images/research/smart-community/hero.jpg
