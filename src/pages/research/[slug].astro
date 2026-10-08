@@ -116,7 +116,11 @@ const href = (slug: string) => `/research/${slug}/`;
     color: var(--color-text-muted);
   }
 
-  /* 本文末尾の要素の下余白は .body の gap に任せる */
+  /* 本文先頭の要素の上余白はパンくずの24pxに、末尾の下余白は .body の gap に任せる */
+  .article > :global(:first-child) {
+    margin-top: 0;
+  }
+
   .article > :global(:last-child) {
     margin-bottom: 0;
   }
