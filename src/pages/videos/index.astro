@@ -1,0 +1,57 @@
+---
+// Figma: Videos Page / Videos Page (Mobile)
+// 遷移元は Header の「研究内容」ドロップダウン内「研究紹介動画」。Nav Card を持たない独立ページなので
+// pages.yaml（Nav Card ⇔ Hero の共有画像テーブル。レコードを足すとナビ項目が増える）は使わず、
+// Page Title のタイトルは nav ラベルを、画像は Figma と同一の placeholder.jpg を直接渡す。
+// サムネイルは動画サービス側から取得する想定のため、ここでは暗色の枠+再生アイコンで表示する。
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import { t } from '../../i18n/ui';
+
+const lang = 'ja' as const;
+const heroImage = '/images/pages/placeholder.jpg';
+
+const videos = (await getCollection('videos')).sort((a, b) => a.data.order - b.data.order);
+const title = t(lang, 'nav.research.videos');
+---
+
+<BaseLayout title={title} lang={lang}>
+  <PageHero title={title} image={heroImage} />
+  <div class="content">
+    <SideBand />
+    <div class="main">
+      <p class="t-body lead">{t(lang, 'videos.lead')}</p>
+      {videos.map((video) => <VideoCard video={video.data} lang={lang} />)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+  }
+
+  .main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .lead {
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+  }
+</style>

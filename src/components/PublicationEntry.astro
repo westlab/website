@@ -1,0 +1,34 @@
+---
+// Figma: Entry / 業績（438:728）。連番と引用文の2要素。
+interface Props {
+  index: number;
+  citation: string;
+}
+const { index, citation } = Astro.props;
+---
+
+<li class="entry">
+  <span class="num t-emphasis">{index}.</span>
+  <span class="citation t-body">{citation}</span>
+</li>
+
+<style>
+  .entry {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .num {
+    flex: none;
+    width: 20px;
+    color: var(--color-placeholder);
+  }
+
+  .citation {
+    flex: 1;
+    min-width: 0;
+    color: var(--color-text-muted);
+    overflow-wrap: anywhere;
+  }
+</style>

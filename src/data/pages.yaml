@@ -1,0 +1,44 @@
+- id: research
+  order: 1
+  title_ja: 研究内容
+  title_en: Research
+  image: /images/pages/research.jpg
+  href: /research/
+  description_ja: スマートコミュニティをはじめとした研究室が取り組むテーマを紹介します。
+  description_en: An overview of the research themes we work on, including smart communities.
+
+- id: members
+  order: 2
+  title_ja: メンバー
+  title_en: Members
+  image: /images/pages/members.jpg
+  href: /members/
+  description_ja: 研究室メンバーと卒業生の紹介です。
+  description_en: Current members and alumni of the lab.
+
+- id: publications
+  order: 3
+  title_ja: 業績
+  title_en: Publications
+  image: /images/pages/publications.jpg
+  href: /publications/
+  description_ja: 論文・国際会議・受賞など、研究室の成果の一覧です。
+  description_en: Journal papers, conference papers, awards and other achievements.
+
+- id: applicants
+  order: 4
+  title_ja: 入室・見学
+  title_en: Applicants
+  image: /images/pages/applicants.jpg
+  href: /applicants/
+  description_ja: 研究室への配属を考えている方へ。学部3年生向けです。
+  description_en: For third-year undergraduates considering joining the lab.
+
+- id: links
+  order: 5
+  title_ja: リンク
+  title_en: Links
+  image: /images/pages/links.jpg
+  href: /links/
+  description_ja: 学科・大学・共同研究先など、研究室に関連するサイトへのリンク集です。
+  description_en: Links to the department, university, collaborators and related sites.

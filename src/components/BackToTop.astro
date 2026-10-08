@@ -1,0 +1,57 @@
+---
+// Figma: Back to Top（右下の紺の丸ボタン）
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'ja' } = Astro.props;
+---
+
+<a class="back-to-top t-icon-glyph" href="#" aria-label={t(lang, 'common.backToTop')}>↑</a>
+
+<script>
+  const button = document.querySelector<HTMLElement>('.back-to-top');
+  const update = () => button?.classList.toggle('visible', window.scrollY > 400);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  button?.addEventListener('click', (event) => {
+    event.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+</script>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 90;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-navy);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out, visibility 0.2s;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 767px) {
+    .back-to-top {
+      right: 16px;
+      bottom: 16px;
+    }
+  }
+</style>

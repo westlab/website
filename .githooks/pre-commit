@@ -1,0 +1,27 @@
+#!/bin/sh
+# テスト（npm test: ナビカードとヒーロー画像の共通化チェック）は軽いので、コミットのたびに常に実行する。
+if ! npm test --silent; then
+  exit 1
+fi
+
+# commit前に src 以下の Markdown / YAML が Prettier で整形済みかを確認する（未整形・構文エラーならブロックする）。
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^src/.*\.(md|yaml)$')
+[ -z "$files" ] && exit 0
+mdfiles=$(echo "$files" | grep -E '\.md$')
+
+if ! npx prettier --check $files; then
+  echo ""
+  echo "Markdown / YAML が未整形、または構文エラーです。次を実行して整形し、再度 add してください:"
+  echo "  npm run lint:fix"
+  exit 1
+fi
+
+# Markdown 本文に h1 が無いかを確認する（h1 はページタイトルが担当）。
+if [ -n "$mdfiles" ] && ! node scripts/check-headings.mjs $mdfiles; then
+  echo ""
+  echo "Markdown 本文の見出しは ## から書いてください（# は使わない）。"
+  exit 1
+fi
+
+# 引用符 “ ” の向き（開き “・閉じ ”）を確認する。警告のみで、コミットは止めない。
+node scripts/check-quotes.mjs $files

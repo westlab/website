@@ -1,0 +1,431 @@
+---
+// Figma: Header（デスクトップ。研究内容・メンバーはホバーでドロップダウン）/
+// Header / Mobile (collapsed / menu open)
+import { getCollection } from 'astro:content';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'ja' } = Astro.props;
+const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+
+// ドロップダウンを持つナビ項目のサブページ
+const children: Record<string, { label: string; href: string }[]> = {
+  research: [
+    { label: t(lang, 'nav.research.about'), href: '/research/' },
+    { label: t(lang, 'nav.research.videos'), href: '/videos/' },
+  ],
+  members: [
+    { label: t(lang, 'nav.members.current'), href: '/members/' },
+    { label: t(lang, 'nav.members.alumni'), href: '/alumni/' },
+  ],
+};
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(href);
+
+const items = pages.map((page) => {
+  const subs = children[page.id] ?? [];
+  return {
+    label: lang === 'ja' ? page.data.title_ja : page.data.title_en,
+    href: page.data.href,
+    subs,
+    active: isCurrent(page.data.href) || subs.some((s) => isCurrent(s.href)),
+  };
+});
+---
+
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="/">
+      <img src="/images/logo/header-logo.png" alt="West Lab — Computing and Networking" />
+    </a>
+
+    <div class="nav-lang">
+      <nav class="desktop-nav" aria-label="メイン">
+        <ul>
+          {items.map((item) => (
+            <li class:list={['nav-item', { 'has-dropdown': item.subs.length > 0, active: item.active }]}>
+              <a class="nav-link t-ui" href={item.href} data-label={item.label} aria-current={item.active ? 'page' : undefined}>
+                {item.label}
+              </a>
+              {item.subs.length > 0 && (
+                <ul class="dropdown">
+                  {item.subs.map((sub) => (
+                    <li>
+                      <a class:list={['t-ui', { current: isCurrent(sub.href) }]} href={sub.href}>
+                        {sub.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="lang-toggle" aria-label="Language">
+        <span class:list={['lang-option', { active: lang === 'ja' }]}>JP</span>
+        <span class:list={['lang-option', { active: lang === 'en' }]}>EN</span>
+      </div>
+
+      <form class="search-box desktop-only" action="/search/" role="search">
+        <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
+        <label class="visually-hidden" for="header-search">{t(lang, 'nav.search')}</label>
+        <input id="header-search" class="t-ui" type="search" name="q" placeholder={t(lang, 'nav.search')} />
+      </form>
+
+      <div class="lang-compact t-ui-small">
+        <span class:list={{ active: lang === 'ja' }}>JP</span>
+        <span class="sep">/</span>
+        <span class:list={{ active: lang === 'en' }}>EN</span>
+      </div>
+
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-label-open={t(lang, 'nav.menu.open')}
+        data-label-close={t(lang, 'nav.menu.close')}
+        aria-label={t(lang, 'nav.menu.open')}
+      >
+        <img class="icon-open" src="/images/ui/icon-hamburger.svg" alt="" width="24" height="24" />
+        <img class="icon-close" src="/images/ui/icon-close.svg" alt="" width="24" height="24" />
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <form class="search-row" action="/search/" role="search">
+      <div class="search-box">
+        <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
+        <label class="visually-hidden" for="mobile-search">{t(lang, 'nav.search')}</label>
+        <input id="mobile-search" class="t-ui" type="search" name="q" placeholder={t(lang, 'nav.search')} />
+      </div>
+    </form>
+    <ul>
+      {items.map((item) => (
+        <li>
+          <a class="nav-row t-ui" href={item.href}>{item.label}</a>
+          {item.subs.length > 0 && (
+            <ul>
+              {item.subs.map((sub) => (
+                <li><a class="nav-sub-row t-ui" href={sub.href}>{sub.label}</a></li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.site-header .menu-button');
+  const menu = document.getElementById('mobile-menu');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(open));
+    button.setAttribute('aria-label', (open ? button.dataset.labelClose : button.dataset.labelOpen) ?? '');
+    if (menu) menu.hidden = !open;
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 40px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .logo img {
+    width: 260px;
+    height: 64px;
+    object-fit: contain;
+  }
+
+  .nav-lang {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .desktop-nav > ul {
+    display: flex;
+    gap: 40px;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  /* 太字になっても横幅が変わらないよう、太字の幅を確保しておく */
+  .nav-link::before {
+    content: attr(data-label);
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    font-weight: 700;
+  }
+
+  /* 下線は左から伸びる */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(24px + 25px);
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
+  }
+
+  .nav-item:hover > .nav-link,
+  .nav-item:focus-within > .nav-link,
+  .nav-item.active > .nav-link {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .nav-item:hover > .nav-link::after,
+  .nav-item:focus-within > .nav-link::after,
+  .nav-item.active > .nav-link::after {
+    transform: scaleX(1);
+  }
+
+  .dropdown {
+    position: absolute;
+    left: 0;
+    top: calc(var(--header-height) + 8px);
+    width: 160px;
+    padding: 8px 0;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0.15s;
+  }
+
+  /* ナビ項目からドロップダウンまでの隙間でホバーが切れないようにする */
+  .dropdown::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -16px;
+    height: 16px;
+  }
+
+  .nav-item:hover > .dropdown,
+  .nav-item:focus-within > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .dropdown a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 16px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dropdown a:hover,
+  .dropdown a.current {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .lang-toggle {
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    background: var(--color-surface-strong);
+    border-radius: 6px;
+  }
+
+  .lang-option {
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+  }
+
+  .lang-option.active {
+    background: var(--color-navy);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 160px;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid var(--color-border-input);
+    border-radius: 6px;
+  }
+
+  .search-box:focus-within {
+    border-color: var(--color-navy);
+  }
+
+  .search-box img {
+    flex: none;
+  }
+
+  .search-box input {
+    min-width: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: none;
+    font-family: inherit;
+    color: var(--color-text);
+  }
+
+  .search-box input::placeholder {
+    color: var(--color-placeholder);
+  }
+
+  .lang-compact,
+  .menu-button,
+  .mobile-menu {
+    display: none;
+  }
+
+  /* ---------- モバイル（Header / Mobile） ---------- */
+  @media (max-width: 1023px) {
+    .bar {
+      padding: 0 20px 0 12px;
+    }
+
+    .logo img {
+      width: 228px;
+      height: 56px;
+    }
+
+    .nav-lang {
+      gap: 16px;
+    }
+
+    .desktop-nav,
+    .lang-toggle,
+    .desktop-only {
+      display: none;
+    }
+
+    .lang-compact {
+      display: flex;
+      gap: 6px;
+      color: var(--color-text-muted);
+    }
+
+    .lang-compact .active {
+      color: var(--color-navy);
+      font-weight: 700;
+    }
+
+    .lang-compact .sep {
+      color: var(--color-border-input);
+    }
+
+    .menu-button {
+      display: block;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    .menu-button .icon-close,
+    .menu-button[aria-expanded='true'] .icon-open {
+      display: none;
+    }
+
+    .menu-button[aria-expanded='true'] .icon-close {
+      display: block;
+    }
+
+    .mobile-menu:not([hidden]) {
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      max-height: calc(100dvh - var(--header-height));
+      overflow-y: auto;
+      padding: 8px 0;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .search-row {
+      padding: 12px 20px;
+    }
+
+    .search-row .search-box {
+      width: 100%;
+      padding-block: 7px;
+    }
+
+    .nav-row,
+    .nav-sub-row {
+      display: block;
+      padding: 15px 20px 14px;
+      border-bottom: 1px solid var(--color-surface-strong);
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    .nav-sub-row {
+      padding: 9px 20px 8px 40px;
+    }
+  }
+</style>

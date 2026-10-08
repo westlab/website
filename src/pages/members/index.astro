@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+
+const lang = 'ja' as const;
+
+// Figma「Members Page」は 博士課程 / 修士課程 / 学部生 の3グループ構成。教授は掲載しない。
+const GRADE_ORDER = ['博士課程', '修士課程', '学部生'];
+
+const pages = await getCollection('pages');
+const page = pages.find((p) => p.id === 'members')!;
+const groups = (await getCollection('members'))
+  .filter((g) => GRADE_ORDER.includes(g.data.grade))
+  .sort((a, b) => GRADE_ORDER.indexOf(a.data.grade) - GRADE_ORDER.indexOf(b.data.grade));
+
+// 隣り合う同じ year ごとに分割する（year 無しは全員で1まとまり）
+function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
+  const rows: T[][] = [];
+  for (const m of names) {
+    const last = rows[rows.length - 1];
+    if (last && last[0].year === m.year) last.push(m);
+    else rows.push([m]);
+  }
+  return rows;
+}
+---
+
+<BaseLayout title={page.data.title_ja} lang={lang}>
+  <PageHero title={page.data.title_ja} image={page.data.image} />
+  <section class="content">
+    <SideBand />
+    {groups.map((group) => (
+      <div class="group">
+        <h2 class="t-h1">{group.data.grade}</h2>
+        <hr class="divider" />
+        <div class="rows">
+          {splitByYear(group.data.names).map((row) => (
+            <ul class="names">
+              {row.map((member) => (
+                <li class="name t-emphasis">{member.name_ja}</li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding: 64px var(--gutter) 96px;
+    background: #fff;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .group h2 {
+    margin: 0;
+    color: var(--color-navy);
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: var(--color-border);
+  }
+
+  /* Figma「Members Page」: 学年ごとの行（Year Row）の間も、折り返した行の間も 12px */
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .names {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .name {
+    padding: 10px 18px;
+    border-radius: 6px;
+    background: var(--color-surface);
+    color: #26262e;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 767px) {
+    .names {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

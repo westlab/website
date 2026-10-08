@@ -1,0 +1,135 @@
+---
+// Figma: Video Card / 動画一覧（438:932）。再生アイコン付きサムネイル、タイトル、サブタイトル。
+import type { CollectionEntry } from 'astro:content';
+import { t, type Lang } from '../i18n/ui';
+import { getYouTubeId } from '../lib/youtube';
+
+interface Props {
+  video: CollectionEntry<'videos'>['data'];
+  lang?: Lang;
+}
+
+const { video, lang = 'ja' } = Astro.props;
+const videoId = getYouTubeId(video.url);
+const title = lang === 'ja' ? video.title_ja : video.title_en;
+---
+
+<div class="video-card">
+  {
+    videoId ? (
+      <div class="thumbnail" data-video-id={videoId} data-title={title}>
+        <button type="button" class="thumb-button" aria-label={`${t(lang, 'videos.play')}: ${title}`}>
+          <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt="" loading="lazy" />
+          <svg class="play" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.92" />
+            <path d="M25 19L46 32L25 45V19Z" fill="#00007B" />
+          </svg>
+        </button>
+      </div>
+    ) : (
+      <div class="thumbnail"><svg class="play" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.92" />
+            <path d="M25 19L46 32L25 45V19Z" fill="#00007B" />
+          </svg></div>
+    )
+  }
+  <p class="title t-h3">{title}</p>
+  <p class="description t-caption">{lang === 'ja' ? video.description_ja : video.description_en}</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.thumbnail[data-video-id]').forEach((box) => {
+    box.querySelector('button')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${box.dataset.videoId}?autoplay=1&rel=0`;
+      iframe.title = box.dataset.title ?? '';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      box.replaceChildren(iframe);
+    });
+  });
+</script>
+
+<style>
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: inherit;
+  }
+
+  .thumbnail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 506px;
+    border-radius: 8px;
+    background: #171a24;
+    overflow: hidden;
+    transition: filter 0.2s ease;
+  }
+
+  .thumbnail[data-video-id]:hover {
+    filter: brightness(1.25);
+  }
+
+  .thumbnail :global(iframe) {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .thumb-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .thumb-button:focus-visible {
+    outline: 3px solid #00007b;
+    outline-offset: -3px;
+    border-radius: 8px;
+  }
+
+  .thumb-button img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .play {
+    position: relative;
+    flex: none;
+  }
+
+  .title,
+  .description {
+    margin: 0;
+  }
+
+  .title {
+    color: var(--color-text);
+  }
+
+  .description {
+    color: var(--color-placeholder);
+  }
+
+  @media (max-width: 1023px) {
+    .thumbnail {
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>

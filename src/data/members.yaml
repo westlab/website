@@ -1,0 +1,71 @@
+- id: professor
+  grade: 教授
+  names:
+    - name_ja: 西宏章
+      name_en: Hiroaki Nishi
+
+- id: doctor
+  grade: 博士課程
+  names:
+    - name_ja: 曄道悟朗
+      name_en: Goro Terumichi
+    - name_ja: 土屋遼太
+      name_en: Ryota Tsuchiya
+    - name_ja: Shen Yihui
+      name_en: Shen Yihui
+
+- id: master
+  grade: 修士課程
+  names:
+    - name_ja: 石崎杏奈
+      name_en: Anna Ishizaki
+      year: M2
+    - name_ja: 酒寄壮生
+      name_en: Masaki Sakayori
+      year: M2
+    - name_ja: 髙師亜由奈
+      name_en: Ayuna Takashi
+      year: M2
+    - name_ja: 藤本巧実
+      name_en: Takumi Fujimoto
+      year: M2
+    - name_ja: 田中皓雅
+      name_en: Kohga Tanaka
+      year: M1
+    - name_ja: 椎名風嘉
+      name_en: Fuga Shiina
+      year: M1
+    - name_ja: 川合真岬
+      name_en: Masaki Kawai
+      year: M1
+    - name_ja: 加藤朱里
+      name_en: Akari Kato
+      year: M1
+    - name_ja: 前田優希
+      name_en: Yuki Maeda
+      year: M1
+    - name_ja: 佐藤陽斗
+      name_en: Haruto Sato
+      year: M1
+
+- id: undergraduate
+  grade: 学部生
+  names:
+    - name_ja: 小笠原優花
+      name_en: Yuka Ogasawara
+      year: B4
+    - name_ja: 田畑雄基
+      name_en: Yuki Tabata
+      year: B4
+    - name_ja: 本間勇毅
+      name_en: Yuki Honma
+      year: B4
+    - name_ja: 水芦優衣奈
+      name_en: Yuina Mizuashi
+      year: B4
+    - name_ja: 三田円蔵
+      name_en: Enzo Mita
+      year: B4
+    - name_ja: 宮﨑悠成
+      name_en: Yusei Miyazaki
+      year: B4

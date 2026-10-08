@@ -1,0 +1,359 @@
+---
+// Figma: Homepage / Homepage (Mobile)
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavCard from '../components/NavCard.astro';
+import SideBand from '../components/SideBand.astro';
+import { getLocalizedDoc } from '../lib/content';
+import { t } from '../i18n/ui';
+
+const lang = 'ja' as const;
+
+const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+const message = (await getLocalizedDoc('pagesContent', lang, 'homepage-message'))!;
+const { Content: MessageContent } = await render(message);
+---
+
+<BaseLayout title="Home" lang={lang}>
+  <section class="hero">
+    <img class="backdrop" src="/images/homepage-hero.png" alt="" />
+    <img class="photo-uncropped" src="/images/homepage-hero.png" alt="" />
+    <div class="scrim"></div>
+    <span class="accent-rule"></span>
+    <h1 class="t-display-hero">{t(lang, 'home.hero.title')}</h1>
+    <p class="t-lead">{t(lang, 'home.hero.lead')}</p>
+  </section>
+
+  <section class="message">
+    <SideBand />
+    <div class="message-text">
+      <div class="message-flow" id="message-body" data-collapsed>
+        <div class="profile">
+          <img class="photo" src={message.data.photo} alt={message.data.author} />
+          <div class="byline">
+            <h2 class="t-h1">{message.data.author}</h2>
+            <p class="t-h3">{message.data.title}</p>
+            <img class="photo-mobile" src={message.data.photo} alt="" />
+          </div>
+        </div>
+        <div class="body t-body">
+          <MessageContent />
+        </div>
+      </div>
+      <button
+        class="toggle t-ui-bold"
+        type="button"
+        aria-controls="message-body"
+        aria-expanded="false"
+        data-expand={t(lang, 'common.expand')}
+        data-collapse={t(lang, 'common.collapse')}
+      >
+        {t(lang, 'common.expand')} ▼
+      </button>
+    </div>
+  </section>
+
+  <section class="nav-sections">
+    {pages.map((page, index) => (
+      <NavCard page={page} index={index} lang={lang} />
+    ))}
+  </section>
+</BaseLayout>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.message .toggle');
+  const body = document.getElementById('message-body');
+  const profile = body?.querySelector<HTMLElement>('.profile');
+  // 折りたたみ高さ = プロフィール全体 + 以降の本文3行ぶん（CSS変数で渡す）
+  if (body && profile) {
+    const sync = () => body.style.setProperty('--profile-h', `${profile.offsetHeight}px`);
+    sync();
+    new ResizeObserver(sync).observe(profile);
+  }
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.textContent = `${expanded ? toggle.dataset.collapse : toggle.dataset.expand} ${expanded ? '▲' : '▼'}`;
+    body?.toggleAttribute('data-collapsed', !expanded);
+  });
+</script>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 160px var(--gutter);
+    overflow: hidden;
+    background: var(--color-hero-bg);
+    color: var(--color-hero-text);
+    text-align: center;
+  }
+
+  .hero > * {
+    position: relative;
+    margin: 0;
+  }
+
+  .hero .backdrop,
+  .hero .scrim {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero .scrim {
+    background: rgba(5, 8, 23, 0.42);
+  }
+
+  .hero .photo-uncropped {
+    display: none;
+  }
+
+  .accent-rule {
+    width: 64px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--color-accent);
+  }
+
+  .hero h1 {
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  }
+
+  .hero p {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  /* ---------- Message Section ---------- */
+  .message {
+    position: relative;
+    padding: 96px var(--gutter);
+  }
+
+  .message-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  /* 写真と名前を左に回り込ませ、本文はその下で全幅に広がる */
+  .message-flow {
+    display: flow-root;
+    width: 100%;
+  }
+
+  .profile {
+    float: left;
+    width: 380px;
+    margin: 0 56px 24px 0;
+  }
+
+  .message .photo {
+    display: block;
+    width: 380px;
+    height: 380px;
+    border-radius: 16px;
+    object-fit: contain;
+  }
+
+  .byline {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .byline h2 {
+    margin: 0;
+    color: var(--color-navy);
+  }
+
+  .byline p {
+    margin: 8px 0 0;
+    color: var(--color-text);
+  }
+
+  .photo-mobile {
+    display: none;
+  }
+
+  .body :global(p) {
+    margin: 0;
+  }
+
+  .body :global(p + p) {
+    margin-top: 1em;
+  }
+
+  /* 箇条書き（Markdownのul）。pとの間隔は1emで揃える */
+  .body :global(ul) {
+    list-style: disc;
+    padding-left: 24px;
+    margin: 1em 0 0;
+  }
+
+  .body :global(li) {
+    margin: 0;
+  }
+
+  .body :global(ul + p) {
+    margin-top: 1em;
+  }
+
+  /* 折りたたみ時はプロフィール全体 + 本文3行ぶん（JSで --profile-h を設定、未設定時は目安値）で切り、下端を薄くする */
+  .message-flow[data-collapsed] {
+    max-height: calc(var(--profile-h, 500px) + 24px + 1.8em * 3);
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 2.4em), transparent);
+  }
+
+  .toggle {
+    padding: 11px 24px;
+    border: 1px solid var(--color-navy);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-navy);
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease-out, color 0.2s ease-out;
+  }
+
+  .toggle:hover {
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  /* ---------- Nav Sections ---------- */
+  .nav-sections {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 1023px) {
+    .profile {
+      width: 280px;
+      margin-right: 40px;
+    }
+
+    .message .photo {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  /* ---------- モバイル ---------- */
+  @media (max-width: 767px) {
+    .hero {
+      min-height: 748px;
+      padding: 156px var(--gutter) 48px;
+    }
+
+    .hero .backdrop {
+      filter: blur(20px);
+      transform: scale(1.1);
+    }
+
+    .hero .scrim {
+      background: rgba(5, 8, 23, 0.55);
+    }
+
+    .hero .photo-uncropped {
+      display: block;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero h1 {
+      text-shadow: none;
+    }
+
+    .hero p {
+      text-shadow: none;
+    }
+
+    .message {
+      padding: 40px var(--gutter);
+    }
+
+    .message .photo {
+      display: none;
+    }
+
+    .message-text {
+      gap: 24px;
+    }
+
+    /* 回り込みを解除して縦積みに戻す */
+    .message-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .profile {
+      float: none;
+      width: auto;
+      margin: 0;
+    }
+
+    /* Figma (Mobile) は本文を約20行ぶん見せる（切り取りは本文のみ） */
+    .message-flow[data-collapsed] {
+      max-height: none;
+      overflow: visible;
+      mask-image: none;
+    }
+
+    .message-flow[data-collapsed] .body {
+      max-height: calc(1.8em * 20);
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, #000 calc(100% - 2.4em), transparent);
+    }
+
+    .byline {
+      margin-top: 0;
+      display: grid;
+      grid-template-columns: 1fr 168px;
+      column-gap: 20px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .byline h2 {
+      align-self: end;
+      font-size: 22px;
+      line-height: 1.6;
+    }
+
+    .byline p {
+      grid-row: 2;
+      align-self: start;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .photo-mobile {
+      display: block;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      width: 168px;
+      height: 168px;
+      border-radius: 16px;
+      object-fit: contain;
+    }
+
+    .nav-sections {
+      gap: 40px;
+      padding: 48px var(--gutter);
+    }
+  }
+</style>

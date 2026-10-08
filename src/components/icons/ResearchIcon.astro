@@ -1,0 +1,92 @@
+---
+// Figma: Icon Glyph（38×38。カードの紺色アイコン枠の中に白線で置く）。色は currentColor。
+interface Props {
+  name:
+    | 'network'
+    | 'hardware'
+    | 'anonymization'
+    | 'ai'
+    | 'smart-community'
+    | 'smart-agriculture'
+    | 'standardization';
+}
+
+const { name } = Astro.props;
+---
+
+{name === 'network' && (
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M28.5 15.8333H26.505C25.9126 13.5391 24.6886 11.457 22.972 9.82363C21.2554 8.19027 19.1151 7.07115 16.7943 6.59344C14.4735 6.11572 12.0651 6.29856 9.84303 7.12119C7.62092 7.94381 5.6741 9.37323 4.22378 11.247C2.77347 13.1208 1.87782 15.3638 1.6386 17.7212C1.39939 20.0786 1.8262 22.4558 2.87054 24.5828C3.91489 26.7097 5.53488 28.5011 7.54645 29.7533C9.55802 31.0055 11.8805 31.6684 14.25 31.6667H28.5C30.5996 31.6667 32.6133 30.8326 34.0979 29.3479C35.5826 27.8633 36.4167 25.8496 36.4167 23.75C36.4167 21.6504 35.5826 19.6367 34.0979 18.1521C32.6133 16.6674 30.5996 15.8333 28.5 15.8333Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+)}
+
+{name === 'hardware' && (
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M25.0167 11.0833H12.9833C11.934 11.0833 11.0833 11.934 11.0833 12.9833V25.0167C11.0833 26.066 11.934 26.9167 12.9833 26.9167H25.0167C26.066 26.9167 26.9167 26.066 26.9167 25.0167V12.9833C26.9167 11.934 26.066 11.0833 25.0167 11.0833Z" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M15.0417 19H16.625L17.8917 16.3083L19.475 21.6917L20.7417 19H22.325" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.25 4.75V11.0833M23.75 4.75V11.0833M14.25 26.9167V33.25M23.75 26.9167V33.25M4.75 14.25H11.0833M4.75 23.75H11.0833M26.9167 14.25H33.25M26.9167 23.75H33.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+)}
+
+{name === 'anonymization' && (
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M19 5.06667L30.0833 9.65833V19.1583C30.0566 22.3669 28.9477 25.4726 26.9363 27.9725C24.9248 30.4725 22.1285 32.2204 19 32.9333C15.8715 32.2204 13.0752 30.4725 11.0637 27.9725C9.05228 25.4726 7.94342 22.3669 7.91667 19.1583V9.65833L19 5.06667Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.0417 19.1583C15.9161 19.1583 16.625 18.4495 16.625 17.575C16.625 16.7005 15.9161 15.9917 15.0417 15.9917C14.1672 15.9917 13.4583 16.7005 13.4583 17.575C13.4583 18.4495 14.1672 19.1583 15.0417 19.1583Z" fill="currentColor"/>
+    <path opacity="0.55" d="M21.5333 17.8917C22.4078 17.8917 23.1167 17.1828 23.1167 16.3083C23.1167 15.4339 22.4078 14.725 21.5333 14.725C20.6589 14.725 19.95 15.4339 19.95 16.3083C19.95 17.1828 20.6589 17.8917 21.5333 17.8917Z" fill="currentColor"/>
+    <path opacity="0.3" d="M18.05 23.5917C18.9244 23.5917 19.6333 22.8828 19.6333 22.0083C19.6333 21.1339 18.9244 20.425 18.05 20.425C17.1755 20.425 16.4667 21.1339 16.4667 22.0083C16.4667 22.8828 17.1755 23.5917 18.05 23.5917Z" fill="currentColor"/>
+    <path opacity="0.75" d="M23.1167 22.9583C23.9911 22.9583 24.7 22.2495 24.7 21.375C24.7 20.5005 23.9911 19.7917 23.1167 19.7917C22.2422 19.7917 21.5333 20.5005 21.5333 21.375C21.5333 22.2495 22.2422 22.9583 23.1167 22.9583Z" fill="currentColor"/>
+  </svg>
+)}
+
+{name === 'ai' && (
+  <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1.1" opacity="0.65">
+      <line x1="5" y1="8" x2="12" y2="5"/>
+      <line x1="5" y1="8" x2="12" y2="12"/>
+      <line x1="5" y1="16" x2="12" y2="12"/>
+      <line x1="5" y1="16" x2="12" y2="19"/>
+      <line x1="12" y1="5" x2="19" y2="8"/>
+      <line x1="12" y1="12" x2="19" y2="8"/>
+      <line x1="12" y1="12" x2="19" y2="16"/>
+      <line x1="12" y1="19" x2="19" y2="16"/>
+    </g>
+    <g fill="currentColor">
+      <circle cx="5" cy="8" r="1.5"/>
+      <circle cx="5" cy="16" r="1.5"/>
+      <circle cx="12" cy="5" r="1.5"/>
+      <circle cx="12" cy="12" r="1.5"/>
+      <circle cx="12" cy="19" r="1.5"/>
+      <circle cx="19" cy="8" r="1.5"/>
+      <circle cx="19" cy="16" r="1.5"/>
+    </g>
+  </svg>
+)}
+
+{name === 'smart-community' && (
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M5.21439 21.7812L17.8811 10.6979L30.5477 21.7812M9.17272 20.1979V32.8645H26.5894V20.1979" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25.7977 8.9562C26.6722 8.9562 27.3811 8.24732 27.3811 7.37287C27.3811 6.49842 26.6722 5.78953 25.7977 5.78953C24.9233 5.78953 24.2144 6.49842 24.2144 7.37287C24.2144 8.24732 24.9233 8.9562 25.7977 8.9562Z" fill="currentColor"/>
+    <path opacity="0.7" d="M29.9144 11.5687C30.5702 11.5687 31.1019 11.037 31.1019 10.3812C31.1019 9.72536 30.5702 9.1937 29.9144 9.1937C29.2585 9.1937 28.7269 9.72536 28.7269 10.3812C28.7269 11.037 29.2585 11.5687 29.9144 11.5687Z" fill="currentColor"/>
+    <path opacity="0.45" d="M32.7644 6.02703C33.2453 6.02703 33.6352 5.63715 33.6352 5.1562C33.6352 4.67525 33.2453 4.28537 32.7644 4.28537C32.2834 4.28537 31.8936 4.67525 31.8936 5.1562C31.8936 5.63715 32.2834 6.02703 32.7644 6.02703Z" fill="currentColor"/>
+  </svg>
+)}
+
+{name === 'smart-agriculture' && (
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.5163 31.0125V13.5958" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M17.5163 19.9292C11.4996 19.9292 8.01628 15.6542 8.01628 10.1125C13.2413 10.1125 17.5163 13.5958 17.5163 19.9292Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.5163 15.9708C23.5329 15.9708 27.0163 11.6958 27.0163 6.15417C21.7913 6.15417 17.5163 9.6375 17.5163 15.9708Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10.3913 31.0125H24.6413" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M23.8496 32.5958C24.7241 32.5958 25.4329 31.887 25.4329 31.0125C25.4329 30.138 24.7241 29.4292 23.8496 29.4292C22.9752 29.4292 22.2663 30.138 22.2663 31.0125C22.2663 31.887 22.9752 32.5958 23.8496 32.5958Z" fill="currentColor"/>
+    <path d="M23.8496 27.3708C24.3278 27.3708 24.8014 27.465 25.2432 27.648C25.685 27.831 26.0865 28.0993 26.4247 28.4375C26.7628 28.7756 27.0311 29.1771 27.2141 29.6189C27.3971 30.0607 27.4913 30.5343 27.4913 31.0125" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+    <path d="M23.8496 24.6792C25.5293 24.6792 27.1402 25.3464 28.328 26.5342C29.5157 27.7219 30.1829 29.3328 30.1829 31.0125" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+  </svg>
+)}
+
+{name === 'standardization' && (
+  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M19 24.8583C24.4216 24.8583 28.8167 20.4633 28.8167 15.0417C28.8167 9.62007 24.4216 5.225 19 5.225C13.5784 5.225 9.18333 9.62007 9.18333 15.0417C9.18333 20.4633 13.5784 24.8583 19 24.8583Z" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M14.25 15.3583L17.4167 18.525L23.75 11.5583" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.775 23.75L11.4 32.4583L19 28.975L26.6 32.4583L24.225 23.75" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+)}

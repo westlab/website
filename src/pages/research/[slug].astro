@@ -1,0 +1,92 @@
+---
+// 研究トピックの詳細ページ（カードの「詳しく見る」の遷移先）。Figma に専用フレームがないため、
+// Page Title + 本文の最小構成にとどめる。
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+import { getLocalizedList } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const topics = await getLocalizedList('research', 'ja');
+  return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+
+const lang = 'ja' as const;
+const { topic } = Astro.props;
+const { Content } = await render(topic);
+// トピックごとの Page Title 画像（front matter の hero）。未指定ならプレースホルダー
+const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
+---
+
+<BaseLayout title={topic.data.title} lang={lang}>
+  <PageHero title={topic.data.title} image={heroImage} />
+  <div class="content">
+    <SideBand />
+    <article class="main">
+      <Content />
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+  }
+
+  .main {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .main :global(h1) {
+    margin: 0 0 20px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--color-navy);
+  }
+
+  .main :global(h2) {
+    margin: 40px 0 12px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--color-navy);
+  }
+
+  .main :global(p) {
+    margin: 0 0 16px;
+  }
+
+  /* 画像は本文幅いっぱいにせず、上限サイズで中央に置く（キャプションは remark-figure が alt から生成） */
+  .main :global(figure) {
+    margin: 32px 0;
+    text-align: center;
+  }
+
+  .main :global(img) {
+    width: auto;
+    max-width: min(100%, 640px);
+    height: auto;
+    max-height: 420px;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+
+  .main :global(figcaption) {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,175 @@
+---
+// Figma: Homepage の Nav Sections > Section / <名前>（デスクトップ。写真とテキストが左右交互）
+//        Homepage (Mobile) の Nav Card / <名前>（写真の下にテキスト）
+import type { CollectionEntry } from 'astro:content';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  page: CollectionEntry<'pages'>;
+  index: number;
+  lang?: Lang;
+}
+
+const { page, index, lang = 'ja' } = Astro.props;
+const title = lang === 'ja' ? page.data.title_ja : page.data.title_en;
+const description = lang === 'ja' ? page.data.description_ja : page.data.description_en;
+const number = String(index + 1).padStart(2, '0');
+---
+
+<a class:list={['nav-card', { reverse: index % 2 === 1 }]} href={page.data.href}>
+  <div class="photo">
+    <img src={page.data.image} alt="" loading="lazy" />
+  </div>
+  <div class="text">
+    <p class="number t-ui-bold">{number}</p>
+    <h2 class="t-card-title">{title}</h2>
+    <span class="divider"></span>
+    <p class="t-body">{description}</p>
+    <p class="more t-ui-bold">{t(lang, 'common.more')} <span class="arrow">→</span></p>
+  </div>
+</a>
+
+<style>
+  .nav-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 480px;
+    overflow: clip;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .nav-card.reverse .photo {
+    order: 2;
+  }
+
+  .photo {
+    position: relative;
+    overflow: clip;
+  }
+
+  /* 写真は行より 80px 高くしておき、スクロールに合わせて 40px → -40px ずらす（パララックス） */
+  .photo img {
+    position: absolute;
+    left: 0;
+    top: -40px;
+    width: 100%;
+    height: calc(100% + 80px);
+    max-width: none;
+    object-fit: cover;
+    transition: scale 0.6s ease-out;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 clamp(40px, 8.33vw, 120px);
+  }
+
+  .text > * {
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .number {
+    color: rgba(0, 0, 123, 0.45);
+  }
+
+  h2,
+  .more {
+    color: var(--color-navy);
+  }
+
+  .divider {
+    width: 64px;
+    height: 2px;
+    background: var(--color-navy);
+  }
+
+  .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease-out;
+  }
+
+  .nav-card:hover .photo img {
+    scale: 1.03;
+  }
+
+  .nav-card:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  /* overflow: hidden だと .nav-card / .photo がスクロール親になってタイムラインが動かないので、
+     はみ出しの切り取りは overflow: clip を使う。タイムラインは .photo を subject にした名前付き。 */
+  @supports (animation-timeline: view()) {
+    .photo {
+      view-timeline: --nav-photo block;
+    }
+
+    .photo img {
+      animation-name: nav-card-parallax;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+    }
+
+    /* 別ルールに分ける（animation ショートハンドに畳まれると timeline が無効になるブラウザがある） */
+    .nav-card .photo img {
+      animation-timeline: --nav-photo;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+
+  @keyframes nav-card-parallax {
+    from { translate: 0 40px; }
+    to { translate: 0 -40px; }
+  }
+
+  /* ---------- モバイル（Nav Card） ---------- */
+  @media (max-width: 767px) {
+    .nav-card {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      height: auto;
+    }
+
+    .nav-card.reverse .photo {
+      order: 0;
+    }
+
+    .photo {
+      height: 180px;
+    }
+
+    .photo img {
+      top: -27px;
+      height: 130%;
+    }
+
+    .text {
+      gap: 8px;
+      padding: 0;
+    }
+
+    .text > * {
+      max-width: none;
+    }
+
+    @keyframes nav-card-parallax {
+      from { translate: 0 27px; }
+      to { translate: 0 -27px; }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .photo img {
+      animation: none;
+      transition: none;
+    }
+
+    .nav-card:hover .photo img {
+      scale: none;
+    }
+  }
+</style>

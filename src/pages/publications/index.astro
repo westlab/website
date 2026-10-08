@@ -1,0 +1,240 @@
+---
+// Figmaの "Publications Page" / "Publications Page (Mobile)" に対応。
+// 年度は3つのブロックに分け、Block Nav で切り替える（選択中のブロックだけ表示）。
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PublicationEntry from '../../components/PublicationEntry.astro';
+import { t } from '../../i18n/ui';
+
+const lang = 'ja' as const;
+const suffix = t(lang, 'publications.fiscalYear');
+
+const CATEGORY_ORDER = [
+  '論文誌',
+  '国際会議/査読付収録論文',
+  '国内研究会/収録論文/口頭発表等',
+  '講演等',
+  '報道・展示等',
+  '学術解説等',
+  '著書',
+  '特許出願',
+  '受賞等',
+];
+
+// Block Nav の年度範囲（Figma: 2015〜2019 / 2020〜2024 / 2025〜2026）。最後のブロックは最新年度まで。
+const BLOCK_STARTS = [2015, 2020, 2025];
+
+const pages = await getCollection('pages');
+const page = pages.find((p) => p.id === 'publications')!;
+const publications = await getCollection('publications');
+
+const allYears = [...new Set(publications.map((p) => p.data.year))].sort((a, b) => b - a);
+const latest = allYears[0];
+
+const blocks = BLOCK_STARTS.map((start, i) => {
+  const end = i + 1 < BLOCK_STARTS.length ? BLOCK_STARTS[i + 1] - 1 : Math.max(latest, start);
+  const years = allYears.filter((y) => y >= start && y <= end);
+  return {
+    id: `${start}-${end}`,
+    label: `${start}〜${end}${suffix}`,
+    years: years.map((year) => {
+      const inYear = publications.filter((p) => p.data.year === year);
+      const categories = CATEGORY_ORDER.map((category) => ({
+        category,
+        entries: inYear.filter((p) => p.data.category === category),
+      })).filter((c) => c.entries.length > 0);
+      return { year, categories };
+    }),
+  };
+}).filter((b) => b.years.length > 0);
+
+const activeId = blocks[blocks.length - 1].id;
+---
+
+<BaseLayout title={page.data.title_ja} lang={lang}>
+  <PageHero title={page.data.title_ja} image={page.data.image} />
+  <section class="content">
+    <div class="main">
+      <nav class="block-nav" aria-label={t(lang, 'publications.blockNav')}>
+        {blocks.map((b) => (
+          <a
+            class="block-link t-ui-bold"
+            href={`#${b.id}`}
+            data-block={b.id}
+            aria-current={b.id === activeId ? 'true' : undefined}
+          >
+            {b.label}
+          </a>
+        ))}
+      </nav>
+
+      {blocks.map((b) => (
+        <div class="block" id={b.id} data-block-panel={b.id}>
+          {b.years.map(({ year, categories }) => (
+            <section class="year">
+              <h2 class="year-title t-h1">{year}{suffix}</h2>
+              <hr class="divider" />
+              <div class="categories">
+                {categories.map(({ category, entries }) => (
+                  <div class="category">
+                    <h3 class="category-title t-h3">{category}</h3>
+                    <ol class="entries">
+                      {entries.map((entry, i) => (
+                        <PublicationEntry index={i + 1} citation={entry.data.citation} />
+                      ))}
+                    </ol>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // JSが無効なら全ブロックを表示し、有効なら選択中のブロックだけ表示する。
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-block]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-block-panel]'));
+  const root = document.querySelector('.main');
+  root?.classList.add('is-tabbed');
+
+  function show(id: string) {
+    panels.forEach((p) => (p.hidden = p.dataset.blockPanel !== id));
+    links.forEach((l) => {
+      if (l.dataset.block === id) l.setAttribute('aria-current', 'true');
+      else l.removeAttribute('aria-current');
+    });
+  }
+
+  const initial = links.find((l) => '#' + l.dataset.block === location.hash)?.dataset.block
+    ?? links.find((l) => l.getAttribute('aria-current') === 'true')?.dataset.block
+    ?? links[0]?.dataset.block;
+  if (initial) show(initial);
+
+  links.forEach((l) =>
+    l.addEventListener('click', (e) => {
+      e.preventDefault();
+      show(l.dataset.block!);
+      history.replaceState(null, '', '#' + l.dataset.block);
+    })
+  );
+</script>
+
+<style>
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+  }
+
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .block-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .block-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 19px; /* Figmaは枠線が内側なので42pxに合わせる */
+    border: 1px solid rgba(0, 0, 123, 0.25);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-navy);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .block-link:hover {
+    background: var(--color-surface);
+  }
+
+  .block-link[aria-current='true'] {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .block[hidden] {
+    display: none;
+  }
+
+  .year {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .year-title {
+    margin: 0;
+    color: var(--color-navy);
+  }
+
+  .divider {
+    width: 100%;
+    height: 2px;
+    margin: 0;
+    border: 0;
+    background: var(--color-navy);
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .category-title {
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .entries {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+
+    .main,
+    .block {
+      gap: 40px;
+    }
+
+    .block-nav {
+      gap: 8px 6px;
+    }
+  }
+</style>

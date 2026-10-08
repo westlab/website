@@ -1,0 +1,89 @@
+# リンク集
+
+- id: research-achievements
+  category_ja: 研究業績
+  category_en: Research Achievements
+  items:
+    - label: "Elsevier Pure (Hiroaki Nishi)"
+      url: "https://keio.pure.elsevier.com/ja/persons/hiroaki-nishi"
+    - label: "KRIS"
+      url: "https://www.k-ris.keio.ac.jp/html/100011711_ja.html?k=%E5%AE%8F%E7%AB%A0"
+
+- id: lectures
+  category_ja: 講義
+  category_en: Lectures
+  items:
+    - label: マルチメディアデザイン
+    - label: エレクトロニクスデザイン
+    - label: データシステムの知能化とデザイン
+    - label: システムデザイン工学実験「モノのインターネット」
+
+- id: research-related-content
+  category_ja: 研究関連コンテンツ
+  category_en: Research-Related Content
+  items:
+    - label: デモンストレーション動画集
+      url: "https://www.west.sd.keio.ac.jp/movie/"
+    - label: グリーン社会ICTライフインフラ研究センター
+      url: "http://green-ict.sfc.keio.ac.jp/"
+    - label: サービス指向ルータによる新世代ネットワークの研究
+      url: "http://research.nii.ac.jp/~koibuchi/proj/sor/index.html"
+    - label: アーバンデザインセンタみその(UDCMi)
+      url: "http://www.misono-tm.org/udcmi/"
+    - label: おもてなしICT協議会
+      url: "http://www.omotenashi-ict.jp/"
+    - label: 綱島スマートサステナブルタウン
+      url: "https://tsunashimasst.com/JP/"
+    - label: "National Institute of Standards and Technology（NIST） Global City Teams Challenge: GCTC"
+      url: "https://pages.nist.gov/GCTC/"
+
+- id: partner-institutions
+  category_ja: 共同研究機関
+  category_en: Partner Institutions
+  items:
+    - label: Leti CEA Tech
+      url: "http://www.leti-cea.com/cea-tech/leti/english/Pages/Welcome.aspx"
+    - label: "Leti CEA Tech -Universities & Research Technology Organizations-"
+      url: "http://www.leti-cea.com/cea-tech/leti/english/Pages/Leti/Partners/universities-RTO.aspx"
+    - label: Georgia Institute of Technology
+      url: "https://www.gatech.edu/"
+
+- id: lab-related
+  category_ja: 研究室関連
+  category_en: Lab-Related
+  items:
+    - label: 西研究室グループウエア
+      url: "https://www.west.sd.keio.ac.jp/dnet/dnet.cgi"
+    - label: 慶應義塾大学
+      url: "https://www.keio.ac.jp/ja/"
+    - label: 慶應義塾大学理工学部
+      url: "https://www.st.keio.ac.jp/"
+    - label: 慶應義塾大学理工学部システムデザイン工学科
+      url: "http://www.sd.keio.ac.jp/"
+    - label: 開放環境科学専攻情報工学専修
+      url: "https://www.st.keio.ac.jp/departments/open/info.html"
+
+- id: academic-societies
+  category_ja: 学会
+  category_en: Academic Societies
+  items:
+    - label: IEEE
+      url: "http://www.ieee.org/"
+    - label: IEEE Communications Society
+      url: "http://www.comsoc.org/"
+    - label: IEEE Computer Society
+      url: "https://www.computer.org/"
+    - label: IEEE Xplore
+      url: "https://ieeexplore.ieee.org/Xplore/guesthome.jsp"
+    - label: ACM
+      url: "https://www.acm.org/"
+    - label: IEICE Communications Society
+      url: "http://www.ieice.org/cs/jpn/"
+    - label: Technical Committee on Network Systems
+      url: "http://www.ieice.org/cs/ns/jpn/"
+    - label: Information Processing Society of Japan
+      url: "http://www.ipsj.or.jp/"
+    - label: The Institute of Electrical Engineers of Japan
+      url: "http://www.iee.jp/"
+    - label: The Society of Instrument and Control Engineers
+      url: "http://www.sice.jp/"

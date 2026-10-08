@@ -1,0 +1,24 @@
+---
+// Figma: Side Band / Right (fixed)。親セクションの右端に、セクションの高さいっぱいに伸ばして置く装飾。
+// 親要素に position: relative が必要。
+---
+
+<img class="side-band" src="/images/ui/side-band.svg" alt="" aria-hidden="true" />
+
+<style>
+  .side-band {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 100%;
+    max-width: none;
+    pointer-events: none;
+  }
+
+  @media (max-width: 1023px) {
+    .side-band {
+      display: none;
+    }
+  }
+</style>

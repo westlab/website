@@ -1,0 +1,185 @@
+---
+// Figma: Footer / Footer / Mobile
+// デスクトップ: 左にロゴ+研究室名、右に情報2カラム、下に区切り線+コピーライトの左揃えグリッド
+// タブレット: 1カラム左揃え（情報は2カラム横並び） / モバイル: 中央揃え・情報は縦積み
+import { getEntry } from 'astro:content';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'ja' } = Astro.props;
+const site = (await getEntry('site', 'contact'))!.data;
+const l = (obj: Record<string, any>, key: string) => obj[`${key}_${lang}`];
+---
+
+<footer class="site-footer">
+  <img class="logo-mark" src="/images/logo/header-logo-mark-white.png" alt="" />
+  <p class="name t-h2">{l(site, 'name')}</p>
+
+  <div class="info-row">
+    {site.columns.map((column) => (
+      <div class="column">
+        {column.map((block) => (
+          <div class="block">
+            <p class="label t-caption-label">{l(block, 'label')}</p>
+            {l(block, 'lines') && (
+              <p class="t-caption">
+                {l(block, 'lines').map((line: string, i: number) => (
+                  <>{i > 0 && <br />}{line}</>
+                ))}
+              </p>
+            )}
+            {block.links?.map((link) => (
+              <a class="t-caption" href={link.url} target="_blank" rel="noopener">
+                → <span>{l(link, 'label')}</span>
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  <hr />
+  <p class="copyright t-caption">{site.copyright}</p>
+</footer>
+
+<style>
+  /* 基本（タブレット）: 1カラム左揃え */
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 48px var(--gutter);
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .logo-mark {
+    width: 92px;
+    height: 72px;
+    object-fit: contain;
+  }
+
+  .name {
+    text-align: left;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 64px;
+  }
+
+  .column {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .label,
+  .copyright {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a span {
+    text-decoration: underline;
+  }
+
+  a:hover span {
+    text-decoration: none;
+  }
+
+  hr {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* デスクトップ: 左ロゴ+名前 / 右情報、区切り線とコピーライトは全幅 */
+  @media (min-width: 1024px) {
+    .site-footer {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 120px;
+      row-gap: 16px;
+      align-items: start;
+    }
+
+    .logo-mark {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: start;
+      align-self: start;
+    }
+
+    .name {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .info-row {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      justify-content: flex-end;
+      gap: 120px;
+    }
+
+    hr {
+      grid-column: 1 / -1;
+      margin-top: 24px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* モバイル: 中央揃え・情報は縦積み */
+  @media (max-width: 767px) {
+    .site-footer {
+      align-items: stretch;
+      padding: 40px 24px;
+    }
+
+    .logo-mark {
+      align-self: center;
+      width: 64px;
+      height: 50px;
+    }
+
+    .name {
+      text-align: center;
+    }
+
+    .info-row {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .column {
+      flex: 1 1 0;
+    }
+  }
+</style>

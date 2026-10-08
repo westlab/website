@@ -1,0 +1,25 @@
+# 動画一覧。url に YouTube の動画URL（watch?v= / youtu.be など）を貼るとページに埋め込まれる。
+
+- id: intro-2021
+  order: 1
+  title_ja: 慶應西研究室紹介ビデオ2021
+  title_en: "Keio Nishi Lab Introduction Video 2021"
+  description_ja: 研究室紹介ビデオ
+  description_en: Lab introduction video
+  url: "https://www.youtube.com/watch?v=-mDaNQqgZ3A"
+
+- id: exhibition-2021
+  order: 2
+  title_ja: 慶大西研展示会動画2021
+  title_en: "Keio Nishi Lab Exhibition Video 2021"
+  description_ja: 展示会での紹介映像
+  description_en: Video shown at the exhibition
+  url: "https://www.youtube.com/watch?v=YzhKX0WC0Jo"
+
+- id: nishi1208
+  order: 3
+  title_ja: nishi1208
+  title_en: nishi1208
+  description_ja: 活動記録
+  description_en: Activity record
+  url: "https://www.youtube.com/watch?v=jJv5i1-L-xQ"

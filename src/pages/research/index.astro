@@ -1,0 +1,168 @@
+---
+// Figma: Research Page / Research Page (Mobile)
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
+import { getLocalizedDoc, getLocalizedList } from '../../lib/content';
+import { t } from '../../i18n/ui';
+
+const lang = 'ja' as const;
+
+const page = (await getCollection('pages')).find((p) => p.id === 'research')!;
+
+const intro = await getLocalizedDoc('pagesContent', lang, 'research-intro');
+const { Content: IntroContent } = intro ? await render(intro) : { Content: null };
+const topics = (await getLocalizedList('research', lang)).sort((a, b) => a.data.order - b.data.order);
+const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title={t(lang, 'nav.research.about')} lang={lang}>
+  <PageHero title={t(lang, 'nav.research.about')} image={page.data.image} />
+  <div class="content">
+    <SideBand />
+    <div class="main">
+      <section class="block intro">
+        <h2 class="t-h1">{intro?.data.title}</h2>
+        {IntroContent && <IntroContent />}
+      </section>
+
+      <section class="block">
+        <h2 class="t-h1">{t(lang, 'research.topics.title')}</h2>
+        <p class="t-body">{t(lang, 'research.topics.lead')}</p>
+      </section>
+
+      <div class="topics-grid">
+        {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
+      </div>
+
+      <section class="block past">
+        <h2 class="t-h1">{t(lang, 'research.past.title')}</h2>
+        <p class="t-body">{t(lang, 'research.past.lead')}</p>
+        <div class="qa-list">
+          {pastResearch.map((item) => (
+            <details class="qa-item">
+              <summary class="t-h3">
+                <span>{item.data.title_ja}</span>
+                <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
+              </summary>
+              <p class="t-body answer">{item.data.body_ja}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+  }
+
+  .main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .block h2,
+  .block p {
+    margin: 0;
+  }
+
+  .block h2 {
+    color: var(--color-navy);
+  }
+
+  .intro :global(p) {
+    margin: 0;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+  }
+
+  .past {
+    gap: 12px;
+  }
+
+  .qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .qa-item {
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid rgba(0, 0, 123, 0.18);
+  }
+
+  .qa-item summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .qa-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .qa-item summary span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .chevron {
+    flex: none;
+    transition: transform 0.2s ease;
+  }
+
+  .qa-item[open] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .answer {
+    margin: 6px 0 0;
+    white-space: pre-line;
+  }
+
+  @media (max-width: 1023px) {
+    .content {
+      padding-bottom: 80px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    .topics-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Figma はカード2枚ごとの行間が32px（行内は16px） */
+    .topics-grid > :nth-child(2n + 3) {
+      margin-top: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+import { t } from '../../i18n/ui';
+
+const lang = 'ja' as const;
+const title = t(lang, 'nav.members.alumni');
+
+const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a.data.cohort);
+---
+
+<BaseLayout title={title} lang={lang}>
+  <PageHero title={title} image="/images/pages/alumni.jpg" />
+  <section class="content">
+    <SideBand />
+    {cohorts.map((entry) => (
+      <div class="cohort">
+        <h2 class="t-h1">{entry.data.cohort}期</h2>
+        <hr class="divider" />
+        <ul class="names">
+          {entry.data.names.map((person) => (
+            <li class="name t-emphasis">{person.name_ja}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: 64px var(--gutter) 96px;
+    background: #fff;
+  }
+
+  .cohort {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cohort h2 {
+    margin: 0;
+    color: #2c4faf;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    border: 0;
+    background: var(--color-border);
+  }
+
+  .names {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+
+  .name {
+    width: 180px;
+    color: #26262e;
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      gap: 32px;
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+
+    .cohort {
+      gap: 16px;
+    }
+
+    .names {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .name {
+      width: auto;
+    }
+  }
+</style>

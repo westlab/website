@@ -1,0 +1,317 @@
+# OB・OG一覧
+
+- id: cohort-21
+  cohort: 21
+  names:
+    - name_ja: 小堺 真季子
+      name_en: Makiko Kozakai
+    - name_ja: 田草川 威
+      name_en: Takeshi Takusagawa
+    - name_ja: 近岡 祐音
+      name_en: Yuto Chikaoka
+    - name_ja: 中野 宏志
+      name_en: Hiroshi Nakano
+    - name_ja: 福井 琢磨
+      name_en: Takuma Fukui
+    - name_ja: 安田 莉子
+      name_en: Riko Yasuda
+
+- id: cohort-20
+  cohort: 20
+  names:
+    - name_ja: 奥田祐真
+      name_en: Yuma Okuda
+    - name_ja: 佐藤優梨
+      name_en: Yuri Sato
+    - name_ja: 林えみり
+      name_en: Emiri Hayashi
+    - name_ja: 樊景天
+      name_en: Han Keiten
+    - name_ja: 森瀬健太郎
+      name_en: Kentaro Morise
+    - name_ja: Jia Jing
+      name_en: Jia Jing
+
+- id: cohort-19
+  cohort: 19
+  names:
+    - name_ja: 菅原あやき
+      name_en: Ayaki Sugawara
+    - name_ja: 園田彩友
+      name_en: Ayu Sonoda
+    - name_ja: 豊原世将
+      name_en: Tokimasa Toyohara
+    - name_ja: 南波陽平
+      name_en: Yohei Nanba
+    - name_ja: 西川誠人
+      name_en: Akihito Nishikawa
+
+- id: cohort-18
+  cohort: 18
+  names:
+    - name_ja: 頃末沙樹
+      name_en: Saki Korosue
+    - name_ja: 島原将梧
+      name_en: Shogo Shimahara
+    - name_ja: 髙山裕貴
+      name_en: Yuki Takayama
+    - name_ja: 本田萌絵奈
+      name_en: Moena Honda
+    - name_ja: 山本高太郎
+      name_en: Koutaro Yamamoto
+    - name_ja: 平賀裕貴
+      name_en: Hiroki Hiraga
+
+- id: cohort-17
+  cohort: 17
+  names:
+    - name_ja: Ismaël Collet
+      name_en: Ismaël Collet
+    - name_ja: Xixuan Huang
+      name_en: Xixuan Huang
+
+- id: cohort-16
+  cohort: 16
+  names:
+    - name_ja: 柳辺 十武
+      name_en: Tomu Yanabe
+    - name_ja: 橋本 将大
+      name_en: Masahiro Hashimoto
+    - name_ja: 野原 将人
+      name_en: Masato Nohara
+    - name_ja: 齋藤 賢太
+      name_en: Kenta Saito
+    - name_ja: Yao Xin
+      name_en: Yao Xin
+
+- id: cohort-15
+  cohort: 15
+  names:
+    - name_ja: Shanaka Prageeth
+      name_en: Shanaka Prageeth
+    - name_ja: 森島 遼
+      name_en: Ryo Morishima
+    - name_ja: 福原 彰大
+      name_en: Akihiro Fukuhara
+    - name_ja: 齋藤 沙季
+      name_en: Saki Saito
+    - name_ja: 井町 亮介
+      name_en: Ryosuke Imachi
+    - name_ja: 畠中翔一
+      name_en: Shoichi Hatanaka
+    - name_ja: 石井智也
+      name_en: Tomoya Ishii
+
+- id: cohort-14
+  cohort: 14
+  names:
+    - name_ja: 岩井 智夢
+      name_en: Tomomu Iwai
+    - name_ja: 大森 美奈都
+      name_en: Minato Ohmori
+    - name_ja: 佐久間 結子
+      name_en: Yuiko Sakuma
+    - name_ja: 所畑 聡一郎
+      name_en: Soichiro Shohata
+    - name_ja: 中村 太一
+      name_en: Taichi Nakamura
+    - name_ja: 原田 慶也
+      name_en: Keiya Harada
+    - name_ja: 湯山 要海
+      name_en: Kanami Yuyama
+    - name_ja: 矢後 慶悟
+      name_en: Keigo Yago
+
+- id: cohort-13
+  cohort: 13
+  names:
+    - name_ja: 今西 智哉
+      name_en: Tomoya Imanishi
+    - name_ja: 林 泰正
+      name_en: Yasumasa Hayashi
+    - name_ja: Rajitha Tennekoon
+      name_en: Rajitha Tennekoon
+    - name_ja: 中村 優一
+      name_en: Yuichi Nakamura
+    - name_ja: 大野 雄太
+      name_en: Yuta Ohno
+    - name_ja: 木下 舜
+      name_en: Shun Kinoshita
+    - name_ja: 中條 悠介
+      name_en: Yusuke Nakajyo
+    - name_ja: 仁和 瞭
+      name_en: Akira Niwa
+    - name_ja: 三浦 立輝
+      name_en: Tatsuki Miura
+    - name_ja: 吉田 将大
+      name_en: Masahiro Yoshida
+    - name_ja: 野矢 淳
+      name_en: Jun Noya
+
+- id: cohort-12
+  cohort: 12
+  names:
+    - name_ja: 細江 貴博
+      name_en: Takahiro Hosoe
+    - name_ja: 松井 忠宗
+      name_en: Tadanori Matsui
+    - name_ja: 増川 健人
+      name_en: Kento Masukawa
+    - name_ja: 澤口 聡太
+      name_en: Sota Sawaguchi
+
+- id: cohort-11
+  cohort: 11
+  names:
+    - name_ja: 高際 兼一
+      name_en: Kenichi Takagiwa
+    - name_ja: 岡野 博典
+      name_en: Hironori Okano
+    - name_ja: 池田 伸太郎
+      name_en: Shintaro Ikeda
+    - name_ja: 江村 裕太
+      name_en: Yuta Emura
+    - name_ja: 塩原 寿周
+      name_en: Toshichika Shiobara
+    - name_ja: 西村 公佑
+      name_en: Kosuke Nishimura
+    - name_ja: 野口 智道
+      name_en: Tomomichi Noguchi
+    - name_ja: ハーバス 安利
+      name_en: Anri Harvath
+    - name_ja: 中塚 義道
+      name_en: Yoshimichi Nakatsuka
+    - name_ja: Janaka Wijekoon
+      name_en: Janaka Wijekoon
+
+- id: cohort-10
+  cohort: 10
+  names:
+    - name_ja: Erwin Harahap
+      name_en: Erwin Harahap
+    - name_ja: 八巻 隼人
+      name_en: Hayato Yamaki
+    - name_ja: 岡田 健吾
+      name_en: Kengo Okada
+    - name_ja: 河野 翔貴
+      name_en: Syoki Kawano
+    - name_ja: 神戸 祥夫
+      name_en: Sachio Godo
+    - name_ja: 福田 美桜
+      name_en: Mio Fukuta
+    - name_ja: 子安 光樹
+      name_en: Koki Koyasu
+
+- id: cohort-9
+  cohort: 9
+  names:
+    - name_ja: 伊東 未奈子
+      name_en: Minako Ito
+    - name_ja: 葛原 健太
+      name_en: Kenta Kuzuhara
+    - name_ja: 鯉渕 悟志
+      name_en: Koibuchi Satoshi
+    - name_ja: 山口 史人
+      name_en: Fumito Yamaguchi
+
+- id: cohort-8
+  cohort: 8
+  names:
+    - name_ja: 池内 一将
+      name_en: Kazumasa Ikeuchi
+    - name_ja: 伊藤 誠也
+      name_en: Seiya Ito
+    - name_ja: 川島 大地
+      name_en: Daichi Kawashima
+    - name_ja: 穂川 大伍
+      name_en: Daigo Hogawa
+    - name_ja: 増田 和紀
+      name_en: Kazuki Masuda
+    - name_ja: 石田 慎一
+      name_en: Shinichi Ishida
+
+- id: cohort-7
+  cohort: 7
+  names:
+    - name_ja: 井原 克
+      name_en: Masaru Ihara
+    - name_ja: 澤田 純一
+      name_en: Junichi Sawada
+    - name_ja: 申 天萌
+      name_en: Tianmeng Shen
+    - name_ja: 西田 雄介
+      name_en: Yusuke Nishida
+    - name_ja: 船見 恭介
+      name_en: Kyosuke Funami
+    - name_ja: 井上 恒一
+      name_en: Kouichi Inoue
+
+- id: cohort-6
+  cohort: 6
+  names:
+    - name_ja: 栖原 幸郎
+      name_en: Yukio Suhara
+    - name_ja: 原島 真悟
+      name_en: Shingo Harashima
+    - name_ja: 上吉 悠人
+      name_en: Yuto Kamiyoshi
+
+- id: cohort-5
+  cohort: 5
+  names:
+    - name_ja: 池原 幸司
+      name_en: Kouji Ikehara
+    - name_ja: 永冨 泰次
+      name_en: Yasutsugu Nagatomi
+    - name_ja: 中部 知久
+      name_en: Tomohisa Nakabe
+    - name_ja: 牧野 友昭
+      name_en: Tomoaki Makino
+    - name_ja: 峰 豪毅
+      name_en: Gouki Mine
+
+- id: cohort-4
+  cohort: 4
+  names:
+    - name_ja: 小田 明裕
+      name_en: Akihiro Oda
+    - name_ja: 立川 智一
+      name_en: Tomokazu Tachikawa
+    - name_ja: 橋岡 大地
+      name_en: Daichi Hashioka
+    - name_ja: 松岡 洋樹
+      name_en: Hiroki Matsuoka
+    - name_ja: 松柴 由直
+      name_en: Yoshinao Matsushiba
+    - name_ja: 明村 愛里
+      name_en: Airi Akimura
+    - name_ja: 佐藤 健伍
+      name_en: Kengo Sato
+
+- id: cohort-3
+  cohort: 3
+  names:
+    - name_ja: 明石 大
+      name_en: Dai Akashi
+    - name_ja: 半田 智彦
+      name_en: Toshihiko Handa
+    - name_ja: 三野 峻徳
+      name_en: Takanori Mitsuno
+    - name_ja: 平塚 信明
+      name_en: Nobuaki Hiratsuka
+
+- id: cohort-2
+  cohort: 2
+  names:
+    - name_ja: 河合 満
+      name_en: Mitsuru Kawai
+    - name_ja: 富越 健太
+      name_en: Kenta Tomikoshi
+
+- id: cohort-1
+  cohort: 1
+  names:
+    - name_ja: 谷 紘太
+      name_en: Kota Tani
+    - name_ja: 笹川 綾香
+      name_en: Ayaka Sasagawa

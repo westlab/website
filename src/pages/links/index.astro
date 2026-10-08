@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+
+const lang = 'ja' as const;
+
+const pages = await getCollection('pages');
+const page = pages.find((p) => p.id === 'links')!;
+const categories = await getCollection('links');
+---
+
+<BaseLayout title={page.data.title_ja} lang={lang}>
+  <PageHero title={page.data.title_ja} image={page.data.image} />
+  <section class="content">
+    <SideBand />
+    <div class="main">
+      {categories.map((category) => (
+        <div class="category">
+          <h2 class="t-h1">{category.data.category_ja}</h2>
+          <ul class="t-body">
+            {category.data.items.map((item) => (
+              <li>
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
+                ) : (
+                  <span class="plain">{item.label}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Figma: Links Page / Content */
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+    overflow: hidden;
+  }
+
+  .main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--color-navy);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  li::before {
+    content: '→ ';
+    color: var(--color-navy);
+  }
+
+  a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* url なし: リンクではないミュート色のテキスト（Figma Links Page / 講義） */
+  .plain {
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 32px;
+      padding-bottom: 48px;
+    }
+  }
+</style>

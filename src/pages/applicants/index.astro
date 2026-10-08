@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SideBand from '../../components/SideBand.astro';
+import { getLocalizedDoc } from '../../lib/content';
+
+const lang = 'ja' as const;
+
+const pages = await getCollection('pages');
+const page = pages.find((p) => p.id === 'applicants')!;
+const doc = await getLocalizedDoc('pagesContent', lang, 'applicants');
+const { Content } = doc ? await render(doc) : { Content: null };
+---
+
+<BaseLayout title={page.data.title_ja} lang={lang}>
+  <PageHero title={page.data.title_ja} image={page.data.image} />
+  <section class="content">
+    <SideBand />
+    <div class="main prose">
+      {Content && <Content />}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Figma: Admission Page / Content */
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+    overflow: hidden;
+  }
+
+  .main {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 32px;
+      padding-bottom: 56px;
+    }
+  }
+
+  /* Markdown本文 (Figma: Section / ... , Template Card, QA List) */
+  .prose :global(h3) {
+    margin: 56px 0 12px;
+    color: var(--color-navy);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  /* 冒頭の見出しはFigmaでは本文リード（Body/Emphasis） */
+  .prose :global(h3:first-child) {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 1em;
+    color: var(--color-text-muted);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    white-space: pre-line; /* 原稿の改行を保つ */
+  }
+
+  .prose :global(h3:first-child + p) {
+    margin-top: 0;
+    color: var(--color-text);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .prose :global(hr) {
+    display: none;
+  }
+
+  .prose :global(ol),
+  .prose :global(ul) {
+    margin: 0 0 1em;
+    padding: 0;
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* Figma: Template Card */
+  .prose :global(ol) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    list-style-position: inside;
+    background: var(--color-surface);
+    border-radius: 8px;
+  }
+
+  .prose :global(li) {
+    white-space: pre-line;
+  }
+</style>

@@ -1,0 +1,41 @@
+# フッターに表示する研究室の所在地・連絡先。
+
+- id: contact
+  name_ja: 西研究室
+  name_en: Nishi Laboratory
+  columns:
+    - - label_ja: 住所
+        label_en: Address
+        lines_ja:
+          - 〒223-8522
+          - 神奈川県横浜市港北区日吉3-14-1
+          - 慶應義塾大学理工学部システムデザイン工学科　西研究室
+        lines_en:
+          - 3-14-1 Hiyoshi, Kohoku-ku, Yokohama, Kanagawa 223-8522, Japan
+          - Nishi Laboratory, Department of System Design Engineering, Keio University
+      - label_ja: 研究室
+        label_en: Rooms
+        lines_ja:
+          - 居室：25棟5階501（25-501）
+          - 実験室：25棟5階523（25-523）、35棟2階215
+        lines_en:
+          - "Office: Bldg. 25, 5F, Room 501 (25-501)"
+          - "Labs: Bldg. 25, 5F, Room 523 (25-523); Bldg. 35, 2F, Room 215"
+    - - label_ja: 電話・FAX
+        label_en: Phone / Fax
+        lines_ja:
+          - TEL：045-563-1151（内線：43113）
+          - FAX：045-566-1720
+        lines_en:
+          - "TEL: +81-45-563-1151 (ext. 43113)"
+          - "FAX: +81-45-566-1720"
+      - label_ja: アクセス
+        label_en: Access
+        links:
+          - label_ja: 矢上キャンパス
+            label_en: Yagami Campus
+            url: https://www.keio.ac.jp/ja/about/campus/yagami/
+          - label_ja: キャンパスマップ
+            label_en: Campus Map
+            url: https://www.keio.ac.jp/ja/about/campus/yagami/map/
+  copyright: Copyright © 2026 West Lab
