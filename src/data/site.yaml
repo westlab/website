@@ -13,6 +13,9 @@
     videos:
       ja: 西研究室の活動を紹介する動画をまとめています。
       en: A collection of videos introducing the activities of the Nishi Laboratory.
+    search:
+      ja: 西研究室のサイト内を検索します。メンバー、研究、業績などを探せます。
+      en: Search the Nishi Laboratory website for members, research and publications.
   columns:
     - - label_ja: 住所
         label_en: Address

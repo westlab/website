@@ -69,6 +69,7 @@ const activeId = blocks[blocks.length - 1].id;
         ))}
       </nav>
 
+      <div class="blocks">
       {blocks.map((b) => (
         <div class="block" id={b.id} data-block-panel={b.id}>
           {b.years.map(({ year, categories }) => (
@@ -91,19 +92,27 @@ const activeId = blocks[blocks.length - 1].id;
           ))}
         </div>
       ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <script>
   // JSが無効なら全ブロックを表示し、有効なら選択中のブロックだけ表示する。
+  // 非選択ブロックは hidden="until-found" にして、ページ内検索（Ctrl+F）で見つかるようにする。
+  // 未対応ブラウザでは通常の hidden（検索対象外）にフォールバックする。
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-block]'));
   const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-block-panel]'));
   const root = document.querySelector('.main');
   root?.classList.add('is-tabbed');
 
+  const canFind = 'onbeforematch' in document.body;
+
   function show(id: string) {
-    panels.forEach((p) => (p.hidden = p.dataset.blockPanel !== id));
+    panels.forEach((p) => {
+      if (p.dataset.blockPanel === id) p.removeAttribute('hidden');
+      else p.setAttribute('hidden', canFind ? 'until-found' : '');
+    });
     links.forEach((l) => {
       if (l.dataset.block === id) l.setAttribute('aria-current', 'true');
       else l.removeAttribute('aria-current');
@@ -114,6 +123,14 @@ const activeId = blocks[blocks.length - 1].id;
     ?? links.find((l) => l.getAttribute('aria-current') === 'true')?.dataset.block
     ?? links[0]?.dataset.block;
   if (initial) show(initial);
+
+  // 検索でヒットした非選択ブロックへ切り替え、URLハッシュも合わせる。
+  panels.forEach((p) =>
+    p.addEventListener('beforematch', () => {
+      show(p.dataset.blockPanel!);
+      history.replaceState(null, '', '#' + p.dataset.blockPanel);
+    })
+  );
 
   links.forEach((l) =>
     l.addEventListener('click', (e) => {
@@ -167,13 +184,24 @@ const activeId = blocks[blocks.length - 1].id;
     color: #fff;
   }
 
+  /* 非選択ブロックは高さ0で残る（until-found）ため、タブ表示中はブロック間にgapを付けない */
+  .blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .main.is-tabbed .blocks {
+    gap: 0;
+  }
+
   .block {
     display: flex;
     flex-direction: column;
     gap: 56px;
   }
 
-  .block[hidden] {
+  .block[hidden]:not([hidden='until-found']) {
     display: none;
   }
 
@@ -229,6 +257,7 @@ const activeId = blocks[blocks.length - 1].id;
     }
 
     .main,
+    .blocks,
     .block {
       gap: 40px;
     }

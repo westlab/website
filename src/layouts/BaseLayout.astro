@@ -11,9 +11,11 @@ interface Props {
   // 記事ページなどは 'article' を渡す
   ogType?: 'website' | 'article';
   lang?: Lang;
+  /** false なら検索インデックスに含めない（検索ページ自身など） */
+  indexable?: boolean;
 }
 
-const { title, description, ogType = 'website', lang = 'ja' } = Astro.props;
+const { title, description, ogType = 'website', lang = 'ja', indexable = true } = Astro.props;
 const fullTitle = `${title} | 西研究室`;
 ---
 
@@ -38,7 +40,7 @@ const fullTitle = `${title} | 西研究室`;
   </head>
   <body>
     <Header lang={lang} />
-    <main>
+    <main data-pagefind-body={indexable ? '' : undefined}>
       <slot />
     </main>
     <Footer lang={lang} />
@@ -55,6 +57,7 @@ const fullTitle = `${title} | 西研究室`;
     --color-accent: #0000f5;
     --color-text: #26262e;
     --color-text-muted: #54545a;
+    --color-text-subtle: #727278;
     --color-border: #e5e5eb;
     --color-border-input: #bfc4d1;
     --color-placeholder: #999eab;
