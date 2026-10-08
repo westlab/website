@@ -2,7 +2,7 @@
 
 Run with the bundled Python environment (Pillow and NumPy required):
     python scripts/generate-ai-hero.py
-Writes public/images/research/ai/hero.png (2880x940, 2x of the 1440x470 banner).
+Writes public/images/research/ai/hero.jpg (2880x940, 2x of the 1440x470 banner).
 All motifs stay inside the vertical safe band 0.30H-0.70H and x <= 2380, so the
 object-fit: cover crop on wide monitors and on mobile never cuts them.
 """
@@ -16,7 +16,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 
-OUT = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "ai" / "hero.png"
+OUT = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "ai" / "hero.jpg"
 W, H, SCALE = 2880, 940, 2
 SW, SH = W * SCALE, H * SCALE
 RNG = np.random.default_rng(14)
@@ -261,5 +261,5 @@ for _ in range(180):
 image = Image.alpha_composite(image, glow.filter(ImageFilter.GaussianBlur(15 * SCALE)))
 image = Image.alpha_composite(image, lines)
 image = image.convert("RGB").resize((W, H), Image.Resampling.LANCZOS)
-image.save(OUT, optimize=True)
+image.convert("RGB").save(OUT, quality=80, optimize=True)
 print(OUT)

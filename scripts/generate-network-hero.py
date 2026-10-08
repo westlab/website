@@ -2,7 +2,7 @@
 
 Pure Pillow, no text in the image. Run:
     python scripts/generate-network-hero.py
-Writes public/images/research/network/hero.png (2880x940).
+Writes public/images/research/network/hero.jpg (2880x940).
 """
 
 from pathlib import Path
@@ -548,9 +548,9 @@ for i in range(420):
 
 img = Image.alpha_composite(img, vignette)
 
-output = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "network" / "hero.png"
+output = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "network" / "hero.jpg"
 
-img.convert("RGB").save(output, optimize=True)
+img.convert("RGB").save(output, quality=80, optimize=True)
 
 print("Saved:", output)
 print("Resolution:", W, "x", H)
