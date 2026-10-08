@@ -51,7 +51,7 @@
 - `src/components/` / `src/layouts/` は Figma のフレーム構成（Hero, Message Section, Nav Card, Page Title 等）に1:1で対応させる。デザインはほぼ変更しないため、サイトの中で最も安定した層になる
 - コンポーネントは上記のデータ／コンテンツを props として受け取るだけの表示専業とし、原稿を埋め込まない
 - ナビラベルやボタン文言などページ内容ではない UI 文言は、データ層に混ぜず `src/i18n/ui.ts` のような辞書で別管理する
-- meta description もデータ層に置く：`pages.yaml`（`meta_description_*` があれば優先）、`site.yaml`（トップと、Alumni・Videos など `pages.yaml` に載せないページ）、研究トピックの front matter
+- meta description もデータ層に置く：`pages.yaml`（`meta_description_*` があれば優先）、`site.yaml`（トップと、Alumni・Videos・Search など `pages.yaml` に載せないページ）、研究トピックの front matter
 - Research トピックのアイコン（SVG）は、front matter の `icon` キーをコンポーネント側で解決する。データファイルに SVG やスタイルを持ち込まない
 
 ## 画像の持ち方
