@@ -148,20 +148,26 @@ const items = pages.map((page) => {
     if (e.key !== 'Escape') return;
     if (menu && !menu.hidden) {
       setMenu(false);
-      button?.focus();
+      if (button?.offsetParent) button.focus();
       return;
     }
-    const item = (e.target as Element).closest<HTMLElement>('.nav-item');
-    if (item?.classList.contains('has-dropdown')) {
+    // フォーカス中、またはホバーで開いているドロップダウンを閉じる
+    const item =
+      (e.target as Element).closest<HTMLElement>('.nav-item.has-dropdown') ??
+      document.querySelector<HTMLElement>('.nav-item.has-dropdown:hover');
+    if (item) {
       item.classList.add('dismissed');
-      item.querySelector<HTMLElement>('.nav-link')?.focus();
+      if (item.contains(document.activeElement)) item.querySelector<HTMLElement>('.nav-link')?.focus();
     }
   });
 
   // 閉じたドロップダウンは、ポインタやフォーカスが離れたら元に戻す
   document.querySelectorAll<HTMLElement>('.nav-item.has-dropdown').forEach((item) => {
     const reset = () => item.classList.remove('dismissed');
-    item.addEventListener('mouseleave', reset);
+    // フォーカスが中に残っていれば、閉じたままにする
+    item.addEventListener('mouseleave', () => {
+      if (!item.contains(document.activeElement)) reset();
+    });
     item.addEventListener('focusout', (e) => {
       if (!item.contains(e.relatedTarget as Node)) reset();
     });
