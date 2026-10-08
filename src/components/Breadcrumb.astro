@@ -1,0 +1,78 @@
+---
+// Figma: Breadcrumb（Research Detail Page / Research Detail Page (Mobile) の本文上部）。
+// 最後の項目が現在のページ。BreadcrumbList の構造化データも出力する。
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  items: { label: string; href: string }[];
+  lang?: Lang;
+}
+
+const { items, lang = 'ja' } = Astro.props;
+
+// astro.config.mjs の site が未設定の間はルート相対パスのまま出す（公開ドメイン確定後に絶対URLになる）
+const toUrl = (href: string) => (Astro.site ? new URL(href, Astro.site).href : href);
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.label,
+    item: toUrl(item.href),
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<nav class="breadcrumb" aria-label={t(lang, 'common.breadcrumb')}>
+  <ol class="t-ui-small">
+    {items.map((item, i) =>
+      i === items.length - 1 ? (
+        <li>
+          <a class="current" href={item.href} aria-current="page">{item.label}</a>
+        </li>
+      ) : (
+        <li>
+          <a href={item.href}>{item.label}</a>
+        </li>
+      ),
+    )}
+  </ol>
+</nav>
+<script type="application/ld+json" is:inline set:html={jsonLd} />
+
+<style>
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li::before {
+    /* 区切り文字は読み上げない（代替テキスト構文の非対応ブラウザでは1行目が効く） */
+    content: '›';
+    content: '›' / '';
+    margin-right: 8px;
+    color: var(--color-text-muted);
+  }
+
+  a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .current {
+    color: var(--color-text);
+  }
+
+  .current:hover {
+    text-decoration: none;
+  }
+</style>

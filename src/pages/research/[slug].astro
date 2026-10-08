@@ -1,31 +1,60 @@
 ---
-// 研究トピックの詳細ページ（カードの「詳しく見る」の遷移先）。Figma に専用フレームがないため、
-// Page Title + 本文の最小構成にとどめる。
+// Figma: Research Detail Page / Research Detail Page (Mobile)
+// 研究トピックの詳細ページ（カードの「詳しく見る」の遷移先）。パンくず、本文、前後トピックへのリンク。
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getLocalizedList } from '../../lib/content';
+import { t } from '../../i18n/ui';
 
 export async function getStaticPaths() {
-  const topics = await getLocalizedList('research', 'ja');
-  return topics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+  // 前後リンクは front matter の order 順
+  const topics = (await getLocalizedList('research', 'ja')).sort((a, b) => a.data.order - b.data.order);
+  return topics.map((topic, i) => ({
+    params: { slug: topic.slug },
+    props: { topic, prev: topics[i - 1], next: topics[i + 1] },
+  }));
 }
 
 const lang = 'ja' as const;
-const { topic } = Astro.props;
+const { topic, prev, next } = Astro.props;
 const { Content } = await render(topic);
 // トピックごとの Page Title 画像（front matter の hero）。未指定ならプレースホルダー
 const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
+const href = (slug: string) => `/research/${slug}/`;
+const breadcrumb = [
+  { label: t(lang, 'nav.home'), href: '/' },
+  { label: t(lang, 'nav.research.about'), href: '/research/' },
+  { label: topic.data.title, href: href(topic.slug) },
+];
 ---
 
 <BaseLayout title={topic.data.title} lang={lang}>
   <PageHero title={topic.data.title} image={heroImage} />
   <div class="content">
     <SideBand />
-    <article class="main">
-      <Content />
-    </article>
+    <div class="main">
+      <Breadcrumb items={breadcrumb} lang={lang} />
+      <article class="article">
+        <Content />
+      </article>
+      <nav class="pager" aria-label={t(lang, 'research.pager.label')}>
+        {prev && (
+          <a class="pager-link prev" href={href(prev.slug)} rel="prev">
+            <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
+            <span class="title t-h3">{prev.data.title}</span>
+          </a>
+        )}
+        {next && (
+          <a class="pager-link next" href={href(next.slug)} rel="next">
+            <span class="label t-ui-small-bold">{t(lang, 'research.pager.next')}<span aria-hidden="true"> →</span></span>
+            <span class="title t-h3">{next.data.title}</span>
+          </a>
+        )}
+      </nav>
+    </div>
   </div>
 </BaseLayout>
 
@@ -37,11 +66,14 @@ const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
 
   .main {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     max-width: 900px;
     margin: 0 auto;
   }
 
-  .main :global(h1) {
+  .article :global(h1) {
     margin: 0 0 20px;
     font-size: 28px;
     font-weight: 700;
@@ -49,7 +81,7 @@ const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
     color: var(--color-navy);
   }
 
-  .main :global(h2) {
+  .article :global(h2) {
     margin: 40px 0 12px;
     font-size: 22px;
     font-weight: 700;
@@ -57,17 +89,17 @@ const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
     color: var(--color-navy);
   }
 
-  .main :global(p) {
+  .article :global(p) {
     margin: 0 0 16px;
   }
 
   /* 画像は本文幅いっぱいにせず、上限サイズで中央に置く（キャプションは remark-figure が alt から生成） */
-  .main :global(figure) {
+  .article :global(figure) {
     margin: 32px 0;
     text-align: center;
   }
 
-  .main :global(img) {
+  .article :global(img) {
     width: auto;
     max-width: min(100%, 640px);
     height: auto;
@@ -76,17 +108,70 @@ const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
     border-radius: 8px;
   }
 
-  .main :global(figcaption) {
+  .article :global(figcaption) {
     margin-top: 8px;
     font-size: 14px;
     line-height: 1.7;
     color: var(--color-text-muted);
   }
 
+  /* 本文末尾の要素の下余白は .main の gap に任せる */
+  .article > :global(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1.5px solid rgba(0, 0, 123, 0.18);
+  }
+
+  .pager-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-radius: 16px;
+    background: #f8f8fa;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .pager-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 123, 0.12);
+  }
+
+  .pager-link.next {
+    grid-column: 2;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .label {
+    color: var(--color-navy);
+  }
+
   @media (max-width: 767px) {
     .content {
       padding-top: 40px;
       padding-bottom: 40px;
+    }
+
+    .pager {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .pager-link {
+      padding: 20px;
+    }
+
+    .pager-link.next {
+      grid-column: auto;
     }
   }
 </style>
