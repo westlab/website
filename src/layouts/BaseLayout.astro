@@ -7,9 +7,11 @@ import type { Lang } from '../i18n/ui';
 interface Props {
   title: string;
   lang?: Lang;
+  /** false なら検索インデックスに含めない（検索ページ自身など） */
+  indexable?: boolean;
 }
 
-const { title, lang = 'ja' } = Astro.props;
+const { title, lang = 'ja', indexable = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,7 +30,7 @@ const { title, lang = 'ja' } = Astro.props;
   </head>
   <body>
     <Header lang={lang} />
-    <main>
+    <main data-pagefind-body={indexable ? '' : undefined}>
       <slot />
     </main>
     <Footer lang={lang} />
@@ -45,6 +47,7 @@ const { title, lang = 'ja' } = Astro.props;
     --color-accent: #0000f5;
     --color-text: #26262e;
     --color-text-muted: #54545a;
+    --color-text-subtle: #727278;
     --color-border: #e5e5eb;
     --color-border-input: #bfc4d1;
     --color-placeholder: #999eab;
