@@ -69,6 +69,7 @@ const activeId = blocks[blocks.length - 1].id;
         ))}
       </nav>
 
+      <div class="blocks">
       {blocks.map((b) => (
         <div class="block" id={b.id} data-block-panel={b.id}>
           {b.years.map(({ year, categories }) => (
@@ -91,6 +92,7 @@ const activeId = blocks[blocks.length - 1].id;
           ))}
         </div>
       ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -182,6 +184,17 @@ const activeId = blocks[blocks.length - 1].id;
     color: #fff;
   }
 
+  /* 非選択ブロックは高さ0で残る（until-found）ため、タブ表示中はブロック間にgapを付けない */
+  .blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .main.is-tabbed .blocks {
+    gap: 0;
+  }
+
   .block {
     display: flex;
     flex-direction: column;
@@ -244,6 +257,7 @@ const activeId = blocks[blocks.length - 1].id;
     }
 
     .main,
+    .blocks,
     .block {
       gap: 40px;
     }
