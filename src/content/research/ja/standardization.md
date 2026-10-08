@@ -3,7 +3,7 @@ title: 技術標準化
 order: 7
 icon: standardization
 summary: これらの活動を社会還元するため、技術標準化にも取り組んでいます。
-description: 研究成果を社会に還元するための、技術標準化への取り組みを紹介します。
+description: 研究成果を社会に還元するために取り組んでいる技術標準化について紹介します。
 hero: /images/research/standardization/hero.jpg
 ---
 

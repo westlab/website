@@ -3,18 +3,18 @@
 - id: contact
   name_ja: 西研究室
   name_en: Nishi Laboratory
-  # トップページと、pages.yaml に載せない独立ページ（OB/OG・研究紹介動画）の meta description
-  description_ja: 慶應義塾大学 理工学部 システムデザイン工学科 西研究室のWebサイト。研究内容、メンバー、業績、入室・見学の案内を掲載しています。
+  # トップページと、pages.yaml に載せない独立ページ（OB/OG・研究紹介動画・検索）の meta description
+  description_ja: 慶應義塾大学 理工学部 システムデザイン工学科 西研究室のWebサイトです。研究内容、メンバー、業績、入室・見学の案内を掲載しています。
   description_en: Website of the Nishi Laboratory, Department of System Design Engineering, Keio University. Research, members, publications and admission information.
   page_descriptions:
     alumni:
-      ja: 西研究室を卒業したOB・OGを期ごとに紹介します。
+      ja: 慶應義塾大学 西研究室を卒業したOB・OGの一覧です。期ごとに紹介しています。
       en: Alumni of the Nishi Laboratory, listed by cohort.
     videos:
-      ja: 西研究室の活動を紹介する動画をまとめています。
+      ja: 慶應義塾大学 西研究室の活動を紹介する動画の一覧です。
       en: A collection of videos introducing the activities of the Nishi Laboratory.
     search:
-      ja: 西研究室のサイト内を検索します。メンバー、研究、業績などを探せます。
+      ja: 慶應義塾大学 西研究室のサイト内検索です。メンバー、研究、業績などを探せます。
       en: Search the Nishi Laboratory website for members, research and publications.
   columns:
     - - label_ja: 住所

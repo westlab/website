@@ -13,7 +13,7 @@ const research = defineCollection({
     icon: z.string(),
     // 研究説明ページのカードに出す1〜2文の要約（本文とは別）
     summary: z.string(),
-    // 詳細ページの meta description。未指定なら summary を使う（summary が単独で意味を成さないときだけ書く）
+    // 詳細ページの meta description。未指定なら summary を使う。summary だけでは意味が通じないときに書く
     description: z.string().optional(),
     // 詳細ページ上部（PageHero）の画像パス。未指定ならプレースホルダー画像
     hero: z.string().optional(),
@@ -47,7 +47,7 @@ const pages = defineCollection({
     // Homepage の Nav Section に出す1行説明
     description_ja: z.string(),
     description_en: z.string(),
-    // 検索結果・SNS共有用の説明。Nav Card 用の1行では短すぎるページだけ指定し、未指定なら description を使う
+    // 検索結果・SNS共有用の説明。Nav Card 用の1行では短すぎるページだけ指定する。未指定なら description を使う
     meta_description_ja: z.string().optional(),
     meta_description_en: z.string().optional(),
   }),
