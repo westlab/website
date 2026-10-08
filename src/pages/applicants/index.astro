@@ -57,43 +57,42 @@ const { Content } = doc ? await render(doc) : { Content: null };
     }
   }
 
-  /* Markdown本文 (Figma: Section / ... , Template Card, QA List) */
-  .prose :global(h3) {
-    margin: 56px 0 12px;
+  /* Markdown本文 (Figma: Section / ... , Template Card, QA List)。サイズは型ランプ (.t-*) と同じ値 */
+  .prose :global(h2) {
+    margin: 56px 0 12px; /* .t-h1 */
     color: var(--color-navy);
     font-size: 28px;
     font-weight: 700;
     line-height: 1.5;
   }
 
-  /* 冒頭の見出しはFigmaでは本文リード（Body/Emphasis） */
-  .prose :global(h3:first-child) {
-    margin: 0;
-    color: var(--color-text);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.8;
-  }
-
   .prose :global(p) {
     margin: 0 0 1em;
     color: var(--color-text-muted);
-    font-size: 16px;
+    font-size: 16px; /* .t-body */
     font-weight: 400;
     line-height: 1.8;
     overflow-wrap: anywhere;
     white-space: pre-line; /* 原稿の改行を保つ */
   }
 
-  .prose :global(h3:first-child + p) {
-    margin-top: 0;
+  /* 冒頭はFigmaでは見出しでなく本文リード（Body/Emphasis = .t-emphasis） */
+  .prose :global(p:first-child) {
+    margin: 0;
     color: var(--color-text);
     font-size: 18px;
     font-weight: 500;
   }
 
-  .prose :global(hr) {
-    display: none;
+  /* 連絡先メールは独立した強調行、注記は Caption */
+  .prose :global(p > strong:only-child) {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .prose :global(p.note) {
+    font-size: 14px; /* .t-caption */
+    line-height: 1.7;
   }
 
   .prose :global(ol),
@@ -118,5 +117,55 @@ const { Content } = doc ? await render(doc) : { Content: null };
 
   .prose :global(li) {
     white-space: pre-line;
+  }
+
+  /* Figma: QA Item / QA List（研究ページ「過去の研究」と同じ） */
+  .prose :global(.qa-list) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .prose :global(.qa-item) {
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid rgba(0, 0, 123, 0.18);
+  }
+
+  .prose :global(.qa-item summary) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text);
+    font-size: 18px; /* .t-h3 */
+    font-weight: 700;
+    line-height: 1.7;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .prose :global(.qa-item summary::-webkit-details-marker) {
+    display: none;
+  }
+
+  .prose :global(.qa-item summary span) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .prose :global(.qa-item summary::after) {
+    content: '';
+    flex: none;
+    width: 20px;
+    height: 20px;
+    background: url('/images/ui/icon-chevron-down.svg') center / contain no-repeat;
+    transition: transform 0.2s ease;
+  }
+
+  .prose :global(.qa-item[open] summary::after) {
+    transform: rotate(180deg);
+  }
+
+  .prose :global(.qa-item p) {
+    margin: 6px 0 0;
   }
 </style>
