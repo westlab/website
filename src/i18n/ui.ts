@@ -17,7 +17,7 @@ export const ui = {
     'nav.applicants': '入室・見学',
     'nav.links': 'リンク',
     'nav.search': '検索',
-    'nav.research.about': '研究説明',
+    'nav.research.about': '研究内容',
     'nav.research.videos': '研究紹介動画',
     'nav.members.current': 'メンバー',
     'nav.members.alumni': '卒業生',

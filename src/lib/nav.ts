@@ -40,15 +40,14 @@ export async function getNavItems(lang: Lang): Promise<NavItem[]> {
 // ナビに無いページ（研究詳細など）は current を渡すと、URL の前方一致で最も深いナビ項目の下に置く。
 export async function getBreadcrumb(lang: Lang, path: string, current?: NavLink): Promise<NavLink[]> {
   const home = { label: t(lang, 'nav.home'), href: '/' };
-  // サブページを先に並べ、同じ href のときはサブページの名前を使う（/research/ は「研究説明」）
+  // 親と同じ href のサブページ（/research/ /members/）は親と同名なので、親の1階層として扱う
   const items = await getNavItems(lang);
   const trails: NavLink[][] = [];
   for (const item of items) {
-    for (const sub of item.subs) {
-      trails.push(sub.href === item.href ? [sub] : [{ label: item.label, href: item.href }, sub]);
-    }
+    const parent = { label: item.label, href: item.href };
+    trails.push([parent]);
+    for (const sub of item.subs) if (sub.href !== item.href) trails.push([parent, sub]);
   }
-  for (const item of items) trails.push([{ label: item.label, href: item.href }]);
 
   const exact = trails.find((trail) => trail.at(-1)!.href === path);
   if (exact) return [home, ...exact];
