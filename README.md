@@ -16,7 +16,7 @@ docker compose up
 docker compose down
 ```
 
-`http://localhost:4321` で確認できる（ファイル保存で自動リロード）。
+`http://localhost:4321` で確認できる（ファイル保存で自動リロード）。サイト内検索は `npm run build` 後の `npm run preview` でのみ動く（開発サーバーでは使えない）。
 
 `npm run build` などを単発で実行したい場合:
 
