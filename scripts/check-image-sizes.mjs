@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 // public/images 配下の画像が重すぎないかを検査する。
 // 1ファイル 500KB 超、または長辺 2400px 超があれば一覧を表示して終了コード 1 で終わる。
-// 圧縮は事前に行う（ビルド時最適化は使わない方針）。写真は JPEG 長辺1920px・品質80前後、図版は PNG 幅1600px・パレット化が目安。
+// public/images 配下の画像は Astro のビルド時最適化を通らず、そのまま配信されるため、事前に圧縮しておく。
+// （Markdown から相対パスで参照した画像は、Astro がビルド時に webp 化する。）
+// 写真は JPEG 長辺1920px・品質80前後、図版は PNG 長辺1600px・パレット化が目安。`npm run compress:images` で圧縮できる。
 // 使い方: node scripts/check-image-sizes.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
 
 import { readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import sharp from 'sharp';
+import { MAX_BYTES, MAX_PX } from './image-limits.mjs';
 
 const root = process.argv[2] ?? '.';
 const DIR = join(root, 'public/images');
-const MAX_BYTES = 500 * 1024;
-const MAX_PX = 2400;
 const EXT = /\.(png|jpe?g|webp|gif|avif)$/i;
 
 function walk(dir) {

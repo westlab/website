@@ -2,7 +2,9 @@
 
 Pure Pillow, no text in the image. Run:
     python scripts/generate-network-hero.py
-Writes public/images/research/network/hero.jpg (2880x940).
+Writes public/images/research/network/hero.jpg (1920x627, JPEG).
+Drawing happens at 2880x940 and is downscaled on save to stay within the
+image size limits (scripts/image-limits.mjs).
 """
 
 from pathlib import Path
@@ -16,6 +18,7 @@ import math
 # ============================================================
 
 W, H = 2880, 940
+OUT_W, OUT_H = 1920, 627  # committed size; matches the size limits
 CY = H / 2
 BAND = (0.30 * H, 0.70 * H)  # always visible under object-fit: cover
 
@@ -550,7 +553,7 @@ img = Image.alpha_composite(img, vignette)
 
 output = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "network" / "hero.jpg"
 
-img.convert("RGB").save(output, quality=80, optimize=True)
+img.convert("RGB").resize((OUT_W, OUT_H), Image.Resampling.LANCZOS).save(output, quality=80, optimize=True)
 
 print("Saved:", output)
-print("Resolution:", W, "x", H)
+print("Resolution:", OUT_W, "x", OUT_H)
