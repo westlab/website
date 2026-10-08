@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
 import { getLocalizedDoc, getLocalizedList } from '../../lib/content';
 import { t } from '../../i18n/ui';
@@ -23,35 +24,38 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
   <div class="content">
     <SideBand />
     <div class="main">
-      <section class="block intro">
-        <h2 class="t-h1">{intro?.data.title}</h2>
-        {IntroContent && <IntroContent />}
-      </section>
+      <Breadcrumb lang={lang} />
+      <div class="body">
+        <section class="block intro">
+          <h2 class="t-h1">{intro?.data.title}</h2>
+          {IntroContent && <IntroContent />}
+        </section>
 
-      <section class="block">
-        <h2 class="t-h1">{t(lang, 'research.topics.title')}</h2>
-        <p class="t-body">{t(lang, 'research.topics.lead')}</p>
-      </section>
+        <section class="block">
+          <h2 class="t-h1">{t(lang, 'research.topics.title')}</h2>
+          <p class="t-body">{t(lang, 'research.topics.lead')}</p>
+        </section>
 
-      <div class="topics-grid">
-        {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
-      </div>
-
-      <section class="block past">
-        <h2 class="t-h1">{t(lang, 'research.past.title')}</h2>
-        <p class="t-body">{t(lang, 'research.past.lead')}</p>
-        <div class="qa-list">
-          {pastResearch.map((item) => (
-            <details class="qa-item">
-              <summary class="t-h3">
-                <span>{item.data.title_ja}</span>
-                <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
-              </summary>
-              <p class="t-body answer">{item.data.body_ja}</p>
-            </details>
-          ))}
+        <div class="topics-grid">
+          {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
         </div>
-      </section>
+
+        <section class="block past">
+          <h2 class="t-h1">{t(lang, 'research.past.title')}</h2>
+          <p class="t-body">{t(lang, 'research.past.lead')}</p>
+          <div class="qa-list">
+            {pastResearch.map((item) => (
+              <details class="qa-item">
+                <summary class="t-h3">
+                  <span>{item.data.title_ja}</span>
+                  <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
+                </summary>
+                <p class="t-body answer">{item.data.body_ja}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </BaseLayout>
@@ -64,11 +68,15 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
 
   .main {
     position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 56px;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 
   .block {

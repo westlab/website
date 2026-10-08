@@ -1,0 +1,88 @@
+---
+// Figma: Breadcrumb（ベースコンポーネント）。トップと検索結果以外の全ページで、本文カラムの先頭に置く。
+// 本文のセクション列（各ページの .body）の外に置き、本文の先頭まで24px空ける（Figma: Main/Content の gap 24）。
+// 階層はヘッダーのナビ構成（src/lib/nav.ts）から現在の URL で引く。最後の項目が現在のページ。
+// BreadcrumbList の構造化データも出力する。全ページ共通の文言なので検索インデックスからは外す。
+import { t, type Lang } from '../i18n/ui';
+import { getBreadcrumb, type NavLink } from '../lib/nav';
+
+interface Props {
+  lang?: Lang;
+  // ナビに無いページ（研究詳細など）の現在ページ。URL の前方一致で親のナビ項目の下に置く
+  current?: NavLink;
+}
+
+const { lang = 'ja', current } = Astro.props;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const items = await getBreadcrumb(lang, path, current);
+
+// astro.config.mjs の site が未設定の間はルート相対パスのまま出す（公開ドメイン確定後に絶対URLになる）
+const toUrl = (href: string) => (Astro.site ? new URL(href, Astro.site).href : href);
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.label,
+    item: toUrl(item.href),
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<nav class="breadcrumb" aria-label={t(lang, 'common.breadcrumb')} data-pagefind-ignore>
+  <ol class="t-ui-small">
+    {items.map((item, i) =>
+      i === items.length - 1 ? (
+        <li>
+          <a class="current" href={item.href} aria-current="page">{item.label}</a>
+        </li>
+      ) : (
+        <li>
+          <a href={item.href}>{item.label}</a>
+        </li>
+      ),
+    )}
+  </ol>
+</nav>
+<script type="application/ld+json" is:inline set:html={jsonLd} />
+
+<style>
+  .breadcrumb {
+    margin-bottom: 24px;
+  }
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li::before {
+    /* 区切り文字は読み上げない（代替テキスト構文の非対応ブラウザでは1行目が効く） */
+    content: '›';
+    content: '›' / '';
+    margin-right: 8px;
+    color: var(--color-text-muted);
+  }
+
+  a {
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .current {
+    color: var(--color-text);
+  }
+
+  .current:hover {
+    text-decoration: none;
+  }
+</style>

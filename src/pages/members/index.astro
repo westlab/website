@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 const lang = 'ja' as const;
 
@@ -31,32 +32,39 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
   <PageHero title={page.data.title_ja} image={page.data.image} />
   <section class="content">
     <SideBand />
-    {groups.map((group) => (
-      <div class="group">
-        <h2 class="t-h1">{group.data.grade}</h2>
-        <hr class="divider" />
-        <div class="rows">
-          {splitByYear(group.data.names).map((row) => (
-            <ul class="names">
-              {row.map((member) => (
-                <li class="name t-emphasis">{member.name_ja}</li>
-              ))}
-            </ul>
-          ))}
+    <Breadcrumb lang={lang} />
+    <div class="body">
+      {groups.map((group) => (
+        <div class="group">
+          <h2 class="t-h1">{group.data.grade}</h2>
+          <hr class="divider" />
+          <div class="rows">
+            {splitByYear(group.data.names).map((row) => (
+              <ul class="names">
+                {row.map((member) => (
+                  <li class="name t-emphasis">{member.name_ja}</li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </section>
 </BaseLayout>
 
 <style>
   .content {
     position: relative;
+    padding: 64px var(--gutter) 96px;
+    background: #fff;
+  }
+
+  /* パンくずの下の本文。グループ間の間隔はここで持つ（Figma: Content > Body） */
+  .body {
     display: flex;
     flex-direction: column;
     gap: 56px;
-    padding: 64px var(--gutter) 96px;
-    background: #fff;
   }
 
   .group {

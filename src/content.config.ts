@@ -11,7 +11,7 @@ const research = defineCollection({
     order: z.number(),
     // アイコンの種類を表すキーのみ。実際のSVGはコンポーネント側（src/components/icons/）で解決する。
     icon: z.string(),
-    // 研究説明ページのカードに出す1〜2文の要約（本文とは別）
+    // 研究内容ページのカードに出す1〜2文の要約（本文とは別）
     summary: z.string(),
     // 詳細ページ上部（PageHero）の画像パス。未指定ならプレースホルダー画像
     hero: z.string().optional(),
@@ -155,7 +155,7 @@ const videos = defineCollection({
   }),
 });
 
-// 研究説明ページ「過去の研究」の開閉リスト。
+// 研究内容ページ「過去の研究」の開閉リスト。
 const pastResearch = defineCollection({
   loader: file("./src/data/past-research.yaml"),
   schema: z.object({
