@@ -2,8 +2,9 @@
 
 Run with the bundled Python environment (Pillow and NumPy required):
     python scripts/generate-anonymization-hero.py
-Writes public/images/research/anonymization/hero.jpg (2880x940, 2x of the
-1440x470 banner). A bust silhouette with a pixelated (mosaic) face in the site's
+Writes public/images/research/anonymization/hero.jpg (1920x627, JPEG).
+Drawing happens at 2880x940 and is downscaled on save to stay within the
+image size limits (scripts/image-limits.mjs). A bust silhouette with a pixelated (mosaic) face in the site's
 blue palette, placed right of centre so the page title (top left) stays readable.
 The head and mosaic face stay inside the vertical safe band 0.30H-0.70H and
 x in [1100, 2380], so the object-fit: cover crop on wide monitors and on mobile
@@ -20,6 +21,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 OUT = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "anonymization" / "hero.jpg"
 W, H = 2880, 940
+OUT_W, OUT_H = 1920, 627  # committed size; matches the size limits
 BAND = (0.30 * H, 0.70 * H)  # always visible under object-fit: cover
 RNG = np.random.default_rng(7)
 
@@ -164,7 +166,8 @@ def main() -> None:
 
     img = img.filter(ImageFilter.SMOOTH_MORE)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    img.convert("RGB").save(OUT, quality=88, optimize=True)
+    img = img.convert("RGB").resize((OUT_W, OUT_H), Image.Resampling.LANCZOS)
+    img.save(OUT, quality=80, optimize=True)
     print(f"saved {OUT} {img.size}")
 
 
