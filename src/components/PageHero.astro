@@ -1,5 +1,6 @@
 ---
-// Figma: Page Title（下層ページ上部の写真バナー。1440×470 / Mobile 375×188）
+// Figma: Page Title（下層ページ上部の写真バナー。1440×470 / Mobile 375×128。
+// モバイルで長いタイトルが折り返す場合は最小128pxのまま下に伸びる）
 interface Props {
   title: string;
   image: string;
@@ -40,8 +41,10 @@ const { title, image } = Astro.props;
 
   @media (max-width: 767px) {
     .page-hero {
-      justify-content: center;
-      height: 188px;
+      height: auto;
+      min-height: 128px;
+      padding-top: 48px;
+      padding-bottom: 32px;
     }
   }
 </style>
