@@ -22,7 +22,7 @@
 | --- | --- |
 | 導入文 | `src/content/pages/{ja,en}/research-intro.md` |
 | トピック本文（7項目）の追加・修正 | `src/content/research/{ja,en}/*.md`（ja/en 両方。並び順は front matter の `order`） |
-| トピックの図版 | `public/images/research/<topic>/`（画像は1枚500KB・長辺2400px以内。超えると `npm test` が失敗する（コミット時と CI で実行）。`npm run compress:images` で圧縮できる。写真は長辺1920px・JPEG、図版は長辺1600px・PNG目安） |
+| トピックの図版 | `public/images/research/<topic>/`（画像は1枚500KB・長辺2400px以内。長辺2400px超、または500KB超で圧縮すれば5%以上小さくなる場合は `npm test` が失敗する（コミット時と CI で実行）。`npm run compress:images` で圧縮できる。圧縮しても5%以上小さくならない画像は500KBを超えても通る。写真は長辺1920px・JPEG、図版は長辺1600px・PNG目安） |
 | 「過去の研究」節 | `src/data/past-research.yaml` |
 | Page Title（Hero）の画像・タイトル | `src/data/pages.yaml`（`id: research`） |
 
