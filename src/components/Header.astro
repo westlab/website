@@ -125,13 +125,46 @@ const items = pages.map((page) => {
 </header>
 
 <script>
-  const button = document.querySelector<HTMLButtonElement>('.site-header .menu-button');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const button = header?.querySelector<HTMLButtonElement>('.menu-button');
   const menu = document.getElementById('mobile-menu');
-  button?.addEventListener('click', () => {
-    const open = button.getAttribute('aria-expanded') !== 'true';
+
+  const setMenu = (open: boolean) => {
+    if (!button || !menu) return;
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', (open ? button.dataset.labelClose : button.dataset.labelOpen) ?? '');
-    if (menu) menu.hidden = !open;
+    menu.hidden = !open;
+  };
+
+  button?.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+
+  // メニュー外のクリックで閉じる
+  document.addEventListener('click', (e) => {
+    if (menu && !menu.hidden && !header?.contains(e.target as Node)) setMenu(false);
+  });
+
+  // Esc でモバイルメニュー・ドロップダウンを閉じる
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (menu && !menu.hidden) {
+      setMenu(false);
+      button?.focus();
+      return;
+    }
+    const item = (e.target as Element).closest<HTMLElement>('.nav-item');
+    if (item?.classList.contains('has-dropdown')) {
+      item.classList.add('dismissed');
+      item.querySelector<HTMLElement>('.nav-link')?.focus();
+    }
+  });
+
+  // 閉じたドロップダウンは、ポインタやフォーカスが離れたら元に戻す
+  document.querySelectorAll<HTMLElement>('.nav-item.has-dropdown').forEach((item) => {
+    const reset = () => item.classList.remove('dismissed');
+    item.addEventListener('mouseleave', reset);
+    item.addEventListener('focusout', (e) => {
+      if (!item.contains(e.relatedTarget as Node)) reset();
+    });
   });
 </script>
 
@@ -252,8 +285,8 @@ const items = pages.map((page) => {
     height: 16px;
   }
 
-  .nav-item:hover > .dropdown,
-  .nav-item:focus-within > .dropdown {
+  .nav-item:not(.dismissed):hover > .dropdown,
+  .nav-item:not(.dismissed):focus-within > .dropdown {
     opacity: 1;
     visibility: visible;
     transform: none;
