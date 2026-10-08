@@ -4,6 +4,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
 import { getLocalizedDoc, getLocalizedList } from '../../lib/content';
 import { t } from '../../i18n/ui';
@@ -23,6 +24,7 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
   <div class="content">
     <SideBand />
     <div class="main">
+      <Breadcrumb lang={lang} />
       <section class="block intro">
         <h2 class="t-h1">{intro?.data.title}</h2>
         {IntroContent && <IntroContent />}

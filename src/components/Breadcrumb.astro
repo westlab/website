@@ -1,14 +1,19 @@
 ---
-// Figma: Breadcrumb（Research Detail Page / Research Detail Page (Mobile) の本文上部）。
-// 最後の項目が現在のページ。BreadcrumbList の構造化データも出力する。
+// Figma: Breadcrumb（ベースコンポーネント）。トップと検索結果以外の全ページで、本文カラムの先頭に置く。
+// 階層はヘッダーのナビ構成（src/lib/nav.ts）から現在の URL で引く。最後の項目が現在のページ。
+// BreadcrumbList の構造化データも出力する。全ページ共通の文言なので検索インデックスからは外す。
 import { t, type Lang } from '../i18n/ui';
+import { getBreadcrumb, type NavLink } from '../lib/nav';
 
 interface Props {
-  items: { label: string; href: string }[];
   lang?: Lang;
+  // ナビに無いページ（研究詳細など）の現在ページ。URL の前方一致で親のナビ項目の下に置く
+  current?: NavLink;
 }
 
-const { items, lang = 'ja' } = Astro.props;
+const { lang = 'ja', current } = Astro.props;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const items = await getBreadcrumb(lang, path, current);
 
 // astro.config.mjs の site が未設定の間はルート相対パスのまま出す（公開ドメイン確定後に絶対URLになる）
 const toUrl = (href: string) => (Astro.site ? new URL(href, Astro.site).href : href);
@@ -24,7 +29,7 @@ const jsonLd = JSON.stringify({
 }).replace(/</g, '\\u003c');
 ---
 
-<nav class="breadcrumb" aria-label={t(lang, 'common.breadcrumb')}>
+<nav class="breadcrumb" aria-label={t(lang, 'common.breadcrumb')} data-pagefind-ignore>
   <ol class="t-ui-small">
     {items.map((item, i) =>
       i === items.length - 1 ? (

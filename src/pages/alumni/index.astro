@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
@@ -15,6 +16,7 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
   <PageHero title={title} image="/images/pages/alumni.jpg" />
   <section class="content">
     <SideBand />
+    <Breadcrumb lang={lang} />
     {cohorts.map((entry) => (
       <div class="cohort">
         <h2 class="t-h1">{entry.data.cohort}期</h2>

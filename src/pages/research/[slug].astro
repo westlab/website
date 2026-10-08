@@ -24,11 +24,6 @@ const { Content } = await render(topic);
 // トピックごとの Page Title 画像（front matter の hero）。未指定ならプレースホルダー
 const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
 const href = (slug: string) => `/research/${slug}/`;
-const breadcrumb = [
-  { label: t(lang, 'nav.home'), href: '/' },
-  { label: t(lang, 'nav.research.about'), href: '/research/' },
-  { label: topic.data.title, href: href(topic.slug) },
-];
 ---
 
 <BaseLayout title={topic.data.title} lang={lang}>
@@ -36,7 +31,7 @@ const breadcrumb = [
   <div class="content">
     <SideBand />
     <div class="main">
-      <Breadcrumb items={breadcrumb} lang={lang} />
+      <Breadcrumb lang={lang} current={{ label: topic.data.title, href: href(topic.slug) }} />
       <article class="article">
         <Content />
       </article>

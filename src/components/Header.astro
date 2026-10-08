@@ -1,40 +1,21 @@
 ---
 // Figma: Header（デスクトップ。研究内容・メンバーはホバーでドロップダウン）/
 // Header / Mobile (collapsed / menu open)
-import { getCollection } from 'astro:content';
 import { t, type Lang } from '../i18n/ui';
+import { getNavItems } from '../lib/nav';
 
 interface Props {
   lang?: Lang;
 }
 
 const { lang = 'ja' } = Astro.props;
-const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
-
-// ドロップダウンを持つナビ項目のサブページ
-const children: Record<string, { label: string; href: string }[]> = {
-  research: [
-    { label: t(lang, 'nav.research.about'), href: '/research/' },
-    { label: t(lang, 'nav.research.videos'), href: '/videos/' },
-  ],
-  members: [
-    { label: t(lang, 'nav.members.current'), href: '/members/' },
-    { label: t(lang, 'nav.members.alumni'), href: '/alumni/' },
-  ],
-};
-
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(href);
 
-const items = pages.map((page) => {
-  const subs = children[page.id] ?? [];
-  return {
-    label: lang === 'ja' ? page.data.title_ja : page.data.title_en,
-    href: page.data.href,
-    subs,
-    active: isCurrent(page.data.href) || subs.some((s) => isCurrent(s.href)),
-  };
-});
+const items = (await getNavItems(lang)).map((item) => ({
+  ...item,
+  active: isCurrent(item.href) || item.subs.some((s) => isCurrent(s.href)),
+}));
 ---
 
 <header class="site-header">
