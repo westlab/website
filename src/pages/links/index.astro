@@ -11,7 +11,7 @@ const page = pages.find((p) => p.id === 'links')!;
 const categories = await getCollection('links');
 ---
 
-<BaseLayout title={page.data.title_ja} lang={lang}>
+<BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
   <section class="content">
     <SideBand />

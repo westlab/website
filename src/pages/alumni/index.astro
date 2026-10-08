@@ -11,7 +11,7 @@ const title = t(lang, 'nav.members.alumni');
 const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a.data.cohort);
 ---
 
-<BaseLayout title={title} lang={lang}>
+<BaseLayout title={title} description={t(lang, 'meta.alumni.description')} lang={lang}>
   <PageHero title={title} image="/images/pages/alumni.jpg" />
   <section class="content">
     <SideBand />
