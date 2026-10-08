@@ -35,8 +35,6 @@ export const ui = {
     'common.backToTop': 'ページの先頭へ',
     'home.hero.title': 'Welcome to West Lab.',
     'home.hero.lead': 'Exploit The Future Computing and Networking',
-    'meta.home.description': '慶應義塾大学 理工学部 システムデザイン工学科 西研究室のWebサイト。研究内容、メンバー、業績、入室・見学の案内を掲載しています。',
-    'meta.alumni.description': '西研究室を卒業したOB・OGを期ごとに紹介します。',
   },
   en: {
     'nav.research': 'Research',
@@ -65,8 +63,6 @@ export const ui = {
     'common.backToTop': 'Back to top',
     'home.hero.title': 'Welcome to West Lab.',
     'home.hero.lead': 'Exploit The Future Computing and Networking',
-    'meta.home.description': 'Website of the Nishi Laboratory, Department of System Design Engineering, Keio University. Research, members, publications and admission information.',
-    'meta.alumni.description': 'Alumni of the Nishi Laboratory, listed by cohort.',
   },
 } as const;
 

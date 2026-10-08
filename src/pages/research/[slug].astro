@@ -19,7 +19,7 @@ const { Content } = await render(topic);
 const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
 ---
 
-<BaseLayout title={topic.data.title} description={topic.data.summary} lang={lang}>
+<BaseLayout title={topic.data.title} description={topic.data.description ?? topic.data.summary} ogType="article" lang={lang}>
   <PageHero title={topic.data.title} image={heroImage} />
   <div class="content">
     <SideBand />

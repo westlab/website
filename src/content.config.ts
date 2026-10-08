@@ -13,6 +13,8 @@ const research = defineCollection({
     icon: z.string(),
     // 研究説明ページのカードに出す1〜2文の要約（本文とは別）
     summary: z.string(),
+    // 詳細ページの meta description。未指定なら summary を使う（summary が単独で意味を成さないときだけ書く）
+    description: z.string().optional(),
     // 詳細ページ上部（PageHero）の画像パス。未指定ならプレースホルダー画像
     hero: z.string().optional(),
   }),
@@ -45,6 +47,9 @@ const pages = defineCollection({
     // Homepage の Nav Section に出す1行説明
     description_ja: z.string(),
     description_en: z.string(),
+    // 検索結果・SNS共有用の説明。Nav Card 用の1行では短すぎるページだけ指定し、未指定なら description を使う
+    meta_description_ja: z.string().optional(),
+    meta_description_en: z.string().optional(),
   }),
 });
 
@@ -74,6 +79,11 @@ const site = defineCollection({
         }),
       ),
     ),
+    // トップページの meta description
+    description_ja: z.string(),
+    description_en: z.string(),
+    // pages.yaml に載せない独立ページ（ナビカードを持たないページ）の meta description
+    page_descriptions: z.record(z.object({ ja: z.string(), en: z.string() })),
     copyright: z.string(),
   }),
 });

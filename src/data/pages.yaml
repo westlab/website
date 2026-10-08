@@ -15,6 +15,8 @@
   href: /members/
   description_ja: 研究室メンバーと卒業生の紹介です。
   description_en: Current members and alumni of the lab.
+  meta_description_ja: 慶應義塾大学 西研究室のメンバー（博士課程・修士課程・学部生）と卒業生の紹介です。
+  meta_description_en: Current members (doctoral, master's and undergraduate students) and alumni of the Nishi Laboratory, Keio University.
 
 - id: publications
   order: 3
@@ -33,6 +35,8 @@
   href: /applicants/
   description_ja: 研究室への配属を考えている方へ。学部3年生向けです。
   description_en: For third-year undergraduates considering joining the lab.
+  meta_description_ja: 慶應義塾大学 西研究室への配属・見学を考えている学部3年生向けの案内です。
+  meta_description_en: Information for third-year undergraduates considering joining the Nishi Laboratory, Keio University.
 
 - id: links
   order: 5

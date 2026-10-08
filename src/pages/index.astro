@@ -10,11 +10,12 @@ import { t } from '../i18n/ui';
 const lang = 'ja' as const;
 
 const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+const site = (await getCollection('site'))[0];
 const message = (await getLocalizedDoc('pagesContent', lang, 'homepage-message'))!;
 const { Content: MessageContent } = await render(message);
 ---
 
-<BaseLayout title="Home" description={t(lang, 'meta.home.description')} lang={lang}>
+<BaseLayout title="Home" description={site.data.description_ja} lang={lang}>
   <section class="hero">
     <img class="backdrop" src="/images/homepage-hero.png" alt="" />
     <img class="photo-uncropped" src="/images/homepage-hero.png" alt="" />
