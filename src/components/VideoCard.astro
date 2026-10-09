@@ -42,7 +42,6 @@ const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.
       iframe.allowFullscreen = true;
       box.replaceChildren(iframe);
       // ボタンが消えるため、フォーカスをiframeへ移す
-      iframe.tabIndex = -1;
       iframe.focus();
     });
   });
@@ -94,13 +93,16 @@ const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.
     cursor: pointer;
   }
 
-  .thumb-button:focus-visible {
-    outline: none;
+  /* :has() 非対応のブラウザではボタン自身の枠を残す */
+  @supports selector(:has(*)) {
+    .thumb-button:focus-visible {
+      outline: none;
+    }
   }
 
   /* overflow:hidden で切られないよう、枠は外側の .thumbnail に付ける（白+ネイビーの二重リング） */
   .thumbnail:has(.thumb-button:focus-visible) {
-    outline: 3px solid #00007b;
+    outline: 3px solid var(--color-navy);
     outline-offset: 2px;
     box-shadow: 0 0 0 2px #fff;
   }
