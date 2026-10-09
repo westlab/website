@@ -4,14 +4,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getNavPage } from '../../lib/pages';
 
 const lang = 'ja' as const;
 
 // Figma「Members Page」は 博士課程 / 修士課程 / 学部生 の3グループ構成。教授は掲載しない。
 const GRADE_ORDER = ['博士課程', '修士課程', '学部生'];
 
-const pages = await getCollection('pages');
-const page = pages.find((p) => p.id === 'members')!;
+const page = await getNavPage('members');
 const groups = (await getCollection('members'))
   .filter((g) => GRADE_ORDER.includes(g.data.grade))
   .sort((a, b) => GRADE_ORDER.indexOf(a.data.grade) - GRADE_ORDER.indexOf(b.data.grade));

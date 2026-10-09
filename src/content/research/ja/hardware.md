@@ -3,7 +3,6 @@ title: FPGAによるAI・信号処理のハードウェアアクセラレーシ�
 order: 2
 icon: hardware
 summary: エッジで求められる低遅延・低消費電力の処理を、FPGAを用いたハードウェア化によって実現します。
-hero: /images/research/hardware/hero.jpg
 ---
 
 ## FPGAによるAI・信号処理のハードウェアアクセラレーション

@@ -1,11 +1,11 @@
 ---
 // Figma: Homepage の Nav Sections > Section / <名前>（デスクトップ。写真とテキストが左右交互）
 //        Homepage (Mobile) の Nav Card / <名前>（写真の下にテキスト）
-import type { CollectionEntry } from 'astro:content';
 import { t, type Lang } from '../i18n/ui';
+import type { getNavPages } from '../lib/pages';
 
 interface Props {
-  page: CollectionEntry<'pages'>;
+  page: Awaited<ReturnType<typeof getNavPages>>[number];
   index: number;
   lang?: Lang;
 }

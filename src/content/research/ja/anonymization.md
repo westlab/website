@@ -3,7 +3,6 @@ title: 情報匿名化とプライバシー保護データ利活用
 order: 3
 icon: anonymization
 summary: 個人に紐づく情報を安全に二次利用するために、プライバシー保護とデータ品質のバランスを両立する匿名化技術を研究しています。
-hero: /images/research/anonymization/hero.jpg
 ---
 
 ## 個人情報の匿名化

@@ -1,3 +1,5 @@
+# 全ページの Page Title（ページ上部）の写真。写真を差し替えるときはここの image を直す。
+# 先頭の5件はトップの Nav Card にも同じ写真が出る。
 - id: research
   order: 1
   title_ja: 研究内容
@@ -46,3 +48,42 @@
   href: /links/
   description_ja: 学科・大学・共同研究先など、研究室に関連するサイトへのリンク集です。
   description_en: Links to the department, university, collaborators and related sites.
+
+# ここから下は Nav Card（トップの一覧）を持たないページ。写真だけをここで管理する（nav: false）。
+# 新しいページを足すときは id と image を書く。ナビ・タイトル・説明文は別の場所にある。
+- id: alumni
+  nav: false
+  image: /images/pages/alumni.jpg
+
+- id: videos
+  nav: false
+  image: /images/pages/placeholder.jpg
+
+# 研究トピックの詳細ページ。id は「research/」+ src/content/research/ja/ のファイル名（拡張子なし）。
+- id: research/smart-community
+  nav: false
+  image: /images/research/smart-community/hero.jpg
+
+- id: research/network
+  nav: false
+  image: /images/research/network/hero.jpg
+
+- id: research/ai
+  nav: false
+  image: /images/research/ai/hero.jpg
+
+- id: research/anonymization
+  nav: false
+  image: /images/research/anonymization/hero.jpg
+
+- id: research/hardware
+  nav: false
+  image: /images/research/hardware/hero.jpg
+
+- id: research/smart-agriculture
+  nav: false
+  image: /images/research/smart-agriculture/hero.jpg
+
+- id: research/standardization
+  nav: false
+  image: /images/research/standardization/hero.jpg

@@ -1,4 +1,4 @@
-import { getCollection } from 'astro:content';
+import { getNavPages } from './pages';
 import { t, type Lang } from '../i18n/ui';
 
 // ヘッダーのナビ構成（Header）とパンくず（Breadcrumb）が共有する階層。
@@ -28,7 +28,7 @@ const children: Record<string, { key: UiKey; href: string }[]> = {
 };
 
 export async function getNavItems(lang: Lang): Promise<NavItem[]> {
-  const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+  const pages = await getNavPages();
   return pages.map((page) => ({
     label: lang === 'ja' ? page.data.title_ja : page.data.title_en,
     href: page.data.href,

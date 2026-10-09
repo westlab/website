@@ -1,8 +1,7 @@
 ---
 // Figma: Videos Page / Videos Page (Mobile)
 // 遷移元は Header の「研究内容」ドロップダウン内「研究紹介動画」。Nav Card を持たない独立ページなので
-// pages.yaml（Nav Card ⇔ Hero の共有画像テーブル。レコードを足すとナビ項目が増える）は使わず、
-// Page Title のタイトルは nav ラベルを、画像は Figma と同一の placeholder.jpg を直接渡す。
+// Page Title のタイトルは nav ラベルを使い、画像は pages.yaml（nav: false のレコード）から引く。
 // サムネイルは動画サービス側から取得する想定のため、ここでは暗色の枠+再生アイコンで表示する。
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -10,10 +9,11 @@ import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import VideoCard from '../../components/VideoCard.astro';
+import { getPageImage } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
-const heroImage = '/images/pages/placeholder.jpg';
+const heroImage = await getPageImage('videos');
 
 const site = (await getCollection('site'))[0];
 const videos = (await getCollection('videos')).sort((a, b) => a.data.order - b.data.order);

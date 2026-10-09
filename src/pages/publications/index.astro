@@ -6,6 +6,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PublicationEntry from '../../components/PublicationEntry.astro';
+import { getNavPage } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
@@ -26,8 +27,7 @@ const CATEGORY_ORDER = [
 // Block Nav の年度範囲（Figma: 2015〜2019 / 2020〜2024 / 2025〜2026）。最後のブロックは最新年度まで。
 const BLOCK_STARTS = [2015, 2020, 2025];
 
-const pages = await getCollection('pages');
-const page = pages.find((p) => p.id === 'publications')!;
+const page = await getNavPage('publications');
 const publications = await getCollection('publications');
 
 const allYears = [...new Set(publications.map((p) => p.data.year))].sort((a, b) => b - a);

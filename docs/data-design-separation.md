@@ -35,7 +35,7 @@
 対象：Research の研究トピック7項目。各トピックはタイトルと長めの説明文を持つ。
 
 - Astro Content Collections で、1項目1ファイル、言語ごとにペアで持つ：`src/content/research/ja/network.md` と `src/content/research/en/network.md`
-- front matter：`title`, `order`, `icon`（アイコン種別のキーのみ）, `summary`（必須。カード用の要約）, `description`（任意。meta description。未指定なら summary）, `hero`（任意。詳細ページ上部の画像パス）
+- front matter：`title`, `order`, `icon`（アイコン種別のキーのみ）, `summary`（必須。カード用の要約）, `description`（任意。meta description。未指定なら summary）。詳細ページ上部の写真は `pages.yaml` に持つ（「画像の持ち方」参照）
 - 本文（Markdown）が説明文
 - ペアのファイル名を揃えているので、`stack-decision.md` の「対訳の欠落の警告」と「git コミット履歴を比較した英語版の古さの警告」を項目単位で適用できる
 
@@ -58,8 +58,8 @@
 
 Figma で確認した制約：Homepage の Nav Card 5枚（研究内容・メンバー・業績・入室見学・リンク、720×480、モバイル335×180）と、遷移先の各ページの Page Title（ヘッダーバナー、1440×470）は同じ写真を使う。写真は本文に付随するデータではなく、ページ1つにつき1枚の素材であり、Nav Card と Hero の2箇所から参照される。
 
-- 画像本体は `public/images/pages/<page-key>.jpg` に1ページ1ファイルで保持する（例：`research.jpg`, `members.jpg`, `publications.jpg`, `applicants.jpg`, `links.jpg`）
-- どのページがどの画像を使うかは、構造化データとして `src/data/pages.yaml` の1箇所だけに持つ
+- 画像本体は `public/images/pages/<page-key>.jpg`（研究トピックは `public/images/research/<トピック>/hero.jpg`）に1ページ1ファイルで保持する
+- どのページがどの画像を使うかは、構造化データとして `src/data/pages.yaml` の1箇所だけに持つ。Page Title を持つ全ページ（研究トピックの詳細ページを含む）が対象
 
 ```yaml
 # src/data/pages.yaml
@@ -74,10 +74,16 @@ Figma で確認した制約：Homepage の Nav Card 5枚（研究内容・メン
 ```
 
 - Nav Card と Page Title（Hero）の両コンポーネントが、この同じレコードを参照する。写真を差し替えるときは `pages.yaml` を1回直せば両方に反映される
-- 各ページの `PageHero` は必ず `image={page.data.image}` を渡す。Hero 用の別画像やパスの直書きは不可。`scripts/check-page-heroes.mjs`（`npm test`）が commit 時と CI で検査する
+- 各ページの `PageHero` の `image` は `getNavPage` / `getPageImage`（`src/lib/pages.ts`）で `pages.yaml` から取得する。Hero 用の別画像やパスの直書きは不可。`scripts/check-page-heroes.mjs`（`npm test`）が commit 時と CI で検査する
 - 縦横比の違いは、画像を複数バージョン持たず、各コンポーネントの CSS（`object-fit: cover` とブレークポイントごとのコンテナサイズ）で吸収する。画像の置き場所（`public/` か `src/assets/`）はクロップと無関係
 - ビルド時の画像最適化（`astro:assets`）は導入しない。モバイル向けの転送量を自動で最適化できるが、写真が少なく更新頻度も低いため、仕組みの単純さを優先した
 
-上記5ページ以外（Publications / Videos / Alumni など）にも Page Title があり、`pages.yaml` にエントリを持つ。ただし対応する Nav Card がないため、画像を参照するのは Hero だけになる。
+上記5ページ以外（卒業生・動画・研究トピック7件）は Nav Card を持たないため、`nav: false` を付けて `id` と `image` だけを書く。研究トピックの `id` は `research/<ファイル名>`（例：`research/network`）。Nav Card とナビ項目になるのは `nav: false` でないレコードだけ。
+
+```yaml
+- id: research/network
+  nav: false
+  image: /images/research/network/hero.jpg
+```
 
 メンバーの顔写真は、各メンバーレコードの `photo` フィールドに持つ（1人1枚、使い回しなし）。動画サムネイルは YouTube 等から取得するため管理対象外。ロゴ・アイコンはデザイン側の資産として扱い、データ層には含めない。
