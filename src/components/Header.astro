@@ -12,16 +12,23 @@ const { lang = 'ja' } = Astro.props;
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(href);
 
-const items = (await getNavItems(lang)).map((item) => ({
-  ...item,
-  active: isCurrent(item.href) || item.subs.some((s) => isCurrent(s.href)),
-}));
+// 現在のページそのものは "page"、配下のページを表示中の親項目は "true"
+const isPage = (href: string) => path === href;
+const items = (await getNavItems(lang)).map((item) => {
+  const active = isCurrent(item.href) || item.subs.some((s) => isCurrent(s.href));
+  return {
+    ...item,
+    active,
+    current: isPage(item.href) ? ('page' as const) : active ? ('true' as const) : undefined,
+    subs: item.subs.map((sub) => ({ ...sub, current: isPage(sub.href) ? ('page' as const) : undefined })),
+  };
+});
 ---
 
 <header class="site-header">
   <div class="bar">
     <a class="logo" href="/">
-      <img src="/images/logo/header-logo.png" alt="West Lab — Computing and Networking" />
+      <img src="/images/logo/header-logo.png" alt="West Lab — Computing and Networking" lang="en" />
     </a>
 
     <div class="nav-lang">
@@ -29,14 +36,14 @@ const items = (await getNavItems(lang)).map((item) => ({
         <ul>
           {items.map((item) => (
             <li class:list={['nav-item', { 'has-dropdown': item.subs.length > 0, active: item.active }]}>
-              <a class="nav-link t-ui" href={item.href} data-label={item.label} aria-current={item.active ? 'page' : undefined}>
+              <a class="nav-link t-ui" href={item.href} data-label={item.label} aria-current={item.current}>
                 {item.label}
               </a>
               {item.subs.length > 0 && (
                 <ul class="dropdown">
                   {item.subs.map((sub) => (
                     <li>
-                      <a class:list={['t-ui', { current: isCurrent(sub.href) }]} href={sub.href}>
+                      <a class:list={['t-ui', { current: isCurrent(sub.href) }]} href={sub.href} aria-current={sub.current}>
                         {sub.label}
                       </a>
                     </li>
@@ -53,7 +60,7 @@ const items = (await getNavItems(lang)).map((item) => ({
         <span class:list={['lang-option', { active: lang === 'en' }]}>EN</span>
       </div>
 
-      <form class="search-box desktop-only" action="/search/" role="search">
+      <form class="search-box desktop-only" action="/search/" role="search" aria-label={t(lang, 'nav.search.label')}>
         <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
         <label class="visually-hidden" for="header-search">{t(lang, 'nav.search')}</label>
         <input id="header-search" class="t-ui" type="search" name="q" placeholder={t(lang, 'nav.search')} />
@@ -81,27 +88,29 @@ const items = (await getNavItems(lang)).map((item) => ({
   </div>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <form class="search-row" action="/search/" role="search">
+    <form class="search-row" action="/search/" role="search" aria-label={t(lang, 'nav.search.label')}>
       <div class="search-box">
         <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
         <label class="visually-hidden" for="mobile-search">{t(lang, 'nav.search')}</label>
         <input id="mobile-search" class="t-ui" type="search" name="q" placeholder={t(lang, 'nav.search')} />
       </div>
     </form>
-    <ul>
-      {items.map((item) => (
-        <li>
-          <a class="nav-row t-ui" href={item.href}>{item.label}</a>
-          {item.subs.length > 0 && (
-            <ul>
-              {item.subs.map((sub) => (
-                <li><a class="nav-sub-row t-ui" href={sub.href}>{sub.label}</a></li>
-              ))}
-            </ul>
-          )}
-        </li>
-      ))}
-    </ul>
+    <nav aria-label={t(lang, 'nav.main')}>
+      <ul>
+        {items.map((item) => (
+          <li>
+            <a class="nav-row t-ui" href={item.href} aria-current={item.current}>{item.label}</a>
+            {item.subs.length > 0 && (
+              <ul>
+                {item.subs.map((sub) => (
+                  <li><a class="nav-sub-row t-ui" href={sub.href} aria-current={sub.current}>{sub.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -122,6 +131,11 @@ const items = (await getNavItems(lang)).map((item) => ({
   // デスクトップ幅になったら、見えなくなったモバイルメニューを閉じる
   matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
     if (e.matches) setMenu(false);
+  });
+
+  // Tab でメニューを抜けたら閉じる（隠れた本文にフォーカスが移るのを防ぐ）
+  header?.addEventListener('focusout', (e) => {
+    if (menu && !menu.hidden && e.relatedTarget && !header.contains(e.relatedTarget as Node)) setMenu(false);
   });
 
   // メニュー外のクリックで閉じる
