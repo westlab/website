@@ -26,7 +26,7 @@ const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
 const href = (slug: string) => `/research/${slug}/`;
 ---
 
-<BaseLayout title={topic.data.title} lang={lang}>
+<BaseLayout title={topic.data.title} description={topic.data.description ?? topic.data.summary} ogType="article" lang={lang}>
   <PageHero title={topic.data.title} image={heroImage} />
   <div class="content">
     <SideBand />

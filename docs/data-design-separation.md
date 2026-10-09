@@ -35,7 +35,7 @@
 対象：Research の研究トピック7項目。各トピックはタイトルと長めの説明文を持つ。
 
 - Astro Content Collections で、1項目1ファイル、言語ごとにペアで持つ：`src/content/research/ja/network.md` と `src/content/research/en/network.md`
-- front matter：`title`, `order`, `icon`（アイコン種別のキーのみ）, `summary`（必須。カード用の要約）, `hero`（任意。詳細ページ上部の画像パス）
+- front matter：`title`, `order`, `icon`（アイコン種別のキーのみ）, `summary`（必須。カード用の要約）, `description`（任意。meta description。未指定なら summary）, `hero`（任意。詳細ページ上部の画像パス）
 - 本文（Markdown）が説明文
 - ペアのファイル名を揃えているので、`stack-decision.md` の「対訳の欠落の警告」と「git コミット履歴を比較した英語版の古さの警告」を項目単位で適用できる
 
@@ -51,6 +51,7 @@
 - `src/components/` / `src/layouts/` は Figma のフレーム構成（Hero, Message Section, Nav Card, Page Title 等）に1:1で対応させる。デザインはほぼ変更しないため、サイトの中で最も安定した層になる
 - コンポーネントは上記のデータ／コンテンツを props として受け取るだけの表示専業とし、原稿を埋め込まない
 - ナビラベルやボタン文言などページ内容ではない UI 文言は、データ層に混ぜず `src/i18n/ui.ts` のような辞書で別管理する
+- meta description もデータ層に置く：`pages.yaml`（`meta_description_*` があれば優先）、`site.yaml`（トップと、Alumni・Videos・Search など `pages.yaml` に載せないページ）、研究トピックの front matter
 - Research トピックのアイコン（SVG）は、front matter の `icon` キーをコンポーネント側で解決する。データファイルに SVG やスタイルを持ち込まない
 
 ## 画像の持ち方

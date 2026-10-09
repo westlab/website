@@ -9,10 +9,11 @@ import { t } from '../../i18n/ui';
 const lang = 'ja' as const;
 const title = t(lang, 'nav.members.alumni');
 
+const site = (await getCollection('site'))[0];
 const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a.data.cohort);
 ---
 
-<BaseLayout title={title} lang={lang}>
+<BaseLayout title={title} description={site.data.page_descriptions.alumni.ja} lang={lang}>
   <PageHero title={title} image="/images/pages/alumni.jpg" />
   <section class="content">
     <SideBand />

@@ -28,7 +28,7 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
 }
 ---
 
-<BaseLayout title={page.data.title_ja} lang={lang}>
+<BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
   <section class="content">
     <SideBand />

@@ -19,7 +19,7 @@ const topics = (await getLocalizedList('research', lang)).sort((a, b) => a.data.
 const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title={t(lang, 'nav.research.about')} lang={lang}>
+<BaseLayout title={t(lang, 'nav.research.about')} description={page.data.description_ja} lang={lang}>
   <PageHero title={t(lang, 'nav.research.about')} image={page.data.image} />
   <div class="content">
     <SideBand />

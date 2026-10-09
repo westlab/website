@@ -6,12 +6,17 @@ import type { Lang } from '../i18n/ui';
 
 interface Props {
   title: string;
+  // 検索結果・SNS共有に出る要約。各ページのデータ層から渡す
+  description: string;
+  // 記事ページなどは 'article' を渡す
+  ogType?: 'website' | 'article';
   lang?: Lang;
   /** false なら検索インデックスに含めない（検索ページ自身など） */
   indexable?: boolean;
 }
 
-const { title, lang = 'ja', indexable = true } = Astro.props;
+const { title, description, ogType = 'website', lang = 'ja', indexable = true } = Astro.props;
+const fullTitle = `${title} | 西研究室`;
 ---
 
 <!doctype html>
@@ -26,7 +31,12 @@ const { title, lang = 'ja', indexable = true } = Astro.props;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
     />
-    <title>{title} | 西研究室</title>
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="西研究室" />
   </head>
   <body>
     <Header lang={lang} />

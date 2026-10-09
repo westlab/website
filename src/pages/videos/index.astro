@@ -15,11 +15,12 @@ import { t } from '../../i18n/ui';
 const lang = 'ja' as const;
 const heroImage = '/images/pages/placeholder.jpg';
 
+const site = (await getCollection('site'))[0];
 const videos = (await getCollection('videos')).sort((a, b) => a.data.order - b.data.order);
 const title = t(lang, 'nav.research.videos');
 ---
 
-<BaseLayout title={title} lang={lang}>
+<BaseLayout title={title} description={site.data.page_descriptions.videos.ja} lang={lang}>
   <PageHero title={title} image={heroImage} />
   <div class="content">
     <SideBand />

@@ -14,7 +14,7 @@ const doc = await getLocalizedDoc('pagesContent', lang, 'applicants');
 const { Content } = doc ? await render(doc) : { Content: null };
 ---
 
-<BaseLayout title={page.data.title_ja} lang={lang}>
+<BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
   <section class="content">
     <SideBand />
