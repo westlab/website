@@ -2,7 +2,9 @@
 
 Run with the bundled Python environment (Pillow and NumPy required):
     python scripts/generate-standardization-hero.py
-Writes public/images/research/standardization/hero.jpg (2880x940, JPEG).
+Writes public/images/research/standardization/hero.jpg (1920x627, JPEG).
+Drawing happens at 2880x940 and is downscaled on save to stay within the
+image size limits (scripts/image-limits.mjs).
 Irregular hexagons (diverse, unstandardized) converge into a uniform hexagon cluster (the
 standard). The banner is shown with object-fit: cover at a fixed 470px height, so every
 motif stays inside the safe band y in [0.30H, 0.70H] and x in [1100, 2380]; the left stays
@@ -20,6 +22,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 OUT = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "standardization" / "hero.jpg"
 W, H = 2880, 940
+OUT_W, OUT_H = 1920, 627  # committed size; matches the size limits
 CY = H / 2
 BAND = (0.30 * H, 0.70 * H)  # always visible under object-fit: cover
 RNG = np.random.default_rng(42)
@@ -139,7 +142,8 @@ def main() -> None:
 
     img = img.filter(ImageFilter.SMOOTH_MORE)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    img.convert("RGB").save(OUT, quality=88, optimize=True)
+    img = img.convert("RGB").resize((OUT_W, OUT_H), Image.Resampling.LANCZOS)
+    img.save(OUT, quality=80, optimize=True)
     print(f"saved {OUT} {img.size}")
 
 

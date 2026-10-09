@@ -14,15 +14,17 @@
     "lint": "prettier --check \"src/**/*.{md,yaml}\" && node scripts/check-headings.mjs && node scripts/check-quotes.mjs",
     "lint:headings": "node scripts/check-headings.mjs",
     "lint:quotes": "node scripts/check-quotes.mjs",
-    "test": "node scripts/check-page-heroes.mjs",
+    "test": "node scripts/check-page-heroes.mjs && node scripts/check-image-sizes.mjs",
     "lint:fix": "prettier --write \"src/**/*.{md,yaml}\"",
-    "prepare": "git config core.hooksPath .githooks"
+    "prepare": "git config core.hooksPath .githooks",
+    "compress:images": "node scripts/compress-images.mjs"
   },
   "dependencies": {
     "astro": "^7.2.4"
   },
   "devDependencies": {
     "pagefind": "^1.5.2",
-    "prettier": "^3.9.9"
+    "prettier": "^3.9.9",
+    "sharp": "^0.35.3"
   }
 }
