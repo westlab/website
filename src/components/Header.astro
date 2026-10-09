@@ -25,7 +25,7 @@ const items = (await getNavItems(lang)).map((item) => ({
     </a>
 
     <div class="nav-lang">
-      <nav class="desktop-nav" aria-label="メイン">
+      <nav class="desktop-nav" aria-label={t(lang, 'nav.main')}>
         <ul>
           {items.map((item) => (
             <li class:list={['nav-item', { 'has-dropdown': item.subs.length > 0, active: item.active }]}>
@@ -106,13 +106,57 @@ const items = (await getNavItems(lang)).map((item) => ({
 </header>
 
 <script>
-  const button = document.querySelector<HTMLButtonElement>('.site-header .menu-button');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const button = header?.querySelector<HTMLButtonElement>('.menu-button');
   const menu = document.getElementById('mobile-menu');
-  button?.addEventListener('click', () => {
-    const open = button.getAttribute('aria-expanded') !== 'true';
+
+  const setMenu = (open: boolean) => {
+    if (!button || !menu) return;
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', (open ? button.dataset.labelClose : button.dataset.labelOpen) ?? '');
-    if (menu) menu.hidden = !open;
+    menu.hidden = !open;
+  };
+
+  button?.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+
+  // デスクトップ幅になったら、見えなくなったモバイルメニューを閉じる
+  matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+    if (e.matches) setMenu(false);
+  });
+
+  // メニュー外のクリックで閉じる
+  document.addEventListener('click', (e) => {
+    if (menu && !menu.hidden && !header?.contains(e.target as Node)) setMenu(false);
+  });
+
+  // Esc でモバイルメニュー・ドロップダウンを閉じる
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (menu && !menu.hidden) {
+      setMenu(false);
+      if (button?.offsetParent) button.focus();
+      return;
+    }
+    // フォーカス中、またはホバーで開いているドロップダウンを閉じる
+    const item =
+      (e.target as Element).closest<HTMLElement>('.nav-item.has-dropdown') ??
+      document.querySelector<HTMLElement>('.nav-item.has-dropdown:hover');
+    if (item) {
+      item.classList.add('dismissed');
+      if (item.contains(document.activeElement)) item.querySelector<HTMLElement>('.nav-link')?.focus();
+    }
+  });
+
+  // 閉じたドロップダウンは、ポインタやフォーカスが離れたら元に戻す
+  document.querySelectorAll<HTMLElement>('.nav-item.has-dropdown').forEach((item) => {
+    const reset = () => item.classList.remove('dismissed');
+    // フォーカスが中に残っていれば、閉じたままにする
+    item.addEventListener('mouseleave', () => {
+      if (!item.contains(document.activeElement)) reset();
+    });
+    item.addEventListener('focusout', (e) => {
+      if (!item.contains(e.relatedTarget as Node)) reset();
+    });
   });
 </script>
 
@@ -233,8 +277,8 @@ const items = (await getNavItems(lang)).map((item) => ({
     height: 16px;
   }
 
-  .nav-item:hover > .dropdown,
-  .nav-item:focus-within > .dropdown {
+  .nav-item:not(.dismissed):hover > .dropdown,
+  .nav-item:not(.dismissed):focus-within > .dropdown {
     opacity: 1;
     visibility: visible;
     transform: none;
