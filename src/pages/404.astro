@@ -1,0 +1,83 @@
+---
+// Figma: 404 Page / 404 Page (Mobile)。パンくず + 見出し(H1) + 案内文 + リンク2つ。
+// 存在しない URL でサーバーが返す。検索インデックスと検索エンジンの対象外。
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SideBand from '../components/SideBand.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { t } from '../i18n/ui';
+
+const lang = 'ja' as const;
+const title = t(lang, 'notfound.title');
+---
+
+<BaseLayout title={title} description={t(lang, 'notfound.lead')} lang={lang} indexable={false}>
+  <section class="content">
+    <SideBand />
+    <div class="main">
+      <Breadcrumb lang={lang} current={{ label: title, href: '/404/' }} />
+      <h1 class="t-h1">{title}</h1>
+      <div class="body">
+        <p class="t-body">{t(lang, 'notfound.lead')}</p>
+        <ul class="t-ui">
+          <li><a href="/">{t(lang, 'notfound.home')}</a></li>
+          <li><a href="/search/">{t(lang, 'notfound.search')}</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Figma: 404 Page / Content */
+  .content {
+    position: relative;
+    padding: 64px var(--gutter) 96px;
+    overflow: hidden;
+  }
+
+  .main {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    color: var(--color-navy);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--color-navy);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: 32px;
+      padding-bottom: 48px;
+    }
+
+    ul {
+      flex-direction: column;
+    }
+  }
+</style>
