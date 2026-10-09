@@ -1,16 +1,17 @@
 ---
 // Figma: Page Title（下層ページ上部の写真バナー。1440×470 / Mobile 375×128。
-// モバイルで長いタイトルが折り返す場合は最小128pxのまま下に伸びる）
+// モバイルで長いタイトルが折り返す場合は最小128pxのまま下に伸びる）。
+// image を渡さないページ（404）は写真の代わりに紺の単色で、高さ280px（Figma: 404 Page）。
 interface Props {
   title: string;
-  image: string;
+  image?: string;
 }
 
 const { title, image } = Astro.props;
 ---
 
-<div class="page-hero">
-  <img class="photo" src={image} alt="" />
+<div class={image ? 'page-hero' : 'page-hero plain'}>
+  {image && <img class="photo" src={image} alt="" />}
   <h1 class="t-display-page-title">{title}</h1>
 </div>
 
@@ -22,6 +23,15 @@ const { title, image } = Astro.props;
     height: 470px;
     padding: 80px var(--gutter) 60px;
     overflow: hidden;
+  }
+
+  .plain {
+    height: 280px;
+    background: var(--color-navy);
+  }
+
+  .plain h1 {
+    text-shadow: none;
   }
 
   .photo {
