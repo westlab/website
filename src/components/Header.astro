@@ -44,7 +44,7 @@ const items = pages.map((page) => {
     </a>
 
     <div class="nav-lang">
-      <nav class="desktop-nav" aria-label="メイン">
+      <nav class="desktop-nav" aria-label={t(lang, 'nav.main')}>
         <ul>
           {items.map((item) => (
             <li class:list={['nav-item', { 'has-dropdown': item.subs.length > 0, active: item.active }]}>
@@ -137,6 +137,11 @@ const items = pages.map((page) => {
   };
 
   button?.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
+
+  // デスクトップ幅になったら、見えなくなったモバイルメニューを閉じる
+  matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+    if (e.matches) setMenu(false);
+  });
 
   // メニュー外のクリックで閉じる
   document.addEventListener('click', (e) => {
