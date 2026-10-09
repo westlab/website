@@ -21,7 +21,7 @@ const number = String(index + 1).padStart(2, '0');
     <img src={page.data.image} alt="" loading="lazy" />
   </div>
   <div class="text">
-    <p class="number t-ui-bold">{number}</p>
+    <p class="number t-ui-bold" aria-hidden="true">{number}</p>
     <h2 class="t-card-title">{title}</h2>
     <span class="divider"></span>
     <p class="t-body">{description}</p>
@@ -74,7 +74,7 @@ const number = String(index + 1).padStart(2, '0');
   }
 
   .number {
-    color: rgba(0, 0, 123, 0.45);
+    color: rgba(0, 0, 123, 0.6);
   }
 
   h2,
