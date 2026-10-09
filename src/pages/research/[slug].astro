@@ -94,6 +94,11 @@ const href = (slug: string) => `/research/${slug}/`;
     margin: 0 0 16px;
   }
 
+  /* 長い DOI や URL のリンクは 320px 幅で本文からはみ出すので、リンクだけ折り返す（日本語の改行位置は変えない） */
+  .article :global(a) {
+    overflow-wrap: anywhere;
+  }
+
   /* 画像は本文幅いっぱいにせず、上限サイズで中央に置く（キャプションは remark-figure が alt から生成） */
   .article :global(figure) {
     margin: 32px 0;
