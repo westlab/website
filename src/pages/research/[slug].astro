@@ -136,7 +136,7 @@ const href = (slug: string) => `/research/${slug}/`;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     padding-top: 40px;
-    border-top: 1.5px solid rgba(0, 0, 123, 0.18);
+    border-top: 1.5px solid var(--color-navy-divider);
   }
 
   .pager-link {
@@ -145,7 +145,7 @@ const href = (slug: string) => `/research/${slug}/`;
     gap: 8px;
     padding: 24px;
     border-radius: 16px;
-    background: #f8f8fa;
+    background: var(--color-surface-card);
     color: var(--color-text);
     text-decoration: none;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -153,7 +153,7 @@ const href = (slug: string) => `/research/${slug}/`;
 
   .pager-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 123, 0.12);
+    box-shadow: 0 8px 24px var(--color-navy-shadow);
   }
 
   .pager-link.next {

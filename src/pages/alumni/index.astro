@@ -58,7 +58,7 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
 
   .cohort h2 {
     margin: 0;
-    color: #2c4faf;
+    color: var(--color-blue-medium);
   }
 
   .divider {
@@ -80,7 +80,7 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
 
   .name {
     width: 180px;
-    color: #26262e;
+    color: var(--color-text);
   }
 
   @media (max-width: 767px) {
