@@ -35,7 +35,7 @@ const href = (slug: string) => `/research/${slug}/`;
       <article class="article">
         <Content />
       </article>
-      <nav class="pager" aria-label={t(lang, 'research.pager.label')}>
+      <nav class="pager" aria-label={t(lang, 'research.pager.label')} data-pagefind-ignore>
         {prev && (
           <a class="pager-link prev" href={href(prev.slug)} rel="prev">
             <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
@@ -139,7 +139,7 @@ const href = (slug: string) => `/research/${slug}/`;
 
   .pager-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--color-navy-shadow);
+    box-shadow: 0 8px 24px var(--color-navy-faint);
   }
 
   .pager-link.next {

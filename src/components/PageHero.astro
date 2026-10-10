@@ -11,7 +11,7 @@ const { title, image } = Astro.props;
 
 <div class="page-hero">
   <img class="photo" src={image} alt="" />
-  <h1 class="t-display-page-title">{title}</h1>
+  <h1 class="t-display-page-title" data-pagefind-meta="title" data-pagefind-ignore>{title}</h1>
 </div>
 
 <style>
