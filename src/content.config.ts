@@ -67,6 +67,8 @@ const site = defineCollection({
     id: z.string(),
     name_ja: z.string(),
     name_en: z.string(),
+    title_ja: z.string(),
+    title_en: z.string(),
     columns: z.array(
       z.array(
         z.object({

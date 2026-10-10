@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
+import { getEntry } from 'astro:content';
 import { t, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -11,12 +12,16 @@ interface Props {
   // 記事ページなどは 'article' を渡す
   ogType?: 'website' | 'article';
   lang?: Lang;
+  /** false なら title に「| 研究室名」を付けない（トップ） */
+  titleSuffix?: boolean;
   /** false なら Pagefind と検索エンジンの対象外にする（検索ページ・404） */
   indexable?: boolean;
 }
 
-const { title, description, ogType = 'website', lang = 'ja', indexable = true } = Astro.props;
-const fullTitle = `${title} | 西研究室`;
+const { title, description, ogType = 'website', lang = 'ja', indexable = true, titleSuffix = true } = Astro.props;
+const site = (await getEntry('site', 'contact'))!.data;
+const siteName = site[`name_${lang}`];
+const fullTitle = titleSuffix ? `${title} | ${siteName}` : title;
 ---
 
 <!doctype html>
@@ -37,7 +42,7 @@ const fullTitle = `${title} | 西研究室`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="西研究室" />
+    <meta property="og:site_name" content={siteName} />
   </head>
   <body>
     <a class="skip-link t-ui-bold" href="#main">{t(lang, 'nav.skip')}</a>
