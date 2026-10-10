@@ -9,7 +9,8 @@ import { t } from '../../i18n/ui';
 const lang = 'ja' as const;
 const site = (await getCollection('site'))[0];
 
-const siteName = '西研究室'; // BaseLayout が title に付ける名前と同じ
+const l = (obj: Record<string, any>, key: string) => obj[`${key}_${lang}`];
+const siteName = l(site.data, 'name'); // BaseLayout が title に付ける名前と同じ
 
 const strings = {
   siteName,
