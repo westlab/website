@@ -4,7 +4,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getLocalizedList } from '../../lib/content';
 import { getPageImage } from '../../lib/pages';
@@ -29,45 +29,31 @@ const href = (slug: string) => `/research/${slug}/`;
 
 <BaseLayout title={topic.data.title} description={topic.data.description ?? topic.data.summary} ogType="article" lang={lang}>
   <PageHero title={topic.data.title} image={heroImage} />
-  <div class="content">
-    <SideBand />
-    <div class="main">
-      <Breadcrumb lang={lang} current={{ label: topic.data.title, href: href(topic.slug) }} />
-      <div class="body">
-        <article class="article">
-          <Content />
-        </article>
-        <nav class="pager" aria-label={t(lang, 'research.pager.label')}>
-          {prev && (
-            <a class="pager-link prev" href={href(prev.slug)} rel="prev">
-              <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
-              <span class="title t-item">{prev.data.title}</span>
-            </a>
-          )}
-          {next && (
-            <a class="pager-link next" href={href(next.slug)} rel="next">
-              <span class="label t-ui-small-bold">{t(lang, 'research.pager.next')}<span aria-hidden="true"> →</span></span>
-              <span class="title t-item">{next.data.title}</span>
-            </a>
-          )}
-        </nav>
-      </div>
+  <PageContent maxWidth="900px" mobileTop={40} mobileBottom={40}>
+    <Breadcrumb lang={lang} current={{ label: topic.data.title, href: href(topic.slug) }} />
+    <div class="body">
+      <article class="article">
+        <Content />
+      </article>
+      <nav class="pager" aria-label={t(lang, 'research.pager.label')}>
+        {prev && (
+          <a class="pager-link prev" href={href(prev.slug)} rel="prev">
+            <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
+            <span class="title t-item">{prev.data.title}</span>
+          </a>
+        )}
+        {next && (
+          <a class="pager-link next" href={href(next.slug)} rel="next">
+            <span class="label t-ui-small-bold">{t(lang, 'research.pager.next')}<span aria-hidden="true"> →</span></span>
+            <span class="title t-item">{next.data.title}</span>
+          </a>
+        )}
+      </nav>
     </div>
-  </div>
+  </PageContent>
 </BaseLayout>
 
 <style>
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-  }
-
-  .main {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
@@ -167,11 +153,6 @@ const href = (slug: string) => `/research/${slug}/`;
   }
 
   @media (max-width: 767px) {
-    .content {
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-
     .pager {
       grid-template-columns: 1fr;
       gap: 16px;

@@ -3,7 +3,7 @@
 // 検索は Pagefind（ビルド時インデックス）をブラウザで実行する。
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
@@ -40,15 +40,14 @@ const strings = {
     </form>
   </section>
 
-  <section class="content">
-    <SideBand />
-    <div class="main">
+  <PageContent top={48} bottom={64} clip mobileTop={8} mobileBottom={32}>
+    <div class="result-list">
       <noscript><p class="message t-body">{t(lang, 'search.noscript')}</p></noscript>
       <p class="message t-body" id="search-message" hidden></p>
       <ol class="results" id="search-results"></ol>
       <nav class="pagination" id="search-pagination" aria-label={t(lang, 'search.page.nav')} hidden></nav>
     </div>
-  </section>
+  </PageContent>
 
   <script id="search-strings" type="application/json" set:html={JSON.stringify(strings)} />
 
@@ -269,20 +268,11 @@ const strings = {
   }
 
   /* Figma: Content / Result List */
-  .content {
-    position: relative;
-    padding: 48px var(--gutter) 64px;
-    overflow: hidden;
-  }
-
-  .main {
-    position: relative;
+  .result-list {
     display: flex;
     flex-direction: column;
     gap: 48px;
-    max-width: 1200px;
     min-height: 240px;
-    margin: 0 auto;
   }
 
   .message {
@@ -376,11 +366,6 @@ const strings = {
     h1,
     .count {
       margin-bottom: 12px;
-    }
-
-    .content {
-      padding-top: 8px;
-      padding-bottom: 32px;
     }
 
     .pagination {

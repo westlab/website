@@ -3,7 +3,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
 import { getLocalizedDoc, getLocalizedList } from '../../lib/content';
@@ -22,57 +22,43 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
 
 <BaseLayout title={t(lang, 'nav.research.about')} description={page.data.description_ja} lang={lang}>
   <PageHero title={t(lang, 'nav.research.about')} image={page.data.image} />
-  <div class="content">
-    <SideBand />
-    <div class="main">
-      <Breadcrumb lang={lang} />
-      <div class="body">
-        <section class="block intro">
-          <h2 class="t-section">{intro?.data.title}</h2>
-          {IntroContent && <IntroContent />}
-        </section>
+  <PageContent tabletBottom={80} mobileTop={40} mobileBottom={40}>
+    <Breadcrumb lang={lang} />
+    <div class="body">
+      <section class="block intro">
+        <h2 class="t-section">{intro?.data.title}</h2>
+        {IntroContent && <IntroContent />}
+      </section>
 
-        <section class="block">
-          <h2 class="t-section">{t(lang, 'research.topics.title')}</h2>
-          <p class="t-body">{t(lang, 'research.topics.lead')}</p>
-        </section>
+      <section class="block">
+        <h2 class="t-section">{t(lang, 'research.topics.title')}</h2>
+        <p class="t-body">{t(lang, 'research.topics.lead')}</p>
+      </section>
 
-        <div class="topics-grid">
-          {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
-        </div>
-
-        <section class="block past">
-          <h2 class="t-section">{t(lang, 'research.past.title')}</h2>
-          <p class="t-body">{t(lang, 'research.past.lead')}</p>
-          <div class="qa-list">
-            {pastResearch.map((item) => (
-              <details class="qa-item">
-                <summary class="t-item">
-                  <span>{item.data.title_ja}</span>
-                  <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
-                </summary>
-                <p class="t-body answer">{item.data.body_ja}</p>
-              </details>
-            ))}
-          </div>
-        </section>
+      <div class="topics-grid">
+        {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
       </div>
+
+      <section class="block past">
+        <h2 class="t-section">{t(lang, 'research.past.title')}</h2>
+        <p class="t-body">{t(lang, 'research.past.lead')}</p>
+        <div class="qa-list">
+          {pastResearch.map((item) => (
+            <details class="qa-item">
+              <summary class="t-item">
+                <span>{item.data.title_ja}</span>
+                <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
+              </summary>
+              <p class="t-body answer">{item.data.body_ja}</p>
+            </details>
+          ))}
+        </div>
+      </section>
     </div>
-  </div>
+  </PageContent>
 </BaseLayout>
 
 <style>
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-  }
-
-  .main {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
@@ -152,18 +138,7 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
     white-space: pre-line;
   }
 
-  @media (max-width: 1023px) {
-    .content {
-      padding-bottom: 80px;
-    }
-  }
-
   @media (max-width: 767px) {
-    .content {
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-
     .topics-grid {
       grid-template-columns: 1fr;
       gap: 16px;

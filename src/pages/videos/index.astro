@@ -6,7 +6,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import VideoCard from '../../components/VideoCard.astro';
 import { getPageImage } from '../../lib/pages';
@@ -22,30 +22,16 @@ const title = t(lang, 'nav.research.videos');
 
 <BaseLayout title={title} description={site.data.page_descriptions.videos.ja} lang={lang}>
   <PageHero title={title} image={heroImage} />
-  <div class="content">
-    <SideBand />
-    <div class="main">
-      <Breadcrumb lang={lang} />
-      <div class="body">
-        <p class="t-body lead">{t(lang, 'videos.lead')}</p>
-        {videos.map((video) => <VideoCard video={video.data} lang={lang} />)}
-      </div>
+  <PageContent>
+    <Breadcrumb lang={lang} />
+    <div class="body">
+      <p class="t-body lead">{t(lang, 'videos.lead')}</p>
+      {videos.map((video) => <VideoCard video={video.data} lang={lang} />)}
     </div>
-  </div>
+  </PageContent>
 </BaseLayout>
 
 <style>
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-  }
-
-  .main {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
@@ -57,10 +43,4 @@ const title = t(lang, 'nav.research.videos');
     margin: 0;
   }
 
-  @media (max-width: 767px) {
-    .content {
-      padding-top: 32px;
-      padding-bottom: 32px;
-    }
-  }
 </style>

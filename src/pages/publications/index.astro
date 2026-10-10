@@ -4,6 +4,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import PublicationEntry from '../../components/PublicationEntry.astro';
 import { getNavPage } from '../../lib/pages';
@@ -55,8 +56,8 @@ const activeId = blocks[blocks.length - 1].id;
 
 <BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <section class="content">
-    <div class="main">
+  <PageContent sideBand={false}>
+    <div class="publications">
       <Breadcrumb lang={lang} />
       <div class="body">
         <nav class="block-nav" aria-label={t(lang, 'publications.blockNav')}>
@@ -98,7 +99,7 @@ const activeId = blocks[blocks.length - 1].id;
         </div>
       </div>
     </div>
-  </section>
+  </PageContent>
 </BaseLayout>
 
 <script>
@@ -107,7 +108,7 @@ const activeId = blocks[blocks.length - 1].id;
   // 未対応ブラウザでは通常の hidden（検索対象外）にフォールバックする。
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-block]'));
   const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-block-panel]'));
-  const root = document.querySelector('.main');
+  const root = document.querySelector('.publications');
   root?.classList.add('is-tabbed');
 
   const canFind = 'onbeforematch' in document.body;
@@ -146,16 +147,6 @@ const activeId = blocks[blocks.length - 1].id;
 </script>
 
 <style>
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-  }
-
-  .main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
@@ -199,7 +190,7 @@ const activeId = blocks[blocks.length - 1].id;
     gap: 56px;
   }
 
-  .main.is-tabbed .blocks {
+  .publications.is-tabbed .blocks {
     gap: 0;
   }
 
@@ -259,11 +250,6 @@ const activeId = blocks[blocks.length - 1].id;
   }
 
   @media (max-width: 767px) {
-    .content {
-      padding-top: 32px;
-      padding-bottom: 32px;
-    }
-
     .body,
     .blocks,
     .block {

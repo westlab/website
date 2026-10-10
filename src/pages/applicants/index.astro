@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getNavPage } from '../../lib/pages';
 import { getLocalizedDoc } from '../../lib/content';
@@ -16,45 +16,23 @@ const { Content } = doc ? await render(doc) : { Content: null };
 
 <BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <section class="content">
-    <SideBand />
-    <div class="main">
-      <Breadcrumb lang={lang} />
-      <div class="body">
-        <div class="prose">
-          {Content && <Content />}
-        </div>
+  <PageContent clip mobileBottom={56}>
+    <Breadcrumb lang={lang} />
+    <div class="body">
+      <div class="prose">
+        {Content && <Content />}
       </div>
     </div>
-  </section>
+  </PageContent>
 </BaseLayout>
 
 <style>
   /* Figma: Admission Page / Content */
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-    overflow: hidden;
-  }
-
-  .main {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
     flex-direction: column;
     gap: 56px;
-  }
-
-  @media (max-width: 767px) {
-    .content {
-      padding-top: 32px;
-      padding-bottom: 56px;
-    }
   }
 
   /* Markdown本文 (Figma: Section / ... , Template Card, QA List)。サイズは型ランプの変数 (--type-*) を参照 */

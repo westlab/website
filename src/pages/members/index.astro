@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getNavPage } from '../../lib/pages';
 
@@ -30,8 +30,7 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
 
 <BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <section class="content">
-    <SideBand />
+  <PageContent maxWidth="none" mobileTop={64} mobileBottom={96}>
     <Breadcrumb lang={lang} />
     <div class="body">
       {groups.map((group) => (
@@ -50,16 +49,10 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
         </div>
       ))}
     </div>
-  </section>
+  </PageContent>
 </BaseLayout>
 
 <style>
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-    background: #fff;
-  }
-
   /* パンくずの下の本文。グループ間の間隔はここで持つ（Figma: Content > Body） */
   .body {
     display: flex;
