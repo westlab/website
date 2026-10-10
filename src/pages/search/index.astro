@@ -9,7 +9,11 @@ import { t } from '../../i18n/ui';
 const lang = 'ja' as const;
 const site = (await getCollection('site'))[0];
 
+const siteName = '西研究室'; // BaseLayout が title に付ける名前と同じ
+
 const strings = {
+  siteName,
+  filter: t(lang, 'search.form.label'),
   label: t(lang, 'search.label'),
   title: t(lang, 'search.title'),
   count: t(lang, 'search.count'),
@@ -31,9 +35,9 @@ const strings = {
 >
   <section class="search-header">
     <p class="label t-caption-label" id="search-label" hidden>{t(lang, 'search.label')}</p>
-    <h1 class="t-section" id="search-title">{t(lang, 'search.label')}</h1>
+    <h1 class="t-section" id="search-title" tabindex="-1">{t(lang, 'search.label')}</h1>
     <p class="count t-caption" id="search-count" role="status" aria-live="polite"></p>
-    <form class="search-box" action="/search/" role="search">
+    <form class="search-box" action="/search/" role="search" aria-label={strings.filter}>
       <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
       <label class="visually-hidden" for="search-page-input">{t(lang, 'nav.search')}</label>
       <input id="search-page-input" class="t-ui" type="search" name="q" autocomplete="off" />
@@ -71,7 +75,7 @@ const strings = {
     const listEl = $('search-results');
     const navEl = $('search-pagination');
 
-    type Hit = { url: string; excerpt: string; meta: { title?: string } };
+    type Hit = { url: string; excerpt: string; content?: string; meta: { title?: string } };
     type Pagefind = {
       search(q: string): Promise<{ results: { data(): Promise<Hit> }[] }>;
     };
@@ -97,6 +101,18 @@ const strings = {
       if (pagefind) return pagefind;
       pagefind = await (window as unknown as { __pagefind: Promise<Pagefind | null> }).__pagefind;
       return pagefind;
+    }
+
+    const squash = (s: string) => s.replace(/\s+/g, '');
+
+    // 抜粋が本文の先頭・末尾に届いていなければ、その側は切り出されている
+    function clipped(hit: Hit) {
+      const text = document.createElement('div');
+      text.innerHTML = hit.excerpt;
+      const ex = squash(text.textContent ?? '');
+      const body = squash(hit.content ?? '');
+      if (!ex || !body) return { head: true, tail: true };
+      return { head: !body.startsWith(ex.slice(0, 20)), tail: !body.endsWith(ex.slice(-20)) };
     }
 
     function pageHref(q: string, page: number) {
@@ -146,13 +162,14 @@ const strings = {
       if (!q) {
         titleEl.textContent = strings.label;
         $('search-label').hidden = true;
+        document.title = `${strings.label} | ${strings.siteName}`;
         countEl.textContent = '';
         message(strings.prompt);
         return;
       }
       $('search-label').hidden = false;
       titleEl.textContent = fmt(strings.title, { q });
-      document.title = `${titleEl.textContent} | 西研究室`;
+      document.title = `${titleEl.textContent} | ${strings.siteName}`;
       countEl.textContent = strings.loading;
 
       const pf = await load();
@@ -188,7 +205,9 @@ const strings = {
         a.textContent = hit.meta.title || hit.url;
         const p = document.createElement('p');
         p.className = 'excerpt t-caption';
-        p.innerHTML = hit.excerpt; // Pagefind が本文を整形し、一致箇所を <mark> で囲む
+        // Pagefind が本文を整形し、一致箇所を <mark> で囲む。本文の途中から切り出したときだけ「…」を付ける
+        const { head, tail } = clipped(hit);
+        p.innerHTML = (head ? '…' : '') + hit.excerpt + (tail ? '…' : '');
         li.append(a, p);
         listEl.append(li);
       }
@@ -200,7 +219,10 @@ const strings = {
       if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
       e.preventDefault();
       history.pushState(null, '', a.href);
-      run().then(() => titleEl.scrollIntoView({ block: 'start' }));
+      run().then(() => {
+        titleEl.scrollIntoView({ block: 'start' });
+        titleEl.focus({ preventScroll: true });
+      });
     });
     window.addEventListener('popstate', run);
     run();
@@ -228,6 +250,11 @@ const strings = {
     margin: 0 0 14px;
     color: var(--color-text);
     overflow-wrap: anywhere;
+  }
+
+  /* ページ送り後のフォーカス先。輪郭は出さない（BaseLayout の main:focus と同じ） */
+  h1:focus {
+    outline: none;
   }
 
   .count {
@@ -297,7 +324,7 @@ const strings = {
 
   .results :global(.item) {
     padding: 16px 0;
-    border-bottom: 1px solid var(--color-navy);
+    border-bottom: 1px solid rgba(0, 0, 123, 0.12); /* Figma: Divider */
   }
 
   .results :global(.item:last-child) {
