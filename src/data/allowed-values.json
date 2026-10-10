@@ -1,0 +1,17 @@
+{
+  "memberGrades": ["博士課程", "修士課程", "学部生"],
+  "memberGradesHidden": ["教授"],
+  "memberYears": ["B3", "B4", "M1", "M2", "D1", "D2", "D3"],
+  "publicationCategories": [
+    "論文誌",
+    "国際会議/査読付収録論文",
+    "国内研究会/収録論文/口頭発表等",
+    "講演等",
+    "報道・展示等",
+    "学術解説等",
+    "著書",
+    "特許出願",
+    "受賞等"
+  ],
+  "publicationBlockStarts": [2015, 2020, 2025]
+}

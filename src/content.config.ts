@@ -99,12 +99,13 @@ const members = defineCollection({
   loader: file("./src/data/members.yaml"),
   schema: z.object({
     id: z.string(),
+    // 区分。書ける値と並び順は src/data/allowed-values.json（範囲外は npm run check:data で警告。ビルドは止めない）
     grade: z.string(),
     names: z.array(
       z.object({
         name_ja: z.string(),
         name_en: z.string(),
-        // 学年。同じ値が続く範囲を1行にまとめて表示する
+        // 学年。同じ値が続く範囲を1行にまとめて表示する。書ける値は src/data/allowed-values.json（範囲外は警告のみ）
         year: z.string().optional(),
       }),
     ),
@@ -132,6 +133,7 @@ const publications = defineCollection({
     year: z.number(),
     // Figmaの分類（論文誌／国際会議・査読付収録論文／国内研究会・収録論文・口頭発表等／
     // 講演等／報道・展示等／学術解説等／著書／特許出願／受賞等）に合わせる。
+    // 書ける値と並び順は src/data/allowed-values.json（範囲外は npm run check:data で警告。ビルドは止めない）
     category: z.string(),
     // 著者・タイトル・掲載誌などは論文ごとに書式が異なるため分割せず、
     // 出典サイトの表記をそのまま1本の文字列で保持する（Figmaの Entry コンポーネントも citation 単一テキスト）。

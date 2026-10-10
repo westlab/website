@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import allowed from '../../data/allowed-values.json';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
@@ -9,7 +10,8 @@ import { getNavPage } from '../../lib/pages';
 const lang = 'ja' as const;
 
 // Figma「Members Page」は 博士課程 / 修士課程 / 学部生 の3グループ構成。教授は掲載しない。
-const GRADE_ORDER = ['博士課程', '修士課程', '学部生'];
+// 区分と並び順は src/data/allowed-values.json（警告スクリプト scripts/check-data-values.mjs と共通）。
+const GRADE_ORDER = allowed.memberGrades;
 
 const page = await getNavPage('members');
 const groups = (await getCollection('members'))
