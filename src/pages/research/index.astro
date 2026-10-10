@@ -22,7 +22,7 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
 
 <BaseLayout title={t(lang, 'nav.research.about')} description={page.data.description_ja} lang={lang}>
   <PageHero title={t(lang, 'nav.research.about')} image={page.data.image} />
-  <PageContent tabletBottom={80} mobileTop={40} mobileBottom={40}>
+  <PageContent tabletBottom={80} mobileTop={40}>
     <Breadcrumb lang={lang} />
     <div class="body">
       <section class="block intro">

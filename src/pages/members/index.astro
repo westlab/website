@@ -32,7 +32,7 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
 
 <BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <PageContent maxWidth="none" mobileTop={64} mobileBottom={96}>
+  <PageContent maxWidth="none" mobileTop={64}>
     <Breadcrumb lang={lang} />
     <div class="body">
       {groups.map((group) => (
