@@ -1,4 +1,8 @@
 # id は <年度>-<分類>-<連番>（例: 2026-journal-1）。分類は journal・intl-conf・domestic-conf・talk・press・article・book・patent・award。ファイルの中で重複させない（重複すると片方が表示されない）。
+# citation は次の形で書く。業績ページのプレーンテキストをそのまま貼れる（# : " \ もそのまま書ける）。
+#   citation: >-
+#     Taro Keio, Hiroaki Nishi, “Rust #2 and C# Toolkit…”, IEEE Access, 2026.
+# 1行目は `citation: >-`、本文は次の行から字下げ（スペース4つ）して貼る。"..." で囲まない。複数行に分かれていても1行につながる。
 # category は下記のいずれか
 #   論文誌
 #   国際会議/査読付収録論文
@@ -16,1434 +20,1721 @@
 - id: "2026-journal-1"
   year: 2026
   category: 論文誌
-  citation: "Goro Terumichi, Jiarui Li, Tatsuji Kimura, Hiroaki Nishi, “Attention-Based Spatial–Temporal Model for the Entire Indoor Space Temperature Estimation”, IEEJ Transactions on Electronics and Electronic Engineering, First published on 8th August, 2026, Wiley Online Library, https://doi.org/10.1002/tee.70405 ."
+  citation: >-
+    Goro Terumichi, Jiarui Li, Tatsuji Kimura, Hiroaki Nishi, “Attention-Based Spatial–Temporal Model for the Entire Indoor Space Temperature Estimation”, IEEJ Transactions on Electronics and Electronic Engineering, First published on 8th August, 2026, Wiley Online Library, https://doi.org/10.1002/tee.70405 .
 
 - id: "2026-journal-2"
   year: 2026
   category: 論文誌
-  citation: "Kohga Tanaka, Hiroaki Nishi, “Sigma-Branch: Hierarchical Single-Path Network Reconstruction for Dynamic Inference with Reduced Active Parameters”, IEEE Access, Volume 14, 2026, pp.126228-126238, 14th, Aug. 2026, https://doi.org/10.1109/ACCESS.2026.3723964."
+  citation: >-
+    Kohga Tanaka, Hiroaki Nishi, “Sigma-Branch: Hierarchical Single-Path Network Reconstruction for Dynamic Inference with Reduced Active Parameters”, IEEE Access, Volume 14, 2026, pp.126228-126238, 14th, Aug. 2026, https://doi.org/10.1109/ACCESS.2026.3723964.
 
 - id: "2026-intl-conf-1"
   year: 2026
   category: 国際会議/査読付収録論文
-  citation: "Yuto Chikaoka, Yuma Okuda, Hiroaki Nishi, “Client-to-Client Data Migration for Efficient Heterogeneous Distributed Deep Learning”, Published in: 2026 IEEE 35th International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026."
+  citation: >-
+    Yuto Chikaoka, Yuma Okuda, Hiroaki Nishi, “Client-to-Client Data Migration for Efficient Heterogeneous Distributed Deep Learning”, Published in: 2026 IEEE 35th International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026.
 
 - id: "2026-intl-conf-2"
   year: 2026
   category: 国際会議/査読付収録論文
-  citation: "Eugene Song, Hiroaki Nishi, “Digital Twin-based Interoperability Testing Method for IEEE 1451 IoT Smart Transducers”, Published in: 2026 IEEE 35th International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026."
+  citation: >-
+    Eugene Song, Hiroaki Nishi, “Digital Twin-based Interoperability Testing Method for IEEE 1451 IoT Smart Transducers”, Published in: 2026 IEEE 35th International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026.
 
 - id: "2026-intl-conf-3"
   year: 2026
   category: 国際会議/査読付収録論文
-  citation: "Yuki Maeda, W A Shanaka P Abeysiriwardhana, Hiroaki, Nishi, “Integrated Simulation of Greenhouse Environment and Energy Management for Multi-Greenhouse Systems”, Published in: The 24th IEEE International Conference on Industrial Informatics (INDIN2026), 26-29, July, Melbourne, Australia."
+  citation: >-
+    Yuki Maeda, W A Shanaka P Abeysiriwardhana, Hiroaki, Nishi, “Integrated Simulation of Greenhouse Environment and Energy Management for Multi-Greenhouse Systems”, Published in: The 24th IEEE International Conference on Industrial Informatics (INDIN2026), 26-29, July, Melbourne, Australia.
 
 - id: "2026-domestic-conf-1"
   year: 2026
   category: 国内研究会/収録論文/口頭発表等
-  citation: "Goro Terumichi, “Industrial System Integration for Smart Buildings and Energy Efficiency with Better Human Experiences”, Industrial Forum in: 2026 IEEE 35th International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026, https://attend.ieee.org/isie-2026/industry-forum/."
+  citation: >-
+    Goro Terumichi, “Industrial System Integration for Smart Buildings and Energy Efficiency with Better Human Experiences”, Industrial Forum in: 2026 IEEE 35th International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026, https://attend.ieee.org/isie-2026/industry-forum/.
 
 - id: "2026-domestic-conf-2"
   year: 2026
   category: 国内研究会/収録論文/口頭発表等
-  citation: "Hiroaki Nishi, “AI-Ready Smart Agriculture with IEEE 2992-2025: From Interoperable Data to Digital Twins”, UTA Café | EU–Japan Webinar – Session 2, 1st Sept. 2026, https://urbantechnologyalliance.org/uta-cafe-japan-webinar-series/."
+  citation: >-
+    Hiroaki Nishi, “AI-Ready Smart Agriculture with IEEE 2992-2025: From Interoperable Data to Digital Twins”, UTA Café | EU–Japan Webinar – Session 2, 1st Sept. 2026, https://urbantechnologyalliance.org/uta-cafe-japan-webinar-series/.
 
 - id: "2026-press-1"
   year: 2026
   category: 報道・展示等
-  citation: "“Interoperable PMV Prediction using IEEE 1451.1.6 and MQTT”, Exhibition of the 35th IEEE International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026."
+  citation: >-
+    “Interoperable PMV Prediction using IEEE 1451.1.6 and MQTT”, Exhibition of the 35th IEEE International Symposium on Industrial Electronics (ISIE), 23-26, June, Nagoya, Japan, 2026.
 
 - id: "2026-press-2"
   year: 2026
   category: 報道・展示等
-  citation: "スマートコミュニティーのインフラとサービス, 第27回慶應科学技術展 KEIO TECHNO-MALL 2026, 2026年12月16日."
+  citation: >-
+    スマートコミュニティーのインフラとサービス, 第27回慶應科学技術展 KEIO TECHNO-MALL 2026, 2026年12月16日.
 
 - id: "2025-journal-1"
   year: 2025
   category: 論文誌
-  citation: "Jia Jing and Hiroaki Nishi, “A flexible two-stage anonymization framework for narrative medical records adapting to various language models”, Science Direct, Computers in Biology and Medicine, Volume 195, September 2025, 110624, https://doi.org/10.1016/j.compbiomed.2025.110624."
+  citation: >-
+    Jia Jing and Hiroaki Nishi, “A flexible two-stage anonymization framework for narrative medical records adapting to various language models”, Science Direct, Computers in Biology and Medicine, Volume 195, September 2025, 110624, https://doi.org/10.1016/j.compbiomed.2025.110624.
 
 - id: "2025-journal-2"
   year: 2025
   category: 論文誌
-  citation: "Kentaro Morise and Hiroaki Nishi, “Accelerating m-Invariance for Continuous Big Data Publishing”, IEEJ Transactions on Electronics and Electronic Engineering, First published 10th September 2025, Wiley Online Library, https://doi.org/10.1002/tee.70144."
+  citation: >-
+    Kentaro Morise and Hiroaki Nishi, “Accelerating m-Invariance for Continuous Big Data Publishing”, IEEJ Transactions on Electronics and Electronic Engineering, First published 10th September 2025, Wiley Online Library, https://doi.org/10.1002/tee.70144.
 
 - id: "2025-journal-3"
   year: 2025
   category: 論文誌
-  citation: "土屋遼太 , 大橋雄太, 於保拓高, 森山英樹, 石井雅久, 竹内大将, 藤谷拓也, 馬上丈司, 西宏章, “大規模な営農型太陽光発電施設が設置された圃場の微気象分布”, 農業施設56巻（2025）4号, 2025年12月, https://doi.org/10.11449/sasj.56.4_76"
+  citation: >-
+    土屋遼太 , 大橋雄太, 於保拓高, 森山英樹, 石井雅久, 竹内大将, 藤谷拓也, 馬上丈司, 西宏章, “大規模な営農型太陽光発電施設が設置された圃場の微気象分布”, 農業施設56巻（2025）4号, 2025年12月, https://doi.org/10.11449/sasj.56.4_76
 
 - id: "2025-intl-conf-1"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Nakano, H. et al, Hardware-Accelerated Event-Graph Neural Networks for Low-Latency Time-Series Classification on SoC FPGA. In: Giorgi, R., Stojilović, M., Stroobandt, D., Brox Jiménez, P., Barriga Barros, Á. (eds) Applied Reconfigurable Computing. Architectures, Tools, and Applications. ARC 2025. Lecture Notes in Computer Science, vol 15594. Springer, Cham. https://doi.org/10.1007/978-3-031-87995-1_4"
+  citation: >-
+    Nakano, H. et al, Hardware-Accelerated Event-Graph Neural Networks for Low-Latency Time-Series Classification on SoC FPGA. In: Giorgi, R., Stojilović, M., Stroobandt, D., Brox Jiménez, P., Barriga Barros, Á. (eds) Applied Reconfigurable Computing. Architectures, Tools, and Applications. ARC 2025. Lecture Notes in Computer Science, vol 15594. Springer, Cham. https://doi.org/10.1007/978-3-031-87995-1_4
 
 - id: "2025-intl-conf-2"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Masaki Sakayori and Hiroaki Nishi, “μRWKV: A Memory-Efficient Model for Time-Series Prediction of Greenhouse Temperature and Energy Loads”, Published in: IECON 2025 51th Annual Conference of the IEEE Industrial Electronics Society, Madrid, 17th.Oct.2025. https://doi.org/10.1109/IECON58223.2025.11221899"
+  citation: >-
+    Masaki Sakayori and Hiroaki Nishi, “μRWKV: A Memory-Efficient Model for Time-Series Prediction of Greenhouse Temperature and Energy Loads”, Published in: IECON 2025 51th Annual Conference of the IEEE Industrial Electronics Society, Madrid, 17th.Oct.2025. https://doi.org/10.1109/IECON58223.2025.11221899
 
 - id: "2025-intl-conf-3"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Eugene Song, Peter Waher, Helbert da Rocha, Riccardo Brama, Hiroaki Nishi, Thomas Roth and Antonio Espirito-Santo, “Harmonization Model & Implementation of Interactions among IoT Devices”, Published in: IECON 2025 51th Annual Conference of the IEEE Industrial Electronics Society, Madrid, 17th.Oct.2025. https://doi.org/10.1109/IECON58223.2025.11221746"
+  citation: >-
+    Eugene Song, Peter Waher, Helbert da Rocha, Riccardo Brama, Hiroaki Nishi, Thomas Roth and Antonio Espirito-Santo, “Harmonization Model & Implementation of Interactions among IoT Devices”, Published in: IECON 2025 51th Annual Conference of the IEEE Industrial Electronics Society, Madrid, 17th.Oct.2025. https://doi.org/10.1109/IECON58223.2025.11221746
 
 - id: "2025-intl-conf-4"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Eugene Song, Shanaka P Abeysiriwardhana, Hiroaki Nishi and Thomas Roth, “IEEE 1451-based Digital Twin Framework for Real-Time Monitoring and Control of Smart Homes”, Published in: IECON 2025 51th Annual Conference of the IEEE Industrial Electronics Society, Madrid, 17th.Oct.2025. https://doi.org/10.1109/IECON58223.2025.11221119"
+  citation: >-
+    Eugene Song, Shanaka P Abeysiriwardhana, Hiroaki Nishi and Thomas Roth, “IEEE 1451-based Digital Twin Framework for Real-Time Monitoring and Control of Smart Homes”, Published in: IECON 2025 51th Annual Conference of the IEEE Industrial Electronics Society, Madrid, 17th.Oct.2025. https://doi.org/10.1109/IECON58223.2025.11221119
 
 - id: "2025-intl-conf-5"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Goro Terumichi, Emiri Hayashi and Hiroaki Nishi, “Smart Microclimate Estimation System for Energy-Efficient Greenhouse Control”, Published in: 14th International Conference on Renewable energy research and applications, Vienna, 28th. Oct. 2025. https://doi.org/10.1109/ICRERA66237.2025.11284233"
+  citation: >-
+    Goro Terumichi, Emiri Hayashi and Hiroaki Nishi, “Smart Microclimate Estimation System for Energy-Efficient Greenhouse Control”, Published in: 14th International Conference on Renewable energy research and applications, Vienna, 28th. Oct. 2025. https://doi.org/10.1109/ICRERA66237.2025.11284233
 
 - id: "2025-intl-conf-6"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Hiroshi Nakano, Hiroaki Nishi, “History-Aware Trajectory k-Anonymization Using an FPGA-Based Hardware Accelerator for Real-Time Location Services”, Published in: IEEE Computer Communications & Networking Conference 2026, Las Vegas, 10th. Jan. 2026, https://doi.org/10.1109/CCNC65079.2026.11366570"
+  citation: >-
+    Hiroshi Nakano, Hiroaki Nishi, “History-Aware Trajectory k-Anonymization Using an FPGA-Based Hardware Accelerator for Real-Time Location Services”, Published in: IEEE Computer Communications & Networking Conference 2026, Las Vegas, 10th. Jan. 2026, https://doi.org/10.1109/CCNC65079.2026.11366570
 
 - id: "2025-intl-conf-7"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Anna Ishizaki, Takuma Fukui, Hiroaki Nishi, “Content-based Fine-grained Flow Management Supporting Out-of-Path Transparent Add-ons”, Published in: IEEE Computer Communications & Networking Conference 2026, Las Vegas, 11th. Jan. 2026, https://doi.org/10.1109/CCNC65079.2026.11366582"
+  citation: >-
+    Anna Ishizaki, Takuma Fukui, Hiroaki Nishi, “Content-based Fine-grained Flow Management Supporting Out-of-Path Transparent Add-ons”, Published in: IEEE Computer Communications & Networking Conference 2026, Las Vegas, 11th. Jan. 2026, https://doi.org/10.1109/CCNC65079.2026.11366582
 
 - id: "2025-intl-conf-8"
   year: 2025
   category: 国際会議/査読付収録論文
-  citation: "Ayuna Takashi, Hiroaki Nishi, “FPGA as a Function: A Low-Code Framework for Edge Computing”, Published in: IEEE Computer Communications & Networking Conference 2026, Las Vegas, 11th. Jan. 2026, https://doi.org/10.1109/CCNC65079.2026.11366283"
+  citation: >-
+    Ayuna Takashi, Hiroaki Nishi, “FPGA as a Function: A Low-Code Framework for Edge Computing”, Published in: IEEE Computer Communications & Networking Conference 2026, Las Vegas, 11th. Jan. 2026, https://doi.org/10.1109/CCNC65079.2026.11366283
 
 - id: "2025-press-1"
   year: 2025
   category: 報道・展示等
-  citation: "スマートコミュニティーのインフラとサービス, 第26回慶應科学技術展 KEIO TECHNO-MALL 2025, 2025年12月12日."
+  citation: >-
+    スマートコミュニティーのインフラとサービス, 第26回慶應科学技術展 KEIO TECHNO-MALL 2025, 2025年12月12日.
 
 - id: "2025-article-1"
   year: 2025
   category: 学術解説等
-  citation: "Editor: Hideharu Amano, “Computation Platforms for Multi-access Edge Computing”, Springer Singapore, Published: 20 November 2025, https://doi.org/10.1007/978-981-96-8935-4."
+  citation: >-
+    Editor: Hideharu Amano, “Computation Platforms for Multi-access Edge Computing”, Springer Singapore, Published: 20 November 2025, https://doi.org/10.1007/978-981-96-8935-4.
 
 - id: "2025-award-1"
   year: 2025
   category: 受賞等
-  citation: "IEEE Standards Association Appreciation Award for outstanding contributions to the development of IEEE Standard 1451.1.6-2025, Hiroaki Nishi, IEEE Standards Association, June 19, 2025."
+  citation: >-
+    IEEE Standards Association Appreciation Award for outstanding contributions to the development of IEEE Standard 1451.1.6-2025, Hiroaki Nishi, IEEE Standards Association, June 19, 2025.
 
 - id: "2025-award-2"
   year: 2025
   category: 受賞等
-  citation: "IEEE Standards Association Appreciation Award for outstanding contributions to the development of IEEE Standard 2992-2025, Hiroaki Nishi, IEEE Standards Association, September 10, 2025."
+  citation: >-
+    IEEE Standards Association Appreciation Award for outstanding contributions to the development of IEEE Standard 2992-2025, Hiroaki Nishi, IEEE Standards Association, September 10, 2025.
 
 - id: "2024-journal-1"
   year: 2024
   category: 論文誌
-  citation: "Akihito Nishikawa, Tomu Yanabe, Yuiko Sakuma, Yuma Okuda, Hiroaki Nishi, “pvFed: Personalized Vertical Federated Learning for Client-Specific Tasks”, IEEJ Transactions on Electronics and Electronic Engineering, Vol.19, No.6, pp.993-pp.1000, 1st June 2024, (First published 12th March 2024, Wiley Online Library, https://doi.org/10.1002/tee.24049)."
+  citation: >-
+    Akihito Nishikawa, Tomu Yanabe, Yuiko Sakuma, Yuma Okuda, Hiroaki Nishi, “pvFed: Personalized Vertical Federated Learning for Client-Specific Tasks”, IEEJ Transactions on Electronics and Electronic Engineering, Vol.19, No.6, pp.993-pp.1000, 1st June 2024, (First published 12th March 2024, Wiley Online Library, https://doi.org/10.1002/tee.24049).
 
 - id: "2024-journal-2"
   year: 2024
   category: 論文誌
-  citation: "Honda Moena, Hiroaki Nishi, “Anonymity-Aware Framework for Designing Recommender Systems”, IEEJ Transactions on Electronics and Electronic Engineering, Vol.19, No.9, pp.1455-pp.1464, 1st Sept. 2024, (First published 8th May 2024, Wiley Online Library, https://doi.org/10.1002/tee.24093)."
+  citation: >-
+    Honda Moena, Hiroaki Nishi, “Anonymity-Aware Framework for Designing Recommender Systems”, IEEJ Transactions on Electronics and Electronic Engineering, Vol.19, No.9, pp.1455-pp.1464, 1st Sept. 2024, (First published 8th May 2024, Wiley Online Library, https://doi.org/10.1002/tee.24093).
 
 - id: "2024-journal-3"
   year: 2024
   category: 論文誌
-  citation: "Jing Jia, Kenta Saito, Hiroaki Nishi, “Privacy-Preserving Hierarchical Anonymization Framework over Encrypted Data”, IEEJ Transactions on Electronics and Electronic Engineering, vol.144, issue 10, pp.1011-1019, Oct. 2024, https://doi.org/10.1541/ieejeiss.144.1011."
+  citation: >-
+    Jing Jia, Kenta Saito, Hiroaki Nishi, “Privacy-Preserving Hierarchical Anonymization Framework over Encrypted Data”, IEEJ Transactions on Electronics and Electronic Engineering, vol.144, issue 10, pp.1011-1019, Oct. 2024, https://doi.org/10.1541/ieejeiss.144.1011.
 
 - id: "2024-journal-4"
   year: 2024
   category: 論文誌
-  citation: "Hiroshi Nakano, Koutarou Yamamoto, Hiroaki Nishi, “Accelerator for Trajectory Anonymization Using Map Matching”, IEEE Access,Volume 12, 2024, pp.152277-152288, 15th, Oct. 2024, https://doi.org/10.1109/ACCESS.2024.3479948."
+  citation: >-
+    Hiroshi Nakano, Koutarou Yamamoto, Hiroaki Nishi, “Accelerator for Trajectory Anonymization Using Map Matching”, IEEE Access,Volume 12, 2024, pp.152277-152288, 15th, Oct. 2024, https://doi.org/10.1109/ACCESS.2024.3479948.
 
 - id: "2024-journal-5"
   year: 2024
   category: 論文誌
-  citation: "Yuiko Sakuma, Hiroaki Nishi, “Practical Trajectory Anonymization Method using Latent Space Generalization”, Wiley Online Libray, 9th Dec. 2024, https://doi.org/10.1002/tee.24254."
+  citation: >-
+    Yuiko Sakuma, Hiroaki Nishi, “Practical Trajectory Anonymization Method using Latent Space Generalization”, Wiley Online Libray, 9th Dec. 2024, https://doi.org/10.1002/tee.24254.
 
 - id: "2024-intl-conf-1"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Cheng Pang, Jinxian Liang, Guangtao Yu, Jibin Zhang, Hiroaki Nishi, Kevin I-Kai Wang, Zeyuan Li, Wenbin Dai, Valeriy Vyatkin, “A Low-Code Development Platform for Industrialized Insect-based Bioconversion Systems”, 2024 IEEE 33rd International Symposium on Industrial Electronics (ISIE), 18-21 June 2024, https://doi.org/10.1109/ISIE54533.2024.10595736."
+  citation: >-
+    Cheng Pang, Jinxian Liang, Guangtao Yu, Jibin Zhang, Hiroaki Nishi, Kevin I-Kai Wang, Zeyuan Li, Wenbin Dai, Valeriy Vyatkin, “A Low-Code Development Platform for Industrialized Insect-based Bioconversion Systems”, 2024 IEEE 33rd International Symposium on Industrial Electronics (ISIE), 18-21 June 2024, https://doi.org/10.1109/ISIE54533.2024.10595736.
 
 - id: "2024-intl-conf-2"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Hiroaki Nishi, Janaka Wejekoon, Eugene Y. Song, Kang B. Lee, “Security for IEEE P1451.1.6-Based Sensor Networks for IoT Applications”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 4th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905544."
+  citation: >-
+    Hiroaki Nishi, Janaka Wejekoon, Eugene Y. Song, Kang B. Lee, “Security for IEEE P1451.1.6-Based Sensor Networks for IoT Applications”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 4th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905544.
 
 - id: "2024-intl-conf-3"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Makiko Kozakai, Emiri Hayashi, Hiroaki Nishi, “Integrated Information Representation Using IEEE P2992 and Its Application Use Cases”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 5th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905118."
+  citation: >-
+    Makiko Kozakai, Emiri Hayashi, Hiroaki Nishi, “Integrated Information Representation Using IEEE P2992 and Its Application Use Cases”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 5th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905118.
 
 - id: "2024-intl-conf-4"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Riko Yasuda, Ayaki Sugawara, Hiroaki Nishi, “Unsupervised Anomaly Sound Analysis Method Using StyleGAN2 to Estimate the Degree and Type of Abnormalities”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 5th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905269."
+  citation: >-
+    Riko Yasuda, Ayaki Sugawara, Hiroaki Nishi, “Unsupervised Anomaly Sound Analysis Method Using StyleGAN2 to Estimate the Degree and Type of Abnormalities”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 5th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905269.
 
 - id: "2024-intl-conf-5"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Takeshi Takusagawa, Hiroaki Nishi, “Practical k-Anonymization Approach for Multiple Faces in Photographs”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 6th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905090."
+  citation: >-
+    Takeshi Takusagawa, Hiroaki Nishi, “Practical k-Anonymization Approach for Multiple Faces in Photographs”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 6th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905090.
 
 - id: "2024-intl-conf-6"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Takuma Fukui, Yuri Sato, Hiroaki Nishi, “Network-Transparent Decryption Method in Edge Area Compatible with TLS 1.3”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 4th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905748."
+  citation: >-
+    Takuma Fukui, Yuri Sato, Hiroaki Nishi, “Network-Transparent Decryption Method in Edge Area Compatible with TLS 1.3”, Published in: IECON 2024 50th Annual Conference of the IEEE Industrial Electronics Society, Chicago, 4th.Nov.2024, https://doi.org/10.1109/IECON55916.2024.10905748.
 
 - id: "2024-intl-conf-7"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Yuri Sato, Takuma Fukui, Hiroaki Nishi, “Network-Transparent Decryption at the Edge and Management of Decryption Privileges Method for the Edge”, The 32nd International Conference on Plastic Optical Fibers, 12nd, Nov. 2024, Presented."
+  citation: >-
+    Yuri Sato, Takuma Fukui, Hiroaki Nishi, “Network-Transparent Decryption at the Edge and Management of Decryption Privileges Method for the Edge”, The 32nd International Conference on Plastic Optical Fibers, 12nd, Nov. 2024, Presented.
 
 - id: "2024-intl-conf-8"
   year: 2024
   category: 国際会議/査読付収録論文
-  citation: "Yuto Chikaoka, Hiroaki Nishi, “Optimization of Personalized Dataflow Management System on Mobile Network and MEC Environment”, The 8th International Conference on Software Engineering and Information Management (ICSIM 2025), Singapore, 11th Jan. 2025, https://doi.org/10.1145/3725899.3725921."
+  citation: >-
+    Yuto Chikaoka, Hiroaki Nishi, “Optimization of Personalized Dataflow Management System on Mobile Network and MEC Environment”, The 8th International Conference on Software Engineering and Information Management (ICSIM 2025), Singapore, 11th Jan. 2025, https://doi.org/10.1145/3725899.3725921.
 
 - id: "2024-talk-1"
   year: 2024
   category: 講演等
-  citation: "西宏章, “スマートシティサービスインフラはどうあるべきか？”, 情報処理学会主催 連続セミナー2024 情報技術の新たな地平：AIと量子が導く社会変革 第１１回, 2024年12月6日, オンライン."
+  citation: >-
+    西宏章, “スマートシティサービスインフラはどうあるべきか？”, 情報処理学会主催 連続セミナー2024 情報技術の新たな地平：AIと量子が導く社会変革 第１１回, 2024年12月6日, オンライン.
 
 - id: "2024-talk-2"
   year: 2024
   category: 講演等
-  citation: "Hiroaki Nishi, Keynote Speech: “Smart City Service Infrastructure, how should it be? ~ AI and Information Systems to Make Smart Cities Smart ~”, The 8th International Conference on Software Engineering and Information Management (ICSIM 2025), Singapore, 11th Jan. 2025."
+  citation: >-
+    Hiroaki Nishi, Keynote Speech: “Smart City Service Infrastructure, how should it be? ~ AI and Information Systems to Make Smart Cities Smart ~”, The 8th International Conference on Software Engineering and Information Management (ICSIM 2025), Singapore, 11th Jan. 2025.
 
 - id: "2024-press-1"
   year: 2024
   category: 報道・展示等
-  citation: "スマートコミュニティーのインフラとサービス, 第25回慶應科学技術展 KEIO TECHNO-MALL 2024, 2024年12月13日."
+  citation: >-
+    スマートコミュニティーのインフラとサービス, 第25回慶應科学技術展 KEIO TECHNO-MALL 2024, 2024年12月13日.
 
 - id: "2024-article-1"
   year: 2024
   category: 学術解説等
-  citation: "中島大介（著）, 西宏章（監修）, “この一冊で全部わかる ChatGPT & Copilotの教科書”, SBクリエイティブ, 2024年8月2日, ISBN-10 ‏ : ‎ 4815626065."
+  citation: >-
+    中島大介（著）, 西宏章（監修）, “この一冊で全部わかる ChatGPT & Copilotの教科書”, SBクリエイティブ, 2024年8月2日, ISBN-10 ‏ : ‎ 4815626065.
 
 - id: "2024-award-1"
   year: 2024
   category: 受賞等
-  citation: "Best Presentation Recognition, Hiroaki Nishi, Janaka Wejekoon, Eugene Y. Song, Kang B. Lee, “Security for IEEE P1451.1.6-Based Sensor Networks for IoT Applications”, At the 50th Annual Conference of the IEEE Industrial Electronics Society (IECON2024), 4th Nov. 2024."
+  citation: >-
+    Best Presentation Recognition, Hiroaki Nishi, Janaka Wejekoon, Eugene Y. Song, Kang B. Lee, “Security for IEEE P1451.1.6-Based Sensor Networks for IoT Applications”, At the 50th Annual Conference of the IEEE Industrial Electronics Society (IECON2024), 4th Nov. 2024.
 
 - id: "2024-award-2"
   year: 2024
   category: 受賞等
-  citation: "IEEE Standards Association Appreciation Award for outstanding contributions to the development of IEEE Standard 1451.0-2024, Hiroaki Nishi, IEEE Standards Association, February 15, 2024."
+  citation: >-
+    IEEE Standards Association Appreciation Award for outstanding contributions to the development of IEEE Standard 1451.0-2024, Hiroaki Nishi, IEEE Standards Association, February 15, 2024.
 
 - id: "2023-journal-1"
   year: 2023
   category: 論文誌
-  citation: "Shogo Shimahara, Masato Nohara, Hiroaki Nishi, “Access Control Management System for Edge Computing Environment Using Tag-Based Matching and Cache Injection”, IEEJ Transactions on Electronics and Electronic Engineering,Vol. 18, No.9, pp.1472-pp.1481, 1st Sept. 2023, (First published 25th July 2023, Wiley Online Library, https://doi.org/10.1002/tee.23880)."
+  citation: >-
+    Shogo Shimahara, Masato Nohara, Hiroaki Nishi, “Access Control Management System for Edge Computing Environment Using Tag-Based Matching and Cache Injection”, IEEJ Transactions on Electronics and Electronic Engineering,Vol. 18, No.9, pp.1472-pp.1481, 1st Sept. 2023, (First published 25th July 2023, Wiley Online Library, https://doi.org/10.1002/tee.23880).
 
 - id: "2023-journal-2"
   year: 2023
   category: 論文誌
-  citation: "Tokimasa Toyohara, Koutarou Yamamoto, Hiroaki Nishi, “FPGA Live Migration of Content-Based Anonymization Mechanism with Network Consistency”, IEEJ Transactions on Electronics and Electronic Engineering, Vol.19, No.4, pp.507-pp.517, 1st Apr. 2024, (First published 30th Dec. 2024, Wiley Online Library, https://doi.org/10.1002/tee.23993)."
+  citation: >-
+    Tokimasa Toyohara, Koutarou Yamamoto, Hiroaki Nishi, “FPGA Live Migration of Content-Based Anonymization Mechanism with Network Consistency”, IEEJ Transactions on Electronics and Electronic Engineering, Vol.19, No.4, pp.507-pp.517, 1st Apr. 2024, (First published 30th Dec. 2024, Wiley Online Library, https://doi.org/10.1002/tee.23993).
 
 - id: "2023-intl-conf-1"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Jing Jia, Hiroaki Nishi, “Differential Privacy Framework using Secure Computing on Untrusted Servers”, Published in: 2023 IEEE 6th International Conference on Industrial Cyber-Physical Systems (ICPS), 8-11th, May, Wuhan, China, 2023, DOI: 10.1109/ICPS58381.2023.10128028."
+  citation: >-
+    Jing Jia, Hiroaki Nishi, “Differential Privacy Framework using Secure Computing on Untrusted Servers”, Published in: 2023 IEEE 6th International Conference on Industrial Cyber-Physical Systems (ICPS), 8-11th, May, Wuhan, China, 2023, DOI: 10.1109/ICPS58381.2023.10128028.
 
 - id: "2023-intl-conf-2"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Keiten Han, Hiroaki Nishi, “Proposal and implementation of k-anonymization method for data insertion and deletion”, Published in: 2023 IEEE 32nd International Symposium on Industrial Electronics (ISIE), 19-21, June,Helsinki-Espoo, Finland, 2023, DOI: 10.1109/ISIE51358.2023.10228031."
+  citation: >-
+    Keiten Han, Hiroaki Nishi, “Proposal and implementation of k-anonymization method for data insertion and deletion”, Published in: 2023 IEEE 32nd International Symposium on Industrial Electronics (ISIE), 19-21, June,Helsinki-Espoo, Finland, 2023, DOI: 10.1109/ISIE51358.2023.10228031.
 
 - id: "2023-intl-conf-3"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Emiri Hayashi, Ayu Sonoda, Akihito Nishikawa, Hiroaki Nishi, “Estimation of Indoor Space Temperature Distribution Using Heat Maps”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 17th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312097."
+  citation: >-
+    Emiri Hayashi, Ayu Sonoda, Akihito Nishikawa, Hiroaki Nishi, “Estimation of Indoor Space Temperature Distribution Using Heat Maps”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 17th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312097.
 
 - id: "2023-intl-conf-4"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Hiroaki Nishi, Yuki Takayama, Wijekoon Janaka, Eugene Song, Kang Lee, “Temperature Monitoring and Airflow Control System for Balancing the Greenhouse Environment Using IEEE 1451 Standards”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312312."
+  citation: >-
+    Hiroaki Nishi, Yuki Takayama, Wijekoon Janaka, Eugene Song, Kang Lee, “Temperature Monitoring and Airflow Control System for Balancing the Greenhouse Environment Using IEEE 1451 Standards”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312312.
 
 - id: "2023-intl-conf-5"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Yuri Sato, Yohei Namba, Hiroaki Nishi, “Layer-7 and 5-tuple Information Analysis Framework for Providing Positional Flexibility in Location Determination for Service Provision”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10311793."
+  citation: >-
+    Yuri Sato, Yohei Namba, Hiroaki Nishi, “Layer-7 and 5-tuple Information Analysis Framework for Providing Positional Flexibility in Location Determination for Service Provision”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10311793.
 
 - id: "2023-intl-conf-6"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Yuma Okuda, Akihito Nishikawa, Hiroaki Nishi, “Evaluation of Communication Overhead for Distributed Deep Learning for Local Data Privacy”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312326."
+  citation: >-
+    Yuma Okuda, Akihito Nishikawa, Hiroaki Nishi, “Evaluation of Communication Overhead for Distributed Deep Learning for Local Data Privacy”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312326.
 
 - id: "2023-intl-conf-7"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Ayu Sonoda, Paul Compagnon, Marina Reyboz, Hiroaki Nishi, “Attention-PVS for Domestic Hot Water Consumption Forecasting in Individual Household”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312535."
+  citation: >-
+    Ayu Sonoda, Paul Compagnon, Marina Reyboz, Hiroaki Nishi, “Attention-PVS for Domestic Hot Water Consumption Forecasting in Individual Household”, Published in: IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 18th.Oct.2023, DOI: 10.1109/IECON51785.2023.10312535.
 
 - id: "2023-intl-conf-8"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Tokimasa Toyohara, Hiroaki Nishi, “Distributed MQTT Brokers Infrastructure with Network Transparent Hardware Broker”, The Eleventh International Symposium on Computing and Networking, CANDAR2023, Matsue, Japan,28th Nov.- 1st Dec. 2023, DOI:10.1109/CANDAR60563.2023.00032."
+  citation: >-
+    Tokimasa Toyohara, Hiroaki Nishi, “Distributed MQTT Brokers Infrastructure with Network Transparent Hardware Broker”, The Eleventh International Symposium on Computing and Networking, CANDAR2023, Matsue, Japan,28th Nov.- 1st Dec. 2023, DOI:10.1109/CANDAR60563.2023.00032.
 
 - id: "2023-intl-conf-9"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Yohei Namba, Ryo Morishima, Hiroaki Nishi, “Network-Transparent Load Balancing and Migration for Edge Computing”, IEEE Computer Communications & Networking Conference, 2024, Las Vegas, 6th to 8th Jan. 2024."
+  citation: >-
+    Yohei Namba, Ryo Morishima, Hiroaki Nishi, “Network-Transparent Load Balancing and Migration for Edge Computing”, IEEE Computer Communications & Networking Conference, 2024, Las Vegas, 6th to 8th Jan. 2024.
 
 - id: "2023-intl-conf-10"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Kentaro Morise, Tokimasa Toyohara, Hiroaki Nishi, “Proposal of Differential Privacy Anonymization for IoT Applications Using MQTT Broker”, (Poster), IEEE Computer Communications & Networking Conference, 2024, Las Vegas, 6th to 8th Jan. 2024."
+  citation: >-
+    Kentaro Morise, Tokimasa Toyohara, Hiroaki Nishi, “Proposal of Differential Privacy Anonymization for IoT Applications Using MQTT Broker”, (Poster), IEEE Computer Communications & Networking Conference, 2024, Las Vegas, 6th to 8th Jan. 2024.
 
 - id: "2023-intl-conf-11"
   year: 2023
   category: 国際会議/査読付収録論文
-  citation: "Yohei Namba, Shugo Shimahara, Hiroaki Nishi, “Network-Transparent Service Container and Migration with Information Distribution Management in Edge Environments”, 2024 The 7th International Conference on Software Engineering and Information Management (ICSIM 2024), 23-25, Jan. 2024."
+  citation: >-
+    Yohei Namba, Shugo Shimahara, Hiroaki Nishi, “Network-Transparent Service Container and Migration with Information Distribution Management in Edge Environments”, 2024 The 7th International Conference on Software Engineering and Information Management (ICSIM 2024), 23-25, Jan. 2024.
 
 - id: "2023-domestic-conf-1"
   year: 2023
   category: 国内研究会/収録論文/口頭発表等
-  citation: "西宏章, “k-匿名化/IoT”, CREST 成果発表ワークショップ, 東海大学品川キャンパス, 2024年2月22日."
+  citation: >-
+    西宏章, “k-匿名化/IoT”, CREST 成果発表ワークショップ, 東海大学品川キャンパス, 2024年2月22日.
 
 - id: "2023-domestic-conf-2"
   year: 2023
   category: 国内研究会/収録論文/口頭発表等
-  citation: "森瀬健太郎, “MQTTブローカのHW化および差分プライバシ匿名化”, CREST 成果発表ワークショップ, 東海大学品川キャンパス, 2024年2月22日."
+  citation: >-
+    森瀬健太郎, “MQTTブローカのHW化および差分プライバシ匿名化”, CREST 成果発表ワークショップ, 東海大学品川キャンパス, 2024年2月22日.
 
 - id: "2023-domestic-conf-3"
   year: 2023
   category: 国内研究会/収録論文/口頭発表等
-  citation: "中野宏志, “移動経路履歴を考慮した経路k-匿名化ハードウェアアクセラレータ”. CREST 成果発表ワークショップ, 東海大学品川キャンパス, 2024年2月22日."
+  citation: >-
+    中野宏志, “移動経路履歴を考慮した経路k-匿名化ハードウェアアクセラレータ”. CREST 成果発表ワークショップ, 東海大学品川キャンパス, 2024年2月22日.
 
 - id: "2023-talk-1"
   year: 2023
   category: 講演等
-  citation: "（招待講演）西宏章, “スマートコミュニティで必要となる計算機システムとは？”, 電子情報通信学会・情報処理学会合同研究会/第245回 システム・アーキテクチャ研究発表会（HotSPA 2023）, オンライン, 2023年6月5日."
+  citation: >-
+    （招待講演）西宏章, “スマートコミュニティで必要となる計算機システムとは？”, 電子情報通信学会・情報処理学会合同研究会/第245回 システム・アーキテクチャ研究発表会（HotSPA 2023）, オンライン, 2023年6月5日.
 
 - id: "2023-talk-2"
   year: 2023
   category: 講演等
-  citation: "Hiroaki Nishi, “Progress on IEEE P2992”, IEEE SA & NARO Presidential Meeting, 24th, July, 2023."
+  citation: >-
+    Hiroaki Nishi, “Progress on IEEE P2992”, IEEE SA & NARO Presidential Meeting, 24th, July, 2023.
 
 - id: "2023-talk-3"
   year: 2023
   category: 講演等
-  citation: "（Keynote Speech) Hiroaki Nishi, “The Future of Software Engineering and Information Management”, 2024 The 7th International Conference on Software Engineering and Information Management, Fiji (Virtual), January 23-25, 2024."
+  citation: >-
+    （Keynote Speech) Hiroaki Nishi, “The Future of Software Engineering and Information Management”, 2024 The 7th International Conference on Software Engineering and Information Management, Fiji (Virtual), January 23-25, 2024.
 
 - id: "2023-press-1"
   year: 2023
   category: 報道・展示等
-  citation: "スマートコミュニティーのインフラとサービス, 第24回慶應科学技術展 KEIO TECHNO-MALL 2023, 2023年12月15日."
+  citation: >-
+    スマートコミュニティーのインフラとサービス, 第24回慶應科学技術展 KEIO TECHNO-MALL 2023, 2023年12月15日.
 
 - id: "2023-article-1"
   year: 2023
   category: 学術解説等
-  citation: "西宏章, “データ活用：住まいを起点とした地域社会のサステナビリティ”, 建築雑誌, 2023年4月号, Vol. 138, No. 1774, pp.32-33, 2023年4月1日."
+  citation: >-
+    西宏章, “データ活用：住まいを起点とした地域社会のサステナビリティ”, 建築雑誌, 2023年4月号, Vol. 138, No. 1774, pp.32-33, 2023年4月1日.
 
 - id: "2023-article-2"
   year: 2023
   category: 学術解説等
-  citation: "（ネット配信）西 宏章, “IEEEメンバーが提言 情報通信インフラの観点から見る スマートシティ構築に向けた取り組み” , https://www.atpress.ne.jp/news/385918, 2024年2月21日配信."
+  citation: >-
+    （ネット配信）西 宏章, “IEEEメンバーが提言 情報通信インフラの観点から見る スマートシティ構築に向けた取り組み” , https://www.atpress.ne.jp/news/385918, 2024年2月21日配信.
 
 - id: "2023-award-1"
   year: 2023
   category: 受賞等
-  citation: "Keiten Han, “Proposal and implementation of k-anonymization method for data insertion and deletion”, The IEEE ISIE 2023 is the 32nd International Symposium on Industrial Electronics (ISIE), https://2023.ieee-isie.org/best-presentation-award"
+  citation: >-
+    Keiten Han, “Proposal and implementation of k-anonymization method for data insertion and deletion”, The IEEE ISIE 2023 is the 32nd International Symposium on Industrial Electronics (ISIE), https://2023.ieee-isie.org/best-presentation-award
 
 - id: "2022-journal-1"
   year: 2022
   category: 論文誌
-  citation: "Yuiko Sakuma, Hiroaki Nishi, “Hierarchical Multiobjective Distributed Deep Learning for Residential Short-Term Electric Load Forecasting”, IEEE Access, vol. 10, pp. 69950 – 69962, 01, July 2022, DOI: 10.1109/ACCESS.2022.3187687."
+  citation: >-
+    Yuiko Sakuma, Hiroaki Nishi, “Hierarchical Multiobjective Distributed Deep Learning for Residential Short-Term Electric Load Forecasting”, IEEE Access, vol. 10, pp. 69950 – 69962, 01, July 2022, DOI: 10.1109/ACCESS.2022.3187687.
 
 - id: "2022-intl-conf-1"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Subhaditya Shom, Arpan Guha, Kim Fung Tsang, Hiroaki Nishi, Chung Kit Wu, Khaled Shuaib,Hamid Sharif, Mahmoud Alahmad, “Survey of Protocols for V2G Communications”, Proceedings of the 23rd IEEE International Conference on Industrial Technology, IEEE IES ICIT2022, 25, Aug., 2022."
+  citation: >-
+    Subhaditya Shom, Arpan Guha, Kim Fung Tsang, Hiroaki Nishi, Chung Kit Wu, Khaled Shuaib,Hamid Sharif, Mahmoud Alahmad, “Survey of Protocols for V2G Communications”, Proceedings of the 23rd IEEE International Conference on Industrial Technology, IEEE IES ICIT2022, 25, Aug., 2022.
 
 - id: "2022-intl-conf-2"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Mohammad Bakhtiari, Yang Wei, Hiroaki Nishi, Kim Fung Tsang, Nasser Aljuhaishi, Mahmoud Alahmad, “Optimum Configuration of Edge Computing Protocols for Industrial Internet-of-Thing Applications”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000902), Brussels, 19th, Oct. 2022, DOI:10.1109/IECON49645.2022.9969057."
+  citation: >-
+    Mohammad Bakhtiari, Yang Wei, Hiroaki Nishi, Kim Fung Tsang, Nasser Aljuhaishi, Mahmoud Alahmad, “Optimum Configuration of Edge Computing Protocols for Industrial Internet-of-Thing Applications”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000902), Brussels, 19th, Oct. 2022, DOI:10.1109/IECON49645.2022.9969057.
 
 - id: "2022-intl-conf-3"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Hiroaki Nishi, Kang Lee, “Implementation of IEEE P1451.0 and P1451.1.6 Standards-based Sensor Network”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000742), Brussels, 19th, Oct. 2022, DOI:10.1109/IECON49645.2022.9968652."
+  citation: >-
+    Hiroaki Nishi, Kang Lee, “Implementation of IEEE P1451.0 and P1451.1.6 Standards-based Sensor Network”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000742), Brussels, 19th, Oct. 2022, DOI:10.1109/IECON49645.2022.9968652.
 
 - id: "2022-intl-conf-4"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Akihito Nishikawa, Kazuhiro Hattori, Motomasa Tanaka, Hiroaki Muranami, and Hiroaki Nishi, “Anomalous Sound Detection, Extraction, and Localization for Refrigerator Units Using a Microphone Array”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000117), Brussels, 19th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9969098."
+  citation: >-
+    Akihito Nishikawa, Kazuhiro Hattori, Motomasa Tanaka, Hiroaki Muranami, and Hiroaki Nishi, “Anomalous Sound Detection, Extraction, and Localization for Refrigerator Units Using a Microphone Array”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000117), Brussels, 19th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9969098.
 
 - id: "2022-intl-conf-5"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Yohei Namba and Hiroaki Nishi, “Personal Data Access and Distribution Management Extension to FIWARE”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000118), Brussels, 19th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9968512."
+  citation: >-
+    Yohei Namba and Hiroaki Nishi, “Personal Data Access and Distribution Management Extension to FIWARE”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000118), Brussels, 19th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9968512.
 
 - id: "2022-intl-conf-6"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Ayaki Sugawara, Ayu Sonoda, and Hiroaki Nishi, “Effective Information Selection Method on Spatiotemporal Information Infrastructure with Photogrammetry”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000073), Brussels, 20th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9968409."
+  citation: >-
+    Ayaki Sugawara, Ayu Sonoda, and Hiroaki Nishi, “Effective Information Selection Method on Spatiotemporal Information Infrastructure with Photogrammetry”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-000073), Brussels, 20th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9968409.
 
 - id: "2022-intl-conf-7"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Ayu Sonoda, Yuki Takayama, Ayaki Sugawara, and Hiroaki Nishi, “Greenhouse Heat Map Generation with Deep Neural Network Using Limited Number of Temperature Sensors”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-001045), Brussels, 20th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9968606."
+  citation: >-
+    Ayu Sonoda, Yuki Takayama, Ayaki Sugawara, and Hiroaki Nishi, “Greenhouse Heat Map Generation with Deep Neural Network Using Limited Number of Temperature Sensors”, Proceedings of the 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), (IECON22-001045), Brussels, 20th, Oct. 2022, DOI: 10.1109/IECON49645.2022.9968606.
 
 - id: "2022-intl-conf-8"
   year: 2022
   category: 国際会議/査読付収録論文
-  citation: "Yuchen Chen, Kaijie Wei, Hiroaki Nishi and Hideharu Amano, “An Implementation of a 3D Image Filter for Motion Vector Generation on an FPGA Board”, The Tenth International Symposium on Computing and Networking , CANDAR2022, Himeji, Japan, 21st, Nov. 2022."
+  citation: >-
+    Yuchen Chen, Kaijie Wei, Hiroaki Nishi and Hideharu Amano, “An Implementation of a 3D Image Filter for Motion Vector Generation on an FPGA Board”, The Tenth International Symposium on Computing and Networking , CANDAR2022, Himeji, Japan, 21st, Nov. 2022.
 
 - id: "2022-domestic-conf-1"
   year: 2022
   category: 国内研究会/収録論文/口頭発表等
-  citation: "島原将悟, 西宏章, “スマートコミュニティにおける情報流通管理機構”, WIDE Project 2022年WIDE 春研究会, 2022年5月13日-14日，慶應三田キャンパス, 2022年5月13日"
+  citation: >-
+    島原将悟, 西宏章, “スマートコミュニティにおける情報流通管理機構”, WIDE Project 2022年WIDE 春研究会, 2022年5月13日-14日，慶應三田キャンパス, 2022年5月13日
 
 - id: "2022-domestic-conf-2"
   year: 2022
   category: 国内研究会/収録論文/口頭発表等
-  citation: "陳宇晨, ウェイ カイジ, 西宏章, 天野英晴, “動きベクトル検出用3D画像フィルタのFPGAへの実装”, 電子情報通信学会リコンフィギャラブルシステム研究会, 豊橋, 2022年9月7日."
+  citation: >-
+    陳宇晨, ウェイ カイジ, 西宏章, 天野英晴, “動きベクトル検出用3D画像フィルタのFPGAへの実装”, 電子情報通信学会リコンフィギャラブルシステム研究会, 豊橋, 2022年9月7日.
 
 - id: "2022-domestic-conf-3"
   year: 2022
   category: 国内研究会/収録論文/口頭発表等
-  citation: "Yuiko Sakuma, Thai P.Tran, Tomomu Iwai, Akihito Nishikawa, and Hiroaki Nishi, “Trajectory Anonymization through Laplace Noise Addition in Latent Space”, ******,"
+  citation: >-
+    Yuiko Sakuma, Thai P.Tran, Tomomu Iwai, Akihito Nishikawa, and Hiroaki Nishi, “Trajectory Anonymization through Laplace Noise Addition in Latent Space”, ******,
 
 - id: "2022-domestic-conf-4"
   year: 2022
   category: 国内研究会/収録論文/口頭発表等
-  citation: "Akihito Nishikawa, Kazuhiro Hattori, Motomasa Tanaka, Hiroaki Muranami, and Hiroaki Nishi, “Anomalous Sound Detection, Extraction, and Localization for Refrigerator Units Using a Microphone Array”, ****"
+  citation: >-
+    Akihito Nishikawa, Kazuhiro Hattori, Motomasa Tanaka, Hiroaki Muranami, and Hiroaki Nishi, “Anomalous Sound Detection, Extraction, and Localization for Refrigerator Units Using a Microphone Array”, ****
 
 - id: "2022-talk-1"
   year: 2022
   category: 講演等
-  citation: "Hiroaki Nishi, “IEEE P1451.1.6: Standards Review”, IES Standards / InterOP Plugfest, held in 23rd IEEE International Conference on Industrial Technology, 23rd, Aug. 2022."
+  citation: >-
+    Hiroaki Nishi, “IEEE P1451.1.6: Standards Review”, IES Standards / InterOP Plugfest, held in 23rd IEEE International Conference on Industrial Technology, 23rd, Aug. 2022.
 
 - id: "2022-talk-2"
   year: 2022
   category: 講演等
-  citation: "西宏章, “なぜエッジ？なぜスマートシティ？”, WIDE Camp 2022 プレナリーセッション, Sep, 2022年9月6日～8日、長野県松代市, 2022年9月6日."
+  citation: >-
+    西宏章, “なぜエッジ？なぜスマートシティ？”, WIDE Camp 2022 プレナリーセッション, Sep, 2022年9月6日～8日、長野県松代市, 2022年9月6日.
 
 - id: "2022-talk-3"
   year: 2022
   category: 講演等
-  citation: "Hiroaki Nishi, “Practice of Standardization Activities in IEEE SA -IEEE P2992 Data Expression, Exchange, and Processing in Smart Agriculture -”, IEEE SA / NARO Workshop, 2022年10月13日、東京, 飯野ホール."
+  citation: >-
+    Hiroaki Nishi, “Practice of Standardization Activities in IEEE SA -IEEE P2992 Data Expression, Exchange, and Processing in Smart Agriculture -”, IEEE SA / NARO Workshop, 2022年10月13日、東京, 飯野ホール.
 
 - id: "2022-talk-4"
   year: 2022
   category: 講演等
-  citation: "(Panel Discussion) Jack Marck, Eyal BEN-DOR, Nobuyuki Inagawa, Takashi Furuya, Hiroshi Nakagawa, Mitsuru Hachiya, and Hiroaki Nishi, “Promotion of Smart Agriculture by Strategic Use of International Standards”, IEEE SA / NARO Workshop, 2022年10月13日、東京, 飯野ホール."
+  citation: >-
+    (Panel Discussion) Jack Marck, Eyal BEN-DOR, Nobuyuki Inagawa, Takashi Furuya, Hiroshi Nakagawa, Mitsuru Hachiya, and Hiroaki Nishi, “Promotion of Smart Agriculture by Strategic Use of International Standards”, IEEE SA / NARO Workshop, 2022年10月13日、東京, 飯野ホール.
 
 - id: "2022-talk-5"
   year: 2022
   category: 講演等
-  citation: "Hiroaki Nishi, “IEEE P1451.1.6”, IES Standards / InterOP Plugfest, held in 48th Annual Conference of the IEEE Industrial Electronics Society, Brussels, 18th, Oct. 2022."
+  citation: >-
+    Hiroaki Nishi, “IEEE P1451.1.6”, IES Standards / InterOP Plugfest, held in 48th Annual Conference of the IEEE Industrial Electronics Society, Brussels, 18th, Oct. 2022.
 
 - id: "2022-talk-6"
   year: 2022
   category: 講演等
-  citation: "Hiroaki Nishi, “IEEE P2992 – Data Expression, Exchange, and Processing in Smart Agriculture”, IES Standards / InterOP Plugfest, held at 48th Annual Conference of the IEEE Industrial Electronics Society, Brussels, 18th, Oct. 2022."
+  citation: >-
+    Hiroaki Nishi, “IEEE P2992 – Data Expression, Exchange, and Processing in Smart Agriculture”, IES Standards / InterOP Plugfest, held at 48th Annual Conference of the IEEE Industrial Electronics Society, Brussels, 18th, Oct. 2022.
 
 - id: "2022-talk-7"
   year: 2022
   category: 講演等
-  citation: "Hiroaki Nishi, (Session Chair) “Sustainable development of a data-driven smart city through Public-Private Partnerships”, Saitama Sustainable Cities Summit, E-KIZUNA Global Summit, 22nd-24th, Nov. 2022, Saitama, (https://ekizuna-global.jp/en/)."
+  citation: >-
+    Hiroaki Nishi, (Session Chair) “Sustainable development of a data-driven smart city through Public-Private Partnerships”, Saitama Sustainable Cities Summit, E-KIZUNA Global Summit, 22nd-24th, Nov. 2022, Saitama, (https://ekizuna-global.jp/en/).
 
 - id: "2022-talk-8"
   year: 2022
   category: 講演等
-  citation: "西宏章, “スマートシティ情報インフラはFPGAを求めるか？”, 電子情報通信学会リコンフィギャラブルシステム研究会（RECONF）VLSI設計技術研究会（VLD） 情報処理学会システムとLSIの設計技術研究会（SLDM）, 2023年1月23日, 慶應義塾大学日吉キャンパス."
+  citation: >-
+    西宏章, “スマートシティ情報インフラはFPGAを求めるか？”, 電子情報通信学会リコンフィギャラブルシステム研究会（RECONF）VLSI設計技術研究会（VLD） 情報処理学会システムとLSIの設計技術研究会（SLDM）, 2023年1月23日, 慶應義塾大学日吉キャンパス.
 
 - id: "2022-press-1"
   year: 2022
   category: 報道・展示等
-  citation: "Demonstration of IEEE P1451.1.6, IES Standards / InterOP Plugfest Demo, held in 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), October 17-20, 2022, Brussels, 2022"
+  citation: >-
+    Demonstration of IEEE P1451.1.6, IES Standards / InterOP Plugfest Demo, held in 48th Annual Conference of the IEEE Industrial Electronics Society (IECON2022), October 17-20, 2022, Brussels, 2022
 
 - id: "2022-press-2"
   year: 2022
   category: 報道・展示等
-  citation: "スマートコミュニティの地域実証, 第23回慶應科学技術展 KEIO TECHNO-MALL 2022, 2022年12月2日."
+  citation: >-
+    スマートコミュニティの地域実証, 第23回慶應科学技術展 KEIO TECHNO-MALL 2022, 2022年12月2日.
 
 - id: "2022-article-1"
   year: 2022
   category: 学術解説等
-  citation: "西宏章, “スマートコミュニティ・スマートシティでのエッジコンピューティングの本当の役割エッジコンピューティングの位置自在性・透明性が社会を変える”, JBPress, https://jbpress.ismedia.jp/articles/-/70642, 2022年7月15日."
+  citation: >-
+    西宏章, “スマートコミュニティ・スマートシティでのエッジコンピューティングの本当の役割エッジコンピューティングの位置自在性・透明性が社会を変える”, JBPress, https://jbpress.ismedia.jp/articles/-/70642, 2022年7月15日.
 
 - id: "2022-article-2"
   year: 2022
   category: 学術解説等
-  citation: "小嶋祐輔&西宏章, “脱炭素・レジリエンスを強化したLooopの「エネプラザ」”, インプレスSmartGridニューズレター2022年10月号, 2022年10月1日."
+  citation: >-
+    小嶋祐輔&西宏章, “脱炭素・レジリエンスを強化したLooopの「エネプラザ」”, インプレスSmartGridニューズレター2022年10月号, 2022年10月1日.
 
 - id: "2021-journal-1"
   year: 2021
   category: 論文誌
-  citation: "Yuichi Nakamura, Hiroaki Nishi, “Digital Watermarking for Anonymized Data with Low Information Loss”, IEEE Access, vol. 9, pp. 130570-130585, 2021, DOI: 10.1109/ACCESS.2021.3110984."
+  citation: >-
+    Yuichi Nakamura, Hiroaki Nishi, “Digital Watermarking for Anonymized Data with Low Information Loss”, IEEE Access, vol. 9, pp. 130570-130585, 2021, DOI: 10.1109/ACCESS.2021.3110984.
 
 - id: "2021-journal-2"
   year: 2021
   category: 論文誌
-  citation: "W.A. Shanaka, P. Abeysiriwardhana, Ryo Morishima, Tatsuki Miura, and Hiroaki Nishi, “Consistency Guaranteed Multi Container Migration for Smart Community Network Services”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.141 No.12, p. 1453-1461, https://doi.org/10.1541/ieejeiss.141.1453."
+  citation: >-
+    W.A. Shanaka, P. Abeysiriwardhana, Ryo Morishima, Tatsuki Miura, and Hiroaki Nishi, “Consistency Guaranteed Multi Container Migration for Smart Community Network Services”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.141 No.12, p. 1453-1461, https://doi.org/10.1541/ieejeiss.141.1453.
 
 - id: "2021-journal-3"
   year: 2021
   category: 論文誌
-  citation: "Koutarou Yamamoto, Akihiro Fukuhara, and Hiroaki Nishi, “Hardware Implementation of MQTT Broker and Precise Time Synchronization using IoT Devices”, IEEJ Transactions on Electronics and Electronic Engineering, IEEJ Trans 2021, https://doi.org/10.1002/tee.23511."
+  citation: >-
+    Koutarou Yamamoto, Akihiro Fukuhara, and Hiroaki Nishi, “Hardware Implementation of MQTT Broker and Precise Time Synchronization using IoT Devices”, IEEJ Transactions on Electronics and Electronic Engineering, IEEJ Trans 2021, https://doi.org/10.1002/tee.23511.
 
 - id: "2021-intl-conf-1"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Moena Honda and Hiroaki Nishi, “Household Nutrition Analysis and Food Recommendation Using Purchase History”, Proceedings of the 30th International Symposium on Industrial Electronics (ISIE2021), 978-1-7281-9023-5/21(KF-003085), 2021/06/22, DOI: 10.1109/ISIE45552.2021.9576410."
+  citation: >-
+    Moena Honda and Hiroaki Nishi, “Household Nutrition Analysis and Food Recommendation Using Purchase History”, Proceedings of the 30th International Symposium on Industrial Electronics (ISIE2021), 978-1-7281-9023-5/21(KF-003085), 2021/06/22, DOI: 10.1109/ISIE45552.2021.9576410.
 
 - id: "2021-intl-conf-2"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Shouichi Hatanaka and Hiroaki Nishi, “Efficient GAN-Based Unsupervised Anomaly Sound Detection for Refrigeration Units”, Proceedings of the 30th International Symposium on Industrial Electronics (ISIE2021), 978-1-7281-9023-5/21(KF-005444), 2021/06/23, DOI: 10.1109/ISIE45552.2021.9576445."
+  citation: >-
+    Shouichi Hatanaka and Hiroaki Nishi, “Efficient GAN-Based Unsupervised Anomaly Sound Detection for Refrigeration Units”, Proceedings of the 30th International Symposium on Industrial Electronics (ISIE2021), 978-1-7281-9023-5/21(KF-005444), 2021/06/23, DOI: 10.1109/ISIE45552.2021.9576445.
 
 - id: "2021-intl-conf-3"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Victor Huang, Hiroaki Nishi, Antonio Espirito-Santo, Allen Chen, and Dietmar Bruckner, “Standards and Interoperability in Industrial Electronics – A Trending View”, Proceedings of the IEEE International Conference on Industrial Informatics’21 (INDIN2021), 978-1-7281-4395-8/21 (PF-002356), 2021/07/21, DOI: 10.1109/INDIN45523.2021.9557461."
+  citation: >-
+    Victor Huang, Hiroaki Nishi, Antonio Espirito-Santo, Allen Chen, and Dietmar Bruckner, “Standards and Interoperability in Industrial Electronics – A Trending View”, Proceedings of the IEEE International Conference on Industrial Informatics’21 (INDIN2021), 978-1-7281-4395-8/21 (PF-002356), 2021/07/21, DOI: 10.1109/INDIN45523.2021.9557461.
 
 - id: "2021-intl-conf-4"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Hiroki Hiraga and Hiroaki Nishi, “Network Transparent Decrypting of Cryptographic Stream Considering Service Provision at the Edge”, Proceedings of the IEEE International Conference on Industrial Informatics’21 (INDIN2021), 978-1-7281-4395-8/21 (PF-001899), 2021/07/23, DOI: 10.1109/INDIN45523.2021.9557366."
+  citation: >-
+    Hiroki Hiraga and Hiroaki Nishi, “Network Transparent Decrypting of Cryptographic Stream Considering Service Provision at the Edge”, Proceedings of the IEEE International Conference on Industrial Informatics’21 (INDIN2021), 978-1-7281-4395-8/21 (PF-001899), 2021/07/23, DOI: 10.1109/INDIN45523.2021.9557366.
 
 - id: "2021-intl-conf-5"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Shogo Shimahara and Hiroaki Nishi, “Dataflow Management Platform for Smart Communities using an Edge Computing Environment”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-002585), 2021/10/13, DOI:10.1109/IECON48115.2021.9589430."
+  citation: >-
+    Shogo Shimahara and Hiroaki Nishi, “Dataflow Management Platform for Smart Communities using an Edge Computing Environment”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-002585), 2021/10/13, DOI:10.1109/IECON48115.2021.9589430.
 
 - id: "2021-intl-conf-6"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Hiroaki Nishi, Eugene Y. Song, Yuichi Nakamura, Kang B. Lee, Yucheng Liu, and Kim Fung Tsang, “Time Synchronization of IEEE P1451.0 and P1451.1.6 Standard-based Sensor Networks”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-027197), 2021/10/13, DOI: 10.1109/IECON48115.2021.9589904"
+  citation: >-
+    Hiroaki Nishi, Eugene Y. Song, Yuichi Nakamura, Kang B. Lee, Yucheng Liu, and Kim Fung Tsang, “Time Synchronization of IEEE P1451.0 and P1451.1.6 Standard-based Sensor Networks”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-027197), 2021/10/13, DOI: 10.1109/IECON48115.2021.9589904
 
 - id: "2021-intl-conf-7"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Yuki Takayama, Yuiko Sakuma, and Hiroaki Nishi, “Recommendation System for Energy Consumption Behavior Change on Residents’ Response and Stress”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-004901), 2021/10/15, DOI: 10.1109/IECON48115.2021.9589458."
+  citation: >-
+    Yuki Takayama, Yuiko Sakuma, and Hiroaki Nishi, “Recommendation System for Energy Consumption Behavior Change on Residents’ Response and Stress”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-004901), 2021/10/15, DOI: 10.1109/IECON48115.2021.9589458.
 
 - id: "2021-intl-conf-8"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Yuki Takayama, Saki Saito, Yuiko Sakuma, and Hiroaki Nishi, “Air-Conditioning Control with Spatial Recognition Using Stereo Infrared Array Sensors”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-020206), 2021/10/15, DOI: 10.1109/IECON48115.2021.9589925."
+  citation: >-
+    Yuki Takayama, Saki Saito, Yuiko Sakuma, and Hiroaki Nishi, “Air-Conditioning Control with Spatial Recognition Using Stereo Infrared Array Sensors”, Proceedings of the 47th Annual Conference of the IEEE Industrial Electronics Society (IECON2021), (TD-020206), 2021/10/15, DOI: 10.1109/IECON48115.2021.9589925.
 
 - id: "2021-intl-conf-9"
   year: 2021
   category: 国際会議/査読付収録論文
-  citation: "Yuiko Sakuma, Thai P.Tran, Tomomu Iwai, Akihito Nishikawa, and Hiroaki Nishi, “Trajectory Anonymization through Laplace Noise Addition in Latent Space”, 2021 Ninth International Symposium on Computing and Networking (CANDAR), 2021, pp. 65-73, doi: 10.1109/CANDAR53791.2021.00016, 2021.Nov.25."
+  citation: >-
+    Yuiko Sakuma, Thai P.Tran, Tomomu Iwai, Akihito Nishikawa, and Hiroaki Nishi, “Trajectory Anonymization through Laplace Noise Addition in Latent Space”, 2021 Ninth International Symposium on Computing and Networking (CANDAR), 2021, pp. 65-73, doi: 10.1109/CANDAR53791.2021.00016, 2021.Nov.25.
 
 - id: "2021-talk-1"
   year: 2021
   category: 講演等
-  citation: "西宏章, “スマートハウスは街へ社会へどのように貢献するのか？するべきか？”, オンライン全国賃貸オーナーズフェスタ横浜会場, 株式会社エイブル主催、株式会社朝日放送協賛, 2021年8月28日."
+  citation: >-
+    西宏章, “スマートハウスは街へ社会へどのように貢献するのか？するべきか？”, オンライン全国賃貸オーナーズフェスタ横浜会場, 株式会社エイブル主催、株式会社朝日放送協賛, 2021年8月28日.
 
 - id: "2021-talk-2"
   year: 2021
   category: 講演等
-  citation: "Hiroaki Nishi, “Data Expression, Exchange, and Processing in Smart Agriculture”, IEEE-SA & NARO Joint Workshop: Realizing Smart & Sustainable Agriculture through Standardization, 16th Nov. 2021, IEEE SA & NARO."
+  citation: >-
+    Hiroaki Nishi, “Data Expression, Exchange, and Processing in Smart Agriculture”, IEEE-SA & NARO Joint Workshop: Realizing Smart & Sustainable Agriculture through Standardization, 16th Nov. 2021, IEEE SA & NARO.
 
 - id: "2021-talk-3"
   year: 2021
   category: 講演等
-  citation: "西宏章, “実例に見るスマートシティ情報インフラとサービス・標準化”, 慶応工学会東海支部講演会, 慶応工学会東海支部主催, 2021年11月28日."
+  citation: >-
+    西宏章, “実例に見るスマートシティ情報インフラとサービス・標準化”, 慶応工学会東海支部講演会, 慶応工学会東海支部主催, 2021年11月28日.
 
 - id: "2021-talk-4"
   year: 2021
   category: 講演等
-  citation: "西宏章, “スマートシティ情報インフラと標準化”, 次世代ヒートポンプ技術戦略研究コンソーシアム講演会, 次世代ヒートポンプ技術戦略研究コンソーシアム主催, 2022年1月12日."
+  citation: >-
+    西宏章, “スマートシティ情報インフラと標準化”, 次世代ヒートポンプ技術戦略研究コンソーシアム講演会, 次世代ヒートポンプ技術戦略研究コンソーシアム主催, 2022年1月12日.
 
 - id: "2021-talk-5"
   year: 2021
   category: 講演等
-  citation: "Hiroaki Nishi, “Standardization and future development”, 2022 The 5th International Conference on Software Engineering and Information Management (ICSIM 2022) , 2022.Jan.22."
+  citation: >-
+    Hiroaki Nishi, “Standardization and future development”, 2022 The 5th International Conference on Software Engineering and Information Management (ICSIM 2022) , 2022.Jan.22.
 
 - id: "2021-press-1"
   year: 2021
   category: 報道・展示等
-  citation: "Hiroaki Nishi, Demonstration of P1451.1.6, IEEE Standards and Interoperability Plugfest (INTEROP) 2021, 2021/6/21(ISIE2021)."
+  citation: >-
+    Hiroaki Nishi, Demonstration of P1451.1.6, IEEE Standards and Interoperability Plugfest (INTEROP) 2021, 2021/6/21(ISIE2021).
 
 - id: "2021-press-2"
   year: 2021
   category: 報道・展示等
-  citation: "UTA Café – Tsunashima Smart and Sustainable Town Virtual Tour, 2021/10/6."
+  citation: >-
+    UTA Café – Tsunashima Smart and Sustainable Town Virtual Tour, 2021/10/6.
 
 - id: "2021-press-3"
   year: 2021
   category: 報道・展示等
-  citation: "Hiroaki Nishi, Demonstration of P1451.0-P1451.1.6 over MQTT, IEEE Standards and Interoperability Plugfest (INTEROP) 2021, 2021/10/13(IECON2021)."
+  citation: >-
+    Hiroaki Nishi, Demonstration of P1451.0-P1451.1.6 over MQTT, IEEE Standards and Interoperability Plugfest (INTEROP) 2021, 2021/10/13(IECON2021).
 
 - id: "2021-press-4"
   year: 2021
   category: 報道・展示等
-  citation: "慶應義塾大学新川崎タウンキャンパス 理工学部 西研究室, “スマートコミュニティ情報インフラ～エッジコンピューティングとIoTが切り開く新しい街の情報インフラ～” , 第14回川崎国際環境技術展, 2021年11月16日～11月26日."
+  citation: >-
+    慶應義塾大学新川崎タウンキャンパス 理工学部 西研究室, “スマートコミュニティ情報インフラ～エッジコンピューティングとIoTが切り開く新しい街の情報インフラ～” , 第14回川崎国際環境技術展, 2021年11月16日～11月26日.
 
 - id: "2021-press-5"
   year: 2021
   category: 報道・展示等
-  citation: "スマートコミュニティオペレーティングシステム, 第21回慶應科学技術展 KEIO TECHNO-MALL 2021, 2021年12月10日."
+  citation: >-
+    スマートコミュニティオペレーティングシステム, 第21回慶應科学技術展 KEIO TECHNO-MALL 2021, 2021年12月10日.
 
 - id: "2021-article-1"
   year: 2021
   category: 学術解説等
-  citation: "西宏章, “スマートシティとサービス#3”, ⼀般社団法⼈スマートシティ・インスティテュート 会員Webサイト, エグゼクティブアドバイザー・スペシャリストコラム, 2021年4月1日."
+  citation: >-
+    西宏章, “スマートシティとサービス#3”, ⼀般社団法⼈スマートシティ・インスティテュート 会員Webサイト, エグゼクティブアドバイザー・スペシャリストコラム, 2021年4月1日.
 
 - id: "2021-article-2"
   year: 2021
   category: 学術解説等
-  citation: "Carlos Ramos, Zita Vale, Peter Palensky, and Hiroaki Nishi, “Sustainable Energy Consumption”, Energies 2021, 14, 6665. https://doi.org/10.3390/en14206665, 2021/10/15."
+  citation: >-
+    Carlos Ramos, Zita Vale, Peter Palensky, and Hiroaki Nishi, “Sustainable Energy Consumption”, Energies 2021, 14, 6665. https://doi.org/10.3390/en14206665, 2021/10/15.
 
 - id: "2020-journal-1"
   year: 2020
   category: 論文誌
-  citation: "W.A. Shanaka P. Abeysiriwardhana, Janaka Wijekoon, and Hiroaki Nishi, “Smart Community Edge: Stream Processing Edge Computing Node for Smart Community Services”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.140 No.9 pp. 1030-1039, DOI: 10.1541/ieejeiss.140.1030., 2020/9/1."
+  citation: >-
+    W.A. Shanaka P. Abeysiriwardhana, Janaka Wijekoon, and Hiroaki Nishi, “Smart Community Edge: Stream Processing Edge Computing Node for Smart Community Services”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.140 No.9 pp. 1030-1039, DOI: 10.1541/ieejeiss.140.1030., 2020/9/1.
 
 - id: "2020-journal-2"
   year: 2020
   category: 論文誌
-  citation: "Hayato Yamaki, Hiroaki Nishi, Shinobu Miwa, and Hiroaki Honda, “RPC: An Approach for Reducing Compulsory Misses in Packet Processing Cache”, IEICE TRANSACTIONS on Information and Systems, Vol.E103-D, No.12, pp. 2590-2599, 2020EDP7035, DOI: 10.1587/transinf.2020EDP7035, 2020/12/1."
+  citation: >-
+    Hayato Yamaki, Hiroaki Nishi, Shinobu Miwa, and Hiroaki Honda, “RPC: An Approach for Reducing Compulsory Misses in Packet Processing Cache”, IEICE TRANSACTIONS on Information and Systems, Vol.E103-D, No.12, pp. 2590-2599, 2020EDP7035, DOI: 10.1587/transinf.2020EDP7035, 2020/12/1.
 
 - id: "2020-journal-3"
   year: 2020
   category: 論文誌
-  citation: "Taichi Nakamura, Yuiko Sakuma, Hiroaki Nishi, “Face-Image Anonymization as an Application of Multidimensional Data k-anonymizer”, International Journal of Networking and Computing, Vol.11, No.1, 2021, ISSN 2185-2839 (print), ISSN 2185-2847 (online), 2021/1/1."
+  citation: >-
+    Taichi Nakamura, Yuiko Sakuma, Hiroaki Nishi, “Face-Image Anonymization as an Application of Multidimensional Data k-anonymizer”, International Journal of Networking and Computing, Vol.11, No.1, 2021, ISSN 2185-2839 (print), ISSN 2185-2847 (online), 2021/1/1.
 
 - id: "2020-journal-4"
   year: 2020
   category: 論文誌
-  citation: "Yuiko Sakuma, Hiroaki Nishi, “Adaptive Control Method of HVAC for Uniformizing Comfort at Japanese Residential Living Rooms Using Deep Reinforcement Learning”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.141 No.3 pp. 373-382, https://doi.org/10.1541/ieejeiss.141.373, 2021/3/1."
+  citation: >-
+    Yuiko Sakuma, Hiroaki Nishi, “Adaptive Control Method of HVAC for Uniformizing Comfort at Japanese Residential Living Rooms Using Deep Reinforcement Learning”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.141 No.3 pp. 373-382, https://doi.org/10.1541/ieejeiss.141.373, 2021/3/1.
 
 - id: "2020-journal-5"
   year: 2020
   category: 論文誌
-  citation: "Yuiko Sakuma, Masahiro Yoshida, Hiroaki Nishi, “Purchasing Behavior Prediction Model for Real Stores Considering Product Cluster and Time-series Patters”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.141 No.3 pp. 471-482, https://doi.org/10.1541/ieejeiss.141.471, 2021/3/1."
+  citation: >-
+    Yuiko Sakuma, Masahiro Yoshida, Hiroaki Nishi, “Purchasing Behavior Prediction Model for Real Stores Considering Product Cluster and Time-series Patters”, 電気学会論文誌C（電子・情報・システム部門誌）IEEJ Transactions on Electronics, Information and Systems Vol.141 No.3 pp. 471-482, https://doi.org/10.1541/ieejeiss.141.471, 2021/3/1.
 
 - id: "2020-intl-conf-1"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Masahiro Hashimoto, Ryo Morishima, Hiroaki Nishi, “Low-Information-Loss Anonymization of Trajectory Data Considering Map Information”, Proceedings of the 29th International Symposium on Industrial Electronics (ISIE2020), pp.461-466, DOI: 10.1109/ISIE45063.2020.9152438, 2020/6/18."
+  citation: >-
+    Masahiro Hashimoto, Ryo Morishima, Hiroaki Nishi, “Low-Information-Loss Anonymization of Trajectory Data Considering Map Information”, Proceedings of the 29th International Symposium on Industrial Electronics (ISIE2020), pp.461-466, DOI: 10.1109/ISIE45063.2020.9152438, 2020/6/18.
 
 - id: "2020-intl-conf-2"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Masato Nohara, Hiroaki Nishi, “Video Object Detection Method Using Single-Frame Detection and Motion Vector Tracking”, Proceedings of the IEEE International Conference on Industrial Informatics’20 (INDIN2020), pp. 119-125, DOI: 10.1109/INDIN45582.2020.9442163, 2020/7/21."
+  citation: >-
+    Masato Nohara, Hiroaki Nishi, “Video Object Detection Method Using Single-Frame Detection and Motion Vector Tracking”, Proceedings of the IEEE International Conference on Industrial Informatics’20 (INDIN2020), pp. 119-125, DOI: 10.1109/INDIN45582.2020.9442163, 2020/7/21.
 
 - id: "2020-intl-conf-3"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Saki Saito, Kanami Yuyama, Masahisa Ishii, Victor Huang, and Hiroaki Nishi, “Representation of Plant Structure using XML and Its Application to Cultivation Management”, Proceedings of the 25th IEEE International Conference on Emerging Technologies and Factory Automation (ETFA2020), pp.125-pp.131, DOI: 10.1109/ETFA46521.2020.9212015, 2020/9/10."
+  citation: >-
+    Saki Saito, Kanami Yuyama, Masahisa Ishii, Victor Huang, and Hiroaki Nishi, “Representation of Plant Structure using XML and Its Application to Cultivation Management”, Proceedings of the 25th IEEE International Conference on Emerging Technologies and Factory Automation (ETFA2020), pp.125-pp.131, DOI: 10.1109/ETFA46521.2020.9212015, 2020/9/10.
 
 - id: "2020-intl-conf-4"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Tomu Yanabe, Hiroaki Nishi and Masahiro Hashimoto, “Anomaly Detection Based on Histogram Methodology and Factor Analysis Using LightGBM for Cooling Systems”, Proceedings of the 25th IEEE International Conference on Emerging Technologies and Factory Automation (ETFA2020), pp.952-pp.958, DOI:10.1109/ETFA46521.2020.9211978, 2020/9/11."
+  citation: >-
+    Tomu Yanabe, Hiroaki Nishi and Masahiro Hashimoto, “Anomaly Detection Based on Histogram Methodology and Factor Analysis Using LightGBM for Cooling Systems”, Proceedings of the 25th IEEE International Conference on Emerging Technologies and Factory Automation (ETFA2020), pp.952-pp.958, DOI:10.1109/ETFA46521.2020.9211978, 2020/9/11.
 
 - id: "2020-intl-conf-5"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Kenta Saito and Hiroaki Nishi, “Application Protocol Conversion Corresponding to Various IoT Protocols”, Proceedings of the 46th Annual Conference of the IEEE Industrial Electronics Society (IECON2020), pp.5219-5225, DOI: 10.1109/IECON43393.2020.9255101, 2020/10/21."
+  citation: >-
+    Kenta Saito and Hiroaki Nishi, “Application Protocol Conversion Corresponding to Various IoT Protocols”, Proceedings of the 46th Annual Conference of the IEEE Industrial Electronics Society (IECON2020), pp.5219-5225, DOI: 10.1109/IECON43393.2020.9255101, 2020/10/21.
 
 - id: "2020-intl-conf-6"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Sam Moayedi, Ahmad Almaghrebi, Jan Haase, Hiroaki Nishi, Gerhard Zucker, Nasser Aljuhaishi, and Mahmoud Alahmad, “Energy Optimization Technologies in Smart Homes”, Proceedings of the 46th Annual Conference of the IEEE Industrial Electronics Society (IECON2020), pp. 1974-1979, DOI: 10.1109/IECON43393.2020.9254345, 2020/10/20."
+  citation: >-
+    Sam Moayedi, Ahmad Almaghrebi, Jan Haase, Hiroaki Nishi, Gerhard Zucker, Nasser Aljuhaishi, and Mahmoud Alahmad, “Energy Optimization Technologies in Smart Homes”, Proceedings of the 46th Annual Conference of the IEEE Industrial Electronics Society (IECON2020), pp. 1974-1979, DOI: 10.1109/IECON43393.2020.9254345, 2020/10/20.
 
 - id: "2020-intl-conf-7"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Akihiro Fukuhara, Soichiro Shohata, and Hiroaki Nishi, “FPGA Context-based Live Migration Maintaining Network Consistency”, The Proceedings of the 2020 Eighth International Symposium on Computing and Networking Workshops (CANDAR2020), pp.81-pp.86, DOI 10.1109/CANDARW51189.2020.00027, 2020/11.26."
+  citation: >-
+    Akihiro Fukuhara, Soichiro Shohata, and Hiroaki Nishi, “FPGA Context-based Live Migration Maintaining Network Consistency”, The Proceedings of the 2020 Eighth International Symposium on Computing and Networking Workshops (CANDAR2020), pp.81-pp.86, DOI 10.1109/CANDARW51189.2020.00027, 2020/11.26.
 
 - id: "2020-intl-conf-8"
   year: 2020
   category: 国際会議/査読付収録論文
-  citation: "Xin Yao, Minato Omori, and Hiroaki Nishi, “Load Balancing Method Using Server Temperature Prediction Considering Multiple Internal Heat Sources in Data Centers”, Proceedings of the 2021 IEEE International Conference on Mechatronics (ICM), Paper No. TD-00515, DOI: 10.1109/ICM46511.2021.9385604, 2021/3/9."
+  citation: >-
+    Xin Yao, Minato Omori, and Hiroaki Nishi, “Load Balancing Method Using Server Temperature Prediction Considering Multiple Internal Heat Sources in Data Centers”, Proceedings of the 2021 IEEE International Conference on Mechatronics (ICM), Paper No. TD-00515, DOI: 10.1109/ICM46511.2021.9385604, 2021/3/9.
 
 - id: "2020-talk-1"
   year: 2020
   category: 講演等
-  citation: "(パネルセッション) 西 宏章, 辻 隆男, 浅野 浩志, 田口 智章, 豊田 祐介, “脱炭素社会実現のためのキーとなる技術と今後の課題”, SmartＧridフォーラム2020, （ウェビナー）脱炭素と再生エネ100％社会をどう実現するか-SDGsをバックアップする技術イノベーション-、impress SmarGridニューズレター編集委員会主催, 2020/11/5."
+  citation: >-
+    (パネルセッション) 西 宏章, 辻 隆男, 浅野 浩志, 田口 智章, 豊田 祐介, “脱炭素社会実現のためのキーとなる技術と今後の課題”, SmartＧridフォーラム2020, （ウェビナー）脱炭素と再生エネ100％社会をどう実現するか-SDGsをバックアップする技術イノベーション-、impress SmarGridニューズレター編集委員会主催, 2020/11/5.
 
 - id: "2020-talk-2"
   year: 2020
   category: 講演等
-  citation: "Hiroaki Nishi, “Multi-access Edge Computing for Smart Community Data Services”, The Eighth International Symposium on Computing and Networking (CANDAR’20), Special Session on Multi-access Edge Computing, 2020年11月25日."
+  citation: >-
+    Hiroaki Nishi, “Multi-access Edge Computing for Smart Community Data Services”, The Eighth International Symposium on Computing and Networking (CANDAR’20), Special Session on Multi-access Edge Computing, 2020年11月25日.
 
 - id: "2020-talk-3"
   year: 2020
   category: 講演等
-  citation: "西宏章, “スマートシティサービスにおける情報銀行の役割”, 一般社団法人 日本IT団体連盟情報銀行推進委員会 主催ウェビナー, 2021年1月13日."
+  citation: >-
+    西宏章, “スマートシティサービスにおける情報銀行の役割”, 一般社団法人 日本IT団体連盟情報銀行推進委員会 主催ウェビナー, 2021年1月13日.
 
 - id: "2020-talk-4"
   year: 2020
   category: 講演等
-  citation: "Hiroaki Nishi, “Penetration of IoT Platform: Toward Society5.0 and SIP Cross-ministerial Program”, 2021 The 4th International Conference on Software Engineering and Information Management, 2021/1/17."
+  citation: >-
+    Hiroaki Nishi, “Penetration of IoT Platform: Toward Society5.0 and SIP Cross-ministerial Program”, 2021 The 4th International Conference on Software Engineering and Information Management, 2021/1/17.
 
 - id: "2020-press-1"
   year: 2020
   category: 報道・展示等
-  citation: "Hiroaki Nishi, Demonstration of P1451.99, IEEE Standards and Interoperability Plugfest (INTEROP) 2020, 2020/10/19(IECON2020)."
+  citation: >-
+    Hiroaki Nishi, Demonstration of P1451.99, IEEE Standards and Interoperability Plugfest (INTEROP) 2020, 2020/10/19(IECON2020).
 
 - id: "2020-press-2"
   year: 2020
   category: 報道・展示等
-  citation: "スマートコミュニティの地域実証, 第21回慶應科学技術展 KEIO TECHNO-MALL 2020, 2020/12/18."
+  citation: >-
+    スマートコミュニティの地域実証, 第21回慶應科学技術展 KEIO TECHNO-MALL 2020, 2020/12/18.
 
 - id: "2020-article-1"
   year: 2020
   category: 学術解説等
-  citation: "西宏章, “スマートシティとサービス#1”, ⼀般社団法⼈スマートシティ・インスティテュート 会員Webサイト, エグゼクティブアドバイザー・スペシャリストコラム, 2021年2月3日."
+  citation: >-
+    西宏章, “スマートシティとサービス#1”, ⼀般社団法⼈スマートシティ・インスティテュート 会員Webサイト, エグゼクティブアドバイザー・スペシャリストコラム, 2021年2月3日.
 
 - id: "2020-article-2"
   year: 2020
   category: 学術解説等
-  citation: "西宏章, “スマートシティとサービス#2”, ⼀般社団法⼈スマートシティ・インスティテュート 会員Webサイト, エグゼクティブアドバイザー・スペシャリストコラム, 2021年3月1日."
+  citation: >-
+    西宏章, “スマートシティとサービス#2”, ⼀般社団法⼈スマートシティ・インスティテュート 会員Webサイト, エグゼクティブアドバイザー・スペシャリストコラム, 2021年3月1日.
 
 - id: "2019-journal-1"
   year: 2019
   category: 論文誌
-  citation: "Yuiko Sakuma and Hiroaki Nishi, “Estimation of Building Thermal Performance using Simple Sensors and Air Conditioners”, Energies (Open Access Journal) Special Issue “Sustainable Energy Consumption” Volume 12, Issue 15, 22pages, DOI: 10.3390/en12152950, 2019/7/31."
+  citation: >-
+    Yuiko Sakuma and Hiroaki Nishi, “Estimation of Building Thermal Performance using Simple Sensors and Air Conditioners”, Energies (Open Access Journal) Special Issue “Sustainable Energy Consumption” Volume 12, Issue 15, 22pages, DOI: 10.3390/en12152950, 2019/7/31.
 
 - id: "2019-journal-2"
   year: 2019
   category: 論文誌
-  citation: "W.A. Shanaka P. Abeysiriwardhana, Janaka Wijekoon, Rajitha L. Tennekoon, and Hiroaki Nishi, “Software-accelerated Service-oriented Router for Edge and Fog Service Enhancement Using Advanced Stream Content Analysis”, IEEJ Transactions on Electronics, Information and Systems, Vol. 139 No.8, pp. 891-899, DOI: 10.1541/ieejeiss.139.891, 2019/8/1."
+  citation: >-
+    W.A. Shanaka P. Abeysiriwardhana, Janaka Wijekoon, Rajitha L. Tennekoon, and Hiroaki Nishi, “Software-accelerated Service-oriented Router for Edge and Fog Service Enhancement Using Advanced Stream Content Analysis”, IEEJ Transactions on Electronics, Information and Systems, Vol. 139 No.8, pp. 891-899, DOI: 10.1541/ieejeiss.139.891, 2019/8/1.
 
 - id: "2019-journal-3"
   year: 2019
   category: 論文誌
-  citation: "Yusuke Nakajo, Jayati Athavale, Minami Yoda, Yogendra Joshi, and Hiroaki Nishi, “Dynamic load balancing using actual workload traces based on central processing unit temperatures”, Transaction of the ASME, Journal of Electronic Packaging, September 2019, Vol. 141 No. 3, 031014, EP-18-1110, 20pages, 2019/9/1."
+  citation: >-
+    Yusuke Nakajo, Jayati Athavale, Minami Yoda, Yogendra Joshi, and Hiroaki Nishi, “Dynamic load balancing using actual workload traces based on central processing unit temperatures”, Transaction of the ASME, Journal of Electronic Packaging, September 2019, Vol. 141 No. 3, 031014, EP-18-1110, 20pages, 2019/9/1.
 
 - id: "2019-journal-4"
   year: 2019
   category: 論文誌
-  citation: "W. Dai, H. Nishi, V. Vyatkin, V. Huang, Y. Shi, and X. Guan, “Industrial Edge Computing: Enabling Embedded Intelligence”, IEEE Industrial Electronics Magazine, vol. 13, no. 4, pp. 48-56, DOI: 10.1109/MIE.2019.2943283, 2019/12/24."
+  citation: >-
+    W. Dai, H. Nishi, V. Vyatkin, V. Huang, Y. Shi, and X. Guan, “Industrial Edge Computing: Enabling Embedded Intelligence”, IEEE Industrial Electronics Magazine, vol. 13, no. 4, pp. 48-56, DOI: 10.1109/MIE.2019.2943283, 2019/12/24.
 
 - id: "2019-intl-conf-1"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Kanae Matsui and Hiroaki Nishi, “Error correction method considering fog and edge computing environment”, Proceedings of the IEEE International Conference on Industrial Cyber-Physical Systems (IEEE ICPS 2019), May 6-9, Taipei, 517-521, ISBN: 978-1-5386-8499-3, DOI:10.1109/ICPHYS.2019.8780317, 2019/5/8."
+  citation: >-
+    Kanae Matsui and Hiroaki Nishi, “Error correction method considering fog and edge computing environment”, Proceedings of the IEEE International Conference on Industrial Cyber-Physical Systems (IEEE ICPS 2019), May 6-9, Taipei, 517-521, ISBN: 978-1-5386-8499-3, DOI:10.1109/ICPHYS.2019.8780317, 2019/5/8.
 
 - id: "2019-intl-conf-2"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Koki Shimizu, Hiroaki Nishi, and Tatsuya Kishimoto, “Estimation of Pedestrian Density and Speed on Street Network Using Smartphone Spatio-Temporal Data”, Proceedings of the 12th International Space Syntax Symposium, 2019/7/8-12, Beijing, China, http://www.12sssbeijing.com/proceedings/download.php?lang=en&class2=161,2019/7/8."
+  citation: >-
+    Koki Shimizu, Hiroaki Nishi, and Tatsuya Kishimoto, “Estimation of Pedestrian Density and Speed on Street Network Using Smartphone Spatio-Temporal Data”, Proceedings of the 12th International Space Syntax Symposium, 2019/7/8-12, Beijing, China, http://www.12sssbeijing.com/proceedings/download.php?lang=en&class2=161,2019/7/8.
 
 - id: "2019-intl-conf-3"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Minato Omori, Yusuke Nakajo, Minami Yoda, Yogendra Joshi, and Hiroaki Nishi, “Energy-Efficient Task Distribution Using Neural Network Temperature Prediction in a Data Center”, Proceedings of the IEEE 17th International Conference on Industrial Informatics (INDIN2019), Helsinki, Finland, 2019, pp. 1429-1434, DOI: 10.1109/INDIN41052.2019.8972035, 2019/7/23."
+  citation: >-
+    Minato Omori, Yusuke Nakajo, Minami Yoda, Yogendra Joshi, and Hiroaki Nishi, “Energy-Efficient Task Distribution Using Neural Network Temperature Prediction in a Data Center”, Proceedings of the IEEE 17th International Conference on Industrial Informatics (INDIN2019), Helsinki, Finland, 2019, pp. 1429-1434, DOI: 10.1109/INDIN41052.2019.8972035, 2019/7/23.
 
 - id: "2019-intl-conf-4"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Ryo Morishima and Hiroaki Nishi, “Network Transparent Fog-based IoT Platform for Industrial IoT”, Proceedings of the IEEE 17th International Conference on Industrial Informatics (INDIN2019), Helsinki, Finland, 2019, pp. 920-925, DOI: 10.1109/INDIN41052.2019.8972178, 2019/7/24."
+  citation: >-
+    Ryo Morishima and Hiroaki Nishi, “Network Transparent Fog-based IoT Platform for Industrial IoT”, Proceedings of the IEEE 17th International Conference on Industrial Informatics (INDIN2019), Helsinki, Finland, 2019, pp. 920-925, DOI: 10.1109/INDIN41052.2019.8972178, 2019/7/24.
 
 - id: "2019-intl-conf-5"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Akihiro Fukuhara, Tomomu Iwai, Yuiko Sakuma, and Hiroaki Nishi, “Implementation of Content-Based Anonymization Edge Router on NetFPGA”, Proceedings of the IEEE 13th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC2019), Singapore, Singapore, 2019, pp. 123-128, DOI: 10.1109/MCSoC.2019.00025, 2019/10/2."
+  citation: >-
+    Akihiro Fukuhara, Tomomu Iwai, Yuiko Sakuma, and Hiroaki Nishi, “Implementation of Content-Based Anonymization Edge Router on NetFPGA”, Proceedings of the IEEE 13th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC2019), Singapore, Singapore, 2019, pp. 123-128, DOI: 10.1109/MCSoC.2019.00025, 2019/10/2.
 
 - id: "2019-intl-conf-6"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Saki Saito and Hiroaki Nishi, “Practical Estimation Method of Thermal Sensation Using an Infrared Array Sensor”, Proceedings of the 45th Annual Conference of the IEEE Industrial Electronics Society (IECON2019), Lisbon, Portugal, 2019, pp.333-338, DOI: 10.1109/IECON.2019.8926929, 2019/10/15."
+  citation: >-
+    Saki Saito and Hiroaki Nishi, “Practical Estimation Method of Thermal Sensation Using an Infrared Array Sensor”, Proceedings of the 45th Annual Conference of the IEEE Industrial Electronics Society (IECON2019), Lisbon, Portugal, 2019, pp.333-338, DOI: 10.1109/IECON.2019.8926929, 2019/10/15.
 
 - id: "2019-intl-conf-7"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Yuiko Sakuma, Sofia Kleisarchaki, Levent Gürgen, and Hiroaki Nishi, “Exploring Variability in IoT Data for Human Activity Recognition”, Proceedings of the 45th Annual Conference of the IEEE Industrial Electronics Society (IECON2019), Lisbon, Portugal, 2019, pp.5172-5178, DOI: 10.1109/IECON.2019.8927472, 2019/10/17."
+  citation: >-
+    Yuiko Sakuma, Sofia Kleisarchaki, Levent Gürgen, and Hiroaki Nishi, “Exploring Variability in IoT Data for Human Activity Recognition”, Proceedings of the 45th Annual Conference of the IEEE Industrial Electronics Society (IECON2019), Lisbon, Portugal, 2019, pp.5172-5178, DOI: 10.1109/IECON.2019.8927472, 2019/10/17.
 
 - id: "2019-intl-conf-8"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Taichi Nakamura, Yuiko Sakuma, and Hiroaki Nishi, “Face Image Anonymization as an Application of Multidimensional Data K-Anonymizer”, Proceedings of the Seventh International Symposium on Computing and Networking Workshops, (CANDAR 2019), pp. 155-161, DOI:10.1109/CANDARW.2019.00035, 2019/11/28."
+  citation: >-
+    Taichi Nakamura, Yuiko Sakuma, and Hiroaki Nishi, “Face Image Anonymization as an Application of Multidimensional Data K-Anonymizer”, Proceedings of the Seventh International Symposium on Computing and Networking Workshops, (CANDAR 2019), pp. 155-161, DOI:10.1109/CANDARW.2019.00035, 2019/11/28.
 
 - id: "2019-intl-conf-9"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Keiya Harada, Henri-Pierre Charles, and Hiroaki Nish, “A precision variable anonymization method supporting transpression computing”, Proceedings of the IEEE/ICACT2020, 22nd International Conference on Advanced Communications Technology (ICACT2020), ISBN 979-11-88428-05-2, pp.35-42, DOI: 10.23919/ICACT48636.2020.9061512, 2020/2/17."
+  citation: >-
+    Keiya Harada, Henri-Pierre Charles, and Hiroaki Nish, “A precision variable anonymization method supporting transpression computing”, Proceedings of the IEEE/ICACT2020, 22nd International Conference on Advanced Communications Technology (ICACT2020), ISBN 979-11-88428-05-2, pp.35-42, DOI: 10.23919/ICACT48636.2020.9061512, 2020/2/17.
 
 - id: "2019-intl-conf-10"
   year: 2019
   category: 国際会議/査読付収録論文
-  citation: "Yuiko Sakuma and Hiroaki Nishi, “Airflow Direction Control of Air Conditioners Using Deep Reinforcement Learning”, Proceedings of the SICE International Symposium on Control Systems 2020, 3E1-5, pp. 61-68, DOI: 10.23919/SICEISCS48470.2020.9083565, 2020/3/5."
+  citation: >-
+    Yuiko Sakuma and Hiroaki Nishi, “Airflow Direction Control of Air Conditioners Using Deep Reinforcement Learning”, Proceedings of the SICE International Symposium on Control Systems 2020, 3E1-5, pp. 61-68, DOI: 10.23919/SICEISCS48470.2020.9083565, 2020/3/5.
 
 - id: "2019-domestic-conf-1"
   year: 2019
   category: 国内研究会/収録論文/口頭発表等
-  citation: "清水光輝, 西宏章, 岸本達也, “スマートフォンの時空間情報を用いた街路網における歩行者密度および速度の推定”, 公益社団法人 日本都市計画学会 都市計画報告集 No.18(2019年度), pp.64-71, ONLINE, ISSN：1348-2858, (https://www.cpij.or.jp/com/ac/report/2019.html), 2019/6/7."
+  citation: >-
+    清水光輝, 西宏章, 岸本達也, “スマートフォンの時空間情報を用いた街路網における歩行者密度および速度の推定”, 公益社団法人 日本都市計画学会 都市計画報告集 No.18(2019年度), pp.64-71, ONLINE, ISSN：1348-2858, (https://www.cpij.or.jp/com/ac/report/2019.html), 2019/6/7.
 
 - id: "2019-domestic-conf-2"
   year: 2019
   category: 国内研究会/収録論文/口頭発表等
-  citation: "中村太一, 西宏章, “多次元データＫ匿名化としての顔画像匿名化”, コンピュータセキュリティシンポジウム2019論文集 , pp.1462-pp.1468, 2019/10/14."
+  citation: >-
+    中村太一, 西宏章, “多次元データＫ匿名化としての顔画像匿名化”, コンピュータセキュリティシンポジウム2019論文集 , pp.1462-pp.1468, 2019/10/14.
 
 - id: "2019-talk-1"
   year: 2019
   category: 講演等
-  citation: "Hiroaki Nishi, “Smart City Saitama Model: Information and Communication Platform for Smart City Data Services”, Global City Teams Challenge EXPO (GCTC 2019), The Walter E. Washington Convention Center, Washington DC, 2019/7/11."
+  citation: >-
+    Hiroaki Nishi, “Smart City Saitama Model: Information and Communication Platform for Smart City Data Services”, Global City Teams Challenge EXPO (GCTC 2019), The Walter E. Washington Convention Center, Washington DC, 2019/7/11.
 
 - id: "2019-talk-2"
   year: 2019
   category: 講演等
-  citation: "Hiroaki Nishi, “Smart City Saitama Model: Information Bank and Data Services”, CITY Platform online meeting, 2019/8/8."
+  citation: >-
+    Hiroaki Nishi, “Smart City Saitama Model: Information Bank and Data Services”, CITY Platform online meeting, 2019/8/8.
 
 - id: "2019-talk-3"
   year: 2019
   category: 講演等
-  citation: "西宏章, “スマートコミュニティサービス向け情報通信プラットフォームの研究開発”, ICTイノベーションフォーラム2019, 主催 総務省, 於:明治記念館, 2019/10/9."
+  citation: >-
+    西宏章, “スマートコミュニティサービス向け情報通信プラットフォームの研究開発”, ICTイノベーションフォーラム2019, 主催 総務省, 於:明治記念館, 2019/10/9.
 
 - id: "2019-talk-4"
   year: 2019
   category: 講演等
-  citation: "西宏章, “フィジカル空間デジタルデータ処理基盤”,内閣府SIPシンポジウム2019, 2019/11/13."
+  citation: >-
+    西宏章, “フィジカル空間デジタルデータ処理基盤”,内閣府SIPシンポジウム2019, 2019/11/13.
 
 - id: "2019-talk-5"
   year: 2019
   category: 講演等
-  citation: "西宏章, “スマートシティはQoLを向上し永続化する社会インフラたりえるのか？”, 一般社団法人おもてなしICT協議会第3回連絡協議会, 2019/11/14."
+  citation: >-
+    西宏章, “スマートシティはQoLを向上し永続化する社会インフラたりえるのか？”, 一般社団法人おもてなしICT協議会第3回連絡協議会, 2019/11/14.
 
 - id: "2019-talk-6"
   year: 2019
   category: 講演等
-  citation: "西宏章, “教科書に書いていない Society5.0 IoT・エッジ・スマートコミュニティで未来社会像を描く”, 第4回ふくおか AI・IoT 祭 in SRP, 2019/11/20."
+  citation: >-
+    西宏章, “教科書に書いていない Society5.0 IoT・エッジ・スマートコミュニティで未来社会像を描く”, 第4回ふくおか AI・IoT 祭 in SRP, 2019/11/20.
 
 - id: "2019-talk-7"
   year: 2019
   category: 講演等
-  citation: "西宏章, “なぜ、いま情報通信プラットフォームを基軸とするスマートコミュニティが必要なのか？”, 2019年度パナソニック技術シンポジウム専門技術セッション～通信・ネットワーク技術分野～, 2019/11/27."
+  citation: >-
+    西宏章, “なぜ、いま情報通信プラットフォームを基軸とするスマートコミュニティが必要なのか？”, 2019年度パナソニック技術シンポジウム専門技術セッション～通信・ネットワーク技術分野～, 2019/11/27.
 
 - id: "2019-talk-8"
   year: 2019
   category: 講演等
-  citation: "西宏章, “IoT・エッジ・5G・スマートシティを読み解く”, メディア向けIEEE SA解説セミナー, 主催 株式会社共同PR, 2019/12/3."
+  citation: >-
+    西宏章, “IoT・エッジ・5G・スマートシティを読み解く”, メディア向けIEEE SA解説セミナー, 主催 株式会社共同PR, 2019/12/3.
 
 - id: "2019-talk-9"
   year: 2019
   category: 講演等
-  citation: "(ショートプレゼン) 西宏章, “IoT・エッジ・5G・スマートシティで未来社会像を読み解こう！”, 第20回慶應科学技術展 KEIO TECHNO-MALL 2019, 2019/12/13."
+  citation: >-
+    (ショートプレゼン) 西宏章, “IoT・エッジ・5G・スマートシティで未来社会像を読み解こう！”, 第20回慶應科学技術展 KEIO TECHNO-MALL 2019, 2019/12/13.
 
 - id: "2019-talk-10"
   year: 2019
   category: 講演等
-  citation: "(パネル）米津 雅史, 藤沢 晃, 多田 功, Jordi Cirera, 西 宏章, 坂本 真樹, ジョルディ・シレラ, (コーディネーター 越塚 登), “センサー活用がもたらす市民生活のイノベーションとは”, スマートシティ・インスティテュート 特別シンポジウム 「日本・バルセロナ スマートシティ会議」, 2020/1/22."
+  citation: >-
+    (パネル）米津 雅史, 藤沢 晃, 多田 功, Jordi Cirera, 西 宏章, 坂本 真樹, ジョルディ・シレラ, (コーディネーター 越塚 登), “センサー活用がもたらす市民生活のイノベーションとは”, スマートシティ・インスティテュート 特別シンポジウム 「日本・バルセロナ スマートシティ会議」, 2020/1/22.
 
 - id: "2019-talk-11"
   year: 2019
   category: 講演等
-  citation: "(パネル）天野英晴, 西宏章, 菅谷みどり, 若林一敏, 飯田全広, “MEC(Multi-access Edge Computing)への挑戦”, 情報処理学会全国大会2020, 2020年3月6日."
+  citation: >-
+    (パネル）天野英晴, 西宏章, 菅谷みどり, 若林一敏, 飯田全広, “MEC(Multi-access Edge Computing)への挑戦”, 情報処理学会全国大会2020, 2020年3月6日.
 
 - id: "2019-press-1"
   year: 2019
   category: 報道・展示等
-  citation: "InterOp 1451 Plugfest held at IECON 2018, 21-23 October, IEEE Industrial Electronics Magazine June 2019, DOI: 10.1109/MIE.2019.2910895, 2019/6/25."
+  citation: >-
+    InterOp 1451 Plugfest held at IECON 2018, 21-23 October, IEEE Industrial Electronics Magazine June 2019, DOI: 10.1109/MIE.2019.2910895, 2019/6/25.
 
 - id: "2019-press-2"
   year: 2019
   category: 報道・展示等
-  citation: "スマートコミュニティの地域実証と技術標準, 第20回慶應科学技術展 KEIO TECHNO-MALL 2019, 2019/12/13."
+  citation: >-
+    スマートコミュニティの地域実証と技術標準, 第20回慶應科学技術展 KEIO TECHNO-MALL 2019, 2019/12/13.
 
 - id: "2019-press-3"
   year: 2019
   category: 報道・展示等
-  citation: "IEEE Impact Creators, https://transmitter.ieee.org/author/hiroaki-nishi/, 2020/2."
+  citation: >-
+    IEEE Impact Creators, https://transmitter.ieee.org/author/hiroaki-nishi/, 2020/2.
 
 - id: "2019-book-1"
   year: 2019
   category: 著書
-  citation: "Urban Systems Design –Creating Sustainable Smart Cities in the Internet of Things Era, Elsevier, ISBN: 9780128160558, Edited by Yoshiki Yamagata & Perry P.J. Yang, 10章の IoT-Base monitoring for smart communityを執筆, 2020/2/11."
+  citation: >-
+    Urban Systems Design –Creating Sustainable Smart Cities in the Internet of Things Era, Elsevier, ISBN: 9780128160558, Edited by Yoshiki Yamagata & Perry P.J. Yang, 10章の IoT-Base monitoring for smart communityを執筆, 2020/2/11.
 
 - id: "2018-journal-1"
   year: 2018
   category: 論文誌
-  citation: "Sota Sawaguchi, Hiroaki Nishi, “Slightly-slacked dropout for improving neural network learning on FPGA”, Elsevier Open Access Journal of ICT Express, The Korean Institute of Communications and Information Sciences, pp.75-pp.80, DOI: 10.1016/j.icte.2018.04.006, 2018/4/17."
+  citation: >-
+    Sota Sawaguchi, Hiroaki Nishi, “Slightly-slacked dropout for improving neural network learning on FPGA”, Elsevier Open Access Journal of ICT Express, The Korean Institute of Communications and Information Sciences, pp.75-pp.80, DOI: 10.1016/j.icte.2018.04.006, 2018/4/17.
 
 - id: "2018-journal-2"
   year: 2018
   category: 論文誌
-  citation: "Rajitha Tennekoon, Janaka Wijekoon, and Hiroaki Nishi, “On the Effectiveness of IP-Routable Entire-Packet Encryption Service over Public Networks”, IEEE Access, Vol. 6, Issue 1, pp.73170-73179, ISSN: 2169-3536, DOI: 10.1109/ACCESS.2018.2882390, 2018/11/20."
+  citation: >-
+    Rajitha Tennekoon, Janaka Wijekoon, and Hiroaki Nishi, “On the Effectiveness of IP-Routable Entire-Packet Encryption Service over Public Networks”, IEEE Access, Vol. 6, Issue 1, pp.73170-73179, ISSN: 2169-3536, DOI: 10.1109/ACCESS.2018.2882390, 2018/11/20.
 
 - id: "2018-journal-3"
   year: 2018
   category: 論文誌
-  citation: "Masahiro Yoshida, Tomoya Imanishi, and Hiroaki Nishi, “Feature Extraction and Resident Number Prediction Method using Power Consumption Data”, IEEJ Transactions on Electronics, Information and Systems (C), Vol. 139, No. 3, pp. 227-236, DOI:/10.1541/ieejeiss.139.227, 2019/3/1."
+  citation: >-
+    Masahiro Yoshida, Tomoya Imanishi, and Hiroaki Nishi, “Feature Extraction and Resident Number Prediction Method using Power Consumption Data”, IEEJ Transactions on Electronics, Information and Systems (C), Vol. 139, No. 3, pp. 227-236, DOI:/10.1541/ieejeiss.139.227, 2019/3/1.
 
 - id: "2018-intl-conf-1"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Masahiro Yoshida, Sofia Kleisarchaki, Levent Gürgen, Hiroaki Nishi, “Indoor Occupancy Estimation via Location-Aware HMM: An IoT Approach”, Proceedings of the Seventh IEEE WoWMoM Workshop on the Internet of Things: Smart Objects and Services, IoT-SoS 2018 DOI: 10.1109/WoWMoM.2018.8449765, 2018/6/12."
+  citation: >-
+    Masahiro Yoshida, Sofia Kleisarchaki, Levent Gürgen, Hiroaki Nishi, “Indoor Occupancy Estimation via Location-Aware HMM: An IoT Approach”, Proceedings of the Seventh IEEE WoWMoM Workshop on the Internet of Things: Smart Objects and Services, IoT-SoS 2018 DOI: 10.1109/WoWMoM.2018.8449765, 2018/6/12.
 
 - id: "2018-intl-conf-2"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Yuiko Sakuma, Yusuke Nakajo, and Hiroaki Nishi, “Building Thermal Performance Assessments Using Simple Sensors for the Green New Deal in Japan”, Proceedings of the 27th IEEE International Symposium on Industrial Electronics ISIE 2018, pp. 691-696, DOI: 10.1109/ISIE.2018.8433864, 2018/6/13."
+  citation: >-
+    Yuiko Sakuma, Yusuke Nakajo, and Hiroaki Nishi, “Building Thermal Performance Assessments Using Simple Sensors for the Green New Deal in Japan”, Proceedings of the 27th IEEE International Symposium on Industrial Electronics ISIE 2018, pp. 691-696, DOI: 10.1109/ISIE.2018.8433864, 2018/6/13.
 
 - id: "2018-intl-conf-3"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Nakatsuka Yoshimichi, Janaka Wijekoon and Hiroaki Nishi, “FROG: A Packet Hop Count Based DDoS Countermeasure in NDN”, Proceedings of the 2018 IEEE Symposium on Computers and Communications (ISCC), 25-28 June 2018 – Natal, Brazil, DOI: 10.1109/ISCC.2018.8538468, 2018/6/26."
+  citation: >-
+    Nakatsuka Yoshimichi, Janaka Wijekoon and Hiroaki Nishi, “FROG: A Packet Hop Count Based DDoS Countermeasure in NDN”, Proceedings of the 2018 IEEE Symposium on Computers and Communications (ISCC), 25-28 June 2018 – Natal, Brazil, DOI: 10.1109/ISCC.2018.8538468, 2018/6/26.
 
 - id: "2018-intl-conf-4"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Hayato Yamaki, Hiroaki Nishi, Shinobu Miwa, and Hiroki Honda, “Data Prediction for Response Flows in Packet Processing Cache”, DAC ’18, Proceedings of the 55th Annual Design Automation ConferenceJune 2018 Article No.: 110, p.1-6, DOI: 10.1145/3195970.3196021, 2018/6/27."
+  citation: >-
+    Hayato Yamaki, Hiroaki Nishi, Shinobu Miwa, and Hiroki Honda, “Data Prediction for Response Flows in Packet Processing Cache”, DAC ’18, Proceedings of the 55th Annual Design Automation ConferenceJune 2018 Article No.: 110, p.1-6, DOI: 10.1145/3195970.3196021, 2018/6/27.
 
 - id: "2018-intl-conf-5"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Minato Omori and Hiroaki Nishi, “Request Distribution for Heterogeneous Database Server Clusters with Processing Time Estimation”, Proceedings of the IEEE 16TH INTERNATIONAL CONFERENCE OF INDUSTRIAL INFORMATICS INDIN2018, pp. 278-283, Porto, DOI:10.1109/INDIN.2018.8471931, 2018/7/18."
+  citation: >-
+    Minato Omori and Hiroaki Nishi, “Request Distribution for Heterogeneous Database Server Clusters with Processing Time Estimation”, Proceedings of the IEEE 16TH INTERNATIONAL CONFERENCE OF INDUSTRIAL INFORMATICS INDIN2018, pp. 278-283, Porto, DOI:10.1109/INDIN.2018.8471931, 2018/7/18.
 
 - id: "2018-intl-conf-6"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Keiya Harada, Yuta Ohno, Yuichi Nakamura and Hiroaki Nishi, “Anonymization method based on sparse coding for power usage data”, Proceedings of the IEEE 16TH INTERNATIONAL CONFERENCE OF INDUSTRIAL INFORMATICS INDIN2018, pp. 571-576, DOI:10.1109/INDIN.2018.8471982, 2018/7/18."
+  citation: >-
+    Keiya Harada, Yuta Ohno, Yuichi Nakamura and Hiroaki Nishi, “Anonymization method based on sparse coding for power usage data”, Proceedings of the IEEE 16TH INTERNATIONAL CONFERENCE OF INDUSTRIAL INFORMATICS INDIN2018, pp. 571-576, DOI:10.1109/INDIN.2018.8471982, 2018/7/18.
 
 - id: "2018-intl-conf-7"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Shun Kinoshita and Nishi Hiroaki, “Task Allocating Service-oriented Network for Smart Community Applications”, Proceedings of the IEEE 16TH INTERNATIONAL CONFERENCE OF INDUSTRIAL INFORMATICS INDIN2018, pp. 140-145, DOI:10.1109/INDIN.2018.8472020, 2018/7/19."
+  citation: >-
+    Shun Kinoshita and Nishi Hiroaki, “Task Allocating Service-oriented Network for Smart Community Applications”, Proceedings of the IEEE 16TH INTERNATIONAL CONFERENCE OF INDUSTRIAL INFORMATICS INDIN2018, pp. 140-145, DOI:10.1109/INDIN.2018.8472020, 2018/7/19.
 
 - id: "2018-intl-conf-8"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Erwin Harahap, Janaka Wijekoon, Pupung Purnamasari, Deni Darmawan, Rakhmat Ceha and Hiroaki Nishi, “Improving Road Traffic Management by A Model-Based Simulation”, Proceedings of the 4th International Conference on Science and Technology (ICST 2018), 7–8 August 2018, Yogyakarta, Indonesia, pp.1-6, DOI:10.1109/ICSTC.2018.8528576, 2018/8/7."
+  citation: >-
+    Erwin Harahap, Janaka Wijekoon, Pupung Purnamasari, Deni Darmawan, Rakhmat Ceha and Hiroaki Nishi, “Improving Road Traffic Management by A Model-Based Simulation”, Proceedings of the 4th International Conference on Science and Technology (ICST 2018), 7–8 August 2018, Yogyakarta, Indonesia, pp.1-6, DOI:10.1109/ICSTC.2018.8528576, 2018/8/7.
 
 - id: "2018-intl-conf-9"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Yusuke Nakajo, Jayati Athavale, Minami Yoda, Yogendra Joshi, and Hiroaki Nishi, “IMPROVING ENERGY EFFICIENCY IN DATA CENTERS BY CONTROLLING TASK DISTRIBUTION AND COOLING”, Proceedings of the 2018 International Technical Conference and Exhibition on Packaging and Integration of Electronic and Photonic Microsystems (InterPACK), V001T02A005, 9 pages, DOI:10.1115/IPACK2018-8305, 2018/8/28."
+  citation: >-
+    Yusuke Nakajo, Jayati Athavale, Minami Yoda, Yogendra Joshi, and Hiroaki Nishi, “IMPROVING ENERGY EFFICIENCY IN DATA CENTERS BY CONTROLLING TASK DISTRIBUTION AND COOLING”, Proceedings of the 2018 International Technical Conference and Exhibition on Packaging and Integration of Electronic and Photonic Microsystems (InterPACK), V001T02A005, 9 pages, DOI:10.1115/IPACK2018-8305, 2018/8/28.
 
 - id: "2018-intl-conf-10"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Tomomu Iwai, Yuta Ohno, Akira Niwa, Yuichi Nakamura, and Hiroaki Nishi, “A Self-Organizing Map Using Classification Method for Services on Multi-Layer Computing Environments”, Workshop on Smart City based on Ambient Intelligence (SCAI 2018), Hakodate, Japan, Aug. 28th, 2018. (proceedings なし), 論文番号SCAI2018_S3-3, 2018/8/28."
+  citation: >-
+    Tomomu Iwai, Yuta Ohno, Akira Niwa, Yuichi Nakamura, and Hiroaki Nishi, “A Self-Organizing Map Using Classification Method for Services on Multi-Layer Computing Environments”, Workshop on Smart City based on Ambient Intelligence (SCAI 2018), Hakodate, Japan, Aug. 28th, 2018. (proceedings なし), 論文番号SCAI2018_S3-3, 2018/8/28.
 
 - id: "2018-intl-conf-11"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Soichiro Shohata, Yuichi Nakamura, and Hiroaki Nishi, “Implementation of Hardware for Accelerating Anonymization Transparent to the Network”, Workshop on Smart City based on Ambient Intelligence (SCAI 2018), Hakodate, Japan, Aug. 28th, 2018. (proceedings なし), 論文番号SCAI2018_S3-2. 2018/8/28."
+  citation: >-
+    Soichiro Shohata, Yuichi Nakamura, and Hiroaki Nishi, “Implementation of Hardware for Accelerating Anonymization Transparent to the Network”, Workshop on Smart City based on Ambient Intelligence (SCAI 2018), Hakodate, Japan, Aug. 28th, 2018. (proceedings なし), 論文番号SCAI2018_S3-2. 2018/8/28.
 
 - id: "2018-intl-conf-12"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Kanami Yuyama and Hiroaki Nishi, “Proposal of Feature Value Selection Method for Time-Critical Learning”, Proceedings of the 2018 IEEE 23rd International Conference on Emerging Technologies and Factory Automation (ETFA2018), Sept. 4th-7th, Torino, Italy, 2018, pp.1365-1371, DOI:10.1109/ETFA.2018.8502622, 2018/9/6."
+  citation: >-
+    Kanami Yuyama and Hiroaki Nishi, “Proposal of Feature Value Selection Method for Time-Critical Learning”, Proceedings of the 2018 IEEE 23rd International Conference on Emerging Technologies and Factory Automation (ETFA2018), Sept. 4th-7th, Torino, Italy, 2018, pp.1365-1371, DOI:10.1109/ETFA.2018.8502622, 2018/9/6.
 
 - id: "2018-intl-conf-13"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Taichi Nakamura and Hiroaki Nishi, “TMk-anonymity: Perturbation-based Data Anonymization Method for Improving effectiveness of Secondary Use”, Proceedings of the 44th Annual Conference of the IEEE Industrial Electronics Society (IECON2018), USA, Washinton, Oct. 21th – 23rd, 2018, 978-1-5090-6683-4/18, pp. 3138–3143, DOI:10.1109/IECON.2018.8592838, 2018/10/21."
+  citation: >-
+    Taichi Nakamura and Hiroaki Nishi, “TMk-anonymity: Perturbation-based Data Anonymization Method for Improving effectiveness of Secondary Use”, Proceedings of the 44th Annual Conference of the IEEE Industrial Electronics Society (IECON2018), USA, Washinton, Oct. 21th – 23rd, 2018, 978-1-5090-6683-4/18, pp. 3138–3143, DOI:10.1109/IECON.2018.8592838, 2018/10/21.
 
 - id: "2018-intl-conf-14"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Tomomu Iwai, Yuta Ohno, Akira Niwa, Yuichi Nakamura, Keiya Sakai, Kanae Matsui, and Hiroaki Nishi, “Self-Organizing Map Using Classification Method for Services in Multilayer Computing Environment”, Proceedings of the 44th Annual Conference of the IEEE Industrial Electronics Society (IECON2018), USA, Washinton, Oct. 21th – 23rd, 2018, 978-1-5090-6683-4/18, pp. 4193-4198, DOI:10.1109/IECON.2018.8591565, 2018/10/21."
+  citation: >-
+    Tomomu Iwai, Yuta Ohno, Akira Niwa, Yuichi Nakamura, Keiya Sakai, Kanae Matsui, and Hiroaki Nishi, “Self-Organizing Map Using Classification Method for Services in Multilayer Computing Environment”, Proceedings of the 44th Annual Conference of the IEEE Industrial Electronics Society (IECON2018), USA, Washinton, Oct. 21th – 23rd, 2018, 978-1-5090-6683-4/18, pp. 4193-4198, DOI:10.1109/IECON.2018.8591565, 2018/10/21.
 
 - id: "2018-intl-conf-15"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Soichiro Shohata, Yuichi Nakamura, and Hiroaki Nishi, “Hardware for Accelerating Anonymization Transparent to Network”, Proceedings of the Sixth International Symposium on Computing and Networking(CANDAR), Hida, Takayama, Nov. 27-30, 2018, pp.181-187, DOI:10.1109/CANDAR.2018.00032, 2018/11/29."
+  citation: >-
+    Soichiro Shohata, Yuichi Nakamura, and Hiroaki Nishi, “Hardware for Accelerating Anonymization Transparent to Network”, Proceedings of the Sixth International Symposium on Computing and Networking(CANDAR), Hida, Takayama, Nov. 27-30, 2018, pp.181-187, DOI:10.1109/CANDAR.2018.00032, 2018/11/29.
 
 - id: "2018-intl-conf-16"
   year: 2018
   category: 国際会議/査読付収録論文
-  citation: "Shanaka P. Abeysiriwardhana, Janaka Wijekoon, and Hiroaki Nishi, “Optimized Service Function Path Selection for IoT Devices Using Virtual Network Function Performance Data”, Proceedings of the 33rd International Conference on Information Networking (ICOIN 2019), January 9-11, 2019, Kuala Lumpur, Malaysia, pp.165-170, ISBN:978-1-5386-8350-7 DOI:10.1109/icoin.2019.8718150, 2019/1/10."
+  citation: >-
+    Shanaka P. Abeysiriwardhana, Janaka Wijekoon, and Hiroaki Nishi, “Optimized Service Function Path Selection for IoT Devices Using Virtual Network Function Performance Data”, Proceedings of the 33rd International Conference on Information Networking (ICOIN 2019), January 9-11, 2019, Kuala Lumpur, Malaysia, pp.165-170, ISBN:978-1-5386-8350-7 DOI:10.1109/icoin.2019.8718150, 2019/1/10.
 
 - id: "2018-talk-1"
   year: 2018
   category: 講演等
-  citation: "(招待講演, パネルセッション) Hiroaki Nishi, “Smart City/Community Services and Infrastructures”, FIWARE Global Summit, ８－９May, PALACIO DA POLSA, PORTO, 2018/5/8."
+  citation: >-
+    (招待講演, パネルセッション) Hiroaki Nishi, “Smart City/Community Services and Infrastructures”, FIWARE Global Summit, ８－９May, PALACIO DA POLSA, PORTO, 2018/5/8.
 
 - id: "2018-talk-2"
   year: 2018
   category: 講演等
-  citation: "(招待講演, パネルセッション) Hiroaki Nishi, “Designing Energy Efficient Datacenter”, The Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems 2018 (ITherm2018), May 29- June 1, 2018, San Diego, CA USA, 2018/5/31."
+  citation: >-
+    (招待講演, パネルセッション) Hiroaki Nishi, “Designing Energy Efficient Datacenter”, The Intersociety Conference on Thermal and Thermomechanical Phenomena in Electronic Systems 2018 (ITherm2018), May 29- June 1, 2018, San Diego, CA USA, 2018/5/31.
 
 - id: "2018-talk-3"
   year: 2018
   category: 講演等
-  citation: "Hiroaki Nishi, “IEEE P21451-1-6”, Standard Association Meeting held during the 27th IEEE International Symposium on Industrial Electronics ISIE 2018, 2018/6/13."
+  citation: >-
+    Hiroaki Nishi, “IEEE P21451-1-6”, Standard Association Meeting held during the 27th IEEE International Symposium on Industrial Electronics ISIE 2018, 2018/6/13.
 
 - id: "2018-talk-4"
   year: 2018
   category: 講演等
-  citation: "Hiroaki Nishi, “SmartCity/Community Services and Infrastructures in Saitama City”, Global City Teams Challenge Tech Jam 2018, Portland, Oregon, USA, 2018/5/31."
+  citation: >-
+    Hiroaki Nishi, “SmartCity/Community Services and Infrastructures in Saitama City”, Global City Teams Challenge Tech Jam 2018, Portland, Oregon, USA, 2018/5/31.
 
 - id: "2018-talk-5"
   year: 2018
   category: 講演等
-  citation: "(招待講演) Hiroaki Nishi, “Smart Community Informatics”, China National Computer Congress 2018 (CNCC2018), Republic of China, Hangzhou, 2018/10/26."
+  citation: >-
+    (招待講演) Hiroaki Nishi, “Smart Community Informatics”, China National Computer Congress 2018 (CNCC2018), Republic of China, Hangzhou, 2018/10/26.
 
 - id: "2018-talk-6"
   year: 2018
   category: 講演等
-  citation: "(招待講演) Hiroaki Nishi, “スマートシティにおける情報利活用とセキュリティ・プライバシーのありかた”, JEITA「ハードウェアセキュリティ技術分科会」, 2019/11/14."
+  citation: >-
+    (招待講演) Hiroaki Nishi, “スマートシティにおける情報利活用とセキュリティ・プライバシーのありかた”, JEITA「ハードウェアセキュリティ技術分科会」, 2019/11/14.
 
 - id: "2018-talk-7"
   year: 2018
   category: 講演等
-  citation: "Hiroaki Nishi, “Smart City Saitama Model –Information and Communication Platform for sharing smart city data services -”, Urban Technology Alliance launch event, Dec. 17-19, 2018, Keio Univ. Tokyo, 2018/12/18."
+  citation: >-
+    Hiroaki Nishi, “Smart City Saitama Model –Information and Communication Platform for sharing smart city data services -”, Urban Technology Alliance launch event, Dec. 17-19, 2018, Keio Univ. Tokyo, 2018/12/18.
 
 - id: "2018-talk-8"
   year: 2018
   category: 講演等
-  citation: "(基調講演) 西宏章, “スマートシティがもたらすQoL向上とデータ流通”, Okinawa Cross Innovation Forumセミナー「データ活用による産業振興とIoT基盤活用セミナー」（一般財団法人沖縄ITイノベーション戦略センター主催）, 2019/3/8."
+  citation: >-
+    (基調講演) 西宏章, “スマートシティがもたらすQoL向上とデータ流通”, Okinawa Cross Innovation Forumセミナー「データ活用による産業振興とIoT基盤活用セミナー」（一般財団法人沖縄ITイノベーション戦略センター主催）, 2019/3/8.
 
 - id: "2018-press-1"
   year: 2018
   category: 報道・展示等
-  citation: "IEEE INTEROP Plug Fest, Standard Association Meeting held during the 44th Annual Conference of the IEEE Industrial Electronics Society (IECON2018), 2018/10/21-23."
+  citation: >-
+    IEEE INTEROP Plug Fest, Standard Association Meeting held during the 44th Annual Conference of the IEEE Industrial Electronics Society (IECON2018), 2018/10/21-23.
 
 - id: "2018-press-2"
   year: 2018
   category: 報道・展示等
-  citation: "スマートコミュニティの地域実証, 第19回慶應科学技術展 KEIO TECHNO-MALL 2018, 2018/12/14."
+  citation: >-
+    スマートコミュニティの地域実証, 第19回慶應科学技術展 KEIO TECHNO-MALL 2018, 2018/12/14.
 
 - id: "2018-article-1"
   year: 2018
   category: 学術解説等
-  citation: "西宏章, “スマートシティインフラの展望”, 技術雑誌スマートグリッド2018年7月号, 特集エネルギーを中心とした情報収集・管理技術，巻頭語, p.2，大河出版, 2018/7."
+  citation: >-
+    西宏章, “スマートシティインフラの展望”, 技術雑誌スマートグリッド2018年7月号, 特集エネルギーを中心とした情報収集・管理技術，巻頭語, p.2，大河出版, 2018/7.
 
 - id: "2018-article-2"
   year: 2018
   category: 学術解説等
-  citation: "西宏章, “Youは何しに学会へ？”, 日本建築学会 建築雑誌 2018年9月号, 2018/9/20."
+  citation: >-
+    西宏章, “Youは何しに学会へ？”, 日本建築学会 建築雑誌 2018年9月号, 2018/9/20.
 
 - id: "2018-article-3"
   year: 2018
   category: 学術解説等
-  citation: "西宏章, “さいたま市における住宅向けグリーンニューディール事業に向けて”, 日本建築学会 建築雑誌 2018年11月号, 2018/11/20."
+  citation: >-
+    西宏章, “さいたま市における住宅向けグリーンニューディール事業に向けて”, 日本建築学会 建築雑誌 2018年11月号, 2018/11/20.
 
 - id: "2018-article-4"
   year: 2018
   category: 学術解説等
-  citation: "西宏章, “スマートシティにおける情報利活用とセキュリティ・プライバシーのありかた”, 一般社団法人 電子情報技術産業協会 電子材料・デバイス 技術専門委員会発行, 一般社団法人 電子情報技術産業協会 ハードウェアセキュリティ技術分科会編集 技術調査報告書, 2019/3/31."
+  citation: >-
+    西宏章, “スマートシティにおける情報利活用とセキュリティ・プライバシーのありかた”, 一般社団法人 電子情報技術産業協会 電子材料・デバイス 技術専門委員会発行, 一般社団法人 電子情報技術産業協会 ハードウェアセキュリティ技術分科会編集 技術調査報告書, 2019/3/31.
 
 - id: "2018-patent-1"
   year: 2018
   category: 特許出願
-  citation: "住宅の温熱性能評価方法, 西川敬之、松永充弘、佐久間結子、西宏章、小谷悦司、小谷昌崇、西谷浩治, 特願2018-085087"
+  citation: >-
+    住宅の温熱性能評価方法, 西川敬之、松永充弘、佐久間結子、西宏章、小谷悦司、小谷昌崇、西谷浩治, 特願2018-085087
 
 - id: "2017-journal-1"
   year: 2017
   category: 論文誌
-  citation: "Yuichi Nakamura, Sota Sawaguchi, and Hiroaki Nishi, “Implementation and Evaluation of an FPGA-based Network Data Anonymizer”, IEEJ Transactions on Electrical and Electronic Engineering, IEEJ Trans 2017; 12(S1); S134-S140, publisher online in Wiley Online Library. DOI:10.1002/tee.22426, 2017/6/1."
+  citation: >-
+    Yuichi Nakamura, Sota Sawaguchi, and Hiroaki Nishi, “Implementation and Evaluation of an FPGA-based Network Data Anonymizer”, IEEJ Transactions on Electrical and Electronic Engineering, IEEJ Trans 2017; 12(S1); S134-S140, publisher online in Wiley Online Library. DOI:10.1002/tee.22426, 2017/6/1.
 
 - id: "2017-journal-2"
   year: 2017
   category: 論文誌
-  citation: "Yuichi Nakamura, Yoshimichi Nakatsuka, and Hiroaki Nishi, “Novel Method to Watermark Anonymized Data for Data Publishing”, Yuichi Nakamura, Yoshimichi Nakatsuka, and Hiroaki Nishi, IEICE Transactions on Information and Systems, Vol.E100-D, No.8, August 2017, pp.1671-pp.1679, DOI: 10.1587/transinf.2016ICP0015, 2017/8/1."
+  citation: >-
+    Yuichi Nakamura, Yoshimichi Nakatsuka, and Hiroaki Nishi, “Novel Method to Watermark Anonymized Data for Data Publishing”, Yuichi Nakamura, Yoshimichi Nakatsuka, and Hiroaki Nishi, IEICE Transactions on Information and Systems, Vol.E100-D, No.8, August 2017, pp.1671-pp.1679, DOI: 10.1587/transinf.2016ICP0015, 2017/8/1.
 
 - id: "2017-journal-3"
   year: 2017
   category: 論文誌
-  citation: "西宏章, “スマートコミュニティとは何か –実証例から見る社会問題解決策としての可能性-”, Journal of Human and Environmental Symbiosis, 環境共生 Vol.31, pp.3-pp.12, 2017年9月, 2017/9/30."
+  citation: >-
+    西宏章, “スマートコミュニティとは何か –実証例から見る社会問題解決策としての可能性-”, Journal of Human and Environmental Symbiosis, 環境共生 Vol.31, pp.3-pp.12, 2017年9月, 2017/9/30.
 
 - id: "2017-journal-4"
   year: 2017
   category: 論文誌
-  citation: "Yuichi Nakamura, Keiya Harada, Hiroaki Nish, “A privacy-preserving sharing method of electricity usage using self-organizing map”, Elsevier Open Access Journal of ICT Express, The Korean Institute of Communications and Information Sciences, Volume 4, Issue 1, pp. 24-29, DOI: 10.1016/j.icte.2018.01.00, 2018/8/1."
+  citation: >-
+    Yuichi Nakamura, Keiya Harada, Hiroaki Nish, “A privacy-preserving sharing method of electricity usage using self-organizing map”, Elsevier Open Access Journal of ICT Express, The Korean Institute of Communications and Information Sciences, Volume 4, Issue 1, pp. 24-29, DOI: 10.1016/j.icte.2018.01.00, 2018/8/1.
 
 - id: "2017-intl-conf-1"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Masahiro Yoshida, Tomoya Imanishi, and Hiroaki Nishi, “Feature Extraction and Background Information Detection Method using Power Demand”, Proceedings of the 26th IEEE International Symposium on Industrial Electronics, 19-21 June 2017 Edinburgh(ISIE), Scotland, UK, pp.1336-1341. ISBN:978-1-5090-1411-8/17/, DOI:10.1109/ISIE.2017.8001439, 2017/6/20."
+  citation: >-
+    Masahiro Yoshida, Tomoya Imanishi, and Hiroaki Nishi, “Feature Extraction and Background Information Detection Method using Power Demand”, Proceedings of the 26th IEEE International Symposium on Industrial Electronics, 19-21 June 2017 Edinburgh(ISIE), Scotland, UK, pp.1336-1341. ISBN:978-1-5090-1411-8/17/, DOI:10.1109/ISIE.2017.8001439, 2017/6/20.
 
 - id: "2017-intl-conf-2"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Tomoya Imanishi, Masahiro Yoshida, Janaka Wijekoon, and Hiroaki Nishi, “Time-series decomposition of power demand data to extract uncertain features”, Proceedings of t>he 26th IEEE International Symposium on Industrial Electronics(ISIE), 19-21 June 2017 Edinburgh, Scotland, UK, pp.1535-1540, ISBN:978-1-5090-1411-8/17/, DOI:10.1109/ISIE.2017.8001473, 2017/6/21."
+  citation: >-
+    Tomoya Imanishi, Masahiro Yoshida, Janaka Wijekoon, and Hiroaki Nishi, “Time-series decomposition of power demand data to extract uncertain features”, Proceedings of t>he 26th IEEE International Symposium on Industrial Electronics(ISIE), 19-21 June 2017 Edinburgh, Scotland, UK, pp.1535-1540, ISBN:978-1-5090-1411-8/17/, DOI:10.1109/ISIE.2017.8001473, 2017/6/21.
 
 - id: "2017-intl-conf-3"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Tatsuki Miura, Janaka L. Wijekoon, Shanaka Prageeth, and Hiroaki Nishi, “Novel Infrastructure with Common API using Docker for Scaling the Degree of Platforms for Smart Community Services”, Proceedings of the 15th International Conference on Industrial Informatics (IEEE-INDIN 2017 Emden, Germany), Emden Germany, pp.474-479, 24-26, July 2017, DOI: 10.1109/INDIN.2017.8104818, 2017/7/26."
+  citation: >-
+    Tatsuki Miura, Janaka L. Wijekoon, Shanaka Prageeth, and Hiroaki Nishi, “Novel Infrastructure with Common API using Docker for Scaling the Degree of Platforms for Smart Community Services”, Proceedings of the 15th International Conference on Industrial Informatics (IEEE-INDIN 2017 Emden, Germany), Emden Germany, pp.474-479, 24-26, July 2017, DOI: 10.1109/INDIN.2017.8104818, 2017/7/26.
 
 - id: "2017-intl-conf-4"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Yusuke Nakajo and Hiroaki Nishi, “Temperature-based Request Distribution For Effective CRAC and Equipment Life-cycle Extension”, Proceedings of the ASME 2017 International Technical Conference and Exhibition on Packaging and Integration of Electronic and Photonic Microsystems INTERPACK 2017, August 29 – September 1, 2017, San Francisco, California, USA, IPACK2017-74341, DOI:10.1115/IPACK2017-74341, 2017/8/30."
+  citation: >-
+    Yusuke Nakajo and Hiroaki Nishi, “Temperature-based Request Distribution For Effective CRAC and Equipment Life-cycle Extension”, Proceedings of the ASME 2017 International Technical Conference and Exhibition on Packaging and Integration of Electronic and Photonic Microsystems INTERPACK 2017, August 29 – September 1, 2017, San Francisco, California, USA, IPACK2017-74341, DOI:10.1115/IPACK2017-74341, 2017/8/30.
 
 - id: "2017-intl-conf-5"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Yusuke Nakajo, Tomomichi Noguchi, and Hiroaki Nishi, “Efficient energy utilization based on task distribution and cooling airflow management in a data center”, Proceedings of the 43rd Annual Conference of the IEEE Industrial Electronics Society, pp.7171-7176, 29 Oct.- 1 Nov., Beijing, China, 2017, DOI: 10.1109/IECON.2017.8217255, 2017/11/1."
+  citation: >-
+    Yusuke Nakajo, Tomomichi Noguchi, and Hiroaki Nishi, “Efficient energy utilization based on task distribution and cooling airflow management in a data center”, Proceedings of the 43rd Annual Conference of the IEEE Industrial Electronics Society, pp.7171-7176, 29 Oct.- 1 Nov., Beijing, China, 2017, DOI: 10.1109/IECON.2017.8217255, 2017/11/1.
 
 - id: "2017-intl-conf-6"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Jan Haase, Fares AlJuheshi, Hiroaki Nishi, Joern Ploennigs, Kim Fung Tsang, Nasser Aljuhaishi, and Mahmoud Alahma, “Analysis of Batteries in the Built Environment -An overview on types and applications-”, Proceedings of the 43rd Annual Conference of the IEEE Industrial Electronics Society, pp.8113-8118, 29 Oct. – 1 Nov., Beijing, China, 2017, DOI: 10.1109/IECON.2017.8217424, 2017/11/1."
+  citation: >-
+    Jan Haase, Fares AlJuheshi, Hiroaki Nishi, Joern Ploennigs, Kim Fung Tsang, Nasser Aljuhaishi, and Mahmoud Alahma, “Analysis of Batteries in the Built Environment -An overview on types and applications-”, Proceedings of the 43rd Annual Conference of the IEEE Industrial Electronics Society, pp.8113-8118, 29 Oct. – 1 Nov., Beijing, China, 2017, DOI: 10.1109/IECON.2017.8217424, 2017/11/1.
 
 - id: "2017-intl-conf-7"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Yuta Ohno, Tomomu Iwai, and Hiroaki Nish, “Blind Watermarking Method for Anonymized Data”, Proceedings of the 2017 Fifth International Symposium on Computing and Networking, pp.139-pp.145, Aomori, Japan, November 19-22, 2017, DOI:10.1109/CANDAR.2017.97, 2017/11/21."
+  citation: >-
+    Yuta Ohno, Tomomu Iwai, and Hiroaki Nish, “Blind Watermarking Method for Anonymized Data”, Proceedings of the 2017 Fifth International Symposium on Computing and Networking, pp.139-pp.145, Aomori, Japan, November 19-22, 2017, DOI:10.1109/CANDAR.2017.97, 2017/11/21.
 
 - id: "2017-intl-conf-8"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Akira Niwa and Hiroaki Nishi, “An Information platform for smart communities realizing data usage authentication and secure data sharing”, Proceedings of the 2017 Fifth International Symposium on Computing and Networking, pp.119-pp.125, Aomori, Japan, November 19-22, 2017, DOI:10.1109/CANDAR.2017.73, 2017/11/21."
+  citation: >-
+    Akira Niwa and Hiroaki Nishi, “An Information platform for smart communities realizing data usage authentication and secure data sharing”, Proceedings of the 2017 Fifth International Symposium on Computing and Networking, pp.119-pp.125, Aomori, Japan, November 19-22, 2017, DOI:10.1109/CANDAR.2017.73, 2017/11/21.
 
 - id: "2017-intl-conf-9"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Hiroaki Nishi, “Information and Communication Platform for Providing Smart Community Services System Implementation and Use Case in Saitama City”, Proceedings of the 2018 IEEE International Conference on Industrial Technology (ICIT), Lyon, France, pp.1375-pp.1380, ISBN: 978-1-5386-4053-1/18/, DOI:10.1109/ICIT.2018.8352380, 2018/2/21."
+  citation: >-
+    Hiroaki Nishi, “Information and Communication Platform for Providing Smart Community Services System Implementation and Use Case in Saitama City”, Proceedings of the 2018 IEEE International Conference on Industrial Technology (ICIT), Lyon, France, pp.1375-pp.1380, ISBN: 978-1-5386-4053-1/18/, DOI:10.1109/ICIT.2018.8352380, 2018/2/21.
 
 - id: "2017-intl-conf-10"
   year: 2017
   category: 国際会議/査読付収録論文
-  citation: "Tadanori Matsui and Hiroaki Nishi, “Time Slotted Channel Hopping Scheduling Based on the Energy Consumption of Wireless Sensor Networks”, Proceedings of the IEEE 15th International Workshop on Advanced Motion Control (AMC2018), March 9-11, 2018, Tokyo, Japan, DOI:10.1109/AMC.2019.8371162, 2018/3/10."
+  citation: >-
+    Tadanori Matsui and Hiroaki Nishi, “Time Slotted Channel Hopping Scheduling Based on the Energy Consumption of Wireless Sensor Networks”, Proceedings of the IEEE 15th International Workshop on Advanced Motion Control (AMC2018), March 9-11, 2018, Tokyo, Japan, DOI:10.1109/AMC.2019.8371162, 2018/3/10.
 
 - id: "2017-domestic-conf-1"
   year: 2017
   category: 国内研究会/収録論文/口頭発表等
-  citation: "Charles Cottet, Tomoya Imanishi, Hiroaki Nishi, Haruki Sato, “Utilization of a Sensor Network in Classrooms for Energy Saving of a Smart Campus”, 第36回エネルギー・資源学会研究発表会 (砂防会館，東京), 2017年06月, 口頭（一般）, 一般社団法人エネルギー・資源学会, 2017/6/8."
+  citation: >-
+    Charles Cottet, Tomoya Imanishi, Hiroaki Nishi, Haruki Sato, “Utilization of a Sensor Network in Classrooms for Energy Saving of a Smart Campus”, 第36回エネルギー・資源学会研究発表会 (砂防会館，東京), 2017年06月, 口頭（一般）, 一般社団法人エネルギー・資源学会, 2017/6/8.
 
 - id: "2017-domestic-conf-2"
   year: 2017
   category: 国内研究会/収録論文/口頭発表等
-  citation: "湯山 要海，吉田 将大，服部 一裕，村並 広章，田中 基雅，西 宏章, “糖類の晶析データを用いた特徴量の重要度を決定する手法の提案と評価”, 情報システム研究会「知識抽出技術と情報システム、その他一般」, 電気学会, 2017年11月1日～2日, IS-17-051, 山口大学, 2017年11月, 2017/11/1."
+  citation: >-
+    湯山 要海，吉田 将大，服部 一裕，村並 広章，田中 基雅，西 宏章, “糖類の晶析データを用いた特徴量の重要度を決定する手法の提案と評価”, 情報システム研究会「知識抽出技術と情報システム、その他一般」, 電気学会, 2017年11月1日～2日, IS-17-051, 山口大学, 2017年11月, 2017/11/1.
 
 - id: "2017-domestic-conf-3"
   year: 2017
   category: 国内研究会/収録論文/口頭発表等
-  citation: "大野 雄太，仁和 瞭，西 宏章, “スマートコミュニティにおける二次利用のためのBlind電子透かし手法の提案と検討”, デザインガイア2017 -VLSI設計の新しい大地-, 電子情報通信学会 ディペンダブルコンピューティング研究会, 熊本, 信学技報, vol. 117, no. 274, DC2017-64, pp. 191-196, 2017年11月, 2017/11/8."
+  citation: >-
+    大野 雄太，仁和 瞭，西 宏章, “スマートコミュニティにおける二次利用のためのBlind電子透かし手法の提案と検討”, デザインガイア2017 -VLSI設計の新しい大地-, 電子情報通信学会 ディペンダブルコンピューティング研究会, 熊本, 信学技報, vol. 117, no. 274, DC2017-64, pp. 191-196, 2017年11月, 2017/11/8.
 
 - id: "2017-talk-1"
   year: 2017
   category: 講演等
-  citation: "(基調講演), 西宏章, “社会インフラを支えるネットワークシステムとスマートサービス”, 日立製作所 技術研修, 第198回最新技術セミナー, 日立システムプラザ（勝田）, 2018/8/25."
+  citation: >-
+    (基調講演), 西宏章, “社会インフラを支えるネットワークシステムとスマートサービス”, 日立製作所 技術研修, 第198回最新技術セミナー, 日立システムプラザ（勝田）, 2018/8/25.
 
 - id: "2017-talk-2"
   year: 2017
   category: 講演等
-  citation: "Hiroaki Nishi, “Saitama Smart Town: Smart Community Information Platform for Providing Future Town Services”, Global City Teams Challenge EXPO (GCTC 2017), The Walter E. Washington Convention Center, Washington DC, 2018/8/29."
+  citation: >-
+    Hiroaki Nishi, “Saitama Smart Town: Smart Community Information Platform for Providing Future Town Services”, Global City Teams Challenge EXPO (GCTC 2017), The Walter E. Washington Convention Center, Washington DC, 2018/8/29.
 
 - id: "2017-talk-3"
   year: 2017
   category: 講演等
-  citation: "西宏章, “スマートシティ・スマートコミュニティにおけるIoTとエッジプラットフォーム”, 第1回エッジプラットフォームコンソーシアム（EPFC）シンポジウム2017, ソリッドスクエアホール（川崎）, 2017/9/12."
+  citation: >-
+    西宏章, “スマートシティ・スマートコミュニティにおけるIoTとエッジプラットフォーム”, 第1回エッジプラットフォームコンソーシアム（EPFC）シンポジウム2017, ソリッドスクエアホール（川崎）, 2017/9/12.
 
 - id: "2017-talk-4"
   year: 2017
   category: 講演等
-  citation: "（パネルディスカッション）西宏章, “社会インフラを支えるネットワークシステムとスマートサービス”, 第1回エッジプラットフォームコンソーシアム（EPFC）シンポジウム2017, ソリッドスクエアホール（川崎）, 2017/9/12."
+  citation: >-
+    （パネルディスカッション）西宏章, “社会インフラを支えるネットワークシステムとスマートサービス”, 第1回エッジプラットフォームコンソーシアム（EPFC）シンポジウム2017, ソリッドスクエアホール（川崎）, 2017/9/12.
 
 - id: "2017-talk-5"
   year: 2017
   category: 講演等
-  citation: "Hiroaki Nishi, “Launching the Smart Cities Concept”, Brokerage Event 2017- Smarter Region Devoted to the issue of Intelligent technologies for citizens of the Moravian-Silesian Region-, Czech Republic, Ostrava, 2017/10/5."
+  citation: >-
+    Hiroaki Nishi, “Launching the Smart Cities Concept”, Brokerage Event 2017- Smarter Region Devoted to the issue of Intelligent technologies for citizens of the Moravian-Silesian Region-, Czech Republic, Ostrava, 2017/10/5.
 
 - id: "2017-talk-6"
   year: 2017
   category: 講演等
-  citation: "（招待講演）西宏章, “スマートコミュニティにおける情報通信プラットフォーム”, 電気学会スマートファシリティ研究会, 明治大学中野キャンパス, 2017/11/10."
+  citation: >-
+    （招待講演）西宏章, “スマートコミュニティにおける情報通信プラットフォーム”, 電気学会スマートファシリティ研究会, 明治大学中野キャンパス, 2017/11/10.
 
 - id: "2017-talk-7"
   year: 2017
   category: 講演等
-  citation: "Hiroaki Nishi, “Smart community from the perspective of IoT/Fog”, IoT workshop of CEA, France, 2017/11/23."
+  citation: >-
+    Hiroaki Nishi, “Smart community from the perspective of IoT/Fog”, IoT workshop of CEA, France, 2017/11/23.
 
 - id: "2017-press-1"
   year: 2017
   category: 報道・展示等
-  citation: "Interop Tokyo 2017, 幕張メッセ, 2017/6/2-9."
+  citation: >-
+    Interop Tokyo 2017, 幕張メッセ, 2017/6/2-9.
 
 - id: "2017-press-2"
   year: 2017
   category: 報道・展示等
-  citation: "Global City Teams Challenge EXPO (GCTC 2017), The Walter E. Washington Convention Center, Washington DC, 2017/8/28-29."
+  citation: >-
+    Global City Teams Challenge EXPO (GCTC 2017), The Walter E. Washington Convention Center, Washington DC, 2017/8/28-29.
 
 - id: "2017-press-3"
   year: 2017
   category: 報道・展示等
-  citation: "スマートコミュニティの地域実証, 第18回慶應科学技術展 KEIO TECHNO-MALL 2017, 2017/12/15."
+  citation: >-
+    スマートコミュニティの地域実証, 第18回慶應科学技術展 KEIO TECHNO-MALL 2017, 2017/12/15.
 
 - id: "2017-article-1"
   year: 2017
   category: 学術解説等
-  citation: "西宏章, “最先端のおもてなしを準備中！”, 明日の翼、日本航空、2017年Vol.8, 2017/5/1."
+  citation: >-
+    西宏章, “最先端のおもてなしを準備中！”, 明日の翼、日本航空、2017年Vol.8, 2017/5/1.
 
 - id: "2017-award-1"
   year: 2017
   category: 受賞等
-  citation: "大野 雄太，中村 優一，西 宏章, 電子情報通信学会 第4回研究会若手優秀講演賞, 電子情報通信学会ディペンダブルコンピューティング研究専門委員会, 2017/11/7."
+  citation: >-
+    大野 雄太，中村 優一，西 宏章, 電子情報通信学会 第4回研究会若手優秀講演賞, 電子情報通信学会ディペンダブルコンピューティング研究専門委員会, 2017/11/7.
 
 - id: "2017-award-2"
   year: 2017
   category: 受賞等
-  citation: "中村 優一，中塚 義道，西 宏章, テレコムシステム技術学生賞(第33回) , 公益財団法人 電気通信普及財団, 2018/3/22."
+  citation: >-
+    中村 優一，中塚 義道，西 宏章, テレコムシステム技術学生賞(第33回) , 公益財団法人 電気通信普及財団, 2018/3/22.
 
 - id: "2016-journal-1"
   year: 2016
   category: 論文誌
-  citation: "Yingjiu Bai, Ikuyo Kaneko, Hiroaki Nishi, Hidetaka Sasaki, Akihiko Murata, Kazuo Kurihara, and Izuru Takayabu, “A Web Platform for Community-based Adaptation Decision-making under Uncertainty”, Proceedings of the International Journal of Climate Change: Impacts and Responses. Vol. 8 (2) pp.33-51,2016.DOI: 10.18848/1835-7156/CGP, 2016/4/3."
+  citation: >-
+    Yingjiu Bai, Ikuyo Kaneko, Hiroaki Nishi, Hidetaka Sasaki, Akihiko Murata, Kazuo Kurihara, and Izuru Takayabu, “A Web Platform for Community-based Adaptation Decision-making under Uncertainty”, Proceedings of the International Journal of Climate Change: Impacts and Responses. Vol. 8 (2) pp.33-51,2016.DOI: 10.18848/1835-7156/CGP, 2016/4/3.
 
 - id: "2016-journal-2"
   year: 2016
   category: 論文誌
-  citation: "Yuichi Nakamura, Andy Harvath, and Hiroaki Nishi, “Time Synchronization Technique Using EPON for Next-Generation Power Grid”, IEICE TRANSACTIONS ON COMMUNICATIONS, Vol. E99B, No. 4, pp.859-866, DOI: 10.1587/transcom.2015AD, 2016/4/1."
+  citation: >-
+    Yuichi Nakamura, Andy Harvath, and Hiroaki Nishi, “Time Synchronization Technique Using EPON for Next-Generation Power Grid”, IEICE TRANSACTIONS ON COMMUNICATIONS, Vol. E99B, No. 4, pp.859-866, DOI: 10.1587/transcom.2015AD, 2016/4/1.
 
 - id: "2016-journal-3"
   year: 2016
   category: 論文誌
-  citation: "Shoki Kawano, Tomoya Imanishi, Yasushi Ikeda, Hiroaki Nishi, and Eiko Uchiyama, “Implementation of Household’s Amenity Maintaining System Based on Behavior Estimation”, Procedia Environmental Science, Vol.34, pp.582-593, Improving Sustainability Concept in Developing Countries, ELSEVIER ScienceDirect, 2016 DOI:10.1016/j.proenv.2016.04.051, 2016/4/16."
+  citation: >-
+    Shoki Kawano, Tomoya Imanishi, Yasushi Ikeda, Hiroaki Nishi, and Eiko Uchiyama, “Implementation of Household’s Amenity Maintaining System Based on Behavior Estimation”, Procedia Environmental Science, Vol.34, pp.582-593, Improving Sustainability Concept in Developing Countries, ELSEVIER ScienceDirect, 2016 DOI:10.1016/j.proenv.2016.04.051, 2016/4/16.
 
 - id: "2016-journal-4"
   year: 2016
   category: 論文誌
-  citation: "Janaka L. Wijekoon, Erwin H. Harahap, Rajitha L. Tennekoon, and Hiroaki Nishi, “How can a Service-oriented Router Merge with a CDN?”, IEEJ Transactions on Electronics, Information, and Systems (C), Vol. 136 No. 8, pp. 1172-1179, DOI:10.1541/ieejeiss.136.1172, 2016/8/1."
+  citation: >-
+    Janaka L. Wijekoon, Erwin H. Harahap, Rajitha L. Tennekoon, and Hiroaki Nishi, “How can a Service-oriented Router Merge with a CDN?”, IEEJ Transactions on Electronics, Information, and Systems (C), Vol. 136 No. 8, pp. 1172-1179, DOI:10.1541/ieejeiss.136.1172, 2016/8/1.
 
 - id: "2016-journal-5"
   year: 2016
   category: 論文誌
-  citation: "R. Tennekoon, J. Wijekoon, E. Harahap and H. Nishi, “Prototype Implementation of Fast and Secure Traceability Service over Public Networks”, IEEJ Transactions on Electrical and Electronic Engineering, Vol. 11, Issue S1, pages S122-S133, DOI:10.1002/tee.22245, 2016/6/17."
+  citation: >-
+    R. Tennekoon, J. Wijekoon, E. Harahap and H. Nishi, “Prototype Implementation of Fast and Secure Traceability Service over Public Networks”, IEEJ Transactions on Electrical and Electronic Engineering, Vol. 11, Issue S1, pages S122-S133, DOI:10.1002/tee.22245, 2016/6/17.
 
 - id: "2016-journal-6"
   year: 2016
   category: 論文誌
-  citation: "Tomoya Imanishi and Hiroaki Nishi, “Estimation of Required EVs Battery Capacity for Leveling Demand Energy Considering Parking Durations”, International Journal of Intelligent Transportation Systems Research, Online First Articles, Springer, DOI: 10.1007/s13177-016-0129-8, 2016/7/22."
+  citation: >-
+    Tomoya Imanishi and Hiroaki Nishi, “Estimation of Required EVs Battery Capacity for Leveling Demand Energy Considering Parking Durations”, International Journal of Intelligent Transportation Systems Research, Online First Articles, Springer, DOI: 10.1007/s13177-016-0129-8, 2016/7/22.
 
 - id: "2016-journal-7"
   year: 2016
   category: 論文誌
-  citation: "Janaka Wijekoon, Rajitha Tennekoon, Erwin Harahap, and Hiroaki Nishi, “Introducing a Distance Vector Routing Protocol for ns-3 Simulator”, Journal of EAI Endorsed Transactions on Mobile Communications and Applications 16(8): e4, Publisher EAI, ISSN 2032-9504, Vol.2, 2016/11/30."
+  citation: >-
+    Janaka Wijekoon, Rajitha Tennekoon, Erwin Harahap, and Hiroaki Nishi, “Introducing a Distance Vector Routing Protocol for ns-3 Simulator”, Journal of EAI Endorsed Transactions on Mobile Communications and Applications 16(8): e4, Publisher EAI, ISSN 2032-9504, Vol.2, 2016/11/30.
 
 - id: "2016-journal-8"
   year: 2016
   category: 論文誌
-  citation: "Janaka L. Wijekoon, Eriwn H. Harahap, Rajitha L. Tennekoon, and Hiroaki Nishi, “Effectiveness of Service-oriented Router for ISP-CDN Collaboration”, Journal of Information Processing Vol.25 p.45-55 (Jan.2017), Vol. 25 (2017) pp. 45-55, DOI: 10.2197/ipsjip25/45, 2017/, 2017/1/15."
+  citation: >-
+    Janaka L. Wijekoon, Eriwn H. Harahap, Rajitha L. Tennekoon, and Hiroaki Nishi, “Effectiveness of Service-oriented Router for ISP-CDN Collaboration”, Journal of Information Processing Vol.25 p.45-55 (Jan.2017), Vol. 25 (2017) pp. 45-55, DOI: 10.2197/ipsjip25/45, 2017/, 2017/1/15.
 
 - id: "2016-intl-conf-1"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Hironori Okano, Hayato Yamaki, and Hiroaki Nishi, “High-Speed Decompression Architecture of Compressed HTTP Stream for the Internet Routers”, Proceedings of the International Conference on FPGA Reconfiguration for General-Purpose Computing, pp.25-30, Hamburg, Germany, May 09-10, 2016.DOI: 10.1109/FPGA4GPC.2016.7518531, 2016/5/10."
+  citation: >-
+    Hironori Okano, Hayato Yamaki, and Hiroaki Nishi, “High-Speed Decompression Architecture of Compressed HTTP Stream for the Internet Routers”, Proceedings of the International Conference on FPGA Reconfiguration for General-Purpose Computing, pp.25-30, Hamburg, Germany, May 09-10, 2016.DOI: 10.1109/FPGA4GPC.2016.7518531, 2016/5/10.
 
 - id: "2016-intl-conf-2"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Shintaro Ikeda and Hiroaki Nishi, “Sparse-Coding-based Household Clustering for Demand Response Services”, Proceedings of the 2016 IEEE International Symposium on Industrial Electronics (ISIE2016), Santa Clara, USA, June 8-10, 2016, pp. 744-749DOI: 10.1109/ISIE.2016.7744982, 2016/6/8."
+  citation: >-
+    Shintaro Ikeda and Hiroaki Nishi, “Sparse-Coding-based Household Clustering for Demand Response Services”, Proceedings of the 2016 IEEE International Symposium on Industrial Electronics (ISIE2016), Santa Clara, USA, June 8-10, 2016, pp. 744-749DOI: 10.1109/ISIE.2016.7744982, 2016/6/8.
 
 - id: "2016-intl-conf-3"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Toshichika Shiobara, Guillaume Habault, Jean-Marie Bonnin, and Hiroaki Nishi, “Effective Communicating Optimization for V2G with Electric Bus”, Proceedings of the 14th International Conference on Industrial Informatics (IEEE-INDIN 2016 France), pp.992-997, Poitiers, France, 19-21, July 2016., DOI: 10.1109/INDIN.2016.7819306, 2016/7/20."
+  citation: >-
+    Toshichika Shiobara, Guillaume Habault, Jean-Marie Bonnin, and Hiroaki Nishi, “Effective Communicating Optimization for V2G with Electric Bus”, Proceedings of the 14th International Conference on Industrial Informatics (IEEE-INDIN 2016 France), pp.992-997, Poitiers, France, 19-21, July 2016., DOI: 10.1109/INDIN.2016.7819306, 2016/7/20.
 
 - id: "2016-intl-conf-4"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Tadanori Matsui and Hiroaki Nishi, “ECORS: Energy Consumption-Oriented Route Selection for Wireless Sensor Network”, Proceedings of the 14th International Conference on Industrial Informatics (IEEE-INDIN 2016 France), Poitiers, France, pp.1065-1068, 19-21, July 2016, DOI: 10.1109/INDIN.2016.7819322, 2016/7/20."
+  citation: >-
+    Tadanori Matsui and Hiroaki Nishi, “ECORS: Energy Consumption-Oriented Route Selection for Wireless Sensor Network”, Proceedings of the 14th International Conference on Industrial Informatics (IEEE-INDIN 2016 France), Poitiers, France, pp.1065-1068, 19-21, July 2016, DOI: 10.1109/INDIN.2016.7819322, 2016/7/20.
 
 - id: "2016-intl-conf-5"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Kento Masukawa, Kenichi Takagiwa, Tadanori Matsui, and Hiroaki Nishi, “Traceability Acquisition Method for Network Security using Multiple Encryption and Decryption of the Tag in Packet”, Proceedings of the PDPTA’16 – The 22nd International Conference on Parallel and Distributed Processing Techniques and Applications, Las Vegas, USA, pp. 17-23, 25-28, July 2016, http://worldcomp-proceedings.com/proc/p2016/PDP3898.pdf, 2016/7/26."
+  citation: >-
+    Kento Masukawa, Kenichi Takagiwa, Tadanori Matsui, and Hiroaki Nishi, “Traceability Acquisition Method for Network Security using Multiple Encryption and Decryption of the Tag in Packet”, Proceedings of the PDPTA’16 – The 22nd International Conference on Parallel and Distributed Processing Techniques and Applications, Las Vegas, USA, pp. 17-23, 25-28, July 2016, http://worldcomp-proceedings.com/proc/p2016/PDP3898.pdf, 2016/7/26.
 
 - id: "2016-intl-conf-6"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Janaka Wijekoon, and Hiroaki Nishi, “Implement Domain Name System (DNS) on Network simulator-3 Implement RFC 1035 on ns-3”, Proceedings of the 9th EAI International Conference on Simulation Tools and Techniques pp.56-pp.65, Prague, Czech Republic, 22-24, Aug. 2016. (ISBN 978-1-63190-120-1), 2016/8/22."
+  citation: >-
+    Janaka Wijekoon, and Hiroaki Nishi, “Implement Domain Name System (DNS) on Network simulator-3 Implement RFC 1035 on ns-3”, Proceedings of the 9th EAI International Conference on Simulation Tools and Techniques pp.56-pp.65, Prague, Czech Republic, 22-24, Aug. 2016. (ISBN 978-1-63190-120-1), 2016/8/22.
 
 - id: "2016-intl-conf-7"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Tomomichi Noguchi, Janaka Wijekoon, Yogendra Joshi, Minami Yoda, and Hiroaki Nishi, “Shutter control for cooling airflow management in data center servers”, Proceedings of the 42nd Annual Conference of IEEE Industrial Electronics Society (IECON2016), 24-27 Oct., Florence, Italy, pp. 5591 – 5596, DOI: 10.1109/IECON.2016.7793067, 2016/10/25."
+  citation: >-
+    Tomomichi Noguchi, Janaka Wijekoon, Yogendra Joshi, Minami Yoda, and Hiroaki Nishi, “Shutter control for cooling airflow management in data center servers”, Proceedings of the 42nd Annual Conference of IEEE Industrial Electronics Society (IECON2016), 24-27 Oct., Florence, Italy, pp. 5591 – 5596, DOI: 10.1109/IECON.2016.7793067, 2016/10/25.
 
 - id: "2016-intl-conf-8"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Yuichi Nakamura, Maxime Louvel and Hiroaki Nishi, Proceedings of the 42nd Annual Conference of IEEE Industrial Electronics Society, Florence, Italy, 24-27 Oct. 2016, pp.6931-6936, DOI: 10.1109/IECON.2016.7793771, 2016/10/26."
+  citation: >-
+    Yuichi Nakamura, Maxime Louvel and Hiroaki Nishi, Proceedings of the 42nd Annual Conference of IEEE Industrial Electronics Society, Florence, Italy, 24-27 Oct. 2016, pp.6931-6936, DOI: 10.1109/IECON.2016.7793771, 2016/10/26.
 
 - id: "2016-intl-conf-9"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Sota Sawaguchi and Hiroaki Nishi, “Hardware Accelerator for Data Anonymization using Dynamic Partial Reconfiguration”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, pp.98-103, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778745, 2016/11/6."
+  citation: >-
+    Sota Sawaguchi and Hiroaki Nishi, “Hardware Accelerator for Data Anonymization using Dynamic Partial Reconfiguration”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, pp.98-103, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778745, 2016/11/6.
 
 - id: "2016-intl-conf-10"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Tadanori Matsui and Hiroaki Nishi, “Analysis and Implementation of WSN with Route Selection Considering Energy Consumption”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE,p.1-p.7, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778729, 2016/11/6."
+  citation: >-
+    Tadanori Matsui and Hiroaki Nishi, “Analysis and Implementation of WSN with Route Selection Considering Energy Consumption”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE,p.1-p.7, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778729, 2016/11/6.
 
 - id: "2016-intl-conf-11"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Yuichi Nakamura, Takahiro Hosoe and Hiroaki Nishi, “Influence of Noise­based Perturbation on Recommendation Application”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, p.14-p.19, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778731, 2016/11/6."
+  citation: >-
+    Yuichi Nakamura, Takahiro Hosoe and Hiroaki Nishi, “Influence of Noise­based Perturbation on Recommendation Application”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, p.14-p.19, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778731, 2016/11/6.
 
 - id: "2016-intl-conf-12"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Takahiro Hosoe, Tadanori Matsui and Hiroaki Nishi, “Automated Generation Method of Recommendation for Effective Energy Utilization as a HEMS Service”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, p.74-p.79, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778741, 2016/11/6."
+  citation: >-
+    Takahiro Hosoe, Tadanori Matsui and Hiroaki Nishi, “Automated Generation Method of Recommendation for Effective Energy Utilization as a HEMS Service”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, p.74-p.79, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778741, 2016/11/6.
 
 - id: "2016-intl-conf-13"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Tomoya Imanishi, Rajitha Tennekoon, and Hiroaki Nishi, “Feature extraction and classification using power demand information”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, p.92-p.97, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778744, 2016/11/6."
+  citation: >-
+    Tomoya Imanishi, Rajitha Tennekoon, and Hiroaki Nishi, “Feature extraction and classification using power demand information”, Proceedings of 2016 IEEE International Conference on Smart Grid Communications (ISBN: 978-1-5090-4075-9), 2016, IEEE, p.92-p.97, Sydney, Australia, 6-9 Nov. 2016, DOI: 10.1109/SmartGridComm.2016.7778744, 2016/11/6.
 
 - id: "2016-intl-conf-14"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Hayato Yamaki and Hiroaki Nishi, “Line Replacement Algorithm for L1-scale Packet Processing Cache”, Proceedings of the 13th International Conference on Mobile and Ubiquitous Systems: Computing Networking and Services, pp.12-17, 28. Nov.- 1. Dec. Hiroshima, Japan, DOI: 10.1145/3004010.3006379, 2016/12/28."
+  citation: >-
+    Hayato Yamaki and Hiroaki Nishi, “Line Replacement Algorithm for L1-scale Packet Processing Cache”, Proceedings of the 13th International Conference on Mobile and Ubiquitous Systems: Computing Networking and Services, pp.12-17, 28. Nov.- 1. Dec. Hiroshima, Japan, DOI: 10.1145/3004010.3006379, 2016/12/28.
 
 - id: "2016-intl-conf-15"
   year: 2016
   category: 国際会議/査読付収録論文
-  citation: "Tomoya Imanishi, Rajitha Tennekoon, and Hiroaki Nishi, “Feature Expression of Frequency Transform Regarding Daily Power Demand Information”, Proceedings of the 11th International Conference on Ubiquitous Information Management and Communication (IMCOM ’17), January 2017 Article No.: 23, p.1–6, DOI:10.1145/3022227.3022249, 2017/1/5."
+  citation: >-
+    Tomoya Imanishi, Rajitha Tennekoon, and Hiroaki Nishi, “Feature Expression of Frequency Transform Regarding Daily Power Demand Information”, Proceedings of the 11th International Conference on Ubiquitous Information Management and Communication (IMCOM ’17), January 2017 Article No.: 23, p.1–6, DOI:10.1145/3022227.3022249, 2017/1/5.
 
 - id: "2016-domestic-conf-1"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "八巻隼人, 西宏章, “L1規模のパケット処理キャッシュにおけるライン入れ替え方式の検討”, 情報処理学会研究報告. 計算機アーキテクチャ研究会報告, 2016, Vol.2016-ARC-221, No.16, pp.95-101, 2016, 松本, 2016/8/9."
+  citation: >-
+    八巻隼人, 西宏章, “L1規模のパケット処理キャッシュにおけるライン入れ替え方式の検討”, 情報処理学会研究報告. 計算機アーキテクチャ研究会報告, 2016, Vol.2016-ARC-221, No.16, pp.95-101, 2016, 松本, 2016/8/9.
 
 - id: "2016-domestic-conf-2"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "西村公佑, 西宏章, “Failure遷移を用いたハッシュ型複数ストリーム”, 電子情報通信学会技術研究報告信学技報, Vol.116, No.177, pp.1-6, 松本,2016, 2016/8/9."
+  citation: >-
+    西村公佑, 西宏章, “Failure遷移を用いたハッシュ型複数ストリーム”, 電子情報通信学会技術研究報告信学技報, Vol.116, No.177, pp.1-6, 松本,2016, 2016/8/9.
 
 - id: "2016-domestic-conf-3"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "増川健人, 西宏章, “ネットワークにおけるタグ情報の多重暗号・復号化を用いたパケット配送経路特定手法の提案”, 電子情報通信学会技術研究報告信学技報, Vol.116, No.177, pp.155-160, 松本,2016, 2016/8/9."
+  citation: >-
+    増川健人, 西宏章, “ネットワークにおけるタグ情報の多重暗号・復号化を用いたパケット配送経路特定手法の提案”, 電子情報通信学会技術研究報告信学技報, Vol.116, No.177, pp.155-160, 松本,2016, 2016/8/9.
 
 - id: "2016-domestic-conf-4"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "中村優一, 西宏章, “二次利用のためのデータ属性を考慮した匿名化加工手法の提案と検討”, 電子情報通信学会技術研究報告信学技報, ICD2016-53, CPSY2016-59, Vol.116, No.364, pp.13-18, 東京大岡山、東工大, 2016, ISSN 0913-5685, 2016/12/15."
+  citation: >-
+    中村優一, 西宏章, “二次利用のためのデータ属性を考慮した匿名化加工手法の提案と検討”, 電子情報通信学会技術研究報告信学技報, ICD2016-53, CPSY2016-59, Vol.116, No.364, pp.13-18, 東京大岡山、東工大, 2016, ISSN 0913-5685, 2016/12/15.
 
 - id: "2016-domestic-conf-5"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "中條悠介，西宏章, “サーバの温度情報に基づくデータセンタ内リクエスト分散手法の提案”, 組込み技術とネットワークに関するワークショップ ETNET2017,情報処理学会ARC, 久米島, 2017年3月9-10日, Vol.2017-ARC-225, No.24, Vol.2017-SLDM-179, No.24, Vol.2017-EMB-44, No.24, 2017/3/9."
+  citation: >-
+    中條悠介，西宏章, “サーバの温度情報に基づくデータセンタ内リクエスト分散手法の提案”, 組込み技術とネットワークに関するワークショップ ETNET2017,情報処理学会ARC, 久米島, 2017年3月9-10日, Vol.2017-ARC-225, No.24, Vol.2017-SLDM-179, No.24, Vol.2017-EMB-44, No.24, 2017/3/9.
 
 - id: "2016-domestic-conf-6"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "澤口聡太，西宏章, “ゲートウェイにおけるオンラインニューラルネットワーク学習器ハードウェアの提案”, 組込み技術とネットワークに関するワークショップ ETNET2017,情報処理学会ARC, 久米島, 2017年3月9-10日, Vol.2017-ARC-225, No.24, Vol.2017-SLDM-179, No.24, Vol.2017-EMB-44, No.24, 2017/3/9."
+  citation: >-
+    澤口聡太，西宏章, “ゲートウェイにおけるオンラインニューラルネットワーク学習器ハードウェアの提案”, 組込み技術とネットワークに関するワークショップ ETNET2017,情報処理学会ARC, 久米島, 2017年3月9-10日, Vol.2017-ARC-225, No.24, Vol.2017-SLDM-179, No.24, Vol.2017-EMB-44, No.24, 2017/3/9.
 
 - id: "2016-domestic-conf-7"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "細江貴博, 今西智哉, 西宏章, “時系列電力情報の周期的特性を用いた欠損値保管”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-142, DC2016-88(2017-03), 2017/3/10."
+  citation: >-
+    細江貴博, 今西智哉, 西宏章, “時系列電力情報の周期的特性を用いた欠損値保管”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-142, DC2016-88(2017-03), 2017/3/10.
 
 - id: "2016-domestic-conf-8"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "三浦立輝, 西宏章, “Dockerを用いた提供自由度を拡大するスマートコミュニティサービスの共通ＡＰＩアーキテクチャ”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-154, DC2016-100(2017-03), 2017/3/10."
+  citation: >-
+    三浦立輝, 西宏章, “Dockerを用いた提供自由度を拡大するスマートコミュニティサービスの共通ＡＰＩアーキテクチャ”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-154, DC2016-100(2017-03), 2017/3/10.
 
 - id: "2016-domestic-conf-9"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "中塚義道, 西宏章, “Named Data Networking におけるパケットホップ数を用いたInterest Flooding Attackの検知及び緩和手法”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-150, DC2016-96(2017-03), 2017/3/10."
+  citation: >-
+    中塚義道, 西宏章, “Named Data Networking におけるパケットホップ数を用いたInterest Flooding Attackの検知及び緩和手法”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-150, DC2016-96(2017-03), 2017/3/10.
 
 - id: "2016-domestic-conf-10"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "仁和瞭，西宏章, “データ利用認証および匿名かつ安全なデータ共有を実現するスマートコミュニティのための情報プラットフォーム”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-153, DC2016-99(2017-03), 2017/3/10."
+  citation: >-
+    仁和瞭，西宏章, “データ利用認証および匿名かつ安全なデータ共有を実現するスマートコミュニティのための情報プラットフォーム”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-153, DC2016-99(2017-03), 2017/3/10.
 
 - id: "2016-domestic-conf-11"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "大野雄太, 中村優一, 西宏章, “匿名化データのための電子透かしとそのBlind検出手法の提案”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-148, DC2016-94(2017-03), 2017/3/10."
+  citation: >-
+    大野雄太, 中村優一, 西宏章, “匿名化データのための電子透かしとそのBlind検出手法の提案”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-148, DC2016-94(2017-03), 2017/3/10.
 
 - id: "2016-domestic-conf-12"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "吉田将大, 今西智哉, 西宏章, “電力需要データに特化した特徴抽出方法と背景情報推定方法の提案”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-143, DC2016-89(2017-03), 2017/3/10."
+  citation: >-
+    吉田将大, 今西智哉, 西宏章, “電力需要データに特化した特徴抽出方法と背景情報推定方法の提案”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-143, DC2016-89(2017-03), 2017/3/10.
 
 - id: "2016-domestic-conf-13"
   year: 2016
   category: 国内研究会/収録論文/口頭発表等
-  citation: "松井忠宗, 西宏章, “WSNにおけるエネルギ消費を考慮したTSCHスケジューリングに関する提案と評価”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-160, DC2016-106(2017-03), 2017/3/10."
+  citation: >-
+    松井忠宗, 西宏章, “WSNにおけるエネルギ消費を考慮したTSCHスケジューリングに関する提案と評価”, 組込み技術とネットワークに関するワークショップ ETNET2017, 電子情報通信学会CPSY, 久米島, 2017年3月9-10日, IEICE Technical Report, CPSY2016-160, DC2016-106(2017-03), 2017/3/10.
 
 - id: "2016-talk-1"
   year: 2016
   category: 講演等
-  citation: "（招待講演）西宏章, “まちのスマート化はとまらない －スマートコミュニティは何を目指すのか－”, 情報産業三田, 於：霞が関ナレッジスクエア, 2016年4月13日."
+  citation: >-
+    （招待講演）西宏章, “まちのスマート化はとまらない －スマートコミュニティは何を目指すのか－”, 情報産業三田, 於：霞が関ナレッジスクエア, 2016年4月13日.
 
 - id: "2016-talk-2"
   year: 2016
   category: 講演等
-  citation: "（招待講演）Hiroaki Nishi, “Panel discussions: Computing and Communication Evolution for IoT Innovations”, Proceedings of the 2016 IEEE Symposium in Low-Power and High-Speed Chips (COOL CHIPS XIX), 20-22 April 2016, DOI: 10.1109/CoolChips.2016.7503673, 2016/4/21."
+  citation: >-
+    （招待講演）Hiroaki Nishi, “Panel discussions: Computing and Communication Evolution for IoT Innovations”, Proceedings of the 2016 IEEE Symposium in Low-Power and High-Speed Chips (COOL CHIPS XIX), 20-22 April 2016, DOI: 10.1109/CoolChips.2016.7503673, 2016/4/21.
 
 - id: "2016-talk-3"
   year: 2016
   category: 講演等
-  citation: "西宏章, “スマートコミュニティ研究の紹介”, おもてなしICT協議会幹事会, 2016/5/18."
+  citation: >-
+    西宏章, “スマートコミュニティ研究の紹介”, おもてなしICT協議会幹事会, 2016/5/18.
 
 - id: "2016-talk-4"
   year: 2016
   category: 講演等
-  citation: "西宏章, “スマート社会の実現に向けた取り組みについて”, おもてなしICT協議会社員総会, 2016/9/8."
+  citation: >-
+    西宏章, “スマート社会の実現に向けた取り組みについて”, おもてなしICT協議会社員総会, 2016/9/8.
 
 - id: "2016-talk-5"
   year: 2016
   category: 講演等
-  citation: "（招待講演）西宏章, “実例で紹介！IoTで築くスマート社会”, データセンタークロスアライアンス(http://www.dcxa.jp/index.php), 2016/9/13."
+  citation: >-
+    （招待講演）西宏章, “実例で紹介！IoTで築くスマート社会”, データセンタークロスアライアンス(http://www.dcxa.jp/index.php), 2016/9/13.
 
 - id: "2016-talk-6"
   year: 2016
   category: 講演等
-  citation: "西宏章, “スマートコミュニティ”, チェコ大使館オストラヴァ地域振興局, 2016/10/12."
+  citation: >-
+    西宏章, “スマートコミュニティ”, チェコ大使館オストラヴァ地域振興局, 2016/10/12.
 
 - id: "2016-talk-7"
   year: 2016
   category: 講演等
-  citation: "（招待講演）西宏章, “IoTを活用した住宅のスマート化とタウンマネジメント”, 東京ガス TG-NEXPO2016, 2016/10/19."
+  citation: >-
+    （招待講演）西宏章, “IoTを活用した住宅のスマート化とタウンマネジメント”, 東京ガス TG-NEXPO2016, 2016/10/19.
 
 - id: "2016-talk-8"
   year: 2016
   category: 講演等
-  citation: "（セミナー）西宏章, “スマートコミュティ”, JSTさくらサイエンス招へい者向けセミナー, 2016/10/20."
+  citation: >-
+    （セミナー）西宏章, “スマートコミュティ”, JSTさくらサイエンス招へい者向けセミナー, 2016/10/20.
 
 - id: "2016-talk-9"
   year: 2016
   category: 講演等
-  citation: "Hiroaki Nishi, “IoT and Smart City”, Seminar at CEA France, IoT, 2016/12/11."
+  citation: >-
+    Hiroaki Nishi, “IoT and Smart City”, Seminar at CEA France, IoT, 2016/12/11.
 
 - id: "2016-talk-10"
   year: 2016
   category: 講演等
-  citation: "(Seminar) Hiroaki Nishi, “Smart Gird Vehicular Technology Vision: Possibility and Feasibility of Smart Community from Case Studies”, IEEE Standards Committee Webinar, 2017/2/24."
+  citation: >-
+    (Seminar) Hiroaki Nishi, “Smart Gird Vehicular Technology Vision: Possibility and Feasibility of Smart Community from Case Studies”, IEEE Standards Committee Webinar, 2017/2/24.
 
 - id: "2016-talk-11"
   year: 2016
   category: 講演等
-  citation: "（招待講演）西宏章, “スマートコミュニティにおけるインフラストラクチャとサービス”, システム安全学ワークショップ, 電気通信大学, 2017/3/1."
+  citation: >-
+    （招待講演）西宏章, “スマートコミュニティにおけるインフラストラクチャとサービス”, システム安全学ワークショップ, 電気通信大学, 2017/3/1.
 
 - id: "2016-talk-12"
   year: 2016
   category: 講演等
-  citation: "（招待講演）西宏章, “スマートコミュニティ実現のためのプラットフォーム実証実験”, POFコンソーシアム、慶應義塾大学, 2017/3/7."
+  citation: >-
+    （招待講演）西宏章, “スマートコミュニティ実現のためのプラットフォーム実証実験”, POFコンソーシアム、慶應義塾大学, 2017/3/7.
 
 - id: "2016-press-1"
   year: 2016
   category: 報道・展示等
-  citation: "Interop Tokyo 2016, 幕張メッセ, 2016/6/8-10."
+  citation: >-
+    Interop Tokyo 2016, 幕張メッセ, 2016/6/8-10.
 
 - id: "2016-press-2"
   year: 2016
   category: 報道・展示等
-  citation: "スマートコミュニティの地域実証, 第17回慶應科学技術展 KEIO TECHNO-MALL 2016, 2016/12/16."
+  citation: >-
+    スマートコミュニティの地域実証, 第17回慶應科学技術展 KEIO TECHNO-MALL 2016, 2016/12/16.
 
 - id: "2016-press-3"
   year: 2016
   category: 報道・展示等
-  citation: "（テレビニュース）美術館で外国人観光客向けＩＣＴ実証実験 千葉, NHK ニュース 「首都圏ニュース++８４５」, 2017/1/4."
+  citation: >-
+    （テレビニュース）美術館で外国人観光客向けＩＣＴ実証実験 千葉, NHK ニュース 「首都圏ニュース++８４５」, 2017/1/4.
 
 - id: "2016-press-4"
   year: 2016
   category: 報道・展示等
-  citation: "（新聞記事）メニュー、母国語で表示（イオン グループ飲食店で実験）, 日経新聞, 2017/3/20."
+  citation: >-
+    （新聞記事）メニュー、母国語で表示（イオン グループ飲食店で実験）, 日経新聞, 2017/3/20.
 
 - id: "2016-book-1"
   year: 2016
   category: 著書
-  citation: "西宏章, “家のエネルギーの使い方のシンフォニー”, 株式会社シナノ「地球とつながる暮らしのデザイン」 ISBN978-4-86324-099-5 C0077, pp.227-232, 2016/5/31."
+  citation: >-
+    西宏章, “家のエネルギーの使い方のシンフォニー”, 株式会社シナノ「地球とつながる暮らしのデザイン」 ISBN978-4-86324-099-5 C0077, pp.227-232, 2016/5/31.
 
 - id: "2016-award-1"
   year: 2016
   category: 受賞等
-  citation: "増川健人, 西宏章, 一般社団法人情報処理学会第213回研究会 若手奨励賞, 一般社団法人情報処理学会システム・アーキテクチャ研究会, 2016/10/6."
+  citation: >-
+    増川健人, 西宏章, 一般社団法人情報処理学会第213回研究会 若手奨励賞, 一般社団法人情報処理学会システム・アーキテクチャ研究会, 2016/10/6.
 
 - id: "2016-award-2"
   year: 2016
   category: 受賞等
-  citation: "Yuichi Nakamura and Hiroaki Nishi, Best Author Award, Workshop on Smart City Infrastructure and Applications in conjunction with IEEE International Conference on Smart Grid Communications 2016, 2016/11/6."
+  citation: >-
+    Yuichi Nakamura and Hiroaki Nishi, Best Author Award, Workshop on Smart City Infrastructure and Applications in conjunction with IEEE International Conference on Smart Grid Communications 2016, 2016/11/6.
 
 - id: "2016-award-3"
   year: 2016
   category: 受賞等
-  citation: "Souta Sawaguchi and Hiroaki Nishi, Best Paper Award, Workshop on Smart City Infrastructure and Applications in conjunction with IEEE International Conference on Smart Grid Communications 2016, 2016/11/6."
+  citation: >-
+    Souta Sawaguchi and Hiroaki Nishi, Best Paper Award, Workshop on Smart City Infrastructure and Applications in conjunction with IEEE International Conference on Smart Grid Communications 2016, 2016/11/6.
