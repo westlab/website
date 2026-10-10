@@ -14,7 +14,7 @@ const categories = (await getCollection('links')).sort((a, b) => a.data.order - 
 
 <BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <PageContent clip mobileBottom={48}>
+  <PageContent clip>
     <Breadcrumb lang={lang} />
     <div class="body">
       {categories.map((category) => (

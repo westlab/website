@@ -29,7 +29,7 @@ const href = (slug: string) => `/research/${slug}/`;
 
 <BaseLayout title={topic.data.title} description={topic.data.description ?? topic.data.summary} ogType="article" lang={lang}>
   <PageHero title={topic.data.title} image={heroImage} />
-  <PageContent maxWidth="900px" mobileTop={40} mobileBottom={40}>
+  <PageContent maxWidth="900px" mobileTop={40}>
     <Breadcrumb lang={lang} current={{ label: topic.data.title, href: href(topic.slug) }} />
     <div class="body">
       <article class="article">

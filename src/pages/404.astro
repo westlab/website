@@ -11,7 +11,7 @@ const title = t(lang, 'notfound.title');
 ---
 
 <BaseLayout title={title} description={t(lang, 'notfound.lead')} lang={lang} indexable={false}>
-  <PageContent clip mobileBottom={48}>
+  <PageContent clip>
     <Breadcrumb lang={lang} current={{ label: title, href: '/404/' }} />
     <h1 class="t-section">{title}</h1>
     <div class="body">
