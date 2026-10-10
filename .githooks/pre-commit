@@ -4,6 +4,15 @@ if ! npm test --silent; then
   exit 1
 fi
 
+# 型チェック（npm run check、約5秒）は、コードや定義（.astro / .ts / .mjs / content.config）をコミットに含むときだけ実行する。
+if git diff --cached --name-only --diff-filter=ACM | grep -qE '\.(astro|ts|mjs)$|^package(-lock)?\.json$|^tsconfig\.json$'; then
+  if ! npm run check --silent; then
+    echo ""
+    echo "型エラーがあります。npm run check で確認して直してください。"
+    exit 1
+  fi
+fi
+
 # commit前に src 以下の Markdown / YAML が Prettier で整形済みかを確認する（未整形・構文エラーならブロックする）。
 files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^src/.*\.(md|yaml)$')
 [ -z "$files" ] && exit 0

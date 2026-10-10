@@ -1,6 +1,8 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { file, glob } from "astro/loaders";
 import yaml from "js-yaml";
+import { RESEARCH_ICONS } from "./lib/research-icons";
 
 // 分類2: 繰り返しの本文コンテンツ（研究トピック）。
 // 1項目1ファイルを ja/ と en/ に分けて置く。id は "ja/network" のような
@@ -11,7 +13,7 @@ const research = defineCollection({
     title: z.string(),
     order: z.number(),
     // アイコンの種類を表すキーのみ。実際のSVGはコンポーネント側（src/components/icons/）で解決する。
-    icon: z.string(),
+    icon: z.enum(RESEARCH_ICONS),
     // 研究内容ページのカードに出す1〜2文の要約（本文とは別）
     summary: z.string(),
     // 詳細ページの meta description。未指定なら summary を使う。summary だけでは意味が通じないときに書く
@@ -61,6 +63,8 @@ const pages = defineCollection({
   schema: z.union([navPage, imageOnlyPage]),
 });
 
+const pageDescription = z.object({ ja: z.string(), en: z.string() });
+
 // フッターの所在地・連絡先（1レコードのみ）。
 const site = defineCollection({
   loader: file("./src/data/site.yaml"),
@@ -93,7 +97,11 @@ const site = defineCollection({
     description_ja: z.string(),
     description_en: z.string(),
     // Nav Card を持たない独立ページの meta description
-    page_descriptions: z.record(z.object({ ja: z.string(), en: z.string() })),
+    page_descriptions: z.object({
+      alumni: pageDescription,
+      videos: pageDescription,
+      search: pageDescription,
+    }),
     copyright: z.string(),
   }),
 });

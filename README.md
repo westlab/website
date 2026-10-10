@@ -56,6 +56,7 @@ npm run check:i18n
 npm run lint      # 未整形・構文エラーがあれば失敗
 npm run lint:fix  # 整形する
 npm test           # ナビカード・ヒーロー画像の共通化チェックと画像容量チェック（pre-commit と CI でも実行）
+npm run check     # 型チェック（astro check。約5秒。.astro / .ts を変えたコミットでは pre-commit でも実行）
 ```
 
 `npm run lint` は Markdown 本文に h1 が無いかも検査する（`scripts/check-headings.mjs`）。本文の見出しは `##` から書く（`#` は使わない。h1 は各ページのタイトルが担当）。
