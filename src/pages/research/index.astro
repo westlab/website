@@ -7,11 +7,12 @@ import SideBand from '../../components/SideBand.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
 import { getLocalizedDoc, getLocalizedList } from '../../lib/content';
+import { getNavPage } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
 
-const page = (await getCollection('pages')).find((p) => p.id === 'research')!;
+const page = await getNavPage('research');
 
 const intro = await getLocalizedDoc('pagesContent', lang, 'research-intro');
 const { Content: IntroContent } = intro ? await render(intro) : { Content: null };

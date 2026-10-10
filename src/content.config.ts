@@ -15,8 +15,6 @@ const research = defineCollection({
     summary: z.string(),
     // 詳細ページの meta description。未指定なら summary を使う。summary だけでは意味が通じないときに書く
     description: z.string().optional(),
-    // 詳細ページ上部（PageHero）の画像パス。未指定ならプレースホルダー画像
-    hero: z.string().optional(),
   }),
 });
 
@@ -34,23 +32,32 @@ const pagesContent = defineCollection({
 // 分類1: 構造化データ（表形式・短い項目の繰り返し）。1コレクション1 YAMLファイル。
 // 翻訳が必要な短いフィールドは _ja/_en を同一レコード内に持つ（stack-decision.md の方針）。
 
-// Homepage の Nav Card と各ページの Page Title（Hero）が共有する画像・タイトルの対応表。
+// 全ページの Page Title（Hero）画像の対応表。Nav Card を持つ5ページは Homepage の Nav Card と画像・タイトルを共有する。
+// Nav Card を持たないページ（卒業生・動画・研究トピック）は `nav: false` を付け、id と image だけ書く。
+// 研究トピックの id は "research/<ファイル名>"（例: research/network）。
+const navPage = z.object({
+  id: z.string(),
+  nav: z.literal(true).default(true),
+  order: z.number(),
+  title_ja: z.string(),
+  title_en: z.string(),
+  image: z.string(),
+  href: z.string(),
+  // Homepage の Nav Section に出す1行説明
+  description_ja: z.string(),
+  description_en: z.string(),
+  // 検索結果・SNS共有用の説明。Nav Card 用の1行では短すぎるページだけ指定する。未指定なら description を使う
+  meta_description_ja: z.string().optional(),
+  meta_description_en: z.string().optional(),
+});
+const imageOnlyPage = z.object({
+  id: z.string(),
+  nav: z.literal(false),
+  image: z.string(),
+});
 const pages = defineCollection({
   loader: file("./src/data/pages.yaml"),
-  schema: z.object({
-    id: z.string(),
-    order: z.number(),
-    title_ja: z.string(),
-    title_en: z.string(),
-    image: z.string(),
-    href: z.string(),
-    // Homepage の Nav Section に出す1行説明
-    description_ja: z.string(),
-    description_en: z.string(),
-    // 検索結果・SNS共有用の説明。Nav Card 用の1行では短すぎるページだけ指定する。未指定なら description を使う
-    meta_description_ja: z.string().optional(),
-    meta_description_en: z.string().optional(),
-  }),
+  schema: z.union([navPage, imageOnlyPage]),
 });
 
 // フッターの所在地・連絡先（1レコードのみ）。
@@ -82,7 +89,7 @@ const site = defineCollection({
     // トップページの meta description
     description_ja: z.string(),
     description_en: z.string(),
-    // pages.yaml に載せない独立ページ（ナビカードを持たないページ）の meta description
+    // Nav Card を持たない独立ページの meta description
     page_descriptions: z.record(z.object({ ja: z.string(), en: z.string() })),
     copyright: z.string(),
   }),

@@ -3,7 +3,6 @@ title: スマートコミュニティ・スマートシティ情報基盤
 order: 6
 icon: smart-community
 summary: 情報流通を活性化し、地域の暮らしを支える情報基盤の構築に取り組んでいます。
-hero: /images/research/smart-community/hero.jpg
 ---
 
 ## スマートコミュニティの情報基盤

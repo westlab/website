@@ -7,6 +7,7 @@ import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getLocalizedList } from '../../lib/content';
+import { getPageImage } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -21,8 +22,8 @@ export async function getStaticPaths() {
 const lang = 'ja' as const;
 const { topic, prev, next } = Astro.props;
 const { Content } = await render(topic);
-// トピックごとの Page Title 画像（front matter の hero）。未指定ならプレースホルダー
-const heroImage = topic.data.hero ?? '/images/pages/placeholder.jpg';
+// トピックごとの Page Title 画像（pages.yaml の research/<slug>）
+const heroImage = await getPageImage(`research/${topic.slug}`);
 const href = (slug: string) => `/research/${slug}/`;
 ---
 

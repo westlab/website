@@ -5,11 +5,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NavCard from '../components/NavCard.astro';
 import SideBand from '../components/SideBand.astro';
 import { getLocalizedDoc } from '../lib/content';
+import { getNavPages } from '../lib/pages';
 import { t } from '../i18n/ui';
 
 const lang = 'ja' as const;
 
-const pages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+const pages = await getNavPages();
 const site = (await getCollection('site'))[0];
 const message = (await getLocalizedDoc('pagesContent', lang, 'homepage-message'))!;
 const { Content: MessageContent } = await render(message);

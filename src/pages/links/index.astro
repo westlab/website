@@ -4,11 +4,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import SideBand from '../../components/SideBand.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getNavPage } from '../../lib/pages';
 
 const lang = 'ja' as const;
 
-const pages = await getCollection('pages');
-const page = pages.find((p) => p.id === 'links')!;
+const page = await getNavPage('links');
 const categories = (await getCollection('links')).sort((a, b) => a.data.order - b.data.order);
 ---
 
