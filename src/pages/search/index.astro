@@ -1,16 +1,16 @@
 ---
 // Figma: Search Results Page / Search Results Page (Mobile) / Search Results Page (0件)。
 // 検索は Pagefind（ビルド時インデックス）をブラウザで実行する。
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageContent from '../../components/PageContent.astro';
+import { getSite } from '../../lib/site';
+import { localize } from '../../lib/localize';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
-const site = (await getCollection('site'))[0];
+const site = await getSite();
 
-const l = (obj: Record<string, any>, key: string) => obj[`${key}_${lang}`];
-const siteName = l(site.data, 'name'); // BaseLayout が title に付ける名前と同じ
+const siteName = localize(site, 'name', lang); // BaseLayout が title に付ける名前と同じ
 
 const strings = {
   siteName,
@@ -30,7 +30,7 @@ const strings = {
 
 <BaseLayout
   title={t(lang, 'search.label')}
-  description={site.data.page_descriptions.search.ja}
+  description={site.page_descriptions.search.ja}
   lang={lang}
   indexable={false}
 >

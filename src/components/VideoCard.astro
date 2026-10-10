@@ -2,6 +2,7 @@
 // Figma: Video Card / 動画一覧（438:932）。再生アイコン付きサムネイル、タイトル、サブタイトル。
 import type { CollectionEntry } from 'astro:content';
 import { t, type Lang } from '../i18n/ui';
+import { localize } from '../lib/localize';
 import { getYouTubeId } from '../lib/youtube';
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 
 const { video, lang = 'ja' } = Astro.props;
 const videoId = getYouTubeId(video.url);
-const title = lang === 'ja' ? video.title_ja : video.title_en;
+const title = localize(video, 'title', lang);
 // 動画なしのときはボタンにせず、アイコンだけ表示する
 const Inner = videoId ? 'button' : 'div';
 const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.play')}: ${title}` } : {};
@@ -28,7 +29,7 @@ const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.
     </Inner>
   </div>
   <h2 class="title t-item">{title}</h2>
-  <p class="description t-caption">{lang === 'ja' ? video.description_ja : video.description_en}</p>
+  <p class="description t-caption">{localize(video, 'description', lang)}</p>
 </div>
 
 <script>

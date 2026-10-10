@@ -1,5 +1,8 @@
 // $k$ のような変数記法を <var>k</var> に変換する mdast プラグイン（数式ライブラリなしの簡易版）
 // Astro 7 の既定は Sätteri で remark は入っていないため、Sätteri の mdast プラグイン形式で書く
+import type { Image, Text } from 'mdast';
+import type { MdastVisitorContext } from 'satteri';
+
 const PATTERN = /\$([^$\n]+?)\$/;
 
 type TextNode = { type: 'text'; value: string };
@@ -29,12 +32,12 @@ function splitText(value: string): (TextNode | VarNode)[] {
 
 export const inlineVar = {
   name: 'inline-var',
-  text(node: any, ctx: any) {
+  text(node: Text, ctx: MdastVisitorContext) {
     if (!PATTERN.test(node.value)) return;
     ctx.replaceNode(node, splitText(node.value));
   },
   // alt は斜体にできないので $ だけ取り除く
-  image(node: any, ctx: any) {
+  image(node: Image, ctx: MdastVisitorContext) {
     if (node.alt && node.alt.includes('$')) {
       ctx.setProperty(node, 'alt', node.alt.replace(/\$([^$\n]+?)\$/g, '$1'));
     }
