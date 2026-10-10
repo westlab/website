@@ -21,7 +21,8 @@
     "compress:images": "node scripts/compress-images.mjs"
   },
   "dependencies": {
-    "astro": "^7.2.4"
+    "astro": "^7.2.4",
+    "js-yaml": "^4.3.0"
   },
   "devDependencies": {
     "pagefind": "^1.5.2",
