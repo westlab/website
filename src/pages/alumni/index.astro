@@ -23,7 +23,7 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
     <div class="body">
       {cohorts.map((entry) => (
         <div class="cohort">
-          <h2 class="t-h1">{entry.data.cohort}期</h2>
+          <h2 class="t-section">{entry.data.cohort}期</h2>
           <hr class="divider" />
           <ul class="names">
             {entry.data.names.map((person) => (

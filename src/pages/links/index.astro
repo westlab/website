@@ -21,7 +21,7 @@ const categories = (await getCollection('links')).sort((a, b) => a.data.order - 
       <div class="body">
         {categories.map((category) => (
           <div class="category">
-            <h2 class="t-h1">{category.data.category_ja}</h2>
+            <h2 class="t-section">{category.data.category_ja}</h2>
             <ul class="t-body">
               {category.data.items.map((item) => (
                 <li>

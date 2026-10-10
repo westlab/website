@@ -41,13 +41,13 @@ const href = (slug: string) => `/research/${slug}/`;
           {prev && (
             <a class="pager-link prev" href={href(prev.slug)} rel="prev">
               <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'research.pager.prev')}</span>
-              <span class="title t-h3">{prev.data.title}</span>
+              <span class="title t-item">{prev.data.title}</span>
             </a>
           )}
           {next && (
             <a class="pager-link next" href={href(next.slug)} rel="next">
               <span class="label t-ui-small-bold">{t(lang, 'research.pager.next')}<span aria-hidden="true"> →</span></span>
-              <span class="title t-h3">{next.data.title}</span>
+              <span class="title t-item">{next.data.title}</span>
             </a>
           )}
         </nav>

@@ -36,7 +36,7 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
     <div class="body">
       {groups.map((group) => (
         <div class="group">
-          <h2 class="t-h1">{group.data.grade}</h2>
+          <h2 class="t-section">{group.data.grade}</h2>
           <hr class="divider" />
           <div class="rows">
             {splitByYear(group.data.names).map((row) => (

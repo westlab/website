@@ -15,7 +15,7 @@ const { topic, lang = 'ja' } = Astro.props;
 <a class="topic-card" href={`/research/${topic.slug}/`}>
   <div class="header">
     <span class="icon"><ResearchIcon name={topic.data.icon as any} /></span>
-    <h3 class="title t-h3">{topic.data.title}</h3>
+    <h3 class="title t-item">{topic.data.title}</h3>
   </div>
   <p class="summary t-caption">{topic.data.summary}</p>
   <span class="more t-ui-bold">
