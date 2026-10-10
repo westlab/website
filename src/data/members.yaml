@@ -1,3 +1,4 @@
+# id は区分を表す英数字（professor・doctor・master・undergraduate）。ファイルの中で重複させない。
 # 区分（grade）は 博士課程・修士課程・学部生 のいずれか。「教授」は掲載しない。ほかの値はメンバーページに表示されない。
 # 学年（year）は B3・B4・M1・M2・D1・D2・D3 のいずれか。書かなくてもよい。
 # 書ける値の一覧は src/data/allowed-values.json。範囲外は npm run check:data で警告される。

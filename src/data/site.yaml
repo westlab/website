@@ -1,4 +1,5 @@
 # フッターに表示する研究室の所在地・連絡先。
+# id は contact のまま変えない。
 
 - id: contact
   name_ja: 西研究室

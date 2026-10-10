@@ -1,3 +1,4 @@
+# id はページのパス（research・members など。研究詳細は research/<ファイル名>）。ファイルの中で重複させない。
 # 全ページの Page Title（ページ上部）の写真。写真を差し替えるときはここの image を直す。
 # 先頭の5件はトップの Nav Card にも同じ写真が出る。
 - id: research
