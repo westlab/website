@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check:i18n": "node scripts/check-translations.mjs",
+    "check:data": "node scripts/check-data-values.mjs",
     "lint": "prettier --check \"src/**/*.{md,yaml}\" && node scripts/check-headings.mjs && node scripts/check-quotes.mjs",
     "lint:headings": "node scripts/check-headings.mjs",
     "lint:quotes": "node scripts/check-quotes.mjs",
