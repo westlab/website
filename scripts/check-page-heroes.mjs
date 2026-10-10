@@ -5,6 +5,7 @@
 //   const page = await getNavPage('<id>');    → <PageHero image={page.data.image} />
 //   const image = await getPageImage('<id>'); → <PageHero image={image} />
 // （研究詳細は getPageImage(`research/${...}`)）
+// id の重複は check-duplicate-ids.mjs が検査する。
 // `npm test` で実行される。使い方: node scripts/check-page-heroes.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
 
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
@@ -22,7 +23,6 @@ for (const line of readFileSync(join(root, YAML), 'utf8').split(/\r?\n/)) {
   const id = line.match(/^- id:\s*(\S+)/);
   if (id) {
     cur = { id: id[1], image: null, nav: true, hero: false };
-    if (entries.has(cur.id)) problem(YAML, `「${cur.id}」が重複しています。`);
     entries.set(cur.id, cur);
     continue;
   }

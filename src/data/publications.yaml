@@ -1,3 +1,4 @@
+# id は <年度>-<分類>-<連番>（例: 2026-journal-1）。分類は journal・intl-conf・domestic-conf・talk・press・article・book・patent・award。ファイルの中で重複させない（重複すると片方が表示されない）。
 # citation は次の形で書く。業績ページのプレーンテキストをそのまま貼れる（# : " \ もそのまま書ける）。
 #   citation: >-
 #     Taro Keio, Hiroaki Nishi, “Rust #2 and C# Toolkit…”, IEEE Access, 2026.
@@ -14,6 +15,7 @@
 #   受賞等
 # 上記以外の分類は業績ページに表示されない。year は 2015 以上の年度（2014 以前は表示されない）。
 # 書ける値の一覧は src/data/allowed-values.json。範囲外は npm run check:data で警告される。
+# 同じ年度・分類の中の表示順は、このファイルに書いた順（上から）。id の番号は順番に影響しない。追加したい位置に書く。
 
 - id: "2026-journal-1"
   year: 2026
