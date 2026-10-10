@@ -91,9 +91,10 @@ const { topic, lang = 'ja' } = Astro.props;
       gap: 8px;
     }
 
+    /* モバイルでは Caption/Label と同じサイズ */
     .title {
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: var(--type-caption-label-size);
+      line-height: var(--type-caption-label-leading);
     }
   }
 </style>
