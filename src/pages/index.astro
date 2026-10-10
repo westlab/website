@@ -16,13 +16,13 @@ const message = (await getLocalizedDoc('pagesContent', lang, 'homepage-message')
 const { Content: MessageContent } = await render(message);
 ---
 
-<BaseLayout title="Home" description={site.data.description_ja} lang={lang}>
+<BaseLayout title={site.data.title_ja} titleSuffix={false} description={site.data.description_ja} lang={lang}>
   <section class="hero">
     <img class="backdrop" src="/images/homepage-hero.jpg" alt="" />
     <img class="photo-uncropped" src="/images/homepage-hero.jpg" alt="" />
     <div class="scrim"></div>
     <span class="accent-rule"></span>
-    <h1 class="t-display-hero">{t(lang, 'home.hero.title')}</h1>
+    <h1 class="t-display-hero" lang="en">{t(lang, 'home.hero.title')}</h1>
     <p class="t-lead">{t(lang, 'home.hero.lead')}</p>
   </section>
 
@@ -50,7 +50,7 @@ const { Content: MessageContent } = await render(message);
         data-expand={t(lang, 'common.expand')}
         data-collapse={t(lang, 'common.collapse')}
       >
-        {t(lang, 'common.expand')} ▼
+        <span class="toggle-label">{t(lang, 'common.expand')}</span> <span class="toggle-mark" aria-hidden="true">▼</span>
       </button>
     </div>
   </section>
@@ -75,7 +75,9 @@ const { Content: MessageContent } = await render(message);
   toggle?.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded', String(expanded));
-    toggle.textContent = `${expanded ? toggle.dataset.collapse : toggle.dataset.expand} ${expanded ? '▲' : '▼'}`;
+    // 記号は読み上げさせないので、文言と記号を別の要素に分けて書き換える
+    toggle.querySelector('.toggle-label')!.textContent = expanded ? toggle.dataset.collapse! : toggle.dataset.expand!;
+    toggle.querySelector('.toggle-mark')!.textContent = expanded ? '▲' : '▼';
     body?.toggleAttribute('data-collapsed', !expanded);
   });
 </script>
