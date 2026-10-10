@@ -1,4 +1,5 @@
 # リンク集
+# id はカテゴリを表す英数字とハイフン（例: academic-societies）。ファイルの中で重複させない。
 
 - id: research-achievements
   order: 1

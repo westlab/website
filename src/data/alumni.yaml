@@ -1,4 +1,5 @@
 # OB・OG一覧
+# id は cohort-<期>（例: cohort-21）。ファイルの中で重複させない（重複するとどちらかの期が表示されない）。
 
 - id: cohort-21
   cohort: 21

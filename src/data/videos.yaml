@@ -1,4 +1,5 @@
 # 動画一覧。url に YouTube の動画URL（watch?v= / youtu.be など）を貼るとページに埋め込まれる。
+# id は動画名を表す英数字とハイフン（例: intro-2021）。ファイルの中で重複させない。
 
 - id: intro-2021
   order: 1
