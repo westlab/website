@@ -28,12 +28,12 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
       <Breadcrumb lang={lang} />
       <div class="body">
         <section class="block intro">
-          <h2 class="t-h1">{intro?.data.title}</h2>
+          <h2 class="t-section">{intro?.data.title}</h2>
           {IntroContent && <IntroContent />}
         </section>
 
         <section class="block">
-          <h2 class="t-h1">{t(lang, 'research.topics.title')}</h2>
+          <h2 class="t-section">{t(lang, 'research.topics.title')}</h2>
           <p class="t-body">{t(lang, 'research.topics.lead')}</p>
         </section>
 
@@ -42,12 +42,12 @@ const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data
         </div>
 
         <section class="block past">
-          <h2 class="t-h1">{t(lang, 'research.past.title')}</h2>
+          <h2 class="t-section">{t(lang, 'research.past.title')}</h2>
           <p class="t-body">{t(lang, 'research.past.lead')}</p>
           <div class="qa-list">
             {pastResearch.map((item) => (
               <details class="qa-item">
-                <summary class="t-h3">
+                <summary class="t-item">
                   <span>{item.data.title_ja}</span>
                   <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
                 </summary>

@@ -31,7 +31,7 @@ const strings = {
 >
   <section class="search-header">
     <p class="label t-caption-label" id="search-label" hidden>{t(lang, 'search.label')}</p>
-    <h1 class="t-h1" id="search-title">{t(lang, 'search.label')}</h1>
+    <h1 class="t-section" id="search-title">{t(lang, 'search.label')}</h1>
     <p class="count t-caption" id="search-count" role="status" aria-live="polite"></p>
     <form class="search-box" action="/search/" role="search">
       <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
@@ -183,7 +183,7 @@ const strings = {
         const li = document.createElement('li');
         li.className = 'item';
         const a = document.createElement('a');
-        a.className = 'item-title t-h3';
+        a.className = 'item-title t-item';
         a.href = hit.url;
         a.textContent = hit.meta.title || hit.url;
         const p = document.createElement('p');

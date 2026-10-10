@@ -16,7 +16,7 @@ const l = (obj: Record<string, any>, key: string) => obj[`${key}_${lang}`];
 
 <footer class="site-footer">
   <img class="logo-mark" src="/images/logo/header-logo-mark-white.png" alt="" />
-  <p class="name t-h2">{l(site, 'name')}</p>
+  <p class="name t-subsection">{l(site, 'name')}</p>
 
   <div class="info-row">
     {site.columns.map((column) => (

@@ -33,8 +33,8 @@ const { Content: MessageContent } = await render(message);
         <div class="profile">
           <img class="photo" src={message.data.photo} alt={message.data.author} />
           <div class="byline">
-            <h2 class="t-h1">{message.data.author}</h2>
-            <p class="t-h3">{message.data.title}</p>
+            <h2 class="t-section">{message.data.author}</h2>
+            <p class="t-item">{message.data.title}</p>
             <img class="photo-mobile" src={message.data.photo} alt="" />
           </div>
         </div>

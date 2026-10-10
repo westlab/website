@@ -77,12 +77,12 @@ const activeId = blocks[blocks.length - 1].id;
           <div class="block" id={b.id} data-block-panel={b.id}>
             {b.years.map(({ year, categories }) => (
               <section class="year">
-                <h2 class="year-title t-h1">{year}{suffix}</h2>
+                <h2 class="year-title t-section">{year}{suffix}</h2>
                 <hr class="divider" />
                 <div class="categories">
                   {categories.map(({ category, entries }) => (
                     <div class="category">
-                      <h3 class="category-title t-h3">{category}</h3>
+                      <h3 class="category-title t-item">{category}</h3>
                       <ol class="entries">
                         {entries.map((entry, i) => (
                           <PublicationEntry index={i + 1} citation={entry.data.citation} />

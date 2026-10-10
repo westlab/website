@@ -59,7 +59,7 @@ const { Content } = doc ? await render(doc) : { Content: null };
 
   /* Markdown本文 (Figma: Section / ... , Template Card, QA List)。サイズは型ランプ (.t-*) と同じ値 */
   .prose :global(h2) {
-    margin: 56px 0 12px; /* .t-h1 */
+    margin: 56px 0 12px; /* .t-section */
     color: var(--color-navy);
     font-size: 28px;
     font-weight: 700;
@@ -137,7 +137,7 @@ const { Content } = doc ? await render(doc) : { Content: null };
     align-items: center;
     gap: 12px;
     color: var(--color-text);
-    font-size: 18px; /* .t-h3 */
+    font-size: 18px; /* .t-item */
     font-weight: 700;
     line-height: 1.7;
     cursor: pointer;
