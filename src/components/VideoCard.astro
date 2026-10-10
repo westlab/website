@@ -23,7 +23,7 @@ const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.
       {videoId && <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt="" loading="lazy" />}
       <svg class="play" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.92" />
-        <path d="M25 19L46 32L25 45V19Z" fill="#00007B" />
+        <path d="M25 19L46 32L25 45V19Z" style="fill: var(--color-navy)" />
       </svg>
     </Inner>
   </div>
@@ -62,7 +62,7 @@ const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.
     justify-content: center;
     height: 506px;
     border-radius: 8px;
-    background: #171a24;
+    background: var(--color-video-bg);
     overflow: hidden;
     transition: filter 0.2s ease;
   }

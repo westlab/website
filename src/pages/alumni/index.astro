@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getPageImage } from '../../lib/pages';
 import { t } from '../../i18n/ui';
@@ -17,8 +17,7 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
 
 <BaseLayout title={title} description={site.data.page_descriptions.alumni.ja} lang={lang}>
   <PageHero title={title} image={image} />
-  <section class="content">
-    <SideBand />
+  <PageContent maxWidth="none">
     <Breadcrumb lang={lang} />
     <div class="body">
       {cohorts.map((entry) => (
@@ -33,16 +32,10 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
         </div>
       ))}
     </div>
-  </section>
+  </PageContent>
 </BaseLayout>
 
 <style>
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-    background: #fff;
-  }
-
   /* パンくずの下の本文。期ごとの間隔はここで持つ（Figma: Content > Body） */
   .body {
     display: flex;
@@ -58,7 +51,7 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
 
   .cohort h2 {
     margin: 0;
-    color: #2c4faf;
+    color: var(--color-blue-medium);
   }
 
   .divider {
@@ -80,15 +73,10 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
 
   .name {
     width: 180px;
-    color: #26262e;
+    color: var(--color-text);
   }
 
   @media (max-width: 767px) {
-    .content {
-      padding-top: 32px;
-      padding-bottom: 32px;
-    }
-
     .body {
       gap: 32px;
     }

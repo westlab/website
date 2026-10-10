@@ -1,0 +1,69 @@
+---
+// Figma: <Page> / Content。ページタイトルの下の本文枠（左右は --gutter、右端に Side Band）。
+// 余白はデスクトップ 64 / 96、モバイル 32 / 32 が標準。Figma のページごとの違いは props で渡す。
+import SideBand from './SideBand.astro';
+
+interface Props {
+  maxWidth?: string; // 本文の最大幅。標準は 1200px
+  top?: number; // 上の余白（デスクトップ・タブレット）
+  bottom?: number; // 下の余白（デスクトップ）
+  tabletBottom?: number; // 下の余白（〜1023px）。標準は bottom と同じ
+  mobileTop?: number; // 上の余白（〜767px）
+  mobileBottom?: number; // 下の余白（〜767px）
+  clip?: boolean; // はみ出しを隠す
+  sideBand?: boolean; // 右端の Side Band を置くか
+}
+
+const { maxWidth, top, bottom, tabletBottom, mobileTop, mobileBottom, clip = false, sideBand = true } =
+  Astro.props;
+
+const vars = {
+  '--content-max': maxWidth,
+  '--content-top': top !== undefined && `${top}px`,
+  '--content-bottom': bottom !== undefined && `${bottom}px`,
+  '--content-bottom-tablet': tabletBottom !== undefined && `${tabletBottom}px`,
+  '--content-top-mobile': mobileTop !== undefined && `${mobileTop}px`,
+  '--content-bottom-mobile': mobileBottom !== undefined && `${mobileBottom}px`,
+};
+const style = Object.entries(vars)
+  .filter(([, value]) => value)
+  .map(([name, value]) => `${name}: ${value}`)
+  .join('; ');
+---
+
+<section class:list={['content', { clip }]} style={style || undefined}>
+  {sideBand && <SideBand />}
+  <div class="main">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .content {
+    position: relative;
+    padding: var(--content-top, 64px) var(--gutter) var(--content-bottom, 96px);
+  }
+
+  .content.clip {
+    overflow: hidden;
+  }
+
+  .main {
+    position: relative;
+    max-width: var(--content-max, 1200px);
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1023px) {
+    .content {
+      padding-bottom: var(--content-bottom-tablet, var(--content-bottom, 96px));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .content {
+      padding-top: var(--content-top-mobile, 32px);
+      padding-bottom: var(--content-bottom-mobile, 32px);
+    }
+  }
+</style>

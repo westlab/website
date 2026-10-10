@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getNavPage } from '../../lib/pages';
 import { getLocalizedDoc } from '../../lib/content';
@@ -16,33 +16,18 @@ const { Content } = doc ? await render(doc) : { Content: null };
 
 <BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <section class="content">
-    <SideBand />
-    <div class="main">
-      <Breadcrumb lang={lang} />
-      <div class="body">
-        <div class="prose">
-          {Content && <Content />}
-        </div>
+  <PageContent clip mobileBottom={56}>
+    <Breadcrumb lang={lang} />
+    <div class="body">
+      <div class="prose">
+        {Content && <Content />}
       </div>
     </div>
-  </section>
+  </PageContent>
 </BaseLayout>
 
 <style>
   /* Figma: Admission Page / Content */
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-    overflow: hidden;
-  }
-
-  .main {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
@@ -50,28 +35,21 @@ const { Content } = doc ? await render(doc) : { Content: null };
     gap: 56px;
   }
 
-  @media (max-width: 767px) {
-    .content {
-      padding-top: 32px;
-      padding-bottom: 56px;
-    }
-  }
-
-  /* Markdown本文 (Figma: Section / ... , Template Card, QA List)。サイズは型ランプ (.t-*) と同じ値 */
+  /* Markdown本文 (Figma: Section / ... , Template Card, QA List)。サイズは型ランプの変数 (--type-*) を参照 */
   .prose :global(h2) {
-    margin: 56px 0 12px; /* .t-section */
+    margin: 56px 0 12px;
     color: var(--color-navy);
-    font-size: 28px;
+    font-size: var(--type-section-size);
     font-weight: 700;
-    line-height: 1.5;
+    line-height: var(--type-section-leading);
   }
 
   .prose :global(p) {
     margin: 0 0 1em;
     color: var(--color-text-muted);
-    font-size: 16px; /* .t-body */
+    font-size: var(--type-body-size);
     font-weight: 400;
-    line-height: 1.8;
+    line-height: var(--type-body-leading);
     overflow-wrap: anywhere;
     white-space: pre-line; /* 原稿の改行を保つ */
   }
@@ -80,16 +58,16 @@ const { Content } = doc ? await render(doc) : { Content: null };
   .prose > :global(p:first-child) {
     margin: 0;
     color: var(--color-text);
-    font-size: 18px;
+    font-size: var(--type-emphasis-size);
     font-weight: 500;
   }
 
   /* 連絡先メールは独立した強調行、注記は Caption */
   .prose :global(p > strong:only-child) {
     color: var(--color-text);
-    font-size: 18px; /* .t-item */
+    font-size: var(--type-item-size);
     font-weight: 700;
-    line-height: 1.7;
+    line-height: var(--type-item-leading);
   }
 
   /* 「研究室が望む学生」は項目の間に空行1行分（Figma: Body/Default の空行） */
@@ -103,8 +81,8 @@ const { Content } = doc ? await render(doc) : { Content: null };
 
   .prose :global(p.note) {
     color: var(--color-text-subtle);
-    font-size: 14px; /* .t-caption */
-    line-height: 1.7;
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-leading);
   }
 
   .prose :global(ol),
@@ -112,8 +90,8 @@ const { Content } = doc ? await render(doc) : { Content: null };
     margin: 0 0 1em;
     padding: 0;
     color: var(--color-text);
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-leading);
   }
 
   /* Figma: Template Card */
@@ -140,7 +118,7 @@ const { Content } = doc ? await render(doc) : { Content: null };
 
   .prose :global(.qa-item) {
     padding-bottom: 6px;
-    border-bottom: 1.5px solid rgba(0, 0, 123, 0.18);
+    border-bottom: 1.5px solid var(--color-navy-divider);
   }
 
   .prose :global(.qa-item summary) {
@@ -148,9 +126,9 @@ const { Content } = doc ? await render(doc) : { Content: null };
     align-items: center;
     gap: 12px;
     color: var(--color-text);
-    font-size: 18px; /* .t-item */
+    font-size: var(--type-item-size);
     font-weight: 700;
-    line-height: 1.7;
+    line-height: var(--type-item-leading);
     cursor: pointer;
     list-style: none;
   }

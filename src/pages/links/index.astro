@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import SideBand from '../../components/SideBand.astro';
+import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getNavPage } from '../../lib/pages';
 
@@ -14,46 +14,31 @@ const categories = (await getCollection('links')).sort((a, b) => a.data.order - 
 
 <BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>
   <PageHero title={page.data.title_ja} image={page.data.image} />
-  <section class="content">
-    <SideBand />
-    <div class="main">
-      <Breadcrumb lang={lang} />
-      <div class="body">
-        {categories.map((category) => (
-          <div class="category">
-            <h2 class="t-section">{category.data.category_ja}</h2>
-            <ul class="t-body">
-              {category.data.items.map((item) => (
-                <li>
-                  {item.url ? (
-                    <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
-                  ) : (
-                    <span class="plain">{item.label}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+  <PageContent clip mobileBottom={48}>
+    <Breadcrumb lang={lang} />
+    <div class="body">
+      {categories.map((category) => (
+        <div class="category">
+          <h2 class="t-section">{category.data.category_ja}</h2>
+          <ul class="t-body">
+            {category.data.items.map((item) => (
+              <li>
+                {item.url ? (
+                  <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
+                ) : (
+                  <span class="plain">{item.label}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
-  </section>
+  </PageContent>
 </BaseLayout>
 
 <style>
   /* Figma: Links Page / Content */
-  .content {
-    position: relative;
-    padding: 64px var(--gutter) 96px;
-    overflow: hidden;
-  }
-
-  .main {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
   /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
   .body {
     display: flex;
@@ -104,10 +89,4 @@ const categories = (await getCollection('links')).sort((a, b) => a.data.order - 
     color: var(--color-text-muted);
   }
 
-  @media (max-width: 767px) {
-    .content {
-      padding-top: 32px;
-      padding-bottom: 48px;
-    }
-  }
 </style>
