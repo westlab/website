@@ -12,28 +12,22 @@ interface Props {
 const { video, lang = 'ja' } = Astro.props;
 const videoId = getYouTubeId(video.url);
 const title = lang === 'ja' ? video.title_ja : video.title_en;
+// 動画なしのときはボタンにせず、アイコンだけ表示する
+const Inner = videoId ? 'button' : 'div';
+const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.play')}: ${title}` } : {};
 ---
 
 <div class="video-card">
-  {
-    videoId ? (
-      <div class="thumbnail" data-video-id={videoId} data-title={title}>
-        <button type="button" class="thumb-button" aria-label={`${t(lang, 'videos.play')}: ${title}`}>
-          <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt="" loading="lazy" />
-          <svg class="play" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.92" />
-            <path d="M25 19L46 32L25 45V19Z" fill="#00007B" />
-          </svg>
-        </button>
-      </div>
-    ) : (
-      <div class="thumbnail"><svg class="play" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.92" />
-            <path d="M25 19L46 32L25 45V19Z" fill="#00007B" />
-          </svg></div>
-    )
-  }
-  <p class="title t-h3">{title}</p>
+  <div class="thumbnail" data-video-id={videoId} data-title={title}>
+    <Inner class:list={['inner', { 'thumb-button': videoId }]} {...innerProps}>
+      {videoId && <img src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`} alt="" loading="lazy" />}
+      <svg class="play" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.92" />
+        <path d="M25 19L46 32L25 45V19Z" fill="#00007B" />
+      </svg>
+    </Inner>
+  </div>
+  <h2 class="title t-h3">{title}</h2>
   <p class="description t-caption">{lang === 'ja' ? video.description_ja : video.description_en}</p>
 </div>
 
@@ -47,6 +41,8 @@ const title = lang === 'ja' ? video.title_ja : video.title_en;
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.allowFullscreen = true;
       box.replaceChildren(iframe);
+      // ボタンが消えるため、フォーカスをiframeへ移す
+      iframe.focus();
     });
   });
 </script>
@@ -81,7 +77,7 @@ const title = lang === 'ja' ? video.title_ja : video.title_en;
     border: 0;
   }
 
-  .thumb-button {
+  .inner {
     position: relative;
     display: flex;
     align-items: center;
@@ -91,13 +87,24 @@ const title = lang === 'ja' ? video.title_ja : video.title_en;
     padding: 0;
     border: 0;
     background: transparent;
+  }
+
+  .thumb-button {
     cursor: pointer;
   }
 
-  .thumb-button:focus-visible {
-    outline: 3px solid #00007b;
-    outline-offset: -3px;
-    border-radius: 8px;
+  /* :has() 非対応のブラウザではボタン自身の枠を残す */
+  @supports selector(:has(*)) {
+    .thumb-button:focus-visible {
+      outline: none;
+    }
+  }
+
+  /* overflow:hidden で切られないよう、枠は外側の .thumbnail に付ける（白+ネイビーの二重リング） */
+  .thumbnail:has(.thumb-button:focus-visible) {
+    outline: 3px solid var(--color-navy);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px #fff;
   }
 
   .thumb-button img {
