@@ -21,11 +21,11 @@ const number = String(index + 1).padStart(2, '0');
     <img src={page.data.image} alt="" loading="lazy" />
   </div>
   <div class="text">
-    <p class="number t-ui-bold" aria-hidden="true">{number}</p>
+    <p class="number t-ui-bold" aria-hidden="true" data-pagefind-ignore>{number}</p>
     <h2 class="t-card-title">{title}</h2>
     <span class="divider"></span>
     <p class="t-body">{description}</p>
-    <p class="more t-ui-bold">{t(lang, 'common.more')} <span class="arrow">→</span></p>
+    <p class="more t-ui-bold" data-pagefind-ignore>{t(lang, 'common.more')} <span class="arrow">→</span></p>
   </div>
 </a>
 

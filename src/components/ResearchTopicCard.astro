@@ -18,7 +18,7 @@ const { topic, lang = 'ja' } = Astro.props;
     <h3 class="title t-item">{topic.data.title}</h3>
   </div>
   <p class="summary t-caption">{topic.data.summary}</p>
-  <span class="more t-ui-bold">
+  <span class="more t-ui-bold" data-pagefind-ignore>
     {t(lang, 'common.more')}
     <span class="arrow t-icon-glyph" aria-hidden="true">→</span>
   </span>
