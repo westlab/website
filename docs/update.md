@@ -46,6 +46,18 @@
 | --- | --- |
 | 業績の追加・修正 | `src/data/publications.yaml` |
 
+業績は、既存の1件をコピーして書き換えます。引用文は `citation: >-` の次の行から、字下げ（スペース4つ）をつけて貼ります。`"` で囲みません。
+
+```yaml
+- id: "2026-journal-3"
+  year: 2026
+  category: 論文誌
+  citation: >-
+    Taro Keio, Hiroaki Nishi, “Rust #2 and C# Toolkit…”, IEEE Access, 2026.
+```
+
+`#`・`:`・`"`・`\` はそのまま書けます。貼った文が複数行に分かれていても、ページでは1行につながります。この形でないと `npm test` が失敗します。
+
 ## Videos
 
 | 変更したいこと | 触るファイル |
