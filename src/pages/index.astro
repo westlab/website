@@ -1,22 +1,23 @@
 ---
 // Figma: Homepage / Homepage (Mobile)
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NavCard from '../components/NavCard.astro';
 import SideBand from '../components/SideBand.astro';
 import { getLocalizedDoc } from '../lib/content';
 import { getNavPages } from '../lib/pages';
+import { getSite } from '../lib/site';
 import { t } from '../i18n/ui';
 
 const lang = 'ja' as const;
 
 const pages = await getNavPages();
-const site = (await getCollection('site'))[0];
+const site = await getSite();
 const message = (await getLocalizedDoc('pagesContent', lang, 'homepage-message'))!;
 const { Content: MessageContent } = await render(message);
 ---
 
-<BaseLayout title={site.data.title_ja} titleSuffix={false} description={site.data.description_ja} lang={lang}>
+<BaseLayout title={site.title_ja} titleSuffix={false} description={site.description_ja} lang={lang}>
   <section class="hero">
     <img class="backdrop" src="/images/homepage-hero.jpg" alt="" />
     <img class="photo-uncropped" src="/images/homepage-hero.jpg" alt="" />

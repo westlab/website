@@ -2,7 +2,8 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BackToTop from '../components/BackToTop.astro';
-import { getEntry } from 'astro:content';
+import { getSite } from '../lib/site';
+import { localize } from '../lib/localize';
 import { t, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -19,8 +20,8 @@ interface Props {
 }
 
 const { title, description, ogType = 'website', lang = 'ja', indexable = true, titleSuffix = true } = Astro.props;
-const site = (await getEntry('site', 'contact'))!.data;
-const siteName = site[`name_${lang}`];
+const site = await getSite();
+const siteName = localize(site, 'name', lang);
 const fullTitle = titleSuffix ? `${title} | ${siteName}` : title;
 ---
 

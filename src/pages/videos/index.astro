@@ -10,17 +10,18 @@ import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import VideoCard from '../../components/VideoCard.astro';
 import { getPageImage } from '../../lib/pages';
+import { getSite } from '../../lib/site';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
 const heroImage = await getPageImage('videos');
 
-const site = (await getCollection('site'))[0];
+const site = await getSite();
 const videos = (await getCollection('videos')).sort((a, b) => a.data.order - b.data.order);
 const title = t(lang, 'nav.research.videos');
 ---
 
-<BaseLayout title={title} description={site.data.page_descriptions.videos.ja} lang={lang}>
+<BaseLayout title={title} description={site.page_descriptions.videos.ja} lang={lang}>
   <PageHero title={title} image={heroImage} />
   <PageContent>
     <Breadcrumb lang={lang} />

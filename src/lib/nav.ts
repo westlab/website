@@ -1,4 +1,5 @@
 import { getNavPages } from './pages';
+import { localize } from './localize';
 import { t, type Lang } from '../i18n/ui';
 
 // ヘッダーのナビ構成（Header）とパンくず（Breadcrumb）が共有する階層。
@@ -30,7 +31,7 @@ const children: Record<string, { key: UiKey; href: string }[]> = {
 export async function getNavItems(lang: Lang): Promise<NavItem[]> {
   const pages = await getNavPages();
   return pages.map((page) => ({
-    label: lang === 'ja' ? page.data.title_ja : page.data.title_en,
+    label: localize(page.data, 'title', lang),
     href: page.data.href,
     subs: (children[page.id] ?? []).map((sub) => ({ label: t(lang, sub.key), href: sub.href })),
   }));

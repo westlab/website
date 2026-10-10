@@ -2,7 +2,8 @@
 // Figma: Footer / Footer / Mobile
 // デスクトップ: 左にロゴ+研究室名、右に情報2カラム、下に区切り線+コピーライトの左揃えグリッド
 // タブレット: 1カラム左揃え（情報は2カラム横並び） / モバイル: 中央揃え・情報は縦積み
-import { getEntry } from 'astro:content';
+import { getSite } from '../lib/site';
+import { localize } from '../lib/localize';
 import type { Lang } from '../i18n/ui';
 
 interface Props {
@@ -10,36 +11,38 @@ interface Props {
 }
 
 const { lang = 'ja' } = Astro.props;
-const site = (await getEntry('site', 'contact'))!.data;
-const l = (obj: Record<string, any>, key: string) => obj[`${key}_${lang}`];
+const site = await getSite();
 ---
 
 <footer class="site-footer">
   <div class="brand">
     <img class="logo-mark" src="/images/logo/header-logo-mark-white.png" alt="" />
-    <p class="name t-subsection">{l(site, 'name')}</p>
+    <p class="name t-subsection">{localize(site, 'name', lang)}</p>
   </div>
 
   <div class="info-row">
     {site.columns.map((column) => (
       <div class="column">
-        {column.map((block) => (
-          <div class="block">
-            <p class="label t-caption-label">{l(block, 'label')}</p>
-            {l(block, 'lines') && (
-              <p class="t-caption">
-                {l(block, 'lines').map((line: string, i: number) => (
-                  <>{i > 0 && <br />}{line}</>
-                ))}
-              </p>
-            )}
-            {block.links?.map((link) => (
-              <a class="t-caption" href={link.url} target="_blank" rel="noopener">
-                <span aria-hidden="true">→ </span><span class="link-label">{l(link, 'label')}</span>
-              </a>
-            ))}
-          </div>
-        ))}
+        {column.map((block) => {
+          const lines = localize(block, 'lines', lang);
+          return (
+            <div class="block">
+              <p class="label t-caption-label">{localize(block, 'label', lang)}</p>
+              {lines && (
+                <p class="t-caption">
+                  {lines.map((line, i) => (
+                    <>{i > 0 && <br />}{line}</>
+                  ))}
+                </p>
+              )}
+              {block.links?.map((link) => (
+                <a class="t-caption" href={link.url} target="_blank" rel="noopener">
+                  <span aria-hidden="true">→ </span><span class="link-label">{localize(link, 'label', lang)}</span>
+                </a>
+              ))}
+            </div>
+          );
+        })}
       </div>
     ))}
   </div>
