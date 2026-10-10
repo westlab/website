@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { file, glob } from "astro/loaders";
+import yaml from "js-yaml";
 
 // 分類2: 繰り返しの本文コンテンツ（研究トピック）。
 // 1項目1ファイルを ja/ と en/ に分けて置く。id は "ja/network" のような
@@ -129,9 +130,15 @@ const alumni = defineCollection({
 });
 
 const publications = defineCollection({
-  loader: file("./src/data/publications.yaml"),
+  // file loader は id の文字列順で返すため（-10 が -2 より前に来る）、YAML 上の位置を seq に入れて
+  // ページ側でその順に並べる。学生は YAML の中の位置で順番を決める。
+  loader: file("./src/data/publications.yaml", {
+    parser: (text) =>
+      (yaml.load(text) as Record<string, unknown>[]).map((item, seq) => ({ ...item, seq })),
+  }),
   schema: z.object({
     id: z.string(),
+    seq: z.number(),
     year: z.number(),
     // Figmaの分類（論文誌／国際会議・査読付収録論文／国内研究会・収録論文・口頭発表等／
     // 講演等／報道・展示等／学術解説等／著書／特許出願／受賞等）に合わせる。

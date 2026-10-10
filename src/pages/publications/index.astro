@@ -20,7 +20,8 @@ const CATEGORY_ORDER = allowed.publicationCategories;
 const BLOCK_STARTS = allowed.publicationBlockStarts;
 
 const page = await getNavPage('publications');
-const publications = await getCollection('publications');
+// YAML に書いた順（seq）に並べる。getCollection は id の文字列順で返すため。
+const publications = (await getCollection('publications')).sort((a, b) => a.data.seq - b.data.seq);
 
 const allYears = [...new Set(publications.map((p) => p.data.year))].sort((a, b) => b - a);
 const latest = allYears[0];
