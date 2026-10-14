@@ -18,16 +18,22 @@
     "test": "node scripts/check-duplicate-ids.mjs && node scripts/check-page-heroes.mjs && node scripts/check-image-sizes.mjs && node scripts/check-yaml-hash.mjs",
     "lint:fix": "prettier --write \"src/**/*.{md,yaml}\"",
     "prepare": "git config core.hooksPath .githooks",
-    "compress:images": "node scripts/compress-images.mjs"
+    "compress:images": "node scripts/compress-images.mjs",
+    "check": "astro check"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.3.7",
     "astro": "^7.2.4",
     "js-yaml": "^4.3.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/js-yaml": "^4.0.9",
     "@types/mdast": "^4.0.4",
     "pagefind": "^1.5.2",
     "prettier": "^3.9.9",
-    "sharp": "^0.35.3"
+    "satteri": "^0.10.5",
+    "sharp": "^0.35.3",
+    "typescript": "^6.0.3"
   }
 }

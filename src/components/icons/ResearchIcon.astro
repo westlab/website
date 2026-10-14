@@ -1,14 +1,9 @@
 ---
 // Figma: Icon Glyph（38×38。カードの紺色アイコン枠の中に白線で置く）。色は currentColor。
+import type { ResearchIconName } from '../../lib/research-icons';
+
 interface Props {
-  name:
-    | 'network'
-    | 'hardware'
-    | 'anonymization'
-    | 'ai'
-    | 'smart-community'
-    | 'smart-agriculture'
-    | 'standardization';
+  name: ResearchIconName;
 }
 
 const { name } = Astro.props;

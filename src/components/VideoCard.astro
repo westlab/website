@@ -15,7 +15,7 @@ const videoId = getYouTubeId(video.url);
 const title = localize(video, 'title', lang);
 // 動画なしのときはボタンにせず、アイコンだけ表示する
 const Inner = videoId ? 'button' : 'div';
-const innerProps = videoId ? { type: 'button', 'aria-label': `${t(lang, 'videos.play')}: ${title}` } : {};
+const innerProps = videoId ? { type: 'button' as const, 'aria-label': `${t(lang, 'videos.play')}: ${title}` } : {};
 ---
 
 <div class="video-card">
