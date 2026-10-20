@@ -26,9 +26,9 @@
 | Webサーバ | Apache / Ubuntu（既存のものを継続使用） |
 | HTTPS証明書 | Let's Encrypt / certbot（既存の運用を継続） |
 | 検索 | Pagefind（サイト全体の全文検索） |
-| ソース管理 | GitHub（private リポジトリ） |
+| ソース管理 | GitHub（public リポジトリ） |
 | ビルド | GitHub Actions（`built` ブランチへ生成物を出力） |
-| デプロイ | プル型（サーバの cron が取得 → rsync） |
+| デプロイ | プル型（サーバの cron が取得 → rsync）。詳細は `deploy.md` |
 
 ---
 
@@ -64,4 +64,4 @@
 
 ### デプロイ方式
 
-サーバに置く鍵は read-only の Deploy key とし、そのリポジトリ1つしか読めないようにする。
+`deploy.md` を参照。サーバは HTTPS で認証なしに取得し、鍵を置かない。
