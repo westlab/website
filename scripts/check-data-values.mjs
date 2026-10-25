@@ -5,6 +5,7 @@
 // - members.yaml の grade（区分）が一覧にない → メンバーページに表示されない
 // - publications.yaml の category（分類）が一覧にない → 業績ページに表示されない
 // - publications.yaml の year（年度）が最初のブロックの開始年より前 → 業績ページに表示されない
+// - publications.yaml の year が数字でない、または今年度+1 を超える（桁の書き間違い）
 //
 // 一覧は src/data/allowed-values.json（ページと共通）。使い方: node scripts/check-data-values.mjs [プロジェクトルート]
 
@@ -14,6 +15,9 @@ import { join } from 'node:path';
 const root = process.argv[2] ?? '.';
 const allowed = JSON.parse(readFileSync(join(root, 'src/data/allowed-values.json'), 'utf8'));
 const minYear = allowed.publicationBlockStarts[0];
+// 年度は4月始まり。翌年度の業績を先に載せることがあるので、上限は今年度+1
+const now = new Date();
+const maxYear = (now.getMonth() >= 3 ? now.getFullYear() : now.getFullYear() - 1) + 1;
 const knownGrades = [...allowed.memberGrades, ...allowed.memberGradesHidden];
 
 // 単純なリスト形式の YAML なので、行ごとに値を拾う（check-page-heroes.mjs と同じ方針）
@@ -59,8 +63,14 @@ for (const line of lines(PUBS)) {
     warnings.push(`publications.yaml「${recordId}」: category「${category}」は一覧にない分類です。この分類の業績は業績ページに表示されません`);
   }
   const year = value(line, 'year');
-  if (year !== null && !(Number(year) >= minYear)) {
-    warnings.push(`publications.yaml「${recordId}」: year「${year}」は${minYear}年度より前です。この年度の業績は業績ページに表示されません`);
+  if (year !== null) {
+    if (!/^\d+$/.test(year)) {
+      warnings.push(`publications.yaml「${recordId}」: year「${year}」は数字ではありません。year は 2026 のように半角数字だけで書いてください（「年度」は付けない）`);
+    } else if (Number(year) < minYear) {
+      warnings.push(`publications.yaml「${recordId}」: year「${year}」は${minYear}年度より前です。この年度の業績は業績ページに表示されません`);
+    } else if (Number(year) > maxYear) {
+      warnings.push(`publications.yaml「${recordId}」: year「${year}」は${maxYear}年度より後です。桁の書き間違いではありませんか`);
+    }
   }
 }
 
