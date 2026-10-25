@@ -22,6 +22,10 @@ interface Props {
 const { title, description, ogType = 'website', lang = 'ja', indexable = true, titleSuffix = true } = Astro.props;
 const site = await getSite();
 const siteName = localize(site, 'name', lang);
+// canonical と og:url は絶対URL。og:image は全ページ共通（トップのヒーロー画像）
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/images/homepage-hero.jpg', Astro.site).href;
+const ogLocale = lang === 'ja' ? 'ja_JP' : 'en_US';
 const fullTitle = titleSuffix ? `${title} | ${siteName}` : title;
 ---
 
@@ -39,11 +43,15 @@ const fullTitle = titleSuffix ? `${title} | ${siteName}` : title;
     />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex" />}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={ogLocale} />
   </head>
   <body>
     <a class="skip-link t-ui-bold" href="#main">{t(lang, 'nav.skip')}</a>

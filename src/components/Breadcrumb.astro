@@ -16,8 +16,7 @@ const { lang = 'ja', current } = Astro.props;
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const items = await getBreadcrumb(lang, path, current);
 
-// astro.config.mjs の site が未設定の間はルート相対パスのまま出す（公開ドメイン確定後に絶対URLになる）
-const toUrl = (href: string) => (Astro.site ? new URL(href, Astro.site).href : href);
+const toUrl = (href: string) => new URL(href, Astro.site).href;
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',

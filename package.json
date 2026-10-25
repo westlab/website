@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.3.7",
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.2.4",
     "js-yaml": "^4.3.0"
   },
