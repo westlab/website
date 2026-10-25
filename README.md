@@ -55,7 +55,7 @@ npm run check:i18n
 ```sh
 npm run lint      # 未整形・構文エラーがあれば失敗
 npm run lint:fix  # 整形する
-npm test           # ナビカード・ヒーロー画像の共通化チェックと画像容量チェック（pre-commit と CI でも実行）
+npm test           # ナビカード・ヒーロー画像の共通化、画像容量、メールの @ 表記のチェック（pre-commit と CI でも実行）
 npm run check     # 型チェック（astro check。約5秒。.astro / .ts を変えたコミットでは pre-commit でも実行）
 ```
 

@@ -17,6 +17,9 @@ const PAIRS = [
   { label: 'pages', ja: 'src/content/pages/ja', en: 'src/content/pages/en' },
 ];
 
+// ja と en で内容が別のページ（年度更新は ja のみ）。対訳チェックの対象外
+const SKIP = new Set(['pages/applicants']);
+
 const PLACEHOLDER_MARKER = 'Translation pending';
 const EMPTY_TREE = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
 const NULL_SHA = '0000000000000000000000000000000000000000';
@@ -102,7 +105,8 @@ if (base && head) {
   }
 }
 
-const all = [...missingWarnings, ...driftWarnings, ...placeholderWarnings];
+const skipped = (w) => SKIP.has(w.split(':')[0]);
+const all = [...missingWarnings, ...driftWarnings, ...placeholderWarnings].filter((w) => !skipped(w));
 
 if (all.length === 0) {
   console.log('[check:i18n] ja/en の翻訳ペアは同期済みです。');
