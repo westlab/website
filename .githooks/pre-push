@@ -1,6 +1,7 @@
 #!/bin/sh
-# push前に ja/en 翻訳の同期状況と、YAML の値が一覧の範囲内かを警告表示する（ブロックはしない）。
-node scripts/check-data-values.mjs
+# push前に ja/en 翻訳の同期状況と、YAML の値が一覧の範囲内かを警告表示する。
+# check-data-values.mjs がエラー（publications.yaml の year が数字でない）を出したときだけ push を止める。
+node scripts/check-data-values.mjs || exit 1
 
 zero="0000000000000000000000000000000000000000"
 
