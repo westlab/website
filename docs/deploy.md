@@ -11,7 +11,7 @@
    ↓ 自動（5分おき）
 [Webサーバ] cron が built ブランチを取得 → 公開ディレクトリへ rsync
    ↓
-[公開] https://
+[公開] https://www.west.sd.keio.ac.jp
 ```
 
 サーバ側は git と rsync だけで動く。ビルドを GitHub 側で行うため、Node.js は不要。
