@@ -63,6 +63,6 @@ npm run check     # 型チェック（astro check。約5秒。.astro / .ts を�
 
 `npm run lint` と pre-commit は引用符の向きも検査し、間違いがあれば警告を表示する（`scripts/check-quotes.mjs`。警告のみで失敗はしない）。“ と ” は行内で交互に現れ、開きは `“`、閉じは `”` を使う（例: `Nishi, “Title”`）。
 
-`git commit` 時に pre-commit フックが staged な `src/**/*.{md,yaml}` をチェックし、未整形ならコミットを中止する。CI（`.github/workflows/build.yml`）でも `lint` と `npm test` を実行する。
+`git commit` 時に pre-commit フックが staged な `src/**/*.{md,yaml}` をチェックし、未整形ならコミットを中止する。CI（`.github/workflows/build.yml`）でも `lint`・`test`・`check`・`build` を実行する。
 
 YAML を対象に含める理由は体裁統一だけではない。`src/data/*.yaml` のスキーマ違反（必須フィールドの欠落など）は `src/content.config.ts` の zod 定義によりビルドが落ちるが、**YAML の構文エラーはビルドが落ちず終了コード0のまま該当コレクションが空になる**。Prettier はパースできないYAMLで失敗するので、この穴を塞ぐ役割も担っている。
