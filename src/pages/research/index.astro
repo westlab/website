@@ -51,8 +51,9 @@ const pastResearch = await getSortedCollection('pastResearch');
     gap: 20px;
   }
 
-  .block h2,
-  .block p {
+  /* 見出しとリード文だけ。QA リストの中の段落（答え）は共通スタイルの上余白 6px を使う（Figma: QA Item） */
+  .block > h2,
+  .block > p {
     margin: 0;
   }
 
