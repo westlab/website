@@ -66,3 +66,13 @@ npm run check     # 型チェック（astro check。約5秒。.astro / .ts を�
 `git commit` 時に pre-commit フックが staged な `src/**/*.{md,yaml}` をチェックし、未整形ならコミットを中止する。CI（`.github/workflows/build.yml`）でも `lint` と `npm test` を実行する。
 
 YAML を対象に含める理由は体裁統一だけではない。`src/data/*.yaml` のスキーマ違反（必須フィールドの欠落など）は `src/content.config.ts` の zod 定義によりビルドが落ちるが、**YAML の構文エラーはビルドが落ちず終了コード0のまま該当コレクションが空になる**。Prettier はパースできないYAMLで失敗するので、この穴を塞ぐ役割も担っている。
+
+## 依存の更新
+
+Node のバージョンは `.nvmrc` に書いてある（CI はこのファイルを読む。`docker-compose.yml` の `node:24-alpine` も合わせて変える）。
+
+`.github/dependabot.yml` により、npm パッケージと GitHub Actions の更新 PR が月1回自動で作られる。
+
+- 更新 PR は CI（build）が通ったのを確認してからマージする。
+- CI が落ちたら、その PR はマージせず、原因を調べて直すか、閉じる。
+- 手で更新するときは `npm outdated` で古いものを確認し、`npm update`（メジャー更新は `npm install <pkg>@latest`）のあと `npm run lint && npm test && npm run check && npm run build` を通す。
