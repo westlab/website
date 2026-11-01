@@ -64,7 +64,6 @@ Figma で確認した制約：Homepage の Nav Card 5枚（研究内容・メン
 ```yaml
 # src/data/pages.yaml
 - id: research
-  order: 1
   title_ja: 研究内容
   title_en: Research
   image: /images/pages/research.jpg

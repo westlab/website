@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { byOrder } from './content';
+import { byRank } from './content';
 import { localize } from './localize';
 import type { Lang } from '../i18n/ui';
 
@@ -13,7 +13,7 @@ async function findPage(id: string) {
 
 export async function getNavPages() {
   const pages = await getCollection('pages');
-  return pages.flatMap((page) => (page.data.nav ? [{ ...page, data: page.data }] : [])).sort(byOrder);
+  return pages.flatMap((page) => (page.data.nav ? [{ ...page, data: page.data }] : [])).sort(byRank);
 }
 
 export async function getNavPage(id: string) {
