@@ -4,6 +4,7 @@
 // 500KB 超でも、compress-images.mjs と同じ設定で圧縮して5%以上小さくならない画像は、注意として表示するだけで合格にする。
 // public/images 配下の画像は Astro のビルド時最適化を通らず、そのまま配信されるため、事前に圧縮しておく。
 // （Markdown から相対パスで参照した画像は、Astro がビルド時に webp 化する。）
+// また、ブラウザによっては表示できない形式（iPhone の HEIC、TIFF、BMP など）を置いていたらエラーにする。
 // 写真は JPEG 長辺1920px・品質80前後、図版は PNG 長辺1600px・パレット化が目安。`npm run compress:images` で圧縮できる。
 // 使い方: node scripts/check-image-sizes.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
 
@@ -16,20 +17,29 @@ const root = process.argv[2] ?? '.';
 const DIR = join(root, 'public/images');
 const EXT_COMPRESSIBLE = /\.(png|jpe?g)$/i;
 const EXT = /\.(png|jpe?g|webp|gif|avif)$/i;
+// 容量検査の対象外だが、そのまま置いてよい形式。これと EXT 以外の拡張子のファイル（HEIC・TIFF など）はエラーにする。
+// HEIC は Safari では表示されるが Chrome などでは表示されないので、Mac で確認しただけでは気づけない。
+const EXT_OTHER_OK = /\.svg$/i;
 
+// .gitkeep などのドットファイルは対象外
 function walk(dir) {
   const out = [];
   for (const e of readdirSync(dir, { withFileTypes: true })) {
+    if (e.name.startsWith('.')) continue;
     const p = join(dir, e.name);
     if (e.isDirectory()) out.push(...walk(p));
-    else if (EXT.test(e.name)) out.push(p);
+    else out.push(p);
   }
   return out;
 }
 
 const problems = [];
 const notices = [];
-for (const file of walk(DIR)) {
+const unsupported = [];
+const files = walk(DIR);
+for (const file of files) if (!EXT.test(file) && !EXT_OTHER_OK.test(file)) unsupported.push(relative(root, file));
+
+for (const file of files.filter((f) => EXT.test(f))) {
   const name = relative(root, file);
   const bytes = statSync(file).size;
   const { width = 0, height = 0 } = await sharp(file).metadata();
@@ -48,10 +58,16 @@ if (notices.length) {
   console.warn(`注意: 500KB を超えていますが、これ以上縮まない画像があります（${notices.length}件）:`);
   for (const n of notices) console.warn(`  ${n}`);
 }
+if (unsupported.length) {
+  console.error(`ブラウザによっては表示できない形式のファイルがあります（${unsupported.length}件）:`);
+  for (const u of unsupported) console.error(`  ${u}`);
+  console.error('JPEG（写真）か PNG（図版）に変換してから `npm run compress:images` を実行し、元のファイルは削除してください。');
+  console.error('（Mac ならプレビューで開き「書き出す」で JPEG を選べます。iPhone は 設定 > カメラ > フォーマット >「互換性優先」で JPEG で撮影できます。）');
+}
 if (problems.length) {
   console.error(`重い画像があります（${problems.length}件）:`);
   for (const p of problems) console.error(`  ${p}`);
   console.error('`npm run compress:images` を実行して圧縮してください。');
-  process.exit(1);
 }
+if (unsupported.length || problems.length) process.exit(1);
 console.log('画像サイズ: OK');
