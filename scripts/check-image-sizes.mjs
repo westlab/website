@@ -8,10 +8,11 @@
 // 写真は JPEG 長辺1920px・品質80前後、図版は PNG 長辺1600px・パレット化が目安。`npm run compress:images` で圧縮できる。
 // 使い方: node scripts/check-image-sizes.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
 
-import { readdirSync, statSync } from 'node:fs';
+import { statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import sharp from 'sharp';
 import { MAX_BYTES, MAX_PX, planCompression } from './image-limits.mjs';
+import { walk } from './lib.mjs';
 
 const root = process.argv[2] ?? '.';
 const DIR = join(root, 'public/images');
@@ -22,16 +23,6 @@ const EXT = /\.(png|jpe?g|webp|gif|avif)$/i;
 const EXT_OTHER_OK = /\.svg$/i;
 
 // .gitkeep などのドットファイルは対象外
-function walk(dir) {
-  const out = [];
-  for (const e of readdirSync(dir, { withFileTypes: true })) {
-    if (e.name.startsWith('.')) continue;
-    const p = join(dir, e.name);
-    if (e.isDirectory()) out.push(...walk(p));
-    else out.push(p);
-  }
-  return out;
-}
 
 const problems = [];
 const notices = [];

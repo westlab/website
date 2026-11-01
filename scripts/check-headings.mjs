@@ -4,18 +4,8 @@
 // front matter とコードブロック（``` / ~~~）の中は対象外。
 // 使い方: node scripts/check-headings.mjs [ファイル ...]（引数なしなら src/**/*.md を全件検査）
 
-import { readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
-
-function walk(dir) {
-  const out = [];
-  for (const e of readdirSync(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) out.push(...walk(p));
-    else if (e.name.endsWith('.md')) out.push(p);
-  }
-  return out;
-}
+import { readFileSync } from 'node:fs';
+import { targetFiles } from './lib.mjs';
 
 function findH1(text) {
   const lines = text.split(/\r?\n/);
@@ -43,8 +33,7 @@ function findH1(text) {
   return hits;
 }
 
-const args = process.argv.slice(2).filter((a) => a.endsWith('.md'));
-const files = args.length ? args : process.argv.length > 2 ? [] : walk('src');
+const files = targetFiles(/\.md$/, ['src']);
 
 let found = 0;
 for (const file of files) {

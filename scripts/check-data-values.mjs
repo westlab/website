@@ -13,6 +13,7 @@
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { readLines } from './lib.mjs';
 
 const root = process.argv[2] ?? '.';
 const allowed = JSON.parse(readFileSync(join(root, 'src/data/allowed-values.json'), 'utf8'));
@@ -28,7 +29,7 @@ function value(line, key) {
   if (!m) return null;
   return m[1].replace(/\s+#.*$/, '').replace(/^(["'])(.*)\1$/, '$2');
 }
-const lines = (file) => readFileSync(join(root, file), 'utf8').split(/\r?\n/);
+const lines = (file) => readLines(join(root, file));
 const list = (a) => a.join('・');
 
 const warnings = [];
