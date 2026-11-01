@@ -3,7 +3,7 @@
 // 遷移元は Header の「研究内容」ドロップダウン内「研究紹介動画」。Nav Card を持たない独立ページなので
 // Page Title のタイトルは nav ラベルを使い、画像は pages.yaml（nav: false のレコード）から引く。
 // サムネイルは動画サービス側から取得する想定のため、ここでは暗色の枠+再生アイコンで表示する。
-import { getCollection } from 'astro:content';
+import { getSortedCollection } from '../../lib/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import PageContent from '../../components/PageContent.astro';
@@ -17,7 +17,7 @@ const lang = 'ja' as const;
 const heroImage = await getPageImage('videos');
 
 const site = await getSite();
-const videos = (await getCollection('videos')).sort((a, b) => a.data.order - b.data.order);
+const videos = await getSortedCollection('videos');
 const title = t(lang, 'nav.research.videos');
 ---
 
