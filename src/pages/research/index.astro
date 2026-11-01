@@ -1,71 +1,50 @@
 ---
 // Figma: Research Page / Research Page (Mobile)
-import { render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PageContent from '../../components/PageContent.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
 import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
-import { getLocalizedDoc, getLocalizedList, getSortedCollection } from '../../lib/content';
-import { getNavPage } from '../../lib/pages';
+import { getLocalizedList, getSortedCollection, renderLocalizedDoc } from '../../lib/content';
+import { getNavPage, navPageProps } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 
 const lang = 'ja' as const;
 
 const page = await getNavPage('research');
 
-const intro = await getLocalizedDoc('pagesContent', lang, 'research-intro');
-const { Content: IntroContent } = intro ? await render(intro) : { Content: null };
+const { doc: intro, Content: IntroContent } = await renderLocalizedDoc(lang, 'research-intro');
 const topics = await getLocalizedList('research', lang);
 const pastResearch = await getSortedCollection('pastResearch');
 ---
 
-<BaseLayout title={t(lang, 'nav.research.about')} description={page.data.description_ja} lang={lang}>
-  <PageHero title={t(lang, 'nav.research.about')} image={page.data.image} />
-  <PageContent tabletBottom={80} mobileTop={40}>
-    <Breadcrumb lang={lang} />
-    <div class="body">
-      <section class="block intro">
-        <h2 class="t-section">{intro?.data.title}</h2>
-        {IntroContent && <IntroContent />}
-      </section>
+<SubPageLayout {...navPageProps(page, lang)} title={t(lang, 'nav.research.about')} lang={lang} tabletBottom={80} mobileTop={40}>
+  <section class="block intro">
+    <h2 class="t-section">{intro?.data.title}</h2>
+    {IntroContent && <IntroContent />}
+  </section>
 
-      <section class="block">
-        <h2 class="t-section">{t(lang, 'research.topics.title')}</h2>
-        <p class="t-body">{t(lang, 'research.topics.lead')}</p>
-      </section>
+  <section class="block">
+    <h2 class="t-section">{t(lang, 'research.topics.title')}</h2>
+    <p class="t-body">{t(lang, 'research.topics.lead')}</p>
+  </section>
 
-      <div class="topics-grid">
-        {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
-      </div>
+  <div class="topics-grid">
+    {topics.map((topic) => <ResearchTopicCard topic={topic} lang={lang} />)}
+  </div>
 
-      <section class="block past">
-        <h2 class="t-section">{t(lang, 'research.past.title')}</h2>
-        <p class="t-body">{t(lang, 'research.past.lead')}</p>
-        <div class="qa-list">
-          {pastResearch.map((item) => (
-            <details class="qa-item">
-              <summary class="t-item">
-                <span>{item.data.title_ja}</span>
-                <img class="chevron" src="/images/ui/icon-chevron-down.svg" alt="" width="20" height="20" />
-              </summary>
-              <p class="t-body answer">{item.data.body_ja}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+  <section class="block past">
+    <h2 class="t-section">{t(lang, 'research.past.title')}</h2>
+    <p class="t-body">{t(lang, 'research.past.lead')}</p>
+    <div class="qa-list">
+      {pastResearch.map((item) => (
+        <details class="qa-item">
+          <summary><span>{item.data.title_ja}</span></summary>
+          <p class="t-body">{item.data.body_ja}</p>
+        </details>
+      ))}
     </div>
-  </PageContent>
-</BaseLayout>
+  </section>
+</SubPageLayout>
 
 <style>
-  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-
   .block {
     display: flex;
     flex-direction: column;
@@ -93,49 +72,6 @@ const pastResearch = await getSortedCollection('pastResearch');
 
   .past {
     gap: 12px;
-  }
-
-  .qa-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .qa-item {
-    padding-bottom: 6px;
-    border-bottom: 1.5px solid var(--color-navy-divider);
-  }
-
-  .qa-item summary {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--color-text);
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .qa-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .qa-item summary span {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .chevron {
-    flex: none;
-    transition: transform 0.2s ease;
-  }
-
-  .qa-item[open] .chevron {
-    transform: rotate(180deg);
-  }
-
-  .answer {
-    margin: 6px 0 0;
-    white-space: pre-line;
   }
 
   @media (max-width: 767px) {

@@ -3,6 +3,7 @@
 // Header / Mobile (collapsed / menu open)
 import { t, type Lang } from '../i18n/ui';
 import { getNavItems, isWithin } from '../lib/nav';
+import SearchBox from './SearchBox.astro';
 
 interface Props {
   lang?: Lang;
@@ -10,12 +11,11 @@ interface Props {
 
 const { lang = 'ja' } = Astro.props;
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => isWithin(path, href);
 
 // 現在のページそのものは "page"、配下のページを表示中の親項目は "true"
 const isPage = (href: string) => path === href;
 const items = (await getNavItems(lang)).map((item) => {
-  const active = isCurrent(item.href) || item.subs.some((s) => isCurrent(s.href));
+  const active = isWithin(path, item.href) || item.subs.some((s) => isWithin(path, s.href));
   return {
     ...item,
     active,
@@ -43,7 +43,7 @@ const items = (await getNavItems(lang)).map((item) => {
                 <ul class="dropdown">
                   {item.subs.map((sub) => (
                     <li>
-                      <a class:list={['t-ui', { current: isCurrent(sub.href) }]} href={sub.href} aria-current={sub.current}>
+                      <a class:list={['t-ui', { current: isWithin(path, sub.href) }]} href={sub.href} aria-current={sub.current}>
                         {sub.label}
                       </a>
                     </li>
@@ -60,11 +60,13 @@ const items = (await getNavItems(lang)).map((item) => {
         <span class:list={['lang-option', { active: lang === 'en' }]}>EN</span>
       </div>
 
-      <form class="search-box desktop-only" action="/search/" role="search" aria-label={t(lang, 'nav.search.label')}>
-        <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
-        <label class="visually-hidden" for="header-search">{t(lang, 'nav.search')}</label>
-        <input id="header-search" class="t-ui" type="search" name="q" placeholder={t(lang, 'nav.search')} />
-      </form>
+      <SearchBox
+        class="header-search"
+        id="header-search"
+        label={t(lang, 'nav.search.label')}
+        placeholder={t(lang, 'nav.search')}
+        lang={lang}
+      />
 
       <div class="lang-compact t-ui-small">
         <span class:list={{ active: lang === 'ja' }}>JP</span>
@@ -88,13 +90,15 @@ const items = (await getNavItems(lang)).map((item) => {
   </div>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <form class="search-row" action="/search/" role="search" aria-label={t(lang, 'nav.search.label')}>
-      <div class="search-box">
-        <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
-        <label class="visually-hidden" for="mobile-search">{t(lang, 'nav.search')}</label>
-        <input id="mobile-search" class="t-ui" type="search" name="q" placeholder={t(lang, 'nav.search')} />
-      </div>
-    </form>
+    <div class="search-row">
+      <SearchBox
+        class="mobile-search"
+        id="mobile-search"
+        label={t(lang, 'nav.search.label')}
+        placeholder={t(lang, 'nav.search')}
+        lang={lang}
+      />
+    </div>
     <nav aria-label={t(lang, 'nav.main')}>
       <ul>
         {items.map((item) => (
@@ -337,38 +341,10 @@ const items = (await getNavItems(lang)).map((item) => {
     font-weight: 700;
   }
 
-  .search-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  /* SearchBox は別コンポーネントなので、置き場所の要素の下で :global で指定する */
+  .nav-lang :global(.header-search) {
     width: 160px;
     padding: 8px 12px;
-    background: #fff;
-    border: 1px solid var(--color-border-input);
-    border-radius: 6px;
-  }
-
-  .search-box:focus-within {
-    border-color: var(--color-navy);
-  }
-
-  .search-box img {
-    flex: none;
-  }
-
-  .search-box input {
-    min-width: 0;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    outline: none;
-    background: none;
-    font-family: inherit;
-    color: var(--color-text);
-  }
-
-  .search-box input::placeholder {
-    color: var(--color-placeholder);
   }
 
   .lang-compact,
@@ -394,7 +370,7 @@ const items = (await getNavItems(lang)).map((item) => {
 
     .desktop-nav,
     .lang-toggle,
-    .desktop-only {
+    .nav-lang :global(.header-search) {
       display: none;
     }
 
@@ -449,9 +425,9 @@ const items = (await getNavItems(lang)).map((item) => {
       padding: 12px 20px;
     }
 
-    .search-row .search-box {
+    .search-row :global(.mobile-search) {
       width: 100%;
-      padding-block: 7px;
+      padding: 7px 12px;
     }
 
     .nav-row,

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// 全ページのヒーロー画像（PageHero の image）が src/data/pages.yaml だけで決まっているかを検査する。
+// 全ページのヒーロー画像（SubPageLayout / PageHero の image）が src/data/pages.yaml だけで決まっているかを検査する。
 // トップのナビカードと遷移先のヒーローは同じ画像になり、研究詳細（research/<ファイル名>）も含めて
 // パスの直書きは不可。各ページは次のどちらかで画像を取得する。
-//   const page = await getNavPage('<id>');    → <PageHero image={page.data.image} />
-//   const image = await getPageImage('<id>'); → <PageHero image={image} />
+//   const page = await getNavPage('<id>');    → <SubPageLayout {...navPageProps(page, lang)}>
+//   const image = await getPageImage('<id>'); → <SubPageLayout image={image}>（PageHero を直接使うときも同じ）
 // （研究詳細は getPageImage(`research/${...}`)）
 // id の重複は check-duplicate-ids.mjs が検査する。
 // `npm test` で実行される。使い方: node scripts/check-page-heroes.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
@@ -57,12 +57,14 @@ for (const file of listFiles('src/content/research').filter((f) => f.endsWith('.
   if (/^hero:/m.test(front)) problem(file, 'front matter に hero があります。写真は pages.yaml に書いてください。');
 }
 
-// PageHero を使う全ページを検査する
+// SubPageLayout か PageHero を使う全ページを検査する
 const used = new Set();
 for (const file of listFiles('src/pages').filter((f) => f.endsWith('.astro'))) {
   const src = readFileSync(join(root, file), 'utf8');
-  const hero = src.match(/<PageHero\b[^>]*?\bimage=(\{[^}]*\}|"[^"]*"|'[^']*')/s);
-  if (!/<PageHero\b/.test(src)) continue;
+  if (!/<(SubPageLayout|PageHero)\b/.test(src)) continue;
+  const hero = src.match(/<(?:SubPageLayout|PageHero)\b[^>]*?\bimage=(\{[^}]*\}|"[^"]*"|'[^']*')/s);
+  // navPageProps(page, ...) を展開していれば、image は getNavPage で取ったページのもの
+  const fromNavPage = !hero && /<SubPageLayout\b[^>]*?\{\.\.\.navPageProps\(\s*page\b/s.test(src);
   const rel = relative('.', file);
 
   // 取得元の id（研究詳細は research/${...} をトピック全件に展開する）
@@ -70,8 +72,8 @@ for (const file of listFiles('src/pages').filter((f) => f.endsWith('.astro'))) {
   for (const m of src.matchAll(/getNavPage\(\s*['"]([^'"]+)['"]\s*\)|getPageImage\(\s*['"]([^'"]+)['"]\s*\)/g)) ids.push(m[1] ?? m[2]);
   if (/getPageImage\(\s*`research\/\$\{[^}]+\}`\s*\)/.test(src)) ids.push(...topics.map((t) => `research/${t}`));
 
-  if (!hero || !/^\{\s*(page\.data\.image|image|heroImage)\s*\}$/.test(hero[1]))
-    problem(rel, `PageHero の image が pages.yaml の値ではありません（${hero ? hero[1] : '指定なし'}）。パスを直書きせず、getNavPage か getPageImage で取得してください。`);
+  if (!fromNavPage && (!hero || !/^\{\s*(page\.data\.image|image|heroImage)\s*\}$/.test(hero[1])))
+    problem(rel, `ヒーロー画像（image）が pages.yaml の値ではありません（${hero ? hero[1] : '指定なし'}）。パスを直書きせず、getNavPage か getPageImage で取得してください。`);
   if (!ids.length) problem(rel, 'pages.yaml から画像を取得していません（getNavPage / getPageImage を使ってください）。');
   for (const id of ids) {
     used.add(id);

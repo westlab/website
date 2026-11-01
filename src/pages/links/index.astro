@@ -1,10 +1,7 @@
 ---
 import { getSortedCollection } from '../../lib/content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PageContent from '../../components/PageContent.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import { getNavPage } from '../../lib/pages';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import { getNavPage, navPageProps } from '../../lib/pages';
 
 const lang = 'ja' as const;
 
@@ -12,40 +9,27 @@ const page = await getNavPage('links');
 const categories = await getSortedCollection('links');
 ---
 
-<BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>
-  <PageHero title={page.data.title_ja} image={page.data.image} />
-  <PageContent clip>
-    <Breadcrumb lang={lang} />
-    <div class="body">
-      {categories.map((category) => (
-        <div class="category">
-          <h2 class="t-section">{category.data.category_ja}</h2>
-          <ul class="t-body">
-            {category.data.items.map((item) => (
-              <li>
-                {item.url ? (
-                  <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
-                ) : (
-                  <span class="plain">{item.label}</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+<SubPageLayout {...navPageProps(page, lang)} lang={lang} clip>
+  {categories.map((category) => (
+    <div class="category">
+      <h2 class="t-section">{category.data.category_ja}</h2>
+      <ul class="t-body">
+        {category.data.items.map((item) => (
+          <li>
+            {item.url ? (
+              <a href={item.url} target="_blank" rel="noopener">{item.label}</a>
+            ) : (
+              <span class="plain">{item.label}</span>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
-  </PageContent>
-</BaseLayout>
+  ))}
+</SubPageLayout>
 
 <style>
   /* Figma: Links Page / Content */
-  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-
   .category {
     display: flex;
     flex-direction: column;

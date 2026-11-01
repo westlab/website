@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry, type CollectionKey } from 'astro:content';
+import { getCollection, render, type CollectionEntry, type CollectionKey } from 'astro:content';
 import type { Lang } from '../i18n/ui';
 
 // research / pagesContent は id が "ja/network" のように言語プレフィックス付き。
@@ -21,6 +21,13 @@ export async function getLocalizedDoc<C extends LocalizedCollection>(
 ): Promise<CollectionEntry<C> | undefined> {
   const entries: CollectionEntry<C>[] = await getCollection(collection);
   return entries.find((entry) => entry.id === `${lang}/${slug}`);
+}
+
+// 単発ページの本文（pagesContent）を描画用に取り出す。ファイルが無ければ Content は null
+export async function renderLocalizedDoc(lang: Lang, slug: string) {
+  const doc = await getLocalizedDoc('pagesContent', lang, slug);
+  const { Content } = doc ? await render(doc) : { Content: null };
+  return { doc, Content };
 }
 
 // 一覧の並び順は order の昇順。並べ方を変えるときはここだけを直す。

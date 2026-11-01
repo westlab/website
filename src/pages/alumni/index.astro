@@ -1,9 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PageContent from '../../components/PageContent.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
 import { getPageImage } from '../../lib/pages';
 import { getSite } from '../../lib/site';
 import { t } from '../../i18n/ui';
@@ -16,34 +13,21 @@ const site = await getSite();
 const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a.data.cohort);
 ---
 
-<BaseLayout title={title} description={site.page_descriptions.alumni.ja} lang={lang}>
-  <PageHero title={title} image={image} />
-  <PageContent maxWidth="none">
-    <Breadcrumb lang={lang} />
-    <div class="body">
-      {cohorts.map((entry) => (
-        <div class="cohort">
-          <h2 class="t-section">{entry.data.cohort}期</h2>
-          <hr class="divider" />
-          <ul class="names">
-            {entry.data.names.map((person) => (
-              <li class="name t-emphasis">{person.name_ja}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+<SubPageLayout title={title} description={site.page_descriptions.alumni.ja} image={image} lang={lang} maxWidth="none" gap={48} mobileGap={32}>
+  {cohorts.map((entry) => (
+    <div class="cohort">
+      <h2 class="t-section">{entry.data.cohort}期</h2>
+      <hr class="divider" />
+      <ul class="names">
+        {entry.data.names.map((person) => (
+          <li class="name t-emphasis">{person.name_ja}</li>
+        ))}
+      </ul>
     </div>
-  </PageContent>
-</BaseLayout>
+  ))}
+</SubPageLayout>
 
 <style>
-  /* パンくずの下の本文。期ごとの間隔はここで持つ（Figma: Content > Body） */
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
   .cohort {
     display: flex;
     flex-direction: column;
@@ -78,10 +62,6 @@ const cohorts = (await getCollection('alumni')).sort((a, b) => b.data.cohort - a
   }
 
   @media (max-width: 767px) {
-    .body {
-      gap: 32px;
-    }
-
     .cohort {
       gap: 16px;
     }

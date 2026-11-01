@@ -1,0 +1,51 @@
+---
+// 下層ページの共通の枠。Page Title（PageHero）、本文枠（PageContent）、パンくず、本文（.body）を並べる。
+// title は <title> と Page Title の両方に使う。本文はスロットに入れ、.body の縦の間隔は gap で指定する。
+import type { ComponentProps } from 'astro/types';
+import BaseLayout from './BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PageContent from '../components/PageContent.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import type { NavLink } from '../lib/nav';
+import type { Lang } from '../i18n/ui';
+
+interface Props extends ComponentProps<typeof PageContent> {
+  title: string;
+  description: string;
+  image: string;
+  lang?: Lang;
+  ogType?: 'website' | 'article';
+  // ナビに無いページ（研究詳細など）の現在ページ。Breadcrumb にそのまま渡す
+  current?: NavLink;
+  gap?: number; // .body の縦の間隔（デスクトップ・タブレット）
+  mobileGap?: number; // .body の縦の間隔（〜767px）。標準は gap と同じ
+}
+
+const { title, description, image, lang = 'ja', ogType, current, gap = 56, mobileGap, ...content } =
+  Astro.props;
+---
+
+<BaseLayout title={title} description={description} ogType={ogType} lang={lang}>
+  <PageHero title={title} image={image} />
+  <PageContent {...content}>
+    <Breadcrumb lang={lang} current={current} />
+    <div class="body" style={`--body-gap: ${gap}px; --body-gap-mobile: ${mobileGap ?? gap}px`}>
+      <slot />
+    </div>
+  </PageContent>
+</BaseLayout>
+
+<style>
+  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--body-gap);
+  }
+
+  @media (max-width: 767px) {
+    .body {
+      gap: var(--body-gap-mobile);
+    }
+  }
+</style>
