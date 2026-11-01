@@ -3,6 +3,7 @@
 // 検索は Pagefind（ビルド時インデックス）をブラウザで実行する。
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageContent from '../../components/PageContent.astro';
+import SearchBox from '../../components/SearchBox.astro';
 import { getSite } from '../../lib/site';
 import { localize } from '../../lib/localize';
 import { t } from '../../i18n/ui';
@@ -38,11 +39,7 @@ const strings = {
     <p class="label t-caption-label" id="search-label" hidden>{t(lang, 'search.label')}</p>
     <h1 class="t-section" id="search-title" tabindex="-1">{t(lang, 'search.label')}</h1>
     <p class="count t-caption" id="search-count" role="status" aria-live="polite"></p>
-    <form class="search-box" action="/search/" role="search" aria-label={strings.filter}>
-      <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
-      <label class="visually-hidden" for="search-page-input">{t(lang, 'nav.search')}</label>
-      <input id="search-page-input" class="t-ui" type="search" name="q" autocomplete="off" />
-    </form>
+    <SearchBox class="page-search" id="search-page-input" label={strings.filter} autocomplete="off" lang={lang} />
   </section>
 
   <PageContent top={48} bottom={64} clip mobileTop={8}>
@@ -263,36 +260,12 @@ const strings = {
     color: var(--color-text-muted);
   }
 
-  .search-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  /* SearchBox は別コンポーネントなので、置き場所の要素の下で :global で指定する */
+  .search-header :global(.page-search) {
     width: 440px;
     max-width: 100%;
     height: 44px;
     padding: 0 16px;
-    background: #fff;
-    border: 1px solid var(--color-border-input);
-    border-radius: 6px;
-  }
-
-  .search-box:focus-within {
-    border-color: var(--color-navy);
-  }
-
-  .search-box img {
-    flex: none;
-  }
-
-  .search-box input {
-    min-width: 0;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    outline: none;
-    background: none;
-    font-family: inherit;
-    color: var(--color-text);
   }
 
   /* Figma: Content / Result List */

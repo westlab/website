@@ -1,11 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import allowed from '../../data/allowed-values.json';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PageContent from '../../components/PageContent.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import { getNavPage } from '../../lib/pages';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import { getNavPage, navPageProps } from '../../lib/pages';
 
 const lang = 'ja' as const;
 
@@ -30,38 +27,25 @@ function splitByYear<T extends { year?: string }>(names: T[]): T[][] {
 }
 ---
 
-<BaseLayout title={page.data.title_ja} description={page.data.meta_description_ja ?? page.data.description_ja} lang={lang}>
-  <PageHero title={page.data.title_ja} image={page.data.image} />
-  <PageContent maxWidth="none" mobileTop={64}>
-    <Breadcrumb lang={lang} />
-    <div class="body">
-      {groups.map((group) => (
-        <div class="group">
-          <h2 class="t-section">{group.data.grade}</h2>
-          <hr class="divider" />
-          <div class="rows">
-            {splitByYear(group.data.names).map((row) => (
-              <ul class="names">
-                {row.map((member) => (
-                  <li class="name t-emphasis">{member.name_ja}</li>
-                ))}
-              </ul>
+<SubPageLayout {...navPageProps(page, lang)} lang={lang} maxWidth="none" mobileTop={64}>
+  {groups.map((group) => (
+    <div class="group">
+      <h2 class="t-section">{group.data.grade}</h2>
+      <hr class="divider" />
+      <div class="rows">
+        {splitByYear(group.data.names).map((row) => (
+          <ul class="names">
+            {row.map((member) => (
+              <li class="name t-emphasis">{member.name_ja}</li>
             ))}
-          </div>
-        </div>
-      ))}
+          </ul>
+        ))}
+      </div>
     </div>
-  </PageContent>
-</BaseLayout>
+  ))}
+</SubPageLayout>
 
 <style>
-  /* パンくずの下の本文。グループ間の間隔はここで持つ（Figma: Content > Body） */
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-
   .group {
     display: flex;
     flex-direction: column;

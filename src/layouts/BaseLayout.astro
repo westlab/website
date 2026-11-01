@@ -223,6 +223,61 @@ const fullTitle = titleSuffix ? `${title} | ${siteName}` : title;
     outline: none;
   }
 
+  /*
+   * Figma: QA Item / QA List。開閉する質問と答えの一覧（研究ページ「過去の研究」、入室・見学ページの Markdown）。
+   * Markdown からも使うので class だけで書けるようにする:
+   *   <div class="qa-list"><details class="qa-item"><summary><span>質問</span></summary><p>答え</p></details></div>
+   */
+  .qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .qa-item {
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid var(--color-navy-divider);
+  }
+
+  .qa-item summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text);
+    font-size: var(--type-item-size);
+    font-weight: 700;
+    line-height: var(--type-item-leading);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .qa-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .qa-item summary span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .qa-item summary::after {
+    content: '';
+    flex: none;
+    width: 20px;
+    height: 20px;
+    background: url('/images/ui/icon-chevron-down.svg') center / contain no-repeat;
+    transition: transform 0.2s ease;
+  }
+
+  .qa-item[open] summary::after {
+    transform: rotate(180deg);
+  }
+
+  .qa-item p {
+    margin: 6px 0 0;
+    white-space: pre-line;
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;

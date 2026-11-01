@@ -2,12 +2,9 @@
 // Figmaの "Publications Page" / "Publications Page (Mobile)" に対応。
 // 年度は3つのブロックに分け、Block Nav で切り替える（選択中のブロックだけ表示）。
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PageContent from '../../components/PageContent.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
 import PublicationEntry from '../../components/PublicationEntry.astro';
-import { getNavPage } from '../../lib/pages';
+import { getNavPage, navPageProps } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 import allowed from '../../data/allowed-values.json';
 
@@ -46,53 +43,45 @@ const blocks = BLOCK_STARTS.map((start, i) => {
 const activeId = blocks[blocks.length - 1].id;
 ---
 
-<BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>
-  <PageHero title={page.data.title_ja} image={page.data.image} />
-  <PageContent sideBand={false}>
-    <div class="publications">
-      <Breadcrumb lang={lang} />
-      <div class="body">
-        <nav class="block-nav" aria-label={t(lang, 'publications.blockNav')}>
-          {blocks.map((b) => (
-            <a
-              class="block-link t-ui-bold"
-              href={`#${b.id}`}
-              data-block={b.id}
-              aria-current={b.id === activeId ? 'true' : undefined}
-            >
-              {b.label}
-            </a>
-          ))}
-        </nav>
+<SubPageLayout {...navPageProps(page, lang)} lang={lang} sideBand={false} mobileGap={40}>
+  <nav class="block-nav" aria-label={t(lang, 'publications.blockNav')}>
+    {blocks.map((b) => (
+      <a
+        class="block-link t-ui-bold"
+        href={`#${b.id}`}
+        data-block={b.id}
+        aria-current={b.id === activeId ? 'true' : undefined}
+      >
+        {b.label}
+      </a>
+    ))}
+  </nav>
 
-        <div class="blocks">
-        {blocks.map((b) => (
-          <div class="block" id={b.id} data-block-panel={b.id}>
-            {b.years.map(({ year, categories }) => (
-              <section class="year">
-                <h2 class="year-title t-section">{year}{suffix}</h2>
-                <hr class="divider" />
-                <div class="categories">
-                  {categories.map(({ category, entries }) => (
-                    <div class="category">
-                      <h3 class="category-title t-item">{category}</h3>
-                      <ol class="entries">
-                        {entries.map((entry, i) => (
-                          <PublicationEntry index={i + 1} citation={entry.data.citation} />
-                        ))}
-                      </ol>
-                    </div>
-                  ))}
+  <div class="blocks">
+    {blocks.map((b) => (
+      <div class="block" id={b.id} data-block-panel={b.id}>
+        {b.years.map(({ year, categories }) => (
+          <section class="year">
+            <h2 class="year-title t-section">{year}{suffix}</h2>
+            <hr class="divider" />
+            <div class="categories">
+              {categories.map(({ category, entries }) => (
+                <div class="category">
+                  <h3 class="category-title t-item">{category}</h3>
+                  <ol class="entries">
+                    {entries.map((entry, i) => (
+                      <PublicationEntry index={i + 1} citation={entry.data.citation} />
+                    ))}
+                  </ol>
                 </div>
-              </section>
-            ))}
-          </div>
+              ))}
+            </div>
+          </section>
         ))}
-        </div>
       </div>
-    </div>
-  </PageContent>
-</BaseLayout>
+    ))}
+  </div>
+</SubPageLayout>
 
 <script>
   // JSが無効なら全ブロックを表示し、有効なら選択中のブロックだけ表示する。
@@ -100,7 +89,7 @@ const activeId = blocks[blocks.length - 1].id;
   // 未対応ブラウザでは通常の hidden（検索対象外）にフォールバックする。
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-block]'));
   const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-block-panel]'));
-  const root = document.querySelector('.publications');
+  const root = document.querySelector('.blocks');
   root?.classList.add('is-tabbed');
 
   const canFind = 'onbeforematch' in document.body;
@@ -139,13 +128,6 @@ const activeId = blocks[blocks.length - 1].id;
 </script>
 
 <style>
-  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-
   .block-nav {
     display: flex;
     flex-wrap: wrap;
@@ -182,7 +164,7 @@ const activeId = blocks[blocks.length - 1].id;
     gap: 56px;
   }
 
-  .publications.is-tabbed .blocks {
+  .blocks.is-tabbed {
     gap: 0;
   }
 
@@ -242,7 +224,6 @@ const activeId = blocks[blocks.length - 1].id;
   }
 
   @media (max-width: 767px) {
-    .body,
     .blocks,
     .block {
       gap: 40px;

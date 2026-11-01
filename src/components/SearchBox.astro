@@ -1,0 +1,56 @@
+---
+// Figma: Search Box（虫眼鏡アイコン+入力欄）。ヘッダー（デスクトップ・モバイルメニュー）と検索結果ページで使う。
+// 送信すると /search/?q=... に移る。幅・高さ・内側の余白は置き場所ごとに違うので、呼び出し側が class で指定する。
+import { t, type Lang } from '../i18n/ui';
+
+interface Props {
+  id: string; // input の id（同じページに複数置くので呼び出し側で分ける）
+  label: string; // フォーム（role="search"）の aria-label
+  placeholder?: string;
+  autocomplete?: 'off';
+  lang?: Lang;
+  class?: string;
+}
+
+const { id, label, placeholder, autocomplete, lang = 'ja', class: className } = Astro.props;
+---
+
+<form class:list={['search-box', className]} action="/search/" role="search" aria-label={label}>
+  <img src="/images/ui/icon-search.svg" alt="" width="16" height="16" />
+  <label class="visually-hidden" for={id}>{t(lang, 'nav.search')}</label>
+  <input id={id} class="t-ui" type="search" name="q" placeholder={placeholder} autocomplete={autocomplete} />
+</form>
+
+<style>
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid var(--color-border-input);
+    border-radius: 6px;
+  }
+
+  .search-box:focus-within {
+    border-color: var(--color-navy);
+  }
+
+  .search-box img {
+    flex: none;
+  }
+
+  .search-box input {
+    min-width: 0;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: none;
+    font-family: inherit;
+    color: var(--color-text);
+  }
+
+  .search-box input::placeholder {
+    color: var(--color-placeholder);
+  }
+</style>

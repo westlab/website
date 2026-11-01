@@ -4,10 +4,7 @@
 // Page Title のタイトルは nav ラベルを使い、画像は pages.yaml（nav: false のレコード）から引く。
 // サムネイルは動画サービス側から取得する想定のため、ここでは暗色の枠+再生アイコンで表示する。
 import { getSortedCollection } from '../../lib/content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import PageContent from '../../components/PageContent.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
 import VideoCard from '../../components/VideoCard.astro';
 import { getPageImage } from '../../lib/pages';
 import { getSite } from '../../lib/site';
@@ -21,25 +18,12 @@ const videos = await getSortedCollection('videos');
 const title = t(lang, 'nav.research.videos');
 ---
 
-<BaseLayout title={title} description={site.page_descriptions.videos.ja} lang={lang}>
-  <PageHero title={title} image={heroImage} />
-  <PageContent>
-    <Breadcrumb lang={lang} />
-    <div class="body">
-      <p class="t-body lead">{t(lang, 'videos.lead')}</p>
-      {videos.map((video) => <VideoCard video={video.data} lang={lang} />)}
-    </div>
-  </PageContent>
-</BaseLayout>
+<SubPageLayout title={title} description={site.page_descriptions.videos.ja} image={heroImage} lang={lang} gap={40}>
+  <p class="t-body lead">{t(lang, 'videos.lead')}</p>
+  {videos.map((video) => <VideoCard video={video.data} lang={lang} />)}
+</SubPageLayout>
 
 <style>
-  /* パンくずの下の本文。セクション間の間隔はここで持つ（Figma: Main > Body） */
-  .body {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-
   .lead {
     margin: 0;
   }

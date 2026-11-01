@@ -74,7 +74,7 @@ Figma で確認した制約：Homepage の Nav Card 5枚（研究内容・メン
 ```
 
 - Nav Card と Page Title（Hero）の両コンポーネントが、この同じレコードを参照する。写真を差し替えるときは `pages.yaml` を1回直せば両方に反映される
-- 各ページの `PageHero` の `image` は `getNavPage` / `getPageImage`（`src/lib/pages.ts`）で `pages.yaml` から取得する。Hero 用の別画像やパスの直書きは不可。`scripts/check-page-heroes.mjs`（`npm test`）が commit 時と CI で検査する
+- 各ページのヒーロー画像（`SubPageLayout` の `image`）は `getNavPage` + `navPageProps` / `getPageImage`（`src/lib/pages.ts`）で `pages.yaml` から取得する。Hero 用の別画像やパスの直書きは不可。`scripts/check-page-heroes.mjs`（`npm test`）が commit 時と CI で検査する
 - 縦横比の違いは、画像を複数バージョン持たず、各コンポーネントの CSS（`object-fit: cover` とブレークポイントごとのコンテナサイズ）で吸収する。画像の置き場所（`public/` か `src/assets/`）はクロップと無関係
 - ビルド時の画像最適化（`astro:assets`）は導入しない。モバイル向けの転送量を自動で最適化できるが、写真が少なく更新頻度も低いため、仕組みの単純さを優先した
 
