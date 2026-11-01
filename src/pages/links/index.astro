@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getSortedCollection } from '../../lib/content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import PageContent from '../../components/PageContent.astro';
@@ -9,7 +9,7 @@ import { getNavPage } from '../../lib/pages';
 const lang = 'ja' as const;
 
 const page = await getNavPage('links');
-const categories = (await getCollection('links')).sort((a, b) => a.data.order - b.data.order);
+const categories = await getSortedCollection('links');
 ---
 
 <BaseLayout title={page.data.title_ja} description={page.data.description_ja} lang={lang}>

@@ -1,10 +1,11 @@
 import { getCollection } from 'astro:content';
+import { byOrder } from './content';
 
 // pages.yaml の読み出し。Nav Card を持つページ（nav が true）と、画像だけのページ（nav: false）を区別する。
 
 export async function getNavPages() {
   const pages = await getCollection('pages');
-  return pages.flatMap((page) => (page.data.nav ? [{ ...page, data: page.data }] : [])).sort((a, b) => a.data.order - b.data.order);
+  return pages.flatMap((page) => (page.data.nav ? [{ ...page, data: page.data }] : [])).sort(byOrder);
 }
 
 export async function getNavPage(id: string) {

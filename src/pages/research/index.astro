@@ -1,12 +1,12 @@
 ---
 // Figma: Research Page / Research Page (Mobile)
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import PageContent from '../../components/PageContent.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import ResearchTopicCard from '../../components/ResearchTopicCard.astro';
-import { getLocalizedDoc, getLocalizedList } from '../../lib/content';
+import { getLocalizedDoc, getLocalizedList, getSortedCollection } from '../../lib/content';
 import { getNavPage } from '../../lib/pages';
 import { t } from '../../i18n/ui';
 
@@ -16,8 +16,8 @@ const page = await getNavPage('research');
 
 const intro = await getLocalizedDoc('pagesContent', lang, 'research-intro');
 const { Content: IntroContent } = intro ? await render(intro) : { Content: null };
-const topics = (await getLocalizedList('research', lang)).sort((a, b) => a.data.order - b.data.order);
-const pastResearch = (await getCollection('pastResearch')).sort((a, b) => a.data.order - b.data.order);
+const topics = await getLocalizedList('research', lang);
+const pastResearch = await getSortedCollection('pastResearch');
 ---
 
 <BaseLayout title={t(lang, 'nav.research.about')} description={page.data.description_ja} lang={lang}>

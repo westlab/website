@@ -2,7 +2,7 @@
 // Figma: Header（デスクトップ。研究内容・メンバーはホバーでドロップダウン）/
 // Header / Mobile (collapsed / menu open)
 import { t, type Lang } from '../i18n/ui';
-import { getNavItems } from '../lib/nav';
+import { getNavItems, isWithin } from '../lib/nav';
 
 interface Props {
   lang?: Lang;
@@ -10,7 +10,7 @@ interface Props {
 
 const { lang = 'ja' } = Astro.props;
 const path = Astro.url.pathname;
-const isCurrent = (href: string) => path === href || path.startsWith(href);
+const isCurrent = (href: string) => isWithin(path, href);
 
 // 現在のページそのものは "page"、配下のページを表示中の親項目は "true"
 const isPage = (href: string) => path === href;

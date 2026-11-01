@@ -28,6 +28,11 @@ const children: Record<string, { key: UiKey; href: string }[]> = {
   ],
 };
 
+// path が href のページ、またはその配下か（URL の前方一致）。Header の現在地表示とパンくずが共有する
+export function isWithin(path: string, href: string): boolean {
+  return path.startsWith(href);
+}
+
 export async function getNavItems(lang: Lang): Promise<NavItem[]> {
   const pages = await getNavPages();
   return pages.map((page) => ({
@@ -54,7 +59,7 @@ export async function getBreadcrumb(lang: Lang, path: string, current?: NavLink)
   if (exact) return [home, ...exact];
 
   const parent = trails
-    .filter((trail) => path.startsWith(trail.at(-1)!.href))
+    .filter((trail) => isWithin(path, trail.at(-1)!.href))
     .sort((a, b) => b.at(-1)!.href.length - a.at(-1)!.href.length)[0];
   return [home, ...(parent ?? []), ...(current ? [current] : [])];
 }
