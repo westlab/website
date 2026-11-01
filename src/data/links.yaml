@@ -1,9 +1,9 @@
 # 文章の値に「 #」を含めるときは "..." で囲む（引用符なしだと「 #」から後ろが消える）。
 # リンク集
 # id はカテゴリを表す英数字とハイフン（例: academic-societies）。ファイルの中で重複させない。
+# カテゴリの表示順は、このファイルに書いた順（上から）。並べたい位置に書く。
 
 - id: research-achievements
-  order: 1
   category_ja: 研究業績
   category_en: Research Achievements
   items:
@@ -13,7 +13,6 @@
       url: "https://www.k-ris.keio.ac.jp/html/100011711_ja.html"
 
 - id: research-related-content
-  order: 2
   category_ja: 研究関連コンテンツ
   category_en: Research-Related Content
   items:
@@ -27,7 +26,6 @@
       url: "https://pages.nist.gov/GCTC/"
 
 - id: partner-institutions
-  order: 3
   category_ja: 共同研究機関
   category_en: Partner Institutions
   items:
@@ -39,7 +37,6 @@
       url: "https://www.aalto.fi/en"
 
 - id: lab-related
-  order: 4
   category_ja: 研究室関連
   category_en: Lab-Related
   items:
@@ -53,7 +50,6 @@
       url: "https://www.keio.ac.jp/ja/st/department/human-society/"
 
 - id: academic-societies
-  order: 5
   category_ja: 学会
   category_en: Academic Societies
   items:

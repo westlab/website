@@ -1,9 +1,8 @@
 # id はページのパス（research・members など。研究詳細は research/<ファイル名>）。ファイルの中で重複させない。
 # 文章の値に「 #」を含めるときは "..." で囲む（引用符なしだと「 #」から後ろが消える）。
 # 全ページの Page Title（ページ上部）の写真。写真を差し替えるときはここの image を直す。
-# 先頭の5件はトップの Nav Card にも同じ写真が出る。
+# 先頭の5件はトップの Nav Card にも同じ写真が出る。Nav Card とナビの並び順は、このファイルに書いた順（上から）。
 - id: research
-  order: 1
   title_ja: 研究内容
   title_en: Research
   image: /images/pages/research.jpg
@@ -12,7 +11,6 @@
   description_en: An overview of the research themes we work on, including smart communities.
 
 - id: members
-  order: 2
   title_ja: メンバー
   title_en: Members
   image: /images/pages/members.jpg
@@ -23,7 +21,6 @@
   meta_description_en: Current members and alumni of the Nishi Laboratory, Keio University.
 
 - id: publications
-  order: 3
   title_ja: 業績
   title_en: Publications
   image: /images/pages/publications.jpg
@@ -32,7 +29,6 @@
   description_en: Journal papers, conference papers, awards and other achievements.
 
 - id: applicants
-  order: 4
   title_ja: 入室・見学
   title_en: Applicants
   image: /images/pages/applicants.jpg
@@ -43,7 +39,6 @@
   meta_description_en: Information for international students who wish to join the Nishi Laboratory, Keio University.
 
 - id: links
-  order: 5
   title_ja: リンク
   title_en: Links
   image: /images/pages/links.jpg

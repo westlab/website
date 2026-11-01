@@ -35,13 +35,23 @@ const pagesContent = defineCollection({
 // 分類1: 構造化データ（表形式・短い項目の繰り返し）。1コレクション1 YAMLファイル。
 // 翻訳が必要な短いフィールドは _ja/_en を同一レコード内に持つ（stack-decision.md の方針）。
 
+// YAML を読み、各項目に「ファイルの中での位置」を seq として付ける。
+// file loader は id の文字列順で返すため（-10 が -2 より前に来る）、表示順は seq で決める（src/lib/content.ts）。
+// 学生は並べたい位置に書くだけでよく、番号を振り直す必要がない。
+const yamlInFileOrder = (path: string) =>
+  file(path, {
+    parser: (text) =>
+      (yaml.load(text) as Record<string, unknown>[]).map((item, seq) => ({ ...item, seq })),
+  });
+const seq = z.number();
+
 // 全ページの Page Title（Hero）画像の対応表。Nav Card を持つ5ページは Homepage の Nav Card と画像・タイトルを共有する。
 // Nav Card を持たないページ（卒業生・動画・研究トピック）は `nav: false` を付け、id と image だけ書く。
 // 研究トピックの id は "research/<ファイル名>"（例: research/network）。
 const navPage = z.object({
   id: z.string(),
   nav: z.literal(true).default(true),
-  order: z.number(),
+  seq,
   title_ja: z.string(),
   title_en: z.string(),
   image: z.string(),
@@ -56,10 +66,11 @@ const navPage = z.object({
 const imageOnlyPage = z.object({
   id: z.string(),
   nav: z.literal(false),
+  seq,
   image: z.string(),
 });
 const pages = defineCollection({
-  loader: file("./src/data/pages.yaml"),
+  loader: yamlInFileOrder("./src/data/pages.yaml"),
   schema: z.union([navPage, imageOnlyPage]),
 });
 
@@ -138,15 +149,10 @@ const alumni = defineCollection({
 });
 
 const publications = defineCollection({
-  // file loader は id の文字列順で返すため（-10 が -2 より前に来る）、YAML 上の位置を seq に入れて
-  // ページ側でその順に並べる。学生は YAML の中の位置で順番を決める。
-  loader: file("./src/data/publications.yaml", {
-    parser: (text) =>
-      (yaml.load(text) as Record<string, unknown>[]).map((item, seq) => ({ ...item, seq })),
-  }),
+  loader: yamlInFileOrder("./src/data/publications.yaml"),
   schema: z.object({
     id: z.string(),
-    seq: z.number(),
+    seq,
     year: z.number(),
     // Figmaの分類（論文誌／国際会議・査読付収録論文／国内研究会・収録論文・口頭発表等／
     // 講演等／報道・展示等／学術解説等／著書／特許出願／受賞等）に合わせる。
@@ -160,12 +166,12 @@ const publications = defineCollection({
 
 // Linksページ用。カテゴリごとにリンクの配列を持つ。
 const links = defineCollection({
-  loader: file("./src/data/links.yaml"),
+  loader: yamlInFileOrder("./src/data/links.yaml"),
   schema: z.object({
     id: z.string(),
     category_ja: z.string(),
     category_en: z.string(),
-    order: z.number(),
+    seq,
     items: z.array(
       z.object({
         label: z.string(),
@@ -177,11 +183,10 @@ const links = defineCollection({
 });
 
 const videos = defineCollection({
-  loader: file("./src/data/videos.yaml"),
+  loader: yamlInFileOrder("./src/data/videos.yaml"),
   schema: z.object({
     id: z.string(),
-    // 表示順（file loader は id 順で返すため明示する）
-    order: z.number(),
+    seq,
     title_ja: z.string(),
     title_en: z.string(),
     // サムネイル下の1行説明
@@ -193,10 +198,10 @@ const videos = defineCollection({
 
 // 研究内容ページ「過去の研究」の開閉リスト。
 const pastResearch = defineCollection({
-  loader: file("./src/data/past-research.yaml"),
+  loader: yamlInFileOrder("./src/data/past-research.yaml"),
   schema: z.object({
     id: z.string(),
-    order: z.number(),
+    seq,
     title_ja: z.string(),
     body_ja: z.string(),
   }),

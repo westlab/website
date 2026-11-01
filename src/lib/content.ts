@@ -11,7 +11,7 @@ export async function getLocalizedList<C extends LocalizedCollection>(collection
   return entries
     .filter((entry) => entry.id.startsWith(`${lang}/`))
     .map((entry) => ({ ...entry, slug: entry.id.slice(lang.length + 1) }))
-    .sort((a, b) => orderOf(a.data) - orderOf(b.data));
+    .sort(byRank);
 }
 
 export async function getLocalizedDoc<C extends LocalizedCollection>(
@@ -30,22 +30,25 @@ export async function renderLocalizedDoc(lang: Lang, slug: string) {
   return { doc, Content };
 }
 
-// 一覧の並び順は order の昇順。並べ方を変えるときはここだけを直す。
-export function byOrder(a: { data: { order: number } }, b: { data: { order: number } }) {
-  return a.data.order - b.data.order;
+// 一覧の並び順。YAML のコレクションはファイルに書いた位置（seq。src/content.config.ts で付ける）、
+// 研究トピックの md は front matter の order の昇順。どちらも持たないもの（pagesContent）は並べ替えない。
+// 並べ方を変えるときはここだけを直す。
+function rank(data: object) {
+  if ('seq' in data && typeof data.seq === 'number') return data.seq;
+  if ('order' in data && typeof data.order === 'number') return data.order;
+  return 0;
 }
 
-// order を持たないコレクション（pagesContent）は並べ替えない
-function orderOf(data: object) {
-  return 'order' in data && typeof data.order === 'number' ? data.order : 0;
+export function byRank(a: { data: object }, b: { data: object }) {
+  return rank(a.data) - rank(b.data);
 }
 
-// order を持つ YAML コレクション（links / videos / pastResearch など）を order 順で返す
-type OrderedCollection = {
-  [C in CollectionKey]: CollectionEntry<C>['data'] extends { order: number } ? C : never;
+// YAML のコレクション（links / videos / pastResearch / publications など）を、ファイルに書いた順で返す
+type YamlCollection = {
+  [C in CollectionKey]: CollectionEntry<C>['data'] extends { seq: number } ? C : never;
 }[CollectionKey];
 
-export async function getSortedCollection<C extends OrderedCollection>(collection: C): Promise<CollectionEntry<C>[]> {
+export async function getSortedCollection<C extends YamlCollection>(collection: C): Promise<CollectionEntry<C>[]> {
   const entries: CollectionEntry<C>[] = await getCollection(collection);
-  return entries.sort((a, b) => orderOf(a.data) - orderOf(b.data));
+  return entries.sort(byRank);
 }
