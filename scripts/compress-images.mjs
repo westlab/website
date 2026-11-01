@@ -4,20 +4,15 @@
 // すでに容量・寸法が基準内の画像は処理しない。書き換えるのは、5%以上小さくなるときか、寸法を縮めるときだけ。
 // 使い方: node scripts/compress-images.mjs [対象ファイルまたはディレクトリ…]（省略時は public/images 全体）
 
-import { readdirSync, statSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { writeFileSync } from 'node:fs';
 import { planCompression } from './image-limits.mjs';
+import { walk } from './lib.mjs';
 
 const EXT = /\.(png|jpe?g)$/i;
 const targets = process.argv.slice(2);
 if (!targets.length) targets.push('public/images');
 
-function walk(p) {
-  if (statSync(p).isFile()) return EXT.test(p) ? [p] : [];
-  return readdirSync(p, { withFileTypes: true }).flatMap((e) => walk(join(p, e.name)));
-}
-
-for (const file of targets.flatMap(walk)) {
+for (const file of targets.flatMap((t) => walk(t, EXT))) {
   const { write, before, out } = await planCompression(file);
   if (!write) continue;
   writeFileSync(file, out);

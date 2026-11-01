@@ -4,9 +4,9 @@
 // YAML は js-yaml で読み、行番号は各ブロックの先頭行「- id: ...」と読み込み結果を順に照らして出す。
 // `npm test` と pre-commit フックで実行される。使い方: node scripts/check-duplicate-ids.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
 
-import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import yaml from 'js-yaml';
+import { readLines } from './lib.mjs';
 
 const root = process.argv[2] ?? '.';
 // src/content.config.ts で file() loader に渡している YAML（すべて id を持つ配列）
@@ -18,7 +18,7 @@ const problem = (file, msg) => problems.push(`${file}: ${msg}`);
 let total = 0;
 
 for (const file of FILES) {
-  const lines = readFileSync(join(root, file), 'utf8').split(/\r?\n/);
+  const lines = readLines(join(root, file));
   let items;
   try {
     items = yaml.load(lines.join('\n'));

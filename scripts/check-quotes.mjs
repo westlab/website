@@ -6,21 +6,10 @@
 // 警告のみ: 問題を表示するが終了コードは常に 0（lint / pre-commit を止めない）。
 // 使い方: node scripts/check-quotes.mjs [ファイル ...]（引数なしなら src/**/*.md と src/**/*.yaml を全件検査）
 
-import { readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readLines, targetFiles } from './lib.mjs';
 
 const OPEN = '“';
 const CLOSE = '”';
-
-function walk(dir) {
-  const out = [];
-  for (const e of readdirSync(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) out.push(...walk(p));
-    else if (e.name.endsWith('.md') || e.name.endsWith('.yaml')) out.push(p);
-  }
-  return out;
-}
 
 function excerpt(line, idx) {
   const start = Math.max(0, idx - 20);
@@ -29,7 +18,7 @@ function excerpt(line, idx) {
 }
 
 function check(file) {
-  const lines = readFileSync(file, 'utf8').split(/\r?\n/);
+  const lines = readLines(file);
   const problems = [];
   const isMd = file.endsWith('.md');
   let fence = null;
@@ -67,8 +56,7 @@ function check(file) {
   return problems.map(([n, idx, msg]) => ({ file, n, text: excerpt(lines[n - 1], idx), msg }));
 }
 
-const args = process.argv.slice(2).filter((a) => a.endsWith('.md') || a.endsWith('.yaml'));
-const files = args.length ? args : process.argv.length > 2 ? [] : walk('src');
+const files = targetFiles(/\.(md|yaml)$/, ['src']);
 
 let found = 0;
 for (const file of files) {

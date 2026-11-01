@@ -10,6 +10,7 @@
 
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { readLines } from './lib.mjs';
 
 const root = process.argv[2] ?? '.';
 const YAML = 'src/data/pages.yaml';
@@ -21,7 +22,7 @@ const problem = (file, msg) => problems.push(`${file}: ${msg}`);
 // pages.yaml は単純なリストなので、行ごとに id / image / nav / hero を拾う
 const entries = new Map();
 let cur = null;
-for (const line of readFileSync(join(root, YAML), 'utf8').split(/\r?\n/)) {
+for (const line of readLines(join(root, YAML))) {
   const id = line.match(/^- id:\s*(\S+)/);
   if (id) {
     cur = { id: id[1], image: null, nav: true, hero: false };

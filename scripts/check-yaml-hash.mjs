@@ -13,20 +13,9 @@
 // 行末コメントを書くときは、該当の行の上に単独の行として書く。
 // `npm test` で実行される。使い方: node scripts/check-yaml-hash.mjs [ファイル ...]（引数なしなら全件）
 
-import { readdirSync, readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readLines, targetFiles } from './lib.mjs';
 
 const COMMENT_OK_KEYS = new Set(['id', 'order', 'year', 'category', 'grade', 'image', 'photo', 'href', 'url', 'icon', 'nav', 'cohort']);
-
-function walk(dir) {
-  const out = [];
-  for (const e of readdirSync(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) out.push(...walk(p));
-    else if (e.name.endsWith('.md') || e.name.endsWith('.yaml')) out.push(p);
-  }
-  return out;
-}
 
 // [開始行, 終了行]（0始まり、終了を含む）。YAML は全体、Markdown は先頭の front matter だけ。
 function yamlRange(file, lines) {
@@ -37,7 +26,7 @@ function yamlRange(file, lines) {
 }
 
 function check(file) {
-  const lines = readFileSync(file, 'utf8').split(/\r?\n/);
+  const lines = readLines(file);
   const range = yamlRange(file, lines);
   if (!range) return [];
   const problems = [];
@@ -74,8 +63,7 @@ function check(file) {
   return problems;
 }
 
-const args = process.argv.slice(2).filter((a) => a.endsWith('.md') || a.endsWith('.yaml'));
-const files = args.length ? args : process.argv.length > 2 ? [] : [...walk('src/data'), ...walk('src/content')];
+const files = targetFiles(/\.(md|yaml)$/, ['src/data', 'src/content']);
 
 let found = 0;
 let foundCitation = 0;
