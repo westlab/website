@@ -13,6 +13,8 @@ import { join, relative } from 'node:path';
 
 const root = process.argv[2] ?? '.';
 const YAML = 'src/data/pages.yaml';
+// ヒーロー画像に使える形式。HEIC などは Safari 以外で表示されないので受け付けない
+const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
 const problems = [];
 const problem = (file, msg) => problems.push(`${file}: ${msg}`);
 
@@ -36,6 +38,8 @@ for (const line of readFileSync(join(root, YAML), 'utf8').split(/\r?\n/)) {
 for (const { id, image, hero } of entries.values()) {
   if (hero) problem(YAML, `「${id}」に hero があります。ヒーロー画像だけ別にすることはできません。image を使ってください。`);
   if (!image) problem(YAML, `「${id}」に image がありません。`);
+  else if (!IMAGE_EXT.test(image))
+    problem(YAML, `「${id}」の画像 ${image} は jpg・png・webp ではありません。JPEG か PNG に変換してから \`npm run compress:images\` を実行してください。`);
   else if (!existsSync(join(root, 'public', image))) problem(YAML, `「${id}」の画像 public${image} が存在しません。`);
 }
 
