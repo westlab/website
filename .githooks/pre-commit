@@ -32,5 +32,12 @@ if [ -n "$mdfiles" ] && ! node scripts/check-headings.mjs $mdfiles; then
   exit 1
 fi
 
+# 画面では見えない文字（ゼロ幅スペース・ソフトハイフンなど）が無いかを確認する。
+if ! node scripts/check-invisible-chars.mjs $files; then
+  echo ""
+  echo "npm run lint:fix で取り除いてから、再度 add してください。"
+  exit 1
+fi
+
 # 引用符 “ ” の向き（開き “・閉じ ”）を確認する。警告のみで、コミットは止めない。
 node scripts/check-quotes.mjs $files

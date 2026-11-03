@@ -13,9 +13,9 @@ export function walk(path, match) {
 }
 
 // 検査対象のファイル。コマンドライン引数があれば、その中で match に合うもの（コミット前フックが変更ファイルを渡す。
-// 合うものが無ければ空）。引数が無ければ dirs 配下の全ファイル。
+// 合うものが無ければ空）。引数が無ければ dirs 配下の全ファイル。--fix などの -- で始まる引数はファイルとして扱わない。
 export function targetFiles(match, dirs) {
-  const args = process.argv.slice(2);
+  const args = process.argv.slice(2).filter((a) => !a.startsWith('--'));
   if (args.length) return args.filter((a) => match.test(a));
   return dirs.flatMap((dir) => walk(dir, match));
 }
