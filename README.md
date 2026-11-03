@@ -61,6 +61,8 @@ npm run check     # 型チェック（astro check。約5秒。.astro / .ts を�
 
 `npm run lint` は Markdown 本文に h1 が無いかも検査する（`scripts/check-headings.mjs`）。本文の見出しは `##` から書く（`#` は使わない。h1 は各ページのタイトルが担当）。
 
+`npm run lint` と pre-commit は、画面では見えない文字（ゼロ幅スペース・ノーブレークスペース・ソフトハイフン・文字の向きの制御文字・BOM）も検査し、見つかれば失敗する（`scripts/check-invisible-chars.mjs`）。Web ページや PDF からのコピーで紛れ込みやすい。`npm run lint:fix` で取り除ける（ノーブレークスペースは普通の空白になる）。全角スペースは対象外。
+
 `npm run lint` と pre-commit は引用符の向きも検査し、間違いがあれば警告を表示する（`scripts/check-quotes.mjs`。警告のみで失敗はしない）。“ と ” は行内で交互に現れ、開きは `“`、閉じは `”` を使う（例: `Nishi, “Title”`）。
 
 `git commit` 時に pre-commit フックが staged な `src/**/*.{md,yaml}` をチェックし、未整形ならコミットを中止する。CI（`.github/workflows/build.yml`）でも `lint` と `npm test` を実行する。
