@@ -5,7 +5,7 @@
 // `npm test` と pre-commit フックで実行される。使い方: node scripts/check-duplicate-ids.mjs [プロジェクトルート]（省略時はカレントディレクトリ）
 
 import { join } from 'node:path';
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 import { readLines } from './lib.mjs';
 
 const root = process.argv[2] ?? '.';
@@ -21,7 +21,7 @@ for (const file of FILES) {
   const lines = readLines(join(root, file));
   let items;
   try {
-    items = yaml.load(lines.join('\n'));
+    items = load(lines.join('\n'));
   } catch (e) {
     problem(file, `YAML を読めません。${e.reason ?? e.message}${e.mark ? `（${e.mark.line + 1}行目）` : ''}`);
     continue;

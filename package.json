@@ -23,17 +23,16 @@
     "check": "astro check"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "^0.3.7",
-    "astro": "^7.4.2",
-    "js-yaml": "^4.3.0"
+    "@astrojs/markdown-satteri": "^0.4.7",
+    "astro": "^7.4.8",
+    "js-yaml": "^5.5.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@types/js-yaml": "^4.0.9",
+    "@astrojs/check": "^0.9.12",
     "@types/mdast": "^4.0.4",
     "pagefind": "^1.5.2",
-    "prettier": "^3.9.9",
-    "satteri": "^0.10.5",
+    "prettier": "^3.9.10",
+    "satteri": "^0.11.7",
     "sharp": "^0.35.3",
     "typescript": "^6.0.3"
   }

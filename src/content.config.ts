@@ -1,7 +1,7 @@
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { file, glob } from "astro/loaders";
-import yaml from "js-yaml";
+import { load } from "js-yaml";
 import { RESEARCH_ICONS } from "./lib/research-icons";
 
 // 分類2: 繰り返しの本文コンテンツ（研究トピック）。
@@ -41,7 +41,7 @@ const pagesContent = defineCollection({
 const yamlInFileOrder = (path: string) =>
   file(path, {
     parser: (text) =>
-      (yaml.load(text) as Record<string, unknown>[]).map((item, seq) => ({ ...item, seq })),
+      (load(text) as Record<string, unknown>[]).map((item, seq) => ({ ...item, seq })),
   });
 const seq = z.number();
 
