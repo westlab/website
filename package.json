@@ -34,6 +34,6 @@
     "prettier": "^3.9.10",
     "satteri": "^0.11.7",
     "sharp": "^0.35.3",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
