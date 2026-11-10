@@ -39,7 +39,7 @@ export const inlineVar = {
   // alt は斜体にできないので $ だけ取り除く
   image(node: Image, ctx: MdastVisitorContext) {
     if (node.alt && node.alt.includes('$')) {
-      ctx.setProperty(node, 'alt', node.alt.replace(/\$([^$\n]+?)\$/g, '$1'));
+      ctx.setField(node, 'alt', node.alt.replace(/\$([^$\n]+?)\$/g, '$1'));
     }
   },
 };

@@ -6,7 +6,7 @@
 // 問題があれば終了コード1。使い方: node scripts/check-frontmatter.mjs
 
 import { readLines, walk } from './lib.mjs';
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 
 const REQUIRED = {
   'src/content/research': ['title', 'order', 'icon', 'summary'],
@@ -21,7 +21,7 @@ function check(file, required) {
   if (end === -1) return [[1, 'front matter が --- で閉じられていません']];
   let data;
   try {
-    data = yaml.load(lines.slice(1, end).join('\n'));
+    data = load(lines.slice(1, end).join('\n'));
   } catch (e) {
     // js-yaml の行番号は front matter 内の相対位置（0始まり）。ファイル上の行は +2
     const line = (e.mark?.line ?? 0) + 2;
