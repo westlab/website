@@ -54,7 +54,7 @@
 
 - id: videos
   nav: false
-  image: /images/pages/placeholder.jpg
+  image: /images/pages/videos.jpg
 
 # 研究トピックの詳細ページ。id は「research/」+ src/content/research/ja/ のファイル名（拡張子なし）。
 - id: research/smart-community
