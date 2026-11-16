@@ -13,7 +13,7 @@ summary: 情報流通を活性化し、地域の暮らしを支える情報基�
 
 研究はさいたま市の浦和美園地区で行っています。約320haの区画整理事業地で、計画人口は約3.2万人、2023年3月時点で約1.6万人が住んでいます。西教授はこの地域のまちづくり拠点であるアーバンデザインセンター美園（UDCMi）の会長を務めており、さいたま市や企業と連携して、街区へのセンサ・無線網の設置から住民サービスの運用までを担当してきました。UDCMiの取り組みは、地域住民とともに地域サービスとして継続的に運用されています。
 
-![美園データ未来プロジェクトの実施形態](/images/research/smart-community/misono-data-mirai-project.png)
+![美園データ未来プロジェクトの実施形態](../../../../public/images/research/smart-community/misono-data-mirai-project.png)
 
 ## 地域型の情報銀行
 
@@ -26,11 +26,11 @@ summary: 情報流通を活性化し、地域の暮らしを支える情報基�
 - 住宅性能診断：空調の消費電力と室温のデータだけから、住宅の熱貫流率を設計値に対して約10%の誤差で推定する技術があります。UDCMiでは、初期費用なしで省エネ改修を導入するグリーンニューディール制度が検討されており、この技術で対象住宅の選定コストを下げることを想定しています。
 - 位置情報サービス：街区に160基のBLEアンテナを設置し、自転車や通学中の児童の位置情報を取得しました。このデータを匿名化して使えば、駐輪場や動線の設計、危険な交差点の特定に役立てられます。
 
-![健康データ取得環境](/images/research/smart-community/health-data-devices.png)
+![健康データ取得環境](../../../../public/images/research/smart-community/health-data-devices.png)
 
-![スマートハウスのセンサ設置例](/images/research/smart-community/smart-house-sensors.png)
+![スマートハウスのセンサ設置例](../../../../public/images/research/smart-community/smart-house-sensors.png)
 
-![街区のBLEインフラ](/images/research/smart-community/ble-infrastructure.png)
+![街区のBLEインフラ](../../../../public/images/research/smart-community/ble-infrastructure.png)
 
 ## 商用化と今後の課題
 
