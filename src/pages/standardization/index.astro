@@ -1,0 +1,34 @@
+---
+// Figma: Standardization Page / Standardization Page (Mobile)
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import StandardizationProse from '../../components/StandardizationProse.astro';
+import { getNavPage, navPageProps } from '../../lib/pages';
+import { renderLocalizedDoc } from '../../lib/content';
+
+const lang = 'ja' as const;
+
+const page = await getNavPage('standardization');
+const { Content } = await renderLocalizedDoc(lang, 'standardization');
+---
+
+<SubPageLayout {...navPageProps(page, lang)} lang={lang} maxWidth="900px" gap={64} mobileTop={40}>
+  <div class="top">
+    <StandardizationProse>
+      {Content && <Content />}
+    </StandardizationProse>
+  </div>
+</SubPageLayout>
+
+<style>
+  /* 「→ 詳しく見る」のリンク行（Figma: UI/Small Bold、下線）。この原稿ではリンクだけの段落がこれに当たる */
+  .top :global(p:has(> a:only-child)) {
+    font-size: var(--type-ui-small-bold-size);
+    font-weight: 700;
+    line-height: var(--type-ui-small-bold-leading);
+  }
+
+  .top :global(p:has(> a:only-child) a) {
+    text-decoration: underline;
+    text-underline-position: from-font;
+  }
+</style>

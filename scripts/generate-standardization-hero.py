@@ -2,7 +2,7 @@
 
 Run with the bundled Python environment (Pillow and NumPy required):
     python scripts/generate-standardization-hero.py
-Writes public/images/research/standardization/hero.jpg (1920x627, JPEG).
+Writes public/images/pages/standardization.jpg (1920x627, JPEG).
 Drawing happens at 2880x940 and is downscaled on save to stay within the
 image size limits (scripts/image-limits.mjs).
 Irregular hexagons (diverse, unstandardized) converge into a uniform hexagon cluster (the
@@ -20,7 +20,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 
-OUT = Path(__file__).resolve().parents[1] / "public" / "images" / "research" / "standardization" / "hero.jpg"
+OUT = Path(__file__).resolve().parents[1] / "public" / "images" / "pages" / "standardization.jpg"
 W, H = 2880, 940
 OUT_W, OUT_H = 1920, 627  # committed size; matches the size limits
 CY = H / 2

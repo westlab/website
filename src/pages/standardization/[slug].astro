@@ -1,0 +1,118 @@
+---
+// Figma: Standardization / IEEE 1451.1.6 Page / IEEE 2992 Page（各 Mobile あり）
+// 規格ごとのページ。パンくず、本文、前後の規格へのリンク。並び順は getStaticPaths の standards の書いた順。
+import { render } from 'astro:content';
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import StandardizationProse from '../../components/StandardizationProse.astro';
+import { getLocalizedDoc } from '../../lib/content';
+import { getPageImage } from '../../lib/pages';
+import { t } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  const standards = ['ieee-1451-1-6', 'ieee-2992'];
+  return standards.map((slug, i) => ({
+    params: { slug },
+    props: { slug, standards, prev: standards[i - 1], next: standards[i + 1] },
+  }));
+}
+
+const lang = 'ja' as const;
+const { slug, standards, prev, next } = Astro.props;
+const doc = (await getLocalizedDoc('pagesContent', lang, `standardization/${slug}`))!;
+const { Content } = await render(doc);
+const image = await getPageImage('standardization');
+const href = (s: string) => `/standardization/${s}/`;
+const titles = Object.fromEntries(
+  await Promise.all(
+    standards.map(async (s) => [s, (await getLocalizedDoc('pagesContent', lang, `standardization/${s}`))!.data.title]),
+  ),
+);
+---
+
+<SubPageLayout
+  title={doc.data.title}
+  description={`${doc.data.title}の概要と、当研究室の取り組みです。`}
+  image={image}
+  ogType="article"
+  lang={lang}
+  current={{ label: doc.data.title, href: href(slug) }}
+  maxWidth="900px"
+  gap={64}
+  mobileTop={40}
+>
+  <StandardizationProse>
+    <Content />
+  </StandardizationProse>
+  <nav class="pager" aria-label={t(lang, 'standardization.pager.label')} data-pagefind-ignore>
+    {prev ? (
+      <a class="pager-link prev" href={href(prev)} rel="prev">
+        <span class="label t-ui-small-bold"><span aria-hidden="true">← </span>{t(lang, 'standardization.pager.prev')}</span>
+        <span class="title t-item">{titles[prev]}</span>
+      </a>
+    ) : (
+      <span class="pager-spacer"></span>
+    )}
+    {next && (
+      <a class="pager-link next" href={href(next)} rel="next">
+        <span class="label t-ui-small-bold">{t(lang, 'standardization.pager.next')}<span aria-hidden="true"> →</span></span>
+        <span class="title t-item">{titles[next]}</span>
+      </a>
+    )}
+  </nav>
+</SubPageLayout>
+
+<style>
+  .pager {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding-top: 40px;
+    border-top: 1.5px solid var(--color-navy-divider);
+  }
+
+  .pager-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--color-surface-card);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .pager-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--color-navy-faint);
+  }
+
+  .pager-link.next {
+    grid-column: 2;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .label {
+    color: var(--color-navy);
+  }
+
+  @media (max-width: 767px) {
+    .pager {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .pager-spacer {
+      display: none;
+    }
+
+    .pager-link {
+      padding: 20px;
+    }
+
+    .pager-link.next {
+      grid-column: auto;
+    }
+  }
+</style>

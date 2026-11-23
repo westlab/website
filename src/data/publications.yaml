@@ -29,6 +29,18 @@
   citation: >-
     Kohga Tanaka, Hiroaki Nishi, “Sigma-Branch: Hierarchical Single-Path Network Reconstruction for Dynamic Inference with Reduced Active Parameters”, IEEE Access, Volume 14, 2026, pp.126228-126238, 14th, Aug. 2026, https://doi.org/10.1109/ACCESS.2026.3723964.
 
+- id: "2026-journal-3"
+  year: 2026
+  category: 論文誌
+  citation: >-
+    Goro Terumichi, Jiarui Li, Tatsuji Kimura, Hiroaki Nishi, “A Spatio-Temporal Dynamics Model for Indoor Environmental Forecasting”, IEEJ Transactions on Electronics and Electronic Engineering, First published on 3rd September, 2026, Wiley Online Library, https://doi.org/10.1002/tee.70413 .
+
+- id: "2026-journal-4"
+  year: 2026
+  category: 論文誌
+  citation: >-
+    Goro Terumichi, Jiarui Li, Tatsuji Kimura, Hiroaki Nishi, “Low-Resolution Thermal Sensing for Clothing-Ensemble and Activity Estimation in Multi-Occupant Scenes”, Transactions of the Society of Heating,Air-conditioning and Sanitary Engineers of Japan, 2026 Volume 51 Issue 356 Pages 21-29, https://doi.org/10.18948/shase.51.356_21 .
+
 - id: "2026-intl-conf-1"
   year: 2026
   category: 国際会議/査読付収録論文
@@ -47,6 +59,24 @@
   citation: >-
     Yuki Maeda, W A Shanaka P Abeysiriwardhana, Hiroaki, Nishi, “Integrated Simulation of Greenhouse Environment and Energy Management for Multi-Greenhouse Systems”, Published in: The 24th IEEE International Conference on Industrial Informatics (INDIN2026), 26-29, July, Melbourne, Australia.
 
+- id: "2026-intl-conf-4"
+  year: 2026
+  category: 国際会議/査読付収録論文
+  citation: >-
+    Fatma Marzouk, Hao Ran Chi, Stefano Savazzi, Mutaz Al Fayad, Mahmoud Alahmad,Kim Fung Tsang, Hiroaki Nishi, Rui L. Aguiar, “Collaborative Industrial Internet of Things: Transitioning Toward Industry 5.0”, IEEE Industrial Electronics Magazine, 15 Sep. 2026, DOI: 10.1109/MIE.2026.3727954 .
+
+- id: "2026-intl-conf-5"
+  year: 2026
+  category: 国際会議/査読付収録論文
+  citation: >-
+    Takumi Fujimoto, Hiroaki Nishi, “KESTREL: Coordinate-Wise Secant Steps with Post-Hoc Failure Benching for Deterministic Neural Optimization”, The 38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI), 2-4, November 2026, Boca Raton FL, USA, https://doi.org/ .
+
+- id: "2026-intl-conf-6"
+  year: 2026
+  category: 国際会議/査読付収録論文
+  citation: >-
+    Akari Kato, Hiroaki Nishi, “Autonomous Distributed Service Function Chaining with Network Transparency from the End-Device Perspective”, 14th International Workshop on Computer Systems and Architectures, 24-27, November 2026, Ishigaki, Japan, https://doi.org/ .
+
 - id: "2026-domestic-conf-1"
   year: 2026
   category: 国内研究会/収録論文/口頭発表等
@@ -59,6 +89,18 @@
   citation: >-
     Hiroaki Nishi, “AI-Ready Smart Agriculture with IEEE 2992-2025: From Interoperable Data to Digital Twins”, UTA Café | EU–Japan Webinar – Session 2, 1st Sept. 2026, https://urbantechnologyalliance.org/uta-cafe-japan-webinar-series/.
 
+- id: "2026-domestic-conf-3"
+  year: 2026
+  category: 国内研究会/収録論文/口頭発表等
+  citation: >-
+    Hiroaki Nishi, “AI-Ready Smart Agriculture with IEEE 2992-2025”, IEEE SA & ETRI Joint workshop Emerging AI Technologies & Global Standards, 2026年9月15日, ETRI (韓国大田）.
+
+- id: "2026-domestic-conf-4"
+  year: 2026
+  category: 国内研究会/収録論文/口頭発表等
+  citation: >-
+    Hiroaki Nishi, “AI-Ready Smart Agriculture with IEEE 2992-2025 From Interoperable Data to Digital Twins”, The 26th IEEE SA International Conference on Artificial Intelligence, 2026年9月16日, 韓国ソウル.
+
 - id: "2026-press-1"
   year: 2026
   category: 報道・展示等
@@ -70,6 +112,18 @@
   category: 報道・展示等
   citation: >-
     スマートコミュニティーのインフラとサービス, 第27回慶應科学技術展 KEIO TECHNO-MALL 2026, 2026年12月16日.
+
+- id: "2026-award-1"
+  year: 2026
+  category: 受賞等
+  citation: >-
+    2026年度農業施設学会賞【論文賞】, 土屋遼太，大橋雄太, 於保拓高, 森山英樹, 石井雅久, 竹内大将, 藤谷拓也, 馬上丈司, 西宏章, “大規模な営農型太陽光発電施設が設置された圃場の微気象分布”, 農業施設56巻（2025）4号, 2025年12月, https://doi.org/10.11449/sasj.56.4_76 にて受賞．
+
+- id: "2026-award-2"
+  year: 2026
+  category: 受賞等
+  citation: >-
+    IEEE SA Standards Medallion 2026, Hiroaki Nishi, 6th December 2026, https://standards.ieee.org/about/awards/med/.
 
 - id: "2025-journal-1"
   year: 2025
