@@ -26,6 +26,11 @@ const children: Record<string, { key: UiKey; href: string }[]> = {
     { key: 'nav.members.current', href: '/members/' },
     { key: 'nav.members.alumni', href: '/alumni/' },
   ],
+  standardization: [
+    { key: 'nav.standardization.about', href: '/standardization/' },
+    { key: 'nav.standardization.ieee1451', href: '/standardization/ieee-1451-1-6/' },
+    { key: 'nav.standardization.ieee2992', href: '/standardization/ieee-2992/' },
+  ],
 };
 
 // path が href のページ、またはその配下か（URL の前方一致）。Header の現在地表示とパンくずが共有する
@@ -55,8 +60,9 @@ export async function getBreadcrumb(lang: Lang, path: string, current?: NavLink)
     for (const sub of item.subs) if (sub.href !== item.href) trails.push([parent, sub]);
   }
 
+  // ナビの表記（IEEE 2992）と、ページの正式な題（IEEE 2992-2025）が違うときは、current の表記を優先する
   const exact = trails.find((trail) => trail.at(-1)!.href === path);
-  if (exact) return [home, ...exact];
+  if (exact) return [home, ...exact.slice(0, -1), current ?? exact.at(-1)!];
 
   const parent = trails
     .filter((trail) => isWithin(path, trail.at(-1)!.href))

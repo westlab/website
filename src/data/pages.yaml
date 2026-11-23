@@ -1,7 +1,7 @@
 # id はページのパス（research・members など。研究詳細は research/<ファイル名>）。ファイルの中で重複させない。
 # 文章の値に「 #」を含めるときは "..." で囲む（引用符なしだと「 #」から後ろが消える）。
 # 全ページの Page Title（ページ上部）の写真。写真を差し替えるときはここの image を直す。
-# 先頭の5件はトップの Nav Card にも同じ写真が出る。Nav Card とナビの並び順は、このファイルに書いた順（上から）。
+# nav: false でないページはトップの Nav Card にも同じ写真が出る。Nav Card とナビの並び順は、このファイルに書いた順（上から）。
 - id: research
   title_ja: 研究内容
   title_en: Research
@@ -9,6 +9,16 @@
   href: /research/
   description_ja: スマートコミュニティをはじめとした研究室が取り組むテーマを紹介します。
   description_en: An overview of the research themes we work on, including smart communities.
+
+- id: standardization
+  title_ja: 技術標準化
+  title_en: Standardization
+  image: /images/pages/standardization.jpg
+  href: /standardization/
+  description_ja: IEEEの標準化活動と、議長を務めた規格の紹介です。
+  description_en: Our IEEE standardization activities and the standards we have chaired.
+  meta_description_ja: 慶應義塾大学 西研究室のIEEE標準化活動（IEEE 1451.1.6-2025、IEEE 2992-2025）の紹介です。
+  meta_description_en: The IEEE standardization activities of the Nishi Laboratory, Keio University.
 
 - id: members
   title_ja: メンバー
@@ -80,7 +90,3 @@
 - id: research/smart-agriculture
   nav: false
   image: /images/research/smart-agriculture/hero.jpg
-
-- id: research/standardization
-  nav: false
-  image: /images/research/standardization/hero.jpg

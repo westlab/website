@@ -45,7 +45,7 @@ const yamlInFileOrder = (path: string) =>
   });
 const seq = z.number();
 
-// 全ページの Page Title（Hero）画像の対応表。Nav Card を持つ5ページは Homepage の Nav Card と画像・タイトルを共有する。
+// 全ページの Page Title（Hero）画像の対応表。Nav Card を持つページは Homepage の Nav Card と画像・タイトルを共有する。
 // Nav Card を持たないページ（卒業生・動画・研究トピック）は `nav: false` を付け、id と image だけ書く。
 // 研究トピックの id は "research/<ファイル名>"（例: research/network）。
 const navPage = z.object({

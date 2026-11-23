@@ -32,7 +32,7 @@
 
 ### 2. 繰り返しの本文コンテンツ（項目ごとに段落を持つ）
 
-対象：Research の研究トピック7項目。各トピックはタイトルと長めの説明文を持つ。
+対象：Research の研究トピック（日本語6項目、英語7項目。英語の「技術標準化」は国際標準化の英語ページができるまでのつなぎ）。各トピックはタイトルと長めの説明文を持つ。
 
 - Astro Content Collections で、1項目1ファイル、言語ごとにペアで持つ：`src/content/research/ja/network.md` と `src/content/research/en/network.md`
 - front matter：`title`, `order`, `icon`（アイコン種別のキーのみ）, `summary`（必須。カード用の要約）, `description`（任意。meta description。未指定なら summary）。詳細ページ上部の写真は `pages.yaml` に持つ（「画像の持ち方」参照）
@@ -56,7 +56,7 @@
 
 ## 画像の持ち方
 
-Figma で確認した制約：Homepage の Nav Card 5枚（研究内容・メンバー・業績・入室見学・リンク、720×480、モバイル335×180）と、遷移先の各ページの Page Title（ヘッダーバナー、1440×470）は同じ写真を使う。写真は本文に付随するデータではなく、ページ1つにつき1枚の素材であり、Nav Card と Hero の2箇所から参照される。
+Figma で確認した制約：Homepage の Nav Card 6枚（研究内容・技術標準化・メンバー・業績・入室見学・リンク、720×480、モバイル335×180）と、遷移先の各ページの Page Title（ヘッダーバナー、1440×470）は同じ写真を使う。写真は本文に付随するデータではなく、ページ1つにつき1枚の素材であり、Nav Card と Hero の2箇所から参照される。
 
 - 画像本体は `public/images/pages/<page-key>.jpg`（研究トピックは `public/images/research/<トピック>/hero.jpg`）に1ページ1ファイルで保持する
 - どのページがどの画像を使うかは、構造化データとして `src/data/pages.yaml` の1箇所だけに持つ。Page Title を持つ全ページ（研究トピックの詳細ページを含む）が対象
@@ -77,7 +77,7 @@ Figma で確認した制約：Homepage の Nav Card 5枚（研究内容・メン
 - 縦横比の違いは、画像を複数バージョン持たず、各コンポーネントの CSS（`object-fit: cover` とブレークポイントごとのコンテナサイズ）で吸収する。画像の置き場所（`public/` か `src/assets/`）はクロップと無関係
 - ビルド時の画像最適化（`astro:assets`）は導入しない。モバイル向けの転送量を自動で最適化できるが、写真が少なく更新頻度も低いため、仕組みの単純さを優先した
 
-上記5ページ以外（卒業生・動画・研究トピック7件）は Nav Card を持たないため、`nav: false` を付けて `id` と `image` だけを書く。研究トピックの `id` は `research/<ファイル名>`（例：`research/network`）。Nav Card とナビ項目になるのは `nav: false` でないレコードだけ。
+上記6ページ以外（卒業生・動画・研究トピック）は Nav Card を持たないため、`nav: false` を付けて `id` と `image` だけを書く。研究トピックの `id` は `research/<ファイル名>`（例：`research/network`）。ナビ項目とトップの Nav Card になるのは `nav: false` でないレコードだけ。
 
 ```yaml
 - id: research/network

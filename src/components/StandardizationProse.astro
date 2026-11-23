@@ -1,0 +1,153 @@
+---
+// Figma: Standardization Page / Standardization / IEEE 1451.1.6 Page / IEEE 2992 Page の本文（Body）。
+// Markdown 本文（見出し ## ###、表、箇条書き、図、リンク）の見た目。サイズは型ランプの変数（--type-*）を参照する。
+---
+
+<div class="prose">
+  <slot />
+</div>
+
+<style>
+  /* Body/Emphasis の Lead（冒頭の段落） */
+  .prose > :global(p:first-child) {
+    margin: 0;
+    color: var(--color-text);
+    font-size: var(--type-emphasis-size);
+    font-weight: 500;
+    line-height: var(--type-emphasis-leading);
+  }
+
+  /* セクション間は 64px（Figma: Body の gap）。セクションの中は 20px */
+  .prose :global(h2) {
+    margin: 64px 0 20px;
+    color: var(--color-navy);
+    font-size: var(--type-section-size);
+    font-weight: 700;
+    line-height: var(--type-section-leading);
+  }
+
+  .prose :global(h3) {
+    margin: 20px 0;
+    color: var(--color-text);
+    font-size: var(--type-subsection-size);
+    font-weight: 700;
+    line-height: var(--type-subsection-leading);
+  }
+
+  .prose :global(h2 + h3) {
+    margin-top: 0;
+  }
+
+  .prose :global(p),
+  .prose :global(ul) {
+    margin: 0 0 20px;
+    color: var(--color-text-muted);
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-leading);
+    overflow-wrap: anywhere;
+  }
+
+  .prose :global(h2 + p),
+  .prose :global(h2 + ul),
+  .prose :global(h2 + table) {
+    margin-top: 0;
+  }
+
+  .prose > :global(p:first-child) {
+    margin-bottom: 0;
+  }
+
+  .prose :global(a) {
+    color: var(--color-navy);
+    overflow-wrap: anywhere;
+  }
+
+  /* 箇条書きは「・」を頭に付ける（Figma: List） */
+  .prose :global(ul) {
+    padding: 0;
+    list-style: none;
+  }
+
+  .prose :global(ul > li)::before {
+    content: '・';
+  }
+
+  /* Figma: Table。上端の線、ヘッダーの背景、各行の下線。ヘッダーと1列目は Caption/Label、本文は Caption/Default */
+  .prose :global(table) {
+    width: 100%;
+    margin: 0 0 20px;
+    border-collapse: collapse;
+    border-top: 1px solid var(--color-navy-divider);
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-navy-divider);
+    color: var(--color-text);
+    font-size: var(--type-caption-size);
+    font-weight: 400;
+    line-height: var(--type-caption-leading);
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .prose :global(thead th) {
+    background: var(--color-surface-card);
+  }
+
+  .prose :global(th),
+  .prose :global(tbody td:first-child) {
+    color: var(--color-navy);
+    font-size: var(--type-caption-label-size);
+    font-weight: 700;
+    line-height: var(--type-caption-label-leading);
+  }
+
+  .prose :global(tbody td:first-child a) {
+    text-decoration: none;
+  }
+
+  /* 図（remark-figure が alt からキャプションを作る）。幅いっぱい、角丸12px */
+  .prose :global(figure) {
+    margin: 0 0 20px;
+  }
+
+  .prose :global(figure img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .prose :global(figcaption) {
+    margin-top: 8px;
+    color: var(--color-text-muted);
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-leading);
+  }
+
+  .prose > :global(:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 767px) {
+    /* 狭い画面では表を横にスクロールさせる */
+    .prose :global(table) {
+      display: block;
+      overflow-x: auto;
+    }
+
+    .prose :global(tbody td:first-child) {
+      white-space: nowrap;
+    }
+
+    .prose :global(table tbody),
+    .prose :global(table thead) {
+      display: table;
+      width: 100%;
+      min-width: 560px;
+    }
+  }
+</style>
